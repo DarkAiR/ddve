@@ -1,0 +1,218 @@
+* {
+    margin:0;
+    padding:0;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+html
+{
+    width: 1400px !important;
+    height: 100%;
+    margin: 0px auto;
+    text-align:left;
+}
+
+/*оформление заднего плана и форматирование текста сайта и межстрочного расстояния*/
+body {
+    /*background-color: #e1edef;*/
+    margin:0 auto;
+    padding:0;
+    text-align:center;
+    font-size:14px;
+    line-height:1.3;
+    color:#000;
+}
+
+/*стандартные оформление ссылок и заголовков*/
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited
+{
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+}
+
+/*оформление всех ссылок на сайте*/
+a {
+    text-decoration: underline;
+    color:#fff;
+}
+/*непосещенная ссылка*/
+a:link {
+    text-decoration: underline;
+    color: #fff;
+}
+/*посещенная ссылка*/
+a:visited, a.visited {
+    color:#fff;
+}
+/*ссылка при наведении*/
+a:hover, a.hover {
+    text-decoration: none;
+    color: #ff6116;
+}
+/*заголовки 1 уровня*/
+h1, h1 a, h1 a:link, h1 a:visited, h1 a:hover{
+    font: bold 22px;
+    font-style:italic;
+    color: #30b2cf;
+    text-align:center;
+}
+/*заголовки 2 уровня*/
+h2, h2 a, h2 a:link, h2 a:visited, h2 a:hover{
+    font-size:20px;
+    color: #3b98b0;
+    font-style:italic;
+    text-align:center;
+}
+/*заголовки 3 уровня*/
+h3, h3 a, h3 a:link, h3 a:visited, h3 a:hover{
+    font-size: 18px;
+    color: #82b5bf;
+    text-align:center;
+}
+/*заголовки 4-6 уровня*/
+h4, h4 a, h4 a:link, h4 a:visited, h4 a:hover,h5, h5 a, h5 a:link, h5 a:visited, h5 a:hover,h6, h6 a, h6 a:link, h6 a:visited, h6 a:hover{
+    font-size: 125%;
+    color: #3b98b0;
+}
+/*оформление изображений в контенте*/
+a img {
+    border: none;
+}
+p img {
+    margin-right:10px;
+}
+
+/*оформление абзацев текста*/
+p {
+    margin: 5px 0 10px 0;
+}
+
+
+/*форматирование списков во всех модулях*/
+ul
+{
+  margin: 0;
+  padding: 0;
+}
+ul li
+{
+    margin: 0;
+    line-height: normal;
+    padding: 0;
+    list-style: none;
+}
+
+
+/*Оформление страницы*/
+#page
+{
+    width: 1400px !important;
+    height: 100%;
+    margin: 0px auto;
+    text-align:left;
+}
+
+#page #div1
+{
+    width: 1400px;
+    height: 183px;
+    background: url(../images/img_01.jpg) left top no-repeat;
+}
+
+#page #div2_1
+{
+    width: 319px;
+    height: 659px;
+    background: url(../images/img_02.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div2_2
+{
+    width: 788px;
+    height: 659px;
+    background: url(../images/img_03.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div2_3
+{
+    width: 293px;
+    height: 659px;
+    float: left;
+    background: url(../images/img_04.jpg) left top no-repeat;
+}
+
+#page #div3_1
+{
+    width: 319px;
+    height: 208px;
+    background: url(../images/img_05.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div3_2
+{
+    width: 788px;
+    height: 208px;
+    background: url(../images/img_06.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div3_3
+{
+    width: 293px;
+    height: 208px;
+    float: left;
+    background: url(../images/img_07.jpg) left top no-repeat;
+}
+
+#page #footer
+{
+    height: 60px;
+    padding: 120px 10px 0px 20px;
+    vertical-align: middle;
+}
+
+/* низ */
+.moduletable_copy, .moduletable_authors
+{
+    color: #fff;
+    font-size: 10px;
+    margin: 0px;
+    padding: 10px;
+}
+.moduletable_copy
+{
+    float:left;
+}
+.moduletable_authors
+{
+    text-align: right;
+}
+
+div#info1
+{
+    color: #305c24;
+    opacity:0.8;
+    filter:alpha(opacity=80);
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    padding: 130px 0px 0px 0px;
+}
+
+div#info2
+{
+    color: #305c24;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    padding: 35px 0px 0px 0px;
+    display: none;
+    height: 100px;
+}
