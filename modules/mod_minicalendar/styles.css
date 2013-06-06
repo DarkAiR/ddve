@@ -1,0 +1,114 @@
+/* 
+    Document   : styles
+    Created on : 10.09.2011, 0:49:26
+    Author     : DarkAiR
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+#mod_minical
+{
+    width:190px;
+    height:181px;
+    display:block;
+    background: url('images/bg.png') left top no-repeat;
+}
+
+#mod_minical #mod_minical_header
+{
+    display: block;
+    width: 190px;
+    height: 35px;
+    padding: 0px 0px 0px 0px;
+}
+
+#mod_minical #mod_minical_header #mod_minical_left
+{
+    display:block;
+    background: url(images/leftarrow.png) right bottom no-repeat;
+    width:35px;
+    height:100%;
+    float: left;
+}
+#mod_minical #mod_minical_header #mod_minical_left a
+{
+    display: block;
+    width:100%;
+    height:100%;
+}
+
+#mod_minical #mod_minical_header #mod_minical_right
+{
+    display:block;
+    background: url(images/rightarrow.png) left bottom no-repeat;
+    width:35px;
+    height:100%;
+    float: left;
+}
+#mod_minical #mod_minical_header #mod_minical_right a
+{
+    display: block;
+    width:100%;
+    height:100%;
+}
+
+#mod_minical #mod_minical_header #mod_minical_month
+{
+    float: left;
+    color: #d3d2d3;
+    font-size: 15px;
+    font-weight: bold;
+    text-transform:uppercase;
+    text-align: center;
+    width: 120px;
+    height: 25px;
+    padding-top: 19px;
+}
+
+#mod_minical #mod_minical_days
+{
+    clear: both;
+    padding: 0px 22px 0px 22px;
+}
+
+#mod_minical #mod_minical_days #mod_minical_dayname
+{
+    font-size: 14px;
+    color: #464646;
+    font-weight:bold;
+    text-transform:uppercase;
+    float: left;
+    padding: 0px 2px 0px 1px;
+}
+
+#mod_minical #mod_minical_calendar
+{
+    clear: both;
+    padding: 0px 23px 0px 20px;
+}
+#mod_minical #mod_minical_calendar .mod_minical_table td
+{
+    width: 21px;
+    font-size: 12px;
+    color: #464646;
+    text-align: center;
+}
+
+.mod_minical_holyday
+{
+    color: #9e0b0f !important;
+}
+
+.min_minical_sel
+{
+    background:rgba(255,128,128,0.5);
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+    padding: 0px 2px;
+}

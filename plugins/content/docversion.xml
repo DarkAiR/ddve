@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install PUBLIC "-//Joomla! 1.5//DTD plugin 1.0//EN" "http://dev.joomla.org/xml/1.5/plugin-install.dtd">
+<install type="plugin" version="1.5" group="content" method="upgrade">
+  <name>Content - DocVersion</name>
+  <creationDate>29-May-2011</creationDate>
+  <author>Factory.DocWriter.Ru</author>
+  <authorEmail>info@docwriter.ru</authorEmail>
+  <authorUrl>http://factory.docwriter.ru/</authorUrl>
+  <copyright>(c) 2011 Factory.DocWriter.Ru</copyright>
+  <license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL</license>
+  <version>1.00.0003</version>
+  <description>Controls article versions.</description>
+  <files folder="site">
+    <filename plugin="docversion">docversion.php</filename>
+    <folder>docversion</folder>
+  </files>
+</install>

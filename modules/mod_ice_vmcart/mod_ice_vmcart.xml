@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+	<name>Ice VM Cart</name>
+	<author>IceTheme</author>
+	<creationDate>July 2010</creationDate>
+	<copyright>Copyright (C) 2010 IceTheme</copyright>
+	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+	<authorEmail>info@icetheme.com</authorEmail>
+	<authorUrl>http://www.icetheme.com</authorUrl>
+	<version>2.1</version>
+	<description>Ice VM Cart Module is ONLY for IceTheme Club Members and can be used ONLY for IceTheme Templates</description>
+	
+	<files>
+		<filename module="mod_ice_vmcart">mod_ice_vmcart.php</filename>
+		<filename module="mod_ice_vmcart">helper.php</filename>
+		<filename module="mod_ice_vmcart">index.html</filename>
+		<filename module="mod_ice_vmcart">CHANGELOG.php</filename>
+		<folder>assets</folder>
+		<folder>tmpl</folder>	
+
+	</files>
+	
+	<params>
+		
+		<param name="theme" type="hidden" hide_none="true" hide_default="" default="" label="SELECT THEME" directory="modules/mod_ice_vmcart/themes/" filter="" exclude="" stripext="" />
+		
+		<param name="icevmcart_duration" type="text" default="500" label="Transition Duration (ms)" description="How fast do you want the transition to take effect? " />
+		
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+
+
+
+<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="Add a Suffix to IceCarousel Module" />
+		
+	</params>
+	
+	<params group="advanced">
+	
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+</install>

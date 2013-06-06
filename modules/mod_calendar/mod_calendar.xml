@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://www.joomla.org/xml/dtd/1.5/module-install.dtd">
+<install type="module" version="1.5.0">
+        <name>Calendar</name>
+        <creationDate>August 2011</creationDate>
+        <author>DarkAiR</author>
+        <authorEmail>frippy2@list.ru</authorEmail>
+        <authorUrl>http://darkair2.blogspot.com</authorUrl>
+        <copyright>
+        </copyright>
+        <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+        <version>1.0.0</version>
+        <description>Calendar</description>
+        <files>
+                <filename module="mod_calendar">mod_calendar.php</filename>\
+        </files>
+        <params>
+                <param name="moduleclass_sfx" type="text" default=""
+                        label="Module Class Suffix"
+                        description="A suffix to be applied to the css class of the module (table.moduletable), this allows individual module styling" />
+                <param name="class_sfx" type="text" default=""
+                        label="Menu Class Suffix"
+                        description="A suffix to be applied to the css class of the menu items" />
+                <param name="ponedelnik" type="text" default="Круглосуточно" label="Понедельник"/>
+                <param name="vtornik"    type="text" default="Круглосуточно" label="Вторник"/>
+                <param name="sreda"      type="text" default="Круглосуточно" label="Среда"/>
+                <param name="chetverg"   type="text" default="Круглосуточно" label="Четверг"/>
+                <param name="pyatnica"   type="text" default="Круглосуточно" label="Пятница"/>
+                <param name="subbota"    type="text" default="Круглосуточно" label="Суббота"/>
+                <param name="voskresene" type="text" default="Круглосуточно" label="Воскресенье"/>
+        </params>
+</install>

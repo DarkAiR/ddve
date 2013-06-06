@@ -1,0 +1,555 @@
+﻿* {
+    margin:0;
+    padding:0;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+html
+{
+    width: 1400px !important;
+    height: 100%;
+    margin: 0px auto;
+    text-align:left;
+    overflow-x: hidden;
+    background-color: #000 !important;
+}
+
+/*оформление заднего плана и форматирование текста сайта и межстрочного расстояния*/
+body {
+    /*background-color: #e1edef;*/
+    margin:0 auto;
+    padding:0;
+    text-align:center;
+    font-size:14px;
+    line-height:1.3;
+    color:#000;
+}
+
+/*стандартные оформление ссылок и заголовков*/
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a
+h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover
+h1 a:visited, h2 a:visited, h3 a:visited, h4 a:visited, h5 a:visited, h6 a:visited
+{
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: none;
+}
+
+/*оформление всех ссылок на сайте*/
+a {
+    text-decoration: underline;
+    color:#866076;
+}
+/*непосещенная ссылка*/
+a:link {
+    text-decoration: underline;
+    color: #866076;
+}
+/*посещенная ссылка*/
+a:visited, a.visited {
+    color:#866076;
+}
+/*ссылка при наведении*/
+a:hover, a.hover, li.active a {
+    text-decoration: none;
+    color: #ff6116;
+}
+
+/*заголовки 1 уровня*/
+h1, h1 a, h1 a:link, h1 a:visited, h1 a:hover{
+    font: bold 22px;
+    font-style:italic;
+    color: #30b2cf;
+    text-align:center;
+}
+/*заголовки 2 уровня*/
+h2, h2 a, h2 a:link, h2 a:visited, h2 a:hover{
+    font-size:20px;
+    color: #3b98b0;
+    font-style:italic;
+    text-align:center;
+}
+/*заголовки 3 уровня*/
+h3, h3 a, h3 a:link, h3 a:visited, h3 a:hover{
+    font-size: 18px;
+    color: #82b5bf;
+    text-align:center;
+}
+/*заголовки 4-6 уровня*/
+h4, h4 a, h4 a:link, h4 a:visited, h4 a:hover,h5, h5 a, h5 a:link, h5 a:visited, h5 a:hover,h6, h6 a, h6 a:link, h6 a:visited, h6 a:hover{
+    font-size: 125%;
+    color: #3b98b0;
+}
+/*оформление изображений в контенте*/
+a img {
+    border: none;
+}
+p img {
+    margin-right:10px;
+}
+
+/*оформление абзацев текста*/
+p {
+    margin: 5px 0 10px 0;
+}
+
+
+/*форматирование списков во всех модулях*/
+ul
+{
+  margin: 0;
+  padding: 0;
+}
+ul li
+{
+    margin: 0;
+    line-height: normal;
+    padding: 0;
+    list-style: none;
+}
+
+
+/*Оформление страницы*/
+#page
+{
+    width: 1400px !important;
+    height: 100%;
+    margin: 0px auto;
+    text-align:left;
+}
+
+#page #logo
+{
+    position: absolute;
+    left: 100px;
+    top: 280px;
+    background:transparent;
+    width: 180px;
+    height: 170px;
+    display: block;
+}
+
+.show_div
+{
+    display: inline;
+}
+.hide_div
+{
+    display: none;
+}
+.supy
+{
+    position: absolute;
+    left: 594px;
+    top: 324px;
+    background:transparent;
+    width: 100px;
+    height: 89px;
+    display: block;
+}
+.salaty
+{
+    position: absolute;
+    left: 717px;
+    top: 368px;
+    background:transparent;
+    width: 110px;
+    height: 48px;
+    display: block;
+}
+.rolly
+{
+    position: absolute;
+    left: 558px;
+    top: 470px;
+    background:transparent;
+    width: 106px;
+    height: 34px;
+    display: block;
+}
+.lapsha
+{
+    position: absolute;
+    left: 669px;
+    top: 426px;
+    background:transparent;
+    width: 65px;
+    height: 77px;
+    display: block;
+}
+.pizza
+{
+    position: absolute;
+    left: 719px;
+    top: 421px;
+    background:transparent;
+    width: 166px;
+    height: 96px;
+    display: block;
+}
+.vok
+{
+    position: absolute;
+    left: 572px;
+    top: 547px;
+    background:transparent;
+    width: 152px;
+    height: 53px;
+    display: block;
+}
+.deserty
+{
+    position: absolute;
+    left: 718px;
+    top: 545px;
+    background:transparent;
+    width: 136px;
+    height: 54px;
+    display: block;
+}
+.napitki
+{
+    position: absolute;
+    left: 930px;
+    top: 400px;
+    background:transparent;
+    width: 150px;
+    height: 180px;
+    display: block;
+}
+#page #lapsha_bg
+{
+    position: absolute;
+    left: 31px;
+    top: 589px;
+    background:transparent url(../images/lapsha3.png) left top no-repeat;
+    width: 128px;
+    height: 108px;
+    display: block;
+}
+#page #buklety_bg
+{
+    position: absolute;
+    left: 1208px;
+    top: 657px;
+    background:transparent url(../images/buklety.png) left top no-repeat;
+    width: 110px;
+    height: 61px;
+    display: block;
+}
+
+
+#page #div1
+{
+    width: 1400px;
+    height: 183px;
+    background: url(../images/img_01.jpg) left top no-repeat;
+}
+
+#page #div2_1
+{
+    width: 319px;
+    height: 659px;
+    background: url(../images/img_02.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div2_2
+{
+    width: 788px;
+    height: 659px;
+    background: url(../images/img_03.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div2_3
+{
+    width: 293px;
+    height: 659px;
+    float: left;
+    background: url(../images/img_04.jpg) left top no-repeat;
+}
+
+#page #div3_1
+{
+    width: 319px;
+    height: 208px;
+    background: url(../images/img_05.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div3_2
+{
+    width: 788px;
+    height: 208px;
+    background: url(../images/img_06.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #div3_3
+{
+    width: 293px;
+    height: 208px;
+    float: left;
+    background: url(../images/img_07.jpg) left top no-repeat;
+}
+
+#page #div4
+{
+    width: 1400px;
+    height: 110px;
+    background: url(../images/img_08.jpg) left top no-repeat;
+    float: left;
+}
+
+#page #footer
+{
+    height: 60px;
+    padding: 95px 10px 0px 20px;
+    vertical-align: middle;
+}
+
+/* Модуль с картами оплаты */
+.moduletable_cards
+{
+    text-align: right;
+}
+
+/* низ */
+.moduletable_copy, .moduletable_authors
+{
+    color: #fff;
+    font-size: 10px;
+    margin: 0px;
+    padding: 10px;
+}
+.moduletable_copy
+{
+   float:left;
+   margin-left:230px;
+}
+.moduletable_authors
+{
+    text-align: right;
+}
+
+#leftModules
+{
+    display: block;
+    width: 155px;
+    height: 400px;
+    float: left;
+    margin: 30px 30px 30px 30px;
+}
+
+#centerModules
+{
+    display: block;
+    width: 348px;
+    height: 625px;
+    float: left;
+    margin: 30px 5px 5px 5px;
+}
+
+#rightModules
+{
+    display: block;
+    width: 155px;
+    height: 600px;
+    float: left;
+    margin: 30px 30px 30px 30px;
+}
+
+#div2_2_inner
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+/* отключаем подчеркивание на ссылках */
+.moduletable_menu_vm ul li a,
+.moduletable_menu ul li a
+{
+    text-decoration: none;
+}
+
+.moduletable_menu_vm>ul>li>span,
+.moduletable_menu>ul>li>a
+{
+    font-size: 16px;
+    display: block;
+    padding: 4px 0 0 10px;
+    margin: 0;
+    width: 156px;
+    height: 29px;
+    background: url(../images/menu_lvl1.png) left top no-repeat;
+}
+.moduletable_menu_vm>ul>li>span
+{
+    color:#866076;
+}
+.moduletable_menu_vm>ul>li>ul>li
+{
+    font-size: 14px;
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 156px;
+    height: 25px;
+    background: url(../images/menu_lvl2.png) right top no-repeat;
+}
+.moduletable_menu_vm>ul>li>ul>li a
+{
+    padding: 2px 0 0 15px;
+    display: block;
+}
+.moduletable_menu_vm .prod_name
+{
+}
+.moduletable_menu_vm .prod_count
+{
+}
+
+/*Модуль заказа звонка*/
+.moduletable_zakaz_zvonka
+{
+    display: block;
+    width: 156px;
+    text-align: center;
+    clear:both;
+    padding-bottom: 8px;
+    padding-top: 20px;
+}
+.moduletable_zakaz_zvonka *
+{
+    margin: 0px;
+    padding: 0px;
+}
+.moduletable_zakaz_zvonka input#zakaz_zvonka
+{
+    display: block;
+    font-size: 13px;
+    color: #866076;
+    width: 154px;
+    height: 20px;
+    border: #e5dadf 1px solid;
+}
+.moduletable_zakaz_zvonka #zz1
+{
+    display: block;
+    width: 156px;
+    height: 22px;
+    margin: 0px;
+    padding: 5px 0 4px 0;
+    text-align: center;
+}
+.moduletable_zakaz_zvonka #zz2
+{
+    display: block;
+    width: 156px;
+    height: 25px;
+    margin: 0px;
+    padding: 0px;
+}
+
+/*Время работы*/
+.moduletable_calendar
+{
+    display: block;
+    width: 155px;
+}
+.moduletable_calendar #days
+{
+    clear: both;
+}
+.moduletable_calendar #days .day
+{
+    float: left;
+    padding: 5px 3px 5px 6px;
+}
+.moduletable_calendar #days .day,
+.moduletable_calendar #days .day a
+{
+    color: #a58798;
+    font-size: 11px;
+    text-decoration: none;
+}
+.moduletable_calendar #days .day a
+{
+    cursor:pointer;
+}
+.moduletable_calendar #time
+{
+    clear: both;
+    font-size: 11px;
+    color: #866076;
+    padding: 6px 3px 5px 6px;
+}
+.moduletable_calendar #days .active
+{
+    color: #7b566c !important;
+}
+
+#minicalendar
+{
+    position: relative;
+    left: 2px;
+    top: 146px;
+    background: transparent;
+    width: 160px;
+    height: 152px;
+    display: block;
+}
+
+#rightModules #vk_groups
+{
+    padding: 345px 0px 0px 3px;
+}
+
+#rightModules #vk_groups iframe
+{
+    height:122px !important;
+}
+
+
+/* seo-модуль внизу главной */
+.moduletable_seo_main
+{
+    width: 1133px;
+    height: 60px;
+    position: relative;
+    left: 131px;
+    top: 40px;
+    text-align: center;
+}
+.moduletable_seo_main div
+{
+    display: inline-block;
+}
+.moduletable_seo_main p
+{
+    border-bottom: 1px dotted #1a1116;
+    color: #1a1116;
+    margin: 0px 14px 0px 14px;
+    padding: 0px;
+    text-transform: lowercase;
+    float: left;
+    line-height: 1.2em;
+}
+.moduletable_seo_main p.sz20
+{
+    font-size: 20px;
+    margin-top: 0px;
+}
+.moduletable_seo_main p.sz17
+{
+    font-size: 17px;
+    margin-top: 4px;
+}
+.moduletable_seo_main p.sz12
+{
+    font-size: 12px;
+    margin-top: 10px;
+}

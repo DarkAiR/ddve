@@ -1,0 +1,44 @@
+/**
+* @version 3.0.0
+* @package embedia (formerly mosEasyMedia)
+* @copyright Copyright &copy; 2009, Brilaps LLC
+* @author Ozgur Cem Sen
+* @email code@brilaps.com
+* @link http://brilaps.com || http://wiki.brilaps.com
+* @license http://www.opensource.org/licenses/gpl-license.php GNU/GPL v.2 .
+*/
+
+.yui-overlay-content {
+    border: 1px solid #fff;
+    text-align: left;
+    background: #222;
+    color: #fff;
+    margin:0px;
+    padding:0px;
+}
+
+.yui-overlay-content .yui-widget-bd {
+    overflow: auto;
+    text-align:center;
+}
+
+.yui-overlay-content .yui-widget-hd {
+    height: 40px;
+    background-color: #eee;
+}
+
+.overlay-title-close {
+    background-image: url(../images/close.png);
+    background-repeat: no-repeat;
+    background-position: center left;
+    padding: 10px 0 10px 30px;
+    line-height:40px;
+}
+
+.embediaHidden {
+    display: none;
+}
+
+div.yui-overlay{
+    visibility:visible;
+}

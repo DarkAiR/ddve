@@ -1,0 +1,953 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5" type="plugin" group="content">
+	<name>embedia</name>
+	<creationDate>2009-02-14</creationDate>
+	<author>Ozgur Cem Sen</author>
+	<copyright>(C) 2008 Brilaps LLC</copyright>
+	<license>
+		http://www.opensource.org/licenses/gpl-license.php GNU/GPL v.2
+    </license>
+	<authorEmail>code@brilaps.com</authorEmail>
+	<authorUrl>http://brilaps.com</authorUrl>
+	<version>3.0.0 4J1.5</version>
+
+	<description>
+		!!! IMPORTANT  !!!
+		embedia will work only with PHP 5.1.2 and above.
+		If you have an earlier version of PHP, sorry you're out of luck with embedia. Please uninstall embedia and try moseasymedia instead.
+
+		embedia bot is a content mambot that makes your life a lot easier when embedding media in your MiaCMS, Joomla!, Mambo.
+
+		Please take few seconds of your time and go to ".Mambots->Site Mambots->embedia" and click on embedia.
+
+		    * Review the settings, make adjustments to your liking, select "Publish" / "Save".
+		    * If you will be embedding media from external sites, please make sure you comply with all the rules, regulations and policies of the host site.
+		    * You can find Tutorials and Troubleshooting instructions in our wiki
+		    * For tips and trick about embedding videos from other sites, such as YouTube, Vimeo, MySpace etc once again, our wiki is your friend.
+		         Many of the websites that you can embed videos from, use Flash based players. Most of the time, all you need to do is take a peek at the "embed" code they provide and concatenate the "movie" and "flashvars" params into one long URL and put in {embedia media=THE_LINK_COMES_HERE} . The idea is getting a direct link to the video.
+		    * embedia can handle moseasymedia tags. If you modified any CSS files, simply rename them with embedia prefix (instead of moseasymedia) and overwrite the css files under the embedia/includes/css directory.
+
+		Enjoy.
+
+		http://brilaps.com
+		code (at) brilaps.com   --------- *sorry, we didn't really want to deal with this formatting issue!
+	</description>
+
+	<files>
+		<filename plugin="embedia">embedia/embedia.autoloaders.inc.php</filename>
+		<filename plugin="embedia">embedia/embediaBot.class.php</filename>
+		<filename plugin="embedia">embedia/readme.txt</filename>
+		<filename plugin="embedia">embedia.php</filename>		
+
+		<filename plugin="embedia">embedia/includes/players/embediaWindowsMediaPlayerAudio.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaWindowsMediaPlayerVideo.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaFlash.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaRealPlayer.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaQuicktime.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaDivX.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaJWMP3Player.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaJWMediaPlayer.php</filename>
+		<filename plugin="embedia">embedia/includes/players/embediaXSPFPlayer.php</filename>
+
+		<filename plugin="embedia">embedia/includes/defaults.php</filename>
+		<filename plugin="embedia">embedia/includes/default.params.php</filename>
+		<filename plugin="embedia">embedia/includes/embediaDecorator.class.php</filename>
+		<filename plugin="embedia">embedia/includes/embediaJsCssLoader.class.php</filename>
+		<filename plugin="embedia">embedia/includes/embediaParams.class.php</filename>
+		<filename plugin="embedia">embedia/includes/embediaPlayerBase.class.php</filename>
+		<filename plugin="embedia">embedia/includes/embediaVars.inc.php</filename>
+		<filename plugin="embedia">embedia/includes/mosEmbediaParameters.class.php</filename>
+
+
+		<filename plugin="embedia">embedia/includes/players/xspf_player.swf</filename>
+		<filename plugin="embedia">embedia/includes/players/xspf_player_slim.swf</filename>
+		<filename plugin="embedia">embedia/includes/players/xspf_license.txt</filename>
+		<filename plugin="embedia">embedia/includes/players/player.swf</filename>
+
+		<filename plugin="embedia">embedia/includes/css/embediaWindowsMediaPlayerAudio.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaWindowsMediaPlayerVideo.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaFlash.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaRealPlayer.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaQuicktime.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaDivX.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaJWMP3Player.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaJWMediaPlayer.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embediaXSPFPlayer.css</filename>
+
+		<filename plugin="embedia">embedia/includes/images/close.png</filename>
+		<filename plugin="embedia">embedia/includes/images/brilaps_logo.jpg</filename>
+
+		<filename plugin="embedia">embedia/includes/js/embedia.js</filename>
+		<filename plugin="embedia">embedia/includes/js/embedia.yui.js</filename>
+		<filename plugin="embedia">embedia/includes/css/embedia.css</filename>
+		<filename plugin="embedia">embedia/includes/css/embedia.yui.css</filename>
+	</files>
+    
+	<params>
+		<param name="embedia_moseasymedia" type="radio" label="Handle moseasymedia tags"
+			default="yes" description="Let embedia handle moseasymedia tags as well.">
+			<option value="no">No</option>
+			<option value="yes">Yes</option>
+		</param>
+				
+		<param name="noscript" type="text" size="60" label="noscript"
+			default="Please turn on javascript to view the media.">
+		</param>
+
+		<param name="@spacer" type="spacer" default=""
+			label="Popup Options *Read desc." description="Settings for Popup options for embedia. ">
+		</param>
+		<param name="embedia_Popup_popup" type="radio" label="Popup Window Style"
+			default="none"
+
+			description="Puts a link beneath the video to display in a popup window.Popup settings are NOT set PER Player, but can be overriden per the instance of the player on the page.">
+			<option value="none">No Popup Links</option>
+			<option value="window">Window</option>
+			<option value="overlay">Overlay</option>
+		</param>
+
+		<param name="embedia_Popup_popupmediathumbnail" type="text"
+			size="32" label="Popup Image" default="http://brilaps.appspot.com/images/popupthumbnail.jpg"
+			description="If given or overriden in the embedia tag, the image will be rendered instead of the media. Otherwise, the media code will be rendered. Popup style MUST NOT be None">
+		</param>
+
+		<param name="embedia_Popup_popuplinktext" type="text" size="32"
+			label="Popup Link Text" default="Click here to open in another window."
+			description="If Popup style is window, this text will be displayed beneath the video/audio, or image. When the user clicks on this, a javascript popup window will be launched.">
+		</param>
+
+		<param name="embedia_Popup_popupwidth" type="text" size="32"
+			label="PopupWidth" default="600" description="The width of the popup window">
+		</param>
+		<param name="embedia_Popup_popupheight" type="text" size="32"
+			label="PopupHeight" default="480" description="The height of the popup window">
+		</param>
+		<param name="embedia_Popup_popuptoolbar" type="radio" label="Show Toolbar"
+			default="no" description="Show toolbar in a javascript popup browser window.">
+			<option value="no">No</option>
+			<option value="yes">Yes</option>
+		</param>
+		<param name="embedia_Popup_popupmenubar" type="radio" label="Show Menubar"
+			default="no" description="Show menubar in a javascript popup browser window.">
+			<option value="no">No</option>
+			<option value="yes">Yes</option>
+		</param>
+		<param name="embedia_Popup_popupscrollbars" type="radio"
+			label="Show Scrollbars" default="no"
+			description="Show scrollbars in a javascript popup browser window.">
+			<option value="no">No</option>
+			<option value="yes">Yes</option>
+		</param>
+
+
+		<param name="@spacer" type="spacer" label="Installed Players"></param>
+
+		<param name="@spacer" type="spacer" default="" label="Macromedia Flash"
+			description="Settings for files to handled by Flash (http://www.macromedia.com). ***application/x-shockwave-flash">
+		</param>
+		<param name="playerFlash" type="radio" label="Player" default="Flash"
+			description="DO NOT CHANGE THIS SETTING">
+			<option value="Flash">Flash</option>
+		</param>
+		<param name="classidFlash" type="text" size="60" label="classid"
+			default="CLSID:d27cdb6e-ae6d-11cf-96b8-444553540000" description="classid for this control">
+		</param>
+		<param name="codebaseFlash" type="text" size="60" label="codebase"
+			default="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+			description="codebase for the player object">
+		</param>
+		<param name="pluginspageFlash" type="text" size="60" label="Plugin Page"
+			default="http://www.macromedia.com/go/getflashplayer"
+			description="In case the plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptFlash" type="radio" label="Use Javascript"
+			default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embedia_ExtensionsFlash" type="text" size="32"
+			label="Extensions" default="swf" description="File extensions to be handled by Flash">
+		</param>
+		<param name="typeFlash" type="text" size="32" label="Type"
+			default="application/x-shockwave-flash" description="MIME Type">
+		</param>
+		<param name="widthFlash" type="text" size="6" label="Width"
+			default="480" description="Width of the player">
+		</param>
+		<param name="heightFlash" type="text" size="6" label="Height"
+			default="400" description="Height of the player">
+		</param>
+		<param name="qualityFlash" type="list" label="Quality" default="Best"
+			description="Quality of media">
+			<option value="Best">Best</option>
+			<option value="High">High</option>
+			<option value="AutoHigh">Autohigh</option>
+			<option value="Medium">Medium</option>
+			<option value="Autolow">Autolow</option>
+			<option value="Low">Low</option>
+		</param>
+		<param name="playFlash" type="radio" label="Auto Play" default="strtrue"
+			description="Auto play">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="wmodeFlash" type="radio" label="Window Mode"
+			default="window" description="Sets the window mode of the flash object">
+			<option value="window">Window</option>
+			<option value="opaque">Opaque</option>
+			<option value="transparent">Transparent</option>
+		</param>
+		<param name="bgcolorFlash" type="text" size="32" label="Background Color"
+			default="#FFFFFF" description="Background color will NOT work in -window- mode">
+		</param>
+		<param name="loopFlash" type="radio" label="Loop" default="strfalse"
+			description="Loop media">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="allowscriptaccessFlash" type="radio" label="AllowScriptAccess"
+			default="always" description="AllowScriptAccess within the flash video">
+			<option value="always">Always</option>
+			<option value="never">Never</option>
+		</param>
+		<param name="embedia_CSSFlash" type="text" size="60" label="CSS"
+			default="embediaFlash.css" description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingFlash" type="textarea"
+			cols="60" rows="4" label="Video(audio) Sharing Websites Using Flash"
+			default="youtube.com, vimeo.com, myspace.com, google.com"
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+
+		<param name="@spacer" type="spacer" default="" label="Apple Quicktime"
+			description="Settings for files to handled by Quicktime (http://www.apple.com).***(video/quicktime)">
+		</param>
+		<param name="playerQuicktime" type="radio" label="Player"
+			default="Quicktime" description="DO NOT CHANGE THIS SETTING">
+			<option value="Quicktime">Quicktime</option>
+		</param>
+		<param name="classidQuicktime" type="text" size="60" label="classid"
+			default="clsid:02BF25D5-8C17-4B23-BC80-D3488ABDDC6B" description="classid for this control">
+		</param>
+		<param name="codebaseQuicktime" type="text" size="60" label="codebase"
+			default="http://www.apple.com/qtactivex/qtplugin.cab" description="codebase for the player object">
+		</param>
+		<param name="pluginspageQuicktime" type="text" size="60"
+			label="Plugin Page" default="http://www.apple.com/quicktime/download/"
+			description="In case the plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptQuicktime" type="radio"
+			label="Use Javascript" default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embedia_ExtensionsQuicktime" type="text" size="32"
+			label="Extensions" default="mov|mp4"
+			description="File extensions to be handled by Quicktime">
+		</param>
+		<param name="typeQuicktime" type="text" size="32" label="Type"
+			default="video/quicktime" description="MIME Type">
+		</param>
+		<param name="widthQuicktime" type="text" size="6" label="Width"
+			default="1000" description="Width of the player">
+		</param>
+		<param name="heightQuicktime" type="text" size="6" label="Height"
+			default="800" description="Height of the player">
+		</param>
+		<param name="autoplayQuicktime" type="radio" label="Auto Play"
+			default="strtrue" description="Auto start">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="scaleQuicktime" type="radio" label="Scale"
+			default="aspect" description="Scale to fit the box or keep the aspect ratio and fit">
+			<option value="tofit">To Fit</option>
+			<option value="aspect">Aspect</option>
+		</param>
+		<param name="kioskmodeQuicktime" type="radio" label="Kiosk Mode"
+			default="strtrue" description="The plug-in does not include its pop-up menu in the movie controller and does not allow drag and drop to save the movie.">
+			<option value="strtrue">Yes</option>
+			<option value="strfalse">No</option>
+		</param>		
+		<param name="cacheQuicktime" type="radio" label="Cache"
+			default="strtrue" description="If CACHE=TRUE is specified, the browser will CACHE movies. If the movie is in CACHE when the user returns to the page, the movie will be played from CACHE instead of downloading again.">
+			<option value="strtrue">Yes</option>
+			<option value="strfalse">No</option>
+		</param>		
+		<param name="controllerQuicktime" type="radio" label="Show controller"
+			default="strtrue" description="Show Controller">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="loopQuicktime" type="radio" label="Loop" default="strfalse"
+			description="Loop media">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="volumeQuicktime" type="text" size="4" label="Volume"
+			default="50" description="Default volume level, between 0-100">
+		</param>
+		<param name="bgcolorQuicktime" type="text" size="32" label="Background Color"
+			default="#222222" description="Background color of the player">
+		</param>
+		
+		<param name="embedia_CSSQuicktime" type="text" size="60" label="CSS"
+			default="embediaQuicktime.css" description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingQuicktime" type="textarea"
+			cols="60" rows="4" label="Video(audio) Sharing Websites Using Quicktime"
+			default=""
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+		
+		<param name="@spacer" type="spacer" default=""
+			label="WindowsMediaPlayerVideo"
+			description="Settings for video files to handled by Windows Media Player (http://www.microsoft.com). application/x-ms-wmp">
+		</param>
+		<param name="playerWindowsMediaPlayerVideo" type="radio" label="Player"
+			default="WindowsMediaPlayerVideo" description="DO NOT CHANGE THIS SETTING">
+			<option value="WindowsMediaPlayerVideo">
+				WindowsMediaPlayerVideo
+			</option>
+		</param>
+		<param name="classidWindowsMediaPlayerVideo" type="text" size="60"
+			label="classid" default="CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6"
+			description="classid for this control">
+		</param>
+		<param name="codebaseWindowsMediaPlayerVideo" type="text" size="60"
+			label="codebase"
+			default="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab&#035;Version=7,0,0,1954"
+			description="codebase for the player object">
+		</param>
+		<param name="pluginspageWindowsMediaPlayerVideo" type="text"
+			size="60" label="Plugin Page" default="http://www.microsoft.com/Windows/MediaPlayer/"
+			description="in case the Windows Media Player plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptWindowsMediaPlayerVideo" type="radio"
+			label="Use Javascript" default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embedia_ExtensionsWindowsMediaPlayerVideo" type="text"
+			size="32" label="Extensions" default="wmv|avi|mpg|mpeg|asf|asx"
+			description="File extensions to be handled by Windows Media Player">
+		</param>
+		<param name="typeWindowsMediaPlayerVideo" type="list" size="8"
+			label="Type" default="application/x-ms-wmp" description="MIME Type">
+			<option value="application/x-ms-wmp">
+				application/x-ms-wmp
+			</option>
+			<option value="application/x-oleobject">
+				application/x-oleobject
+			</option>
+			<option value="application/asx">application/asx</option>
+			<option value="application/x-mplayer2">
+				application/x-mplayer2
+			</option>
+			<option value="video/x-ms-asf-plugin">
+				video/x-ms-asf-plugin
+			</option>
+			<option value="video/x-ms-asf">video/x-ms-asf</option>
+			<option value="video/x-ms-wm">video/x-ms-wm</option>
+			<option value="video/x-ms-wmv">video/x-ms-wmv</option>
+			<option value="video/x-ms-wvx">video/x-ms-wvx</option>
+		</param>
+		<param name="widthWindowsMediaPlayerVideo" type="text" size="6"
+			label="Width" default="400" description="Width of the player">
+		</param>
+		<param name="heightWindowsMediaPlayerVideo" type="text" size="6"
+			label="Height" default="400" description="Height of the p">
+		</param>
+		<param name="stretchtofitWindowsMediaPlayerVideo" type="radio"
+			label="Stretch To Fit " default="1"
+			description="The stretchToFit property specifies or retrieves a value indicating whether video displayed by the Windows Media Player control automatically sizes to fit the video window, when the video window is larger than the dimensions of the video image.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="autostartWindowsMediaPlayerVideo" type="radio"
+			label="Auto Start" default="1" description="Auto start">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="playcountWindowsMediaPlayerVideo" type="radio"
+			label="Loop" default="1" description="Loop media">
+			<option value="1">Once</option>
+			<option value="999">Loop</option>
+		</param>
+		<param name="volumeWindowsMediaPlayerVideo" type="text" size="4"
+			label="Volume" default="50" description="Default volume level, between 0-100">
+		</param>
+		<param name="embedia_CSSWindowsMediaPlayerVideo" type="text"
+			size="60" label="CSS" default="embediaWindowsMediaPlayerVideo.css"
+			description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingWindowsMediaPlayerVideo"
+			type="textarea" cols="60" rows="4"
+			label="Video(audio) Sharing Websites Using Windows Media Player"
+			default="msn.com, microsoft.com"
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+
+		<param name="@spacer" type="spacer" default=""
+			label="WindowsMediaPlayerAudio"
+			description="Settings for audio files to handled by Windows Media Player (http://www.microsoft.com). ***application/x-mplayer2">
+		</param>
+		<param name="playerWindowsMediaPlayerAudio" type="radio" label="Player"
+			default="WindowsMediaPlayerAudio" description="DO NOT CHANGE THIS SETTING">
+			<option value="WindowsMediaPlayerAudio">
+				WindowsMediaPlayerAudio
+			</option>
+		</param>
+		<param name="classidWindowsMediaPlayerAudio" type="text" size="60"
+			label="classid" default="CLSID:6BF52A52-394A-11D3-B153-00C04F79FAA6"
+			description="classid for this control">
+		</param>
+		<param name="codebaseWindowsMediaPlayerAudio" type="text" size="60"
+			label="codebase"
+			default="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab&#035;Version=7,0,0,1954"
+			description="codebase for the player object">
+		</param>
+		<param name="pluginspageWindowsMediaPlayerAudio" type="text"
+			size="60" label="Plugin Page" default="http://www.microsoft.com/Windows/MediaPlayer/"
+			description="in case the Windows Media Player plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptWindowsMediaPlayerAudio" type="radio"
+			label="Use Javascript" default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embedia_ExtensionsWindowsMediaPlayerAudio" type="text"
+			size="32" label="Extensions" default="wav|wma|midi|mid|m3u"
+			description="File extensions to be handled by Windows Media Player">
+		</param>
+		<param name="typeWindowsMediaPlayerAudio" type="list" size="5"
+			label="Type" default="application/x-ms-wmp" description="MIME Type">
+			<option value="application/x-ms-wmp">
+				application/x-ms-wmp
+			</option>
+			<option value="application/x-oleobject">
+				application/x-oleobject
+			</option>
+			<option value="application/asx">application/asx</option>
+			<option value="application/x-mplayer2">
+				application/x-mplayer2
+			</option>
+			<option value="audio/x-ms-wma">audio/x-ms-wma</option>
+			<option value="audio/x-ms-wax">audio/x-ms-wax</option>
+		</param>
+		<param name="widthWindowsMediaPlayerAudio" type="text" size="6"
+			label="Width" default="320" description="Width of the player">
+		</param>
+		<param name="heightWindowsMediaPlayerAudio" type="text" size="6"
+			label="Height" default="75" description="Height of the player">
+		</param>
+		<param name="autostartWindowsMediaPlayerAudio" type="radio"
+			label="Auto Start" default="1" description="Auto start">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="playcountWindowsMediaPlayerAudio" type="radio"
+			label="Loop" default="1" description="Loop media">
+			<option value="1">Once</option>
+			<option value="999">Loop</option>
+		</param>
+		<param name="volumeWindowsMediaPlayerAudio" type="text" size="4"
+			label="Volume" default="50" description="Default volume level, between 0-100">
+		</param>
+		<param name="embedia_CSSWindowsMediaPlayerAudio" type="text"
+			size="60" label="CSS" default="embediaWindowsMediaPlayerAudio.css"
+			description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingWindowsMediaPlayerAudio"
+			type="textarea" cols="60" rows="4"
+			label="Video(audio) Sharing Websites Using WindowsMediaPlayer (for audio)"
+			default=""
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+
+
+
+		<param name="@spacer" type="spacer" default="" label="RealPlayer"
+			description="Settings for files to handled by RealPlayer (http://www.real.com/). ***audio/x-pn-realaudio-plugin">
+		</param>
+		<param name="playerRealPlayer" type="radio" label="Player"
+			default="RealPlayer" description="DO NOT CHANGE THIS SETTING">
+			<option value="RealPlayer">RealPlayer</option>
+		</param>
+		<param name="classidRealPlayer" type="text" size="60" label="classid"
+			default="clsid:CFCDAA03-8BE4-11cf-B84B-0020AFBBCCFA" description="classid for this control">
+		</param>
+		<param name="codebaseRealPlayer" type="text" size="60" label="codebase"
+			default="" description="codebase for the player object">
+		</param>
+		<param name="pluginspageRealPlayer" type="text" size="60"
+			label="Plugin Page" default="http://www.real.com/products/player/"
+			description="In case the plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptRealPlayer" type="radio"
+			label="Use Javascript" default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embedia_ExtensionsRealPlayer" type="text" size="32"
+			label="Extensions" default="ram|rv|rpm|ra"
+			description="File extensions to be handled by RealPlayer">
+		</param>
+		<param name="typeRealPlayer" type="text" size="32" label="Type"
+			default="audio/x-pn-realaudio-plugin" description="MIME Type">
+		</param>
+		<param name="widthRealPlayer" type="text" size="6" label="Width"
+			default="400" description="Width of the player">
+		</param>
+		<param name="heightRealPlayer" type="text" size="6" label="Height"
+			default="400" description="Height of the player">
+		</param>
+		<param name="autostartRealPlayer" type="radio" label="Auto Start"
+			default="strtrue" description="Auto start">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="controlsRealPlayer" type="list" label="Controls"
+			default="ImageWindow"
+			description="Default controls for RealPlayer - these are extendible by changing this xml file">
+			<option value="All">All</option>
+			<option value="ImageWindow">ImageWindow</option>
+			<option value="ControlPanel">ControlPanel</option>
+			<option value="ImageWindow,ControlPanel">ImageWindow,ControlPanel</option>
+		</param>
+		<param name="loopRealPlayer" type="radio" label="Loop" default="strfalse"
+			description="Loop media">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="centerRealPlayer" type="radio" label="Center"
+			default="strtrue"
+			description="The default value for CENTER is false, which causes the clip to fill the entire playback area. If you set CENTER to true, the clip is centered within the playback area and is displayed at its encoded size. So by setting CENTER to true, you can create a large playback area with WIDTH and HEIGHT and still have the clip play at its normal size. You cannot use CENTER along with MAINTAINASPECT.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="maintainaspectRealPlayer" type="radio" label="Maintain Aspect"
+			default="strtrue" description="Maintain aspect ratio of the media.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="embedia_CSSRealPlayer" type="text" size="60" label="CSS"
+			default="embediaRealPlayer.css" description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingRealPlayer" type="textarea"
+			cols="60" rows="4" label="Video(audio) Sharing Websites Using RealPlayer"
+			default=""
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+
+		<param name="@spacer" type="spacer" default="" label="DivX"
+			description="Settings for files to handled by DivX (http://www.divx.com/). ***video/divx">
+		</param>
+		<param name="playerDivX" type="radio" label="Player" default="DivX"
+			description="DO NOT CHANGE THIS SETTING">
+			<option value="DivX">DivX</option>
+		</param>
+		<param name="classidDivX" type="text" size="60" label="classid"
+			default="clsid:67DABFBF-D0AB-41fa-9C46-CC0F21721616" description="classid for this control">
+		</param>
+		<param name="codebaseDivX" type="text" size="60" label="codebase"
+			default="http://go.divx.com/plugin/DivXBrowserPlugin.cab"
+			description="codebase for the player object">
+		</param>
+		<param name="pluginspageDivX" type="text" size="60" label="Plugin Page"
+			default="http://go.divx.com/plugin/download/"
+			description="In case the plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptDivX" type="radio" label="Use Javascript"
+			default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embedia_ExtensionsDivX" type="text" size="32"
+			label="Extensions" default="divx" description="File extensions to be handled by DivX">
+		</param>
+		<param name="typeDivX" type="text" size="32" label="Type"
+			default="video/divx" description="MIME Type">
+		</param>
+		<param name="widthDivX" type="text" size="6" label="Width"
+			default="400" description="Width of the player">
+		</param>
+		<param name="heightDivX" type="text" size="6" label="Height"
+			default="400" description="Height of the player">
+		</param>
+		<param name="autoplayDivX" type="radio" label="Auto Play"
+			default="strtrue" description="Auto start">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="modeDivX" type="list" label="Controls" default="mini"
+			description="Default controls for DivX - these are extendible by changing this xml file">
+			<option value="null">No Controls</option>
+			<option value="zero">Minimal Floating Controls</option>
+			<option value="mini">Default Controls</option>
+			<option value="large">All Controls Bottom</option>
+			<option value="full">All Controls Top-Bottom</option>
+		</param>
+		<param name="allowcontextmenuDivX" type="radio" label="Allow Context Menu"
+			default="strtrue" description="Allow right click on player">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="loopDivX" type="radio" label="Center" default="strfalse"
+			description="Loop playback">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="bufferingmodeDivX" type="list" label="Buffering Mode"
+			default="null"
+			description="The bufferingMode parameter is used to specify how the plug-in should buffer downloaded data before attempting to start playback.">
+			<option value="null">Minimal Buffering</option>
+			<option value="auto">Auto Buffering</option>
+			<option value="full">Buffer All</option>
+		</param>
+		<param name="previewimageDivX" type="text" size="60" label="Preview Image"
+			default=""
+			description="The previewImage parameter is used to specify the location of an image file in PNG, JPEG or GIF format to use as a preview image. The preview image is displayed in place of the DivX X logo when autoPlay is set to false">
+		</param>
+		<param name="previewmessageDivX" type="text" size="60"
+			label="Preview Message" default="Click to play the video"
+			description="The previewMessage parameter allows to display a text message on top of the preview image to let users know how to start the video.">
+		</param>
+		<param name="embedia_CSSDivX" type="text" size="60" label="CSS"
+			default="embediaDivX.css" description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingDivX" type="textarea"
+			cols="60" rows="4" label="Video(audio) Sharing Websites Using DivX"
+			default=""
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+
+
+		<param name="@spacer" type="spacer" label="Flash Players">
+		</param>
+
+		<param name="@spacer" type="spacer" default="" label="JWMediaPlayer"
+			description="Settings Jeron Wijering's Media Player. Please check http://www.jeroenwijering.com/?item=Flash+Video+Player">
+		</param>
+		<param name="playerJWMediaPlayer" type="radio" label="Player"
+			default="JWMediaPlayer" description="DO NOT CHANGE THIS SETTING">
+			<option value="JWMediaPlayer">JWMediaPlayer</option>
+		</param>
+		<param name="classidJWMediaPlayer" type="text" size="60" label="classid"
+			default="CLSID:d27cdb6e-ae6d-11cf-96b8-444553540000" description="classid for this control">
+		</param>
+		<param name="codebaseJWMediaPlayer" type="text" size="60" label="codebase"
+			default="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+			description="codebase for the player object">
+		</param>
+		<param name="pluginspageJWMediaPlayer" type="text" size="60"
+			label="Plugin Page" default="http://www.macromedia.com/go/getflashplayer"
+			description="In case the plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptJWMediaPlayer" type="radio"
+			label="Use Javascript" default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>		
+		<param name="embedia_ExtensionsJWMediaPlayer" type="text" size="32"
+			label="Extensions" default="xml|png|jpg|flv"
+			description="File extensions to be handled by JWMediaPlayer">
+		</param>
+		<param name="typeJWMediaPlayer" type="text" size="32" label="Type"
+			default="application/x-shockwave-flash" description="MIME Type">
+		</param>
+		<param name="widthJWMediaPlayer" type="text" size="6" label="Width"
+			default="400" description="Width of the player">
+		</param>
+		<param name="heightJWMediaPlayer" type="text" size="6" label="Height"
+			default="400" description="Height of the player">
+		</param>
+		<param name="displayheightJWMediaPlayer" type="text" size="6"
+			label="Display Height" default="260"
+			description="This flashvar is used by the players and sets the height of the display. It defaults to the height of the SWF object minus the controlbar (20px), but if you set it to a smaller height, the playlist will show up. If you set it to the height of the player itself (or larger), the controlbar will auto-hide over the video.">
+		</param>
+		<param name="logoJWMediaPlayer" type="text" size="60" label="Logo URL"
+			default=""
+			description="Set this flashvar to put a watermark logo in the top right corner of the display. All image formats are supported, but transparent PNG files give the best results.">
+		</param>
+		<param name="backcolorJWMediaPlayer" type="text" size="10"
+			label="Background Color" default="0xFFFFFF" description="Backgroundcolor of the player">
+		</param>
+		<param name="frontcolorJWMediaPlayer" type="text" size="10"
+			label="Front Color" default="0x000000" description="Texts / buttons color of the player">
+		</param>
+		<param name="lightJWMediaPlayer" type="text" size="10" label="Light Color"
+			default="0xFFFFFF" description="Rollover/ active color of the player">
+		</param>
+		<param name="overstretchJWMediaPlayer" type="radio" label="Stretch"
+			default="fit"
+			description="Defines how to stretch images/movies to make them fit the display. true will stretch them proportionally to fill the display, false will stretch them to fit. fit will stretch them disproportionally to fit both height and width. none will show all items in their original dimensions. Defaults to fit.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+			<option value="fit">Fit</option>
+			<option value="none">None</option>
+		</param>
+		<param name="shownavigationJWMediaPlayer" type="radio" label="Show Navigation"
+			default="strtrue" description="enables/disables the navigation bar">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="autostartJWMediaPlayer" type="radio" label="Auto Start"
+			default="strtrue"
+			description="To make the player automatically start playing when the page loads. muted option will autostart with the volume set to 0 and an unmute icon in the display.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+			<option value="muted">Muted</option>
+		</param>
+		<param name="volumeJWMediaPlayer" type="text" size="4" label="Volume"
+			default="80" description="Default volume level, between 0-100">
+		</param>
+		<param name="bufferlengthJWMediaPlayer" type="text" size="4"
+			label="Buffer Length" default="3"
+			description="This sets the number of seconds an FLV should be buffered ahead before the player starts it. Set this smaller for fast connections or short videos. Set this bigger for slow connections. The default is 3 seconds.">
+		</param>
+		<param name="repeatJWMediaPlayer" type="radio" label="Loop"
+			default="list"
+			description="By default, the players will stop playback after every item to preserve bandwidth (repeat=false). You can set this to list to playback all items in a playlist once, or to true to continously playback your song/movie/playlist.">
+			<option value="strtrue">Yes</option>
+			<option value="list">List</option>
+		</param>
+		<param name="largecontrolsJWMediaPlayer" type="radio" label="Large Controls"
+			default="strfalse" description="Makes the controlbar twice as large. ">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="wmodeJWMediaPlayer" type="radio" label="Window Mode"
+			default="window" description="Sets the window mode of the flash object">
+			<option value="window">Window</option>
+			<option value="opaque">Opaque</option>
+			<option value="transparent">Transparent</option>
+		</param>
+		<param name="shuffleJWMediaPlayer" type="radio" label="Shuffle playlist"
+			default="strfalse"
+			description="Shuffles your playlist. You can check ocszone.com for more info about RSS, XSPF playlist">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="allowscriptaccessJWMediaPlayer" type="radio"
+			label="AllowScriptAccess" default="always"
+			description="AllowScriptAccess within the flash video">
+			<option value="always">Always</option>
+			<option value="never">Never</option>
+		</param>
+		<param name="CSSJWMediaPlayer" type="text" size="60" label="CSS"
+			default="embediaJWMediaPlayer.css" description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingJWMediaPlayer"
+			type="textarea" cols="60" rows="4"
+			label="Video(audio) Sharing Websites Using JW Media Player" default=""
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+
+
+		<param name="@spacer" type="spacer" default="" label="JWMP3Player"
+			description="Settings for FLV files to handled by Jeron Wijering's FLV Player. You need Flash Player (for FLV) for this. Please check http://www.jeroenwijering.com/?item=Flash+Video+Player">
+		</param>
+		<param name="playerJWMP3Player" type="radio" label="Player"
+			default="JWMP3Player" description="DO NOT CHANGE THIS SETTING">
+			<option value="JWMP3Player">JWMP3Player</option>
+		</param>
+		<param name="classidJWMP3Player" type="text" size="60" label="classid"
+			default="CLSID:d27cdb6e-ae6d-11cf-96b8-444553540000" description="classid for this control">
+		</param>
+		<param name="codebaseJWMP3Player" type="text" size="60" label="codebase"
+			default="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+			description="codebase for the player object">
+		</param>
+		<param name="pluginspageJWMP3Player" type="text" size="60"
+			label="Plugin Page" default="http://www.macromedia.com/go/getflashplayer"
+			description="In case the plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptJWMediaPlayer" type="radio"
+			label="Use Javascript" default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>		
+		<param name="embedia_ExtensionsJWMP3Player" type="text" size="32"
+			label="Extensions" default="mp3"
+			description="File extensions to be handled by JWMP3Player">
+		</param>
+		<param name="typeJWMP3Player" type="text" size="32" label="Type"
+			default="application/x-shockwave-flash" description="MIME Type">
+		</param>
+		<param name="widthJWMP3Player" type="text" size="6" label="Width"
+			default="300" description="Width of the player">
+		</param>
+		<param name="heightJWMP3Player" type="text" size="6" label="Height"
+			default="140" description="Height of the player">
+		</param>
+		<param name="displayheightJWMP3Player" type="text" size="6"
+			label="Display Height" default="100"
+			description="This flashvar is used by the players and sets the height of the display. It defaults to the height of the SWF object minus the controlbar (20px), but if you set it to a smaller height, the playlist will show up. If you set it to the height of the player itself (or larger), the controlbar will auto-hide over the video.">
+		</param>
+		<param name="logoJWMP3Player" type="text" size="60" label="Logo URL"
+			default=""
+			description="Set this flashvar to put a watermark logo in the top right corner of the display. All image formats are supported, but transparent PNG files give the best results.">
+		</param>
+		<param name="backcolorJWMP3Player" type="text" size="10" label="Background Color"
+			default="0xFFFFFF" description="Backgroundcolor of the player">
+		</param>
+		<param name="frontcolorJWMP3Player" type="text" size="10"
+			label="Front Color" default="0x000000" description="Texts / buttons color of the player">
+		</param>
+		<param name="lightJWMP3Player" type="text" size="10" label="Light Color"
+			default="0xFFFFFF" description="Rollover/ active color of the player">
+		</param>
+		<param name="overstretchJWMP3Player" type="radio" label="Stretch"
+			default="fit"
+			description="Defines how to stretch images/movies to make them fit the display. true will stretch them proportionally to fill the display, false will stretch them to fit. fit will stretch them disproportionally to fit both height and width. none will show all items in their original dimensions. Defaults to fit.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+			<option value="fit">Fit</option>
+			<option value="none">None</option>
+		</param>
+		<param name="shownavigationJWMP3Player" type="radio" label="Show Navigation"
+			default="strtrue" description="enables/disables the navigation bar">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="autostartJWMP3Player" type="radio" label="Auto Start"
+			default="strtrue"
+			description="To make the player automatically start playing when the page loads. muted option will autostart with the volume set to 0 and an unmute icon in the display.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+			<option value="muted">Muted</option>
+		</param>
+		<param name="volumeJWMP3Player" type="text" size="4" label="Volume"
+			default="80" description="Default volume level, between 0-100">
+		</param>
+		<param name="bufferlengthJWMP3Player" type="text" size="4"
+			label="Buffer Length" default="3"
+			description="This sets the number of seconds an FLV should be buffered ahead before the player starts it. Set this smaller for fast connections or short videos. Set this bigger for slow connections. The default is 3 seconds.">
+		</param>
+
+		<param name="repeatJWMP3Player" type="radio" label="Loop"
+			default="list"
+			description="By default, the players will stop playback after every item to preserve bandwidth (repeat=false). You can set this to list to playback all items in a playlist once, or to true to continously playback your song/movie/playlist.">
+			<option value="strtrue">Yes</option>
+			<option value="list">List</option>
+		</param>
+		<param name="largecontrolsJWMP3Player" type="radio" label="Large Controls"
+			default="strfalse" description="Makes the controlbar twice as large. ">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="wmodeJWMP3Player" type="radio" label="Window Mode"
+			default="window" description="Sets the window mode of the flash object">
+			<option value="window">Window</option>
+			<option value="opaque">Opaque</option>
+			<option value="transparent">Transparent</option>
+		</param>
+		<param name="shuffleJWMP3Player" type="radio" label="Shuffle playlist"
+			default="strfalse"
+			description="Shuffles your playlist. You can check ocszone.com for more info about RSS, XSPF playlist">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="CSSJWMP3Player" type="text" size="60" label="CSS"
+			default="embediaJWMP3Player.css" description="CSS class to handle this player">
+		</param>
+		<param name="allowscriptaccessJWMP3Player" type="radio"
+			label="AllowScriptAccess" default="always"
+			description="AllowScriptAccess within the flash video">
+			<option value="always">Always</option>
+			<option value="never">Never</option>
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingJWMP3Player" type="textarea"
+			cols="60" rows="4" label="Video(audio) Sharing Websites Using JW MP3 Player"
+			default=""
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+
+		<param name="@spacer" type="spacer" default="" label="XSPFPlayer"
+			description="Settings for XSPF Web Music Player. Please check http://musicplayer.sourceforge.net for more info">
+		</param>
+		<param name="playerXSPFPlayer" type="radio" label="Player"
+			default="XSPFPlayer" description="DO NOT CHANGE THIS SETTING">
+			<option value="XSPFPlayer">XSPFPlayer</option>
+		</param>
+		<param name="classidXSPFPlayer" type="text" size="60" label="classid"
+			default="CLSID:d27cdb6e-ae6d-11cf-96b8-444553540000" description="classid for this control">
+		</param>
+		<param name="codebaseXSPFPlayer" type="text" size="60" label="codebase"
+			default="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+			description="codebase for the player object">
+		</param>
+		<param name="pluginspageXSPFPlayer" type="text" size="60"
+			label="Plugin Page" default="http://www.macromedia.com/go/getflashplayer"
+			description="In case the plugin cannot be found on the visitor's computer, this link will point him to more information regarding this player.">
+		</param>
+		<param name="embedia_UseJavascriptXSPFPlayer" type="radio"
+			label="Use Javascript" default="1"
+			description="Use javascript to generate the embedding code. Using this option will NOT break your page validation.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="embedia_ExtensionsXSPFPlayer" type="text" size="32"
+			label="Extensions" default="xspf"
+			description="File extensions to be handled by XSPF Player">
+		</param>
+		<param name="typeXSPFPlayer" type="text" size="32" label="Type"
+			default="application/x-shockwave-flash" description="MIME Type">
+		</param>
+		<param name="widthXSPFPlayer" type="text" size="6" label="Width"
+			default="300" description="Width of the player">
+		</param>
+		<param name="heightXSPFPlayer" type="text" size="6" label="Height"
+			default="140" description="Height of the player">
+		</param>
+		<param name="player_titleXSPFPlayer" type="text" size="60"
+			label="Player Title" default="embedia mp3 player"
+			description="the text to replace the players default">
+		</param>
+		<param name="info_button_textXSPFPlayer" type="text" size="60"
+			label="Info Button" default="" description="the text to display on the info link">
+		</param>
+		<param name="embedia_modeXSPFPlayer" type="radio" label="Display Mode"
+			default="extended" description="Display the slim or extended version of the player">
+			<option value="extended">Extended</option>
+			<option value="slim">Slim</option>
+		</param>
+
+		<param name="autoplayXSPFPlayer" type="radio" label="Auto Play"
+			default="strtrue"
+			description="boolean value that make the music start without the initial user click">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="autoloadXSPFPlayer" type="radio" label="Auto Load"
+			default="strtrue"
+			description="boolean value that make the playlist load without the initial user click.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="repeat_playlistXSPFPlayer" type="radio" label="Loop"
+			default="strfalse"
+			description="boolean value that make the repeats the playlist after the end of the last song.">
+			<option value="strfalse">No</option>
+			<option value="strtrue">Yes</option>
+		</param>
+		<param name="CSSXSPFPlayer" type="text" size="60" label="CSS"
+			default="embediaXSPFPlayer.css" description="CSS class to handle this player">
+		</param>
+		<param name="embedia_MediaSharingWebsitesUsingXSPFPlayer" type="textarea"
+			cols="60" rows="4" label="Video(audio) Sharing Websites Using XSPF Player"
+			default=""
+			description="If the the type can not be determined from the extension, This parm will be checked to see, if the media is from google, youtube, yahoo etc...">
+		</param>
+	</params>
+</install>
+

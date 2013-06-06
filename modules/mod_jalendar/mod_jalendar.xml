@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+
+        <name>Jalendar</name> 
+        <author>BMForce</author>  
+		<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
+		<creationDate>November 2009</creationDate>
+		<version>0.7.1</version>
+		<releaseDate>2010-08-19</releaseDate>
+        <files>
+                <filename module="mod_jalendar">index.html</filename>
+                <filename>helper.php</filename>
+				<filename>mod_jalendar.php</filename>
+				<folder>tmpl</folder>
+				<folder>css</folder>
+				<folder>img</folder>
+				<folder>js</folder>
+				<folder>elements</folder>
+		
+				
+        </files>
+			<languages>
+  <language tag="en-GB">languages/en-GB.mod_jalendar.ini</language>
+  <language tag="ru-RU">languages/ru-RU.mod_jalendar.ini</language>
+  <language tag="it-IT">languages/it-IT.mod_jalendar.ini</language>
+  <language tag="fr-FR">languages/fr-FR.mod_jalendar.ini</language>
+  <language tag="de-DE">languages/de-DE.mod_jalendar.ini</language>
+	</languages>
+<params>
+ <param name="use_ajax" type="list" default="1" label="Use AJAX" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+</param>
+ <param name="all_links" type="list" default="1" label="Links" description="">
+			<option value="0">No links</option>
+			<option value="1">Only days with articles</option>
+			<option value="2">All days as links</option>
+</param>
+ <param name="month_link" type="list" default="0" label="Month link" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+</param>
+ <param name="year_link" type="list" default="0" label="Year link" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+</param>
+
+ <param name="monthname_len" type="list" default="f" label="Lenght month name" description="">
+			<option value="f">full</option>
+			<option value="3">3</option>
+			<option value="1">1</option>
+</param>
+ <param name="dayname_len" type="list" default="2" label="Lenght day name" description="">
+			<option value="1">one letters</option>
+			<option value="2">two letters</option>
+			<option value="3">3 letters</option>
+			
+</param>
+
+ <param name="linecount" type="list" default="1" label="Place Year and Month" description="">
+			<option value="0">In line</option>
+			<option value="1">Two-line</option>		
+</param>		
+ <param name="arrow_en" type="list" default="2" label="Arrow" description="">
+			<option value="0">No arrow</option>
+			<option value="1">For months</option>
+			<option value="2">For month and year</option>
+</param>	
+
+ <param name="firstday" type="list" default="0" label="First day of the week" description="">
+			<option value="0">Monday</option>
+			<option value="1">Tuesday</option>	
+			<option value="2">Wednesday</option>
+			<option value="3">Thursday</option>
+			<option value="4">Friday</option>
+			<option value="5">Saturday</option>
+			<option value="6">Sunday</option>
+			
+</param>	
+
+<param name="default_year" type="text" label="Default Year" description="" />
+
+ <param name="default_month" type="list" default="0" label="Default Month" description="">
+			<option value="0">No set</option>
+			<option value="1">January</option>	
+			<option value="2">February</option>
+			<option value="3">March</option>
+			<option value="4">April</option>
+			<option value="5">May</option>
+			<option value="6">June</option>
+			<option value="7">July</option>
+			<option value="8">August</option>
+			<option value="9">September</option>
+			<option value="10">October</option>
+			<option value="11">November</option>
+			<option value="12">December</option>
+			
+</param>
+ <param name="pnmonths" type="list" default="0" label="Show days previous and next months" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+</param>	
+ <param name="num_week" type="list" default="0" label="Number the Week" description="">
+			<option value="0">No</option>
+			<option value="1">Simple numbered</option>
+			<option value="2">Sequentially numbered</option>
+</param>
+ <param name="orientation" type="list" default="0" label="Orientation" description="">
+			<option value="0">horizontal</option>
+			<option value="1">vertical</option>
+</param>
+ <param name="encode" type="list" default="UTF-8" label="Encoding" description="">
+			<option value="UTF-8">UTF-8</option>
+			<option value="ISO-8859-1">ISO-8859-1</option>
+			<option value="Windows-1251">Windows-1251</option>
+			<option value="KOI8-R">KOI8-R</option>
+			<option value="ISO-8859-1">ISO-8859-1</option>
+			
+</param>	
+
+</params>
+
+<params group="advanced" addpath="/modules/mod_jalendar/elements/">
+<param name="color_1" type="text" default="#4F76A3" label="Color monday" description="" />
+<param name="color_2" type="text" default="#4F76A3" label="Color Tuesday" description="" />
+<param name="color_3" type="text" default="#4F76A3" label="Color Wednesday" description="" />
+<param name="color_4" type="text" default="#4F76A3" label="Color Thursday" description="" />
+<param name="color_5" type="text" default="#4F76A3" label="Color Friday" description="" />
+<param name="color_6" type="text" default="#ff0000" label="Color Saturday" description="" />
+<param name="color_7" type="text" default="#ff0000" label="Color Sunday" description="" />
+<param name="color_month" type="text" default="black" label="Color Month" description="" />
+<param name="color_year" type="text" default="black" label="Color Year" description="" />
+<param name="color_num" type="text" default="green" label="Color Numerate" description="" />
+<param name="color_daylink" type="text" default="" label="Color day link" description="" />
+<param name="color_pnmonthday" type="text" default="#c0c0c0" label="Color previous and next month day" description="" />
+ <param name="underline_day" type="list" default="underline" label="Underline day link" description="">
+			<option value="none">none</option>
+			<option value="underline">underline</option>
+</param>
+<param name="underline_month" type="list" default="underline" label="Underline month link" description="">
+			<option value="none">none</option>
+			<option value="underline">underline</option>
+</param>
+<param name="underline_year" type="list" default="underline" label="Underline year link" description="">
+			<option value="none">none</option>
+			<option value="underline">underline</option>
+</param>
+<param name="month_size" type="list" default="12" label="Month size" description="">
+			<option value="10">small</option>
+			<option value="11">medium</option>
+			<option value="12">large</option>
+</param>
+<param name="year_size" type="list" default="11" label="Year size" description="">
+			<option value="10">small</option>
+			<option value="11">medium</option>
+			<option value="12">large</option>
+</param>
+<param type="spacer"></param>
+
+<param name="CSSlist" type="CSSlist" label="Using user CSS" description="Copy your CSS files in folder 'CSS'"/>
+
+
+		
+
+</params>
+</install>

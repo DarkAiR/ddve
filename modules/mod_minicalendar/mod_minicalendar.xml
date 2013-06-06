@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>MiniCalendar</name>
+	<creationDate>20 March 2011</creationDate>
+	<author>Chris Gaebler</author>
+	<copyright>Les Arbres Design 2010</copyright>
+	<authorUrl>http://extensions.lesarbresdesign.info</authorUrl>
+	<version>2.04.02</version>
+	<description>MINICALENDAR_DESCRIPTION</description>
+
+	<files>
+		<filename module="mod_minicalendar">mod_minicalendar.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>desc_en-EN.html</filename>
+		<filename>desc_fr-FR.html</filename>
+	</files>
+
+  <languages folder="language">
+		<language tag="en-GB">en-GB.mod_minicalendar.ini</language>
+		<language tag="fr-FR">fr-FR.mod_minicalendar.ini</language>
+	</languages>
+
+	<params>
+			<param name="type" type="text" label="Type" description="0-standart, 1-mini (without background)" />
+            
+			<param name="startyear" type="text" label="L_DEFAULT_YEAR" description="D_DEFAULT_YEAR" />
+			
+			<param name="startmonth" type="text" label="L_DEFAULT_MONTH" description="D_DEFAULT_MONTH" />
+			
+			<param name="dayLength" type="text" default="1" label="L_DAY_LENGTH" description="D_DAY_LENGTH" />
+			
+			<param name="firstDay" type="list" default="0" label="L_FIRST_DAY" description="D_FIRST_DAY">
+				<option value="0">SUNDAY</option>
+				<option value="1">MONDAY</option>
+				<option value="2">TUESDAY</option>
+				<option value="3">WEDNESDAY</option>
+				<option value="4">THURSDAY</option>
+				<option value="5">FRIDAY</option>
+				<option value="6">SATURDAY</option>
+			</param>
+			
+			<param name="numMonths" type="text" default="1" label="L_NUM_MONTHS" description="D_NUM_MONTHS" />
+			
+			<param name="numCols" type="text" default="1" label="L_NUM_COLUMNS" description="D_NUM_COLUMNS" />
+			
+			<param name="weekHdr" type="text" label="L_WEEK_HEADING" description="D_WEEK_HEADING" />
+			
+			<param name="links" type="radio" default="0" label="L_LINKS" description="D_LINKS">
+				<option value="0">NO</option>
+				<option value="1">YES</option>
+			</param>
+			
+			<param name="translation" type="radio" default="0" label="L_TRANSLATE" description="D_TRANSLATE">
+				<option value="0">PHP</option>
+				<option value="1">Joomla</option>
+			</param>
+			
+			<param name="locale" type="text" label="L_LOCALE" description="D_LOCALE" />
+			
+			<param name="encoding" type="list" default="-1" label="L_ENCODING" description="D_ENCODING">
+				<option value="-1">AUTO</option>
+				<option value="0">NO</option>
+				<option value="1">YES</option>
+			</param>
+			
+			<param name="timeZone" type="list" default="0" label="L_TIME_ZONE" description="D_TIME_ZONE">
+				<option value="0">SERVER_TIME</option>
+				<option value="Pacific/Samoa">(GMT-11) Pacific/Samoa</option>
+				<option value="US/Hawaii">(GMT-10) Hawaii</option>
+				<option value="US/Alaska">(GMT-9) Alaska</option>
+				<option value="America/Vancouver">(GMT-8) US Pacific Time</option>
+				<option value="America/Denver">(GMT-7) US Mountain Time</option>
+				<option value="America/Regina">(GMT-6) US Central Time</option>
+				<option value="America/Detroit">(GMT-5) US Eastern Time</option>
+				<option value="America/Halifax">(GMT-4) US Atlantic Time</option>
+				<option value="America/Argentina/Buenos_Aires">(GMT-3) Argentina</option>
+				<option value="America/Noronha">(GMT-2) Atlantic islands</option>
+				<option value="Atlantic/Azores">(GMT-1) Azores</option>
+				<option value="UTC">GMT</option>
+				<option value="Europe/Amsterdam">(GMT+1) Europe/Amsterdam</option>
+				<option value="Africa/Cairo">(GMT+2) Africa/Cairo</option>
+				<option value="Asia/Kuwait">(GMT+3) Asia/Kuwait</option>
+				<option value="Asia/Baku">(GMT+4) Asia/Baku</option>
+				<option value="Asia/Karachi">(GMT+5) Asia/Karachi</option>
+				<option value="Asia/Dhaka">(GMT+6) Asia/Dhaka</option>
+				<option value="Asia/Bangkok">(GMT+7) Asia/Bangkok</option>
+				<option value="Asia/Shanghai">(GMT+8) Asia/Shanghai</option>
+				<option value="Asia/Seoul">(GMT+9) Asia/Seoul</option>
+				<option value="Australia/Sydney">(GMT+10) Australia/Sydney</option>
+				<option value="Asia/Magadan">(GMT+11) Asia/Magadan</option>
+				<option value="Pacific/Fiji">(GMT+12) Pacific/Fiji</option>
+			</param>
+			
+			<param name="style_table" type="text" size="60" default="" label="L_STYLE_TABLE" description="D_STYLE_TABLE" />
+			<param name="style_head" type="text" size="60" default="" label="L_STYLE_HEADING" description="D_STYLE_HEADING" />
+			<param name="style_month" type="text" size="60" default="" label="L_STYLE_MONTH" description="D_STYLE_MONTH" />
+			<param name="style_day" type="text" size="60" default="" label="L_STYLE_DAY" description="D_STYLE_DAY" />
+			<param name="style_today" type="text" size="60" default="" label="L_STYLE_TODAY" description="D_STYLE_TODAY" />
+			<param name="style_week" type="text" size="60" default="" label="L_STYLE_WEEKNUM" description="D_STYLE_WEEKNUM" />
+			<param name="style_left" type="text" size="60" default="" label="L_STYLE_LEFT" description="D_STYLE_LEFT" />
+			<param name="style_right" type="text" size="60" default="" label="L_STYLE_RIGHT" description="D_STYLE_RIGHT" />
+			<param name="style_div" type="text" size="60" default="" label="L_STYLE_DIV" description="D_STYLE_DIV" />
+	</params>
+
+</install>

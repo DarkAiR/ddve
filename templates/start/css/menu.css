@@ -1,0 +1,52 @@
+
+/*оформление верхнего меню с суффиксом tabs*/
+/*оформление блока меню*/
+#topmenu {
+overflow:hidden;
+ height:30px;
+}
+/*оформление модуля меню*/
+.moduletabletabs {
+font:bold 14px Arial, Helvetica, sans-serif;
+text-transform: uppercase;
+overflow:hidden;
+text-align:center;
+background-color:#3b98b0;
+}
+/*оформление списка меню*/
+.moduletabletabs ul {
+padding:0;
+float:left;
+left:50%;
+position:relative;
+ height:30px;
+ }
+/*оформление блоков пунктов в меню*/
+.moduletabletabs ul li {
+float:left;
+left:-50%;
+list-style:none;
+ position:relative;
+ border-left:2px ridge #98cfdd;
+  border-right:2px ridge #98cfdd ;
+ margin-left:-2px;
+  overflow:hidden;
+  margin-top:3px;
+}
+/*оформление ссыки в меню*/
+.moduletabletabs ul li a {
+display:block;
+padding:3px 15px 0px 15px ;
+text-decoration:none;
+color:#fff;
+}
+/*посещенные и непосещенные ссылки*/
+.moduletabletabs a:visited,.moduletabletabs a:link {
+text-decoration:none;
+}
+/*ссылка при наведении*/
+.moduletabletabs li a:hover{
+display:block;
+color:#98cfdd;
+text-decoration:underline;
+}

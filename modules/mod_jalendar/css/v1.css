@@ -1,0 +1,87 @@
+
+.monthname {
+	
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	font-size: 10pt;
+	font-weight: bolder;
+	color: black;
+}
+
+.yearname{
+	
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	font-size: 10pt;
+	font-weight: bolder;
+	color: black;
+}
+
+a.monthlink{
+	
+color: black !important;
+ text-decoration: underline !important; 	
+}
+
+a.yearlink{
+	
+color: black !important;
+ text-decoration: underline !important; 	
+}
+
+table.grid_c {
+	font-family: "Trebuchet MS", Arial, sans-serif;
+	font-size: 10pt;
+}
+
+table.jal_header {
+
+}
+
+
+
+td#dayname {
+	
+font-weight: bolder;	
+}
+
+
+td.dayweek1 {
+	color: #4F76A3;
+}
+
+td.dayweek2 {
+	color: #4F76A3;
+}
+
+td.dayweek3 {
+	color: #4F76A3;
+}
+
+td.dayweek4 {
+	color: #4F76A3;
+}
+
+td.dayweek5 {
+	color: #4F76A3;
+}
+
+td.dayweek6 {
+	color: red;
+}
+
+td.dayweek7 {
+	color: red;
+}
+
+td.pndayweek {
+	color: #c0c0c0;
+}
+
+td.numweek{
+	color: #34c924;
+}
+
+a.dwlink{
+	color: inherit !important;
+	text-decoration: none !important;
+}
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0">
+
+        <name>JSCal2 for Joomla</name> 
+        <author>calendarium.ru</author>  
+		<license>GNU/GPLv2 http://www.gnu.org/licenses/gpl-2.0.html</license>
+		<creationDate>28 August 2010</creationDate>
+		<version>1.0</version>
+		<releaseDate>2010-08-28</releaseDate>
+        <files>
+                <filename module="mod_jscal2_for_joomla">index.html</filename>
+				<filename>mod_jscal2_for_joomla.php</filename>
+				<folder>tmpl</folder>
+				<folder>src</folder>		
+        </files>
+
+<params>
+<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="" />
+ <param name="language" type="list" default="0" label="Language" description="">
+			<option value="en">English</option>
+			<option value="ru">Russian</option>
+			<option value="fr">French</option>
+			<option value="es">Spain</option>
+			<option value="cz">Czech</option>
+			<option value="pt">Portuguese</option>
+			<option value="pl">Polish</option>
+			<option value="jp">Japanese</option>
+			<option value="de">German</option>
+			<option value="ro">Romanian</option>
+			<option value="cn">Chinese</option>
+</param>
+ <param name="color_theme" type="list" default="0" label="Color theme" description="">
+			<option value="bare">Bare</option>
+			<option value="win2k">Win2k</option>
+			<option value="steel">Steel</option>
+			<option value="gold">Gold</option>
+			<option value="matrix">Matrix</option>
+			<option value="ddve">Ddve</option>
+</param>
+ <param name="num_week" type="list" default="0" label="Number the Week" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+</param>
+<param name="time" type="list" default="0" label="Show time" description="">
+			<option value="0">No</option>
+			<option value="1">24h</option>
+			<option value="12">am/pm</option>
+</param>
+ <param name="time_pos" type="list" default="right" label="Time position" description="">
+			<option value="right">Right</option>
+			<option value="left">Left</option>
+</param>
+
+ <param name="animation" type="list" default="1" label="Animation" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+</param>
+
+ <param name="compact" type="list" default="1" label="Compact" description="">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+</param>
+
+</params>
+
+
+</install>

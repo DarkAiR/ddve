@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<install version="1.5.0" type="module" method="upgrade">
+	<name>Joomulus</name>
+	<author>joomlabear.com</author>
+	<creationDate>01 February 2008</creationDate>
+	<copyright>Joomlabear</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>info@joomlabear.com</authorEmail>
+	<authorUrl>www.joomlabear.com</authorUrl>
+	<version>2.0</version>
+	<description><![CDATA[DESC_JOOMULUS]]></description>
+
+	<files>
+		<filename module="mod_joomulus">mod_joomulus.php</filename>
+		<filename>index.html</filename>
+		<filename>helper.php</filename>
+		<filename>swfobject.js</filename>
+		<filename>expressinstall.swf</filename>
+		<filename>tagcloud_en.swf</filename>
+		<filename>tagcloud_el.swf</filename>
+		<filename>tagcloud_en.swf</filename>
+		<filename>tagcloud_ja.swf</filename>
+		<filename>tagcloud_pt.swf</filename>
+		<filename>tagcloud_ru.swf</filename>
+	</files>
+	
+	<languages>
+  		<language tag="en-GB">en-GB.mod_joomulus.ini</language>
+		<language tag="fr-FR">fr-FR.mod_joomulus.ini</language>
+	</languages>
+
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="MODULE_CLASS_SUFFIX" description="PARAMMODULECLASSSUFFIX" />
+		<param name="language" type="list" default="1" label="LANGUAGE" description="DESC_LANGUAGE">
+			<option value="_en">English/Latin</option>
+			<option value="_el">Greek/English</option>
+			<option value="_ja">Japanese/English</option>
+			<option value="_ru">Russian/English</option>
+			<option value="_pt">Portuguese/Latin</option>
+		</param>    
+		<param name="swfobject" type="list" default="1" label="LOAD_SWFOBJECT" description="DESC_LOAD_SWFOBJECT">
+			<option value="1">YES</option>
+			<option value="0">NO</option>
+		</param>    
+		<param name="width" type="text" default="160" label="WIDTH" description="DISPLAY_WIDTH" />
+		<param name="height" type="text" default="160" label="HEIGHT" description="DISPLAY_HEIGHT" />
+		<param name="scale_x" type="text" default="1" label="SCALE_X" description="DESC_SCALES_X" />
+		<param name="scale_y" type="text" default="1" label="SCALE_Y" description="DESC_SCALES_Y" />
+		<param name="tcolor" type="text" default="333333" label="TEXT_COLOR_1" description="DESC_COLOR_1" />
+		<param name="tcolor2" type="text" default="22296F" label="TEXT_COLOR_2" description="DESC_COLOR_2" />
+		<param name="hicolor" type="text" default="e40009" label="HIGHLIGHT_COLOR" description="DESC_HIGHLIGHT" />
+		<param name="bgcolor" type="text" default="FFFFFF" label="BACKGROUND_COLOR" description="DESC_BACKGROUND_COL" />
+		<param name="speed" type="text" default="60" label="SPEED" description="DESC_SPEED" />
+		<param name="distr" type="list" default="1" label="DISTRIBUTION" description="DESC_DISTRIBUTION">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+	  	</param>
+		<param name="trans" type="list" default="1" label="TRANSPARENT" description="DESC_TRANSPARENT">
+			<option value="0">NO</option>
+			<option value="1">YES</option>
+	  	</param>
+		<param name="target" type="list" default="_self" label="AR_TARGET" description="DESC_AR_TARGET">
+			<option value="_blank">New window</option>
+			<option value="_self">Same window</option>
+	  	</param>
+	  	
+	</params>
+	<params group="advanced">
+		<param type="spacer" label="----- Tag 1 -----" />
+		<param name="1_name" type="text" default="Joomla" label="FROM_HERE-ONLY_SD" description="DESC_NAME-TAG" />
+		<param name="1_url" type="text" default="http://www.joomla.org/" label="URL-Tag_1" description="DESC_URL-Tag" />
+		<param name="1_size" type="text" default="30" label="SIZE-TAG_1" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 2 -----" />
+		<param name="2_name" type="text" default="Joomlabear" label="NAME-TAG_2" description="DESC_NAME-TAG" />
+		<param name="2_url" type="text" default="http://joomlabear.com/" label="URL-Tag_2" description="DESC_URL-Tag" />
+		<param name="2_size" type="text" default="20" label="SIZE-TAG_2" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 3 -----" />
+		<param name="3_name" type="text" default="wp cumulus" label="NAME-TAG_3" description="DESC_NAME-TAG" />
+		<param name="3_url" type="text" default="http://www.roytanck.com/" label="URL-Tag_3" description="DESC_URL-Tag" />
+		<param name="3_size" type="text" default="30" label="SIZE-TAG_3" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 4 -----" />
+		<param name="4_name" type="text" default="" label="NAME-TAG_4" description="DESC_NAME-TAG" />
+		<param name="4_url" type="text" default="" label="URL-Tag_4" description="DESC_URL-Tag" />
+		<param name="4_size" type="text" default="" label="SIZE-TAG_4" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 5 -----" />
+		<param name="5_name" type="text" default="" label="NAME-TAG_5" description="DESC_NAME-TAG" />
+		<param name="5_url" type="text" default="" label="URL-Tag_5" description="DESC_URL-Tag" />
+		<param name="5_size" type="text" default="" label="SIZE-TAG_5" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 6 -----" />
+		<param name="6_name" type="text" default="" label="NAME-TAG_6" description="DESC_NAME-TAG" />
+		<param name="6_url" type="text" default="" label="URL-Tag_6" description="DESC_URL-Tag" />
+		<param name="6_size" type="text" default="" label="SIZE-TAG_6" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 7 -----" />
+		<param name="7_name" type="text" default="" label="NAME-TAG_7" description="DESC_NAME-TAG" />
+		<param name="7_url" type="text" default="" label="URL-Tag_7" description="DESC_URL-Tag" />
+		<param name="7_size" type="text" default="" label="SIZE-TAG_7" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 8 -----" />
+		<param name="8_name" type="text" default="" label="NAME-TAG_8" description="DESC_NAME-TAG" />
+		<param name="8_url" type="text" default="" label="URL-Tag_8" description="DESC_URL-Tag" />
+		<param name="8_size" type="text" default="" label="SIZE-TAG_8" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 9 -----" />
+		<param name="9_name" type="text" default="" label="NAME-TAG_9" description="DESC_NAME-TAG" />
+		<param name="9_url" type="text" default="" label="URL-Tag_9" description="DESC_URL-Tag" />
+		<param name="9_size" type="text" default="" label="SIZE-TAG_9" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 10 -----" />
+		<param name="10_name" type="text" default="" label="NAME-TAG_10" description="DESC_NAME-TAG" />
+		<param name="10_url" type="text" default="" label="URL-Tag_10" description="DESC_URL-Tag" />
+		<param name="10_size" type="text" default="" label="SIZE-TAG_10" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 11 -----" />
+		<param name="11_name" type="text" default="" label="NAME-TAG_11" description="DESC_NAME-TAG" />
+		<param name="11_url" type="text" default="" label="URL-Tag_11" description="DESC_URL-Tag" />
+		<param name="11_size" type="text" default="" label="SIZE-TAG_11" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 12 -----" />
+		<param name="12_name" type="text" default="" label="NAME-TAG_12" description="DESC_NAME-TAG" />
+		<param name="12_url" type="text" default="" label="URL-Tag_12" description="DESC_URL-Tag" />
+		<param name="12_size" type="text" default="" label="SIZE-TAG_12" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 13 -----" />
+		<param name="13_name" type="text" default="" label="NAME-TAG_13" description="DESC_NAME-TAG" />
+		<param name="13_url" type="text" default="" label="URL-Tag_13" description="DESC_URL-Tag" />
+		<param name="13_size" type="text" default="" label="SIZE-TAG_13" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 14 -----" />
+		<param name="14_name" type="text" default="" label="NAME-TAG_14" description="DESC_NAME-TAG" />
+		<param name="14_url" type="text" default="" label="URL-Tag_14" description="DESC_URL-Tag" />
+		<param name="14_size" type="text" default="" label="SIZE-TAG_14" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 15 -----" />
+		<param name="15_name" type="text" default="" label="NAME-TAG_15" description="DESC_NAME-TAG" />
+		<param name="15_url" type="text" default="" label="URL-Tag_15" description="DESC_URL-Tag" />
+		<param name="15_size" type="text" default="" label="SIZE-TAG_15" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 16 -----" />
+		<param name="16_name" type="text" default="" label="NAME-TAG_16" description="DESC_NAME-TAG" />
+		<param name="16_url" type="text" default="" label="URL-Tag_16" description="DESC_URL-Tag" />
+		<param name="16_size" type="text" default="" label="SIZE-TAG_16" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 17 -----" />
+		<param name="17_name" type="text" default="" label="NAME-TAG_17" description="DESC_NAME-TAG" />
+		<param name="17_url" type="text" default="" label="URL-Tag_17" description="DESC_URL-Tag" />
+		<param name="17_size" type="text" default="" label="SIZE-TAG_17" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 18 -----" />
+		<param name="18_name" type="text" default="" label="NAME-TAG_18" description="DESC_NAME-TAG" />
+		<param name="18_url" type="text" default="" label="URL-Tag_18" description="DESC_URL-Tag" />
+		<param name="18_size" type="text" default="" label="SIZE-TAG_18" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 19 -----" />
+		<param name="19_name" type="text" default="" label="NAME-TAG_19" description="DESC_NAME-TAG" />
+		<param name="19_url" type="text" default="" label="URL-Tag_19" description="DESC_URL-Tag" />
+		<param name="19_size" type="text" default="" label="SIZE-TAG_19" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 20 -----" />
+		<param name="20_name" type="text" default="" label="NAME-TAG_20" description="DESC_NAME-TAG" />
+		<param name="20_url" type="text" default="" label="URL-Tag_20" description="DESC_URL-Tag" />
+		<param name="20_size" type="text" default="" label="SIZE-TAG_20" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 21 -----" />
+		<param name="21_name" type="text" default="" label="NAME-TAG_21" description="DESC_NAME-TAG" />
+		<param name="21_url" type="text" default="" label="URL-Tag_21" description="DESC_URL-Tag" />
+		<param name="21_size" type="text" default="" label="SIZE-TAG_1" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 22 -----" />
+		<param name="22_name" type="text" default="" label="NAME-TAG_22" description="DESC_NAME-TAG" />
+		<param name="22_url" type="text" default="" label="URL-Tag_22" description="DESC_URL-Tag" />
+		<param name="22_size" type="text" default="" label="SIZE-TAG_22" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 23 -----" />
+		<param name="23_name" type="text" default="" label="NAME-TAG_23" description="DESC_NAME-TAG" />
+		<param name="23_url" type="text" default="" label="URL-Tag_23" description="DESC_URL-Tag" />
+		<param name="23_size" type="text" default="" label="SIZE-TAG_23" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 24 -----" />
+		<param name="24_name" type="text" default="" label="NAME-TAG_24" description="DESC_NAME-TAG" />
+		<param name="24_url" type="text" default="" label="URL-Tag_24" description="DESC_URL-Tag" />
+		<param name="24_size" type="text" default="" label="SIZE-TAG_24" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 25 -----" />
+		<param name="25_name" type="text" default="" label="NAME-TAG_25" description="DESC_NAME-TAG" />
+		<param name="25_url" type="text" default="" label="URL-Tag_25" description="DESC_URL-Tag" />
+		<param name="25_size" type="text" default="" label="SIZE-TAG_25" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 26 -----" />
+		<param name="26_name" type="text" default="" label="NAME-TAG_26" description="DESC_NAME-TAG" />
+		<param name="26_url" type="text" default="" label="URL-Tag_26" description="DESC_URL-Tag" />
+		<param name="26_size" type="text" default="" label="SIZE-TAG_26" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 27 -----" />
+		<param name="27_name" type="text" default="" label="NAME-TAG_27" description="DESC_NAME-TAG" />
+		<param name="27_url" type="text" default="" label="URL-Tag_27" description="DESC_URL-Tag" />
+		<param name="27_size" type="text" default="" label="SIZE-TAG_27" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 28 -----" />
+		<param name="28_name" type="text" default="" label="NAME-TAG_28" description="DESC_NAME-TAG" />
+		<param name="28_url" type="text" default="" label="URL-Tag_28" description="DESC_URL-Tag" />
+		<param name="28_size" type="text" default="" label="SIZE-TAG_28" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 29 -----" />
+		<param name="29_name" type="text" default="" label="NAME-TAG_29" description="DESC_NAME-TAG" />
+		<param name="29_url" type="text" default="" label="URL-Tag_29" description="DESC_URL-Tag" />
+		<param name="29_size" type="text" default="" label="SIZE-TAG_29" description="DESC_SIZE-TAG" />
+		<param type="spacer" label="----- Tag 30 -----" />
+		<param name="30_name" type="text" default="" label="NAME-TAG_30" description="DESC_NAME-TAG" />
+		<param name="30_url" type="text" default="" label="URL-Tag_30" description="DESC_URL-Tag" />
+		<param name="30_size" type="text" default="" label="SIZE-TAG_30" description="DESC_SIZE-TAG" />
+	</params>
+
+</install>

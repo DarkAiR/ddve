@@ -1,0 +1,276 @@
+<?php
+// no direct access
+ defined( '_JEXEC' ) or die( 'Restricted access' ); ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
+<head>
+<script src="templates/<?php echo $this->template ?>/js/jquery-1.6.2.js" type="text/javascript"></script>
+<jdoc:include type="head" />
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
+<script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
+<link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript">
+    var console = console || { log:function(){} };
+
+    jQuery(document).ready(
+        function()
+        {
+            // Грязный хак
+            // Скрываем пункт меню по умолчанию
+            jQuery('.item1').css( 'display', 'none' );
+
+            // Кэшируем
+            img22_over = new Image();
+            img22_over.src = "templates/<?php echo $this->template ?>/images/img_03_open.jpg";
+            //img22_over.onclick = change;
+            img31_over = new Image();
+            img31_over.src = "templates/<?php echo $this->template ?>/images/img_05_open.jpg";
+            img32_over = new Image();
+            img32_over.src = "templates/<?php echo $this->template ?>/images/img_06_open.jpg";
+            img33_over = new Image();
+            img33_over.src = "templates/<?php echo $this->template ?>/images/img_07_open.jpg";
+
+            imgArr = new Array();
+            imgArr[22] = "url(templates/<?php echo $this->template ?>/images/img_03_open.jpg)";
+            imgArr[31] = "url(templates/<?php echo $this->template ?>/images/img_05_open.jpg)";
+            imgArr[32] = "url(templates/<?php echo $this->template ?>/images/img_06_open.jpg)";
+            imgArr[33] = "url(templates/<?php echo $this->template ?>/images/img_07_open.jpg)";
+
+            jQuery('#supy').    mouseover( function(e) { jQuery(this).hide(); jQuery('#supy2').css('display','inline');    });
+            jQuery('#supy2').   mouseout ( function(e) { jQuery(this).hide(); jQuery('#supy').css('display','inline');     });
+            jQuery('#salaty').  mouseover( function(e) { jQuery(this).hide(); jQuery('#salaty2').css('display','inline');  });
+            jQuery('#salaty2'). mouseout ( function(e) { jQuery(this).hide(); jQuery('#salaty').css('display','inline');   });
+            jQuery('#rolly').   mouseover( function(e) { jQuery(this).hide(); jQuery('#rolly2').css('display','inline');   });
+            jQuery('#rolly2').  mouseout ( function(e) { jQuery(this).hide(); jQuery('#rolly').css('display','inline');    });
+            jQuery('#lapsha').  mouseover( function(e) { jQuery(this).hide(); jQuery('#lapsha2').css('display','inline');  });
+            jQuery('#lapsha2'). mouseout ( function(e) { jQuery(this).hide(); jQuery('#lapsha').css('display','inline');   });
+            jQuery('#pizza').   mouseover( function(e) { jQuery(this).hide(); jQuery('#pizza2').css('display','inline');   });
+            jQuery('#pizza2').  mouseout ( function(e) { jQuery(this).hide(); jQuery('#pizza').css('display','inline');    });
+            jQuery('#vok').     mouseover( function(e) { jQuery(this).hide(); jQuery('#vok2').css('display','inline');     });
+            jQuery('#vok2').    mouseout ( function(e) { jQuery(this).hide(); jQuery('#vok').css('display','inline');      });
+            jQuery('#deserty'). mouseover( function(e) { jQuery(this).hide(); jQuery('#deserty2').css('display','inline'); });
+            jQuery('#deserty2').mouseout ( function(e) { jQuery(this).hide(); jQuery('#deserty').css('display','inline');  });
+
+			jQuery('#gift1').hide();
+			jQuery('#gift2').hide();
+			jQuery('#gift3').hide();
+			jQuery('#gift4').hide();
+            //jQuery('#giftarea1').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift1').show(); });
+            //jQuery('#giftarea1').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift1').hide(); });
+            jQuery('#giftarea2').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift2').show(); });
+            jQuery('#giftarea2').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift2').hide(); });
+            jQuery('#giftarea3').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift3').show(); });
+            jQuery('#giftarea3').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift3').hide(); });
+            //jQuery('#giftarea4').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift4').show(); });
+            //jQuery('#giftarea4').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift4').hide(); });
+
+            jQuery('#div2_2_inner').css( 'display', 'none' );
+
+/*            jQuery('#info2').live('click', function(e)
+            {
+                if (window.getSelection) { window.getSelection().removeAllRanges(); }
+                else if (document.selection && document.selection.clear)
+                  document.selection.clear();
+            });*/
+            jQuery('#div2_2').css( 'cursor', 'pointer' );
+            jQuery('#div2_2').live('click', function(e)
+            {
+                //if (window.getSelection) { window.getSelection().removeAllRanges(); }
+                //else if (document.selection && document.selection.clear)
+                //    document.selection.clear();
+                if( !isOpen )
+                {
+                    change();
+                    jQuery('#div2_2').css( 'cursor', 'default' );
+                }
+            });
+
+            // Выравниваем страницу по центру
+            var wnd = jQuery(window);
+            var offs = (1400-wnd.width())/2;
+            document.documentElement.scrollLeft = offs;
+            document.body.scrollLeft = offs;
+            var e = jQuery('html, body');
+            e.animate({'scrollLeft': offs});
+
+            // Позиционируем логотип
+            setHeaderPosition();
+        }
+    );
+
+    jQuery(window).resize( function()
+    {
+        setHeaderPosition();
+    });
+
+    var isOpen = false;
+    function change()
+    {
+        isOpen = !isOpen;
+        switchImage( "div2_2", 22 );
+        switchImage( "div3_1", 31 );
+        switchImage( "div3_2", 32 );
+        switchImage( "div3_3", 33 );
+        jQuery('#div2_2_inner').css( 'display', isOpen?'block':'none' );
+
+        setHeaderPosition();
+    }
+
+    // Позиционируем логотип
+    function setHeaderPosition()
+    {
+        var left = jQuery('#page').offset().left;
+        var logo = jQuery('#page #logo');
+        logo.css( 'left', left + 100 );
+
+        jQuery('.supy'    ).css( 'left', left + 594 );
+        jQuery('.salaty'  ).css( 'left', left + 717 );
+        jQuery('.rolly'   ).css( 'left', left + 558 );
+        jQuery('.lapsha'  ).css( 'left', left + 669 );
+        jQuery('.pizza'   ).css( 'left', left + 719 );
+        jQuery('.vok'     ).css( 'left', left + 572 );
+        jQuery('.deserty' ).css( 'left', left + 718 );
+        jQuery('.napitki' ).css( 'left', left + 930 );
+
+        jQuery('#page #gifts').css( 'left', left + 97 );
+        jQuery('#page #gift1').css( 'left', left + 65 );
+        jQuery('#page #gift2').css( 'left', left + 97 );
+        jQuery('#page #gift3').css( 'left', left + 97 );
+        jQuery('#page #gift4').css( 'left', left + 97 );
+        jQuery('#page #giftarea1').css( 'left', left + 100 );
+        jQuery('#page #giftarea2').css( 'left', left + 182 );
+        jQuery('#page #giftarea3').css( 'left', left + 265 );
+        jQuery('#page #giftarea4').css( 'left', left + 365 );
+
+        if( isOpen == false )
+        {
+            jQuery('.supy'    ).css( 'display', 'none' );
+            jQuery('.salaty'  ).css( 'display', 'none' );
+            jQuery('.rolly'   ).css( 'display', 'none' );
+            jQuery('.lapsha'  ).css( 'display', 'none' );
+            jQuery('.pizza'   ).css( 'display', 'none' );
+            jQuery('.vok'     ).css( 'display', 'none' );
+            jQuery('.deserty' ).css( 'display', 'none' );
+            jQuery('.napitki' ).css( 'display', 'none' );
+        }
+        else
+        {
+            jQuery('#page #supy'    ).css( 'display', 'inline' );
+            jQuery('#page #supy2'   ).css( 'display', 'none' );
+            jQuery('#page #salaty'  ).css( 'display', 'inline' );
+            jQuery('#page #salaty2' ).css( 'display', 'none' );
+            jQuery('#page #rolly'   ).css( 'display', 'inline' );
+            jQuery('#page #rolly2'  ).css( 'display', 'none' );
+            jQuery('#page #lapsha'  ).css( 'display', 'inline' );
+            jQuery('#page #lapsha2' ).css( 'display', 'none' );
+            jQuery('#page #pizza'   ).css( 'display', 'inline' );
+            jQuery('#page #pizza2'  ).css( 'display', 'none' );
+            jQuery('#page #vok'     ).css( 'display', 'inline' );
+            jQuery('#page #vok2'    ).css( 'display', 'none' );
+            jQuery('#page #deserty' ).css( 'display', 'inline' );
+            jQuery('#page #deserty2').css( 'display', 'none' );
+            jQuery('#page #napitki' ).css( 'display', 'inline' );
+        }
+    }
+
+    function switchImage( divName, index )
+    {
+        var div = jQuery('#'+divName);
+        var tmp = div.css( 'background-image' );
+        div.css( 'background-image', imgArr[index] );
+        imgArr[index] = tmp;
+    }
+
+    function switchItem( divName, index )
+    {
+        var div = jQuery('#'+divName);
+        div.css( 'background-image', itemsArr[index] );
+    }
+</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-25714532-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</head>
+
+<body>
+
+<div id="page">
+
+    <a id="logo" href="index.php"></a>
+
+    <a id='supy'     class='supy'     title='Cупы'      href="index.php?option=com_virtuemart&page=shop.browse&category_id=12&pcat_id=12&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/soup1.png)"></a>
+    <a id='supy2'    class='supy'     title='Cупы'      href="index.php?option=com_virtuemart&page=shop.browse&category_id=12&pcat_id=12&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/soup2.png)"></a>
+    <a id='salaty'   class='salaty'   title='Салаты'    href="index.php?option=com_virtuemart&page=shop.browse&category_id=11&pcat_id=11&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/salaty1.png)"></a>
+    <a id='salaty2'  class='salaty'   title='Салаты'    href="index.php?option=com_virtuemart&page=shop.browse&category_id=11&pcat_id=11&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/salaty2.png)"></a>
+    <a id='rolly'    class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly1.png)"></a>
+    <a id='rolly2'   class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly2.png)"></a>
+    <a id='lapsha'   class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha1.png)"></a>
+    <a id='lapsha2'  class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha2.png)"></a>
+    <a id='pizza'    class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza1.png)"></a>
+    <a id='pizza2'   class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza2.png)"></a>
+    <a id='vok'      class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok1.png)"></a>
+    <a id='vok2'     class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok2.png)"></a>
+    <a id='deserty'  class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty1.png)"></a>
+    <a id='deserty2' class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty2.png)"></a>
+    <a id='napitki'  class='napitki'  title='Напитки'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=13&pcat_id=13&Itemid=64"></a>
+	<div id='gifts'></div>
+	<div id='gift1'></div>
+	<div id='gift2'></div>
+	<div id='gift3'></div>
+	<div id='gift4'></div>
+	<div id='giftarea1'></div>
+	<div id='giftarea2'></div>
+	<div id='giftarea3'></div>
+	<div id='giftarea4'></div>
+
+    <div id="div1"></div>
+    <div id="div2">
+        <div id="div2_1"></div>
+        <div id="div2_2">
+            <div id='div2_2_inner'>
+                <div id='leftModules'><jdoc:include type="modules" name="leftmainmenu" style="xhtml" /></div>
+                <div id="centerModules"></div>
+                <div id="rightModules"><jdoc:include type="modules" name="right" style="xhtml" />
+                    <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+                    <!-- VK Widget -->
+                    <div id="vk_groups"></div>
+                    <script type="text/javascript">
+                        VK.Widgets.Group("vk_groups", {mode: 1, width: "155", height: "120"}, 37435683);
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div id="div2_3">
+            <div id="minicalendar"><jdoc:include type="modules" name="user3" style="xhtml" /></div>
+        </div>
+    </div>
+    <div id="div3">
+        <div id="div3_1"></div>
+        <div id="div3_2">
+            <div id="footer">
+                <jdoc:include type="modules" name="footer" style="xhtml" />
+            </div>
+        </div>
+        <div id="div3_3"></div>
+    </div>
+    <div id="div4">
+    </div>
+
+</div>
+
+ <!--jdoc:include type="component" style="xhtml" /-->
+
+</body>
+</html>
