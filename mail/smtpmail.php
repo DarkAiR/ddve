@@ -28,7 +28,6 @@ define ("SUCCESS_SEND_MAIL",        "The letter was sent.");
 
 function smtpmail($mail_to, $subject, $message, $headers='') {
 
-    echo '1';
 
         global $config;
         $SEND =   "Date: ".date("D, d M Y H:i:s") . " UT\r\n";
@@ -47,14 +46,12 @@ function smtpmail($mail_to, $subject, $message, $headers='') {
             $SEND .= "To: $mail_to <$mail_to>\r\n";
             $SEND .= "X-Priority: 3\r\n\r\n";
         }
-    echo '2';
         $SEND .=  $message."\r\n";
         if( !$socket = fsockopen($config['smtp_host'], $config['smtp_port'], $errno, $errstr, 30) ) {
             if ($config['smtp_debug']) echo $errno."&lt;br&gt;".$errstr;
             return false;
         }
 
-    echo '3';
         if (!server_parse($socket, "220", __LINE__)) return false;
 
         fputs($socket, "HELO " . $config['smtp_host'] . "\r\n");
@@ -63,49 +60,42 @@ function smtpmail($mail_to, $subject, $message, $headers='') {
                 fclose($socket);
                 return false;
         }
-    echo '4';
         fputs($socket, "AUTH LOGIN\r\n");
         if (!server_parse($socket, "334", __LINE__)) {
                 if ($config['smtp_debug']) echo ERROR_AUTH_LOGIN;
                 fclose($socket);
                 return false;
         }
-    echo '5['.$config['smtp_username'].']';
         fputs($socket, base64_encode($config['smtp_username']) . "\r\n");
         if (!server_parse($socket, "334", __LINE__)) {
                 if ($config['smtp_debug']) echo ERROR_LOGIN_INCORRECT;
                 fclose($socket);
                 return false;
         }
-    echo '6['.$config['smtp_password'].']';
         fputs($socket, base64_encode($config['smtp_password']) . "\r\n");
         if (!server_parse($socket, "235", __LINE__)) {
                 if ($config['smtp_debug']) echo ERROR_PASSWORD_INCORRECT;
                 fclose($socket);
                 return false;
         }
-    echo '7';
         fputs($socket, "MAIL FROM: <".$config['smtp_username'].">\r\n");
         if (!server_parse($socket, "250", __LINE__)) {
                 if ($config['smtp_debug']) echo ERROR_MAIL_FROM;
                 fclose($socket);
                 return false;
         }
-    echo '8';
         fputs($socket, "RCPT TO: <" . $mail_to . ">\r\n");
         if (!server_parse($socket, "250", __LINE__)) {
                 if ($config['smtp_debug']) echo ERROR_RCPT_TO;
                 fclose($socket);
                 return false;
         }
-    echo '9';
         fputs($socket, "DATA\r\n");
         if (!server_parse($socket, "354", __LINE__)) {
                 if ($config['smtp_debug']) echo ERROR_DATA;
                 fclose($socket);
                 return false;
         }
-    echo 'A';
         fputs($socket, $SEND."\r\n.\r\n");
 //        fputs($socket, "hello world\r\n.\r\n");
         if (!server_parse($socket, "250", __LINE__)) {
@@ -113,7 +103,6 @@ function smtpmail($mail_to, $subject, $message, $headers='') {
                 fclose($socket);
                 return false;
         }
-    echo 'B';
         fputs($socket, "QUIT\r\n");
         fclose($socket);
         return TRUE;
