@@ -6,9 +6,10 @@ define( 'DS', DIRECTORY_SEPARATOR );
 
 require_once ( JPATH_BASE.'/includes/defines.php' );
 require_once ( JPATH_BASE.'/includes/framework.php' );
-//require_once ( JPATH_BASE.'/configuration.php' );
+require_once ( JPATH_BASE.'/configuration.php' );
 
 
+$cfg = new JConfig();
 
 //$mainframe =& JFactory::getApplication('site');
 //$mainframe->initialise();
@@ -49,12 +50,12 @@ catch( Exception $e )
     exit();
 }
 
-$db = mysql_connect( 'localhost', 'u17424', 'fopow4zofub' );
+$db = mysql_connect( $cfg->host, $cfg->user, $cfg->password );
 if (!$db) {
     die('Ошибка соединения: ' . mysql_error());
 }
 mysql_set_charset( 'utf8', $db );
-$query = "INSERT INTO  `u17424_ddve`.`my_users`
+$query = "INSERT INTO  `".$cfg->db."`.`my_users`
 (`id`, `name` , `phone` , `email` , `street` , `house` , `corpse` , `flat` , `podezd`, `prodlist` )
 VALUES ('0', '{$name}', '{$phone}', '{$email}', '{$street}', '{$house}', '{$corpus}', '{$kvartira}', '{$podezd}', '{$prodList}'); ";
 

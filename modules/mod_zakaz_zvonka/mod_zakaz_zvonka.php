@@ -32,7 +32,6 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
 
     function checkPhone( val )
     {
-        console.log( 'check phone' );
         var tmp = val.replace( /\D/g, '' );
         if( tmp.length != 11 )      // Длина телефонного номера
             return false;
@@ -41,7 +40,6 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
 
     function zakaz()
     {
-        console.log( 'click zakaz' );
         if( isSend == true )
             return;
 
@@ -61,26 +59,22 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
         var dataArr = 'phone='+val;
         jQuery.ajax({
             type: "POST",
-            url: "ajax/zakaz_zvonka.php",
+            url: "/ajax/zakaz_zvonka.php",
             processData: false,
             data: dataArr,
             success: function( data )
             {
                 isSend = false;
 
-                console.log( 'data1: '+data );
-
                 // Грязный хак - обрезаем идентификатор UNICODE
                 if( data.charAt(0) != '{' )
                     data = data.substr( 3 );
-                console.log( 'data2: '+data );
 
                 data = eval('(' + data + ')');
                 if( data.result == 'success' )
                     jAlert( 'Ваш номер отправлен.\nВ ближайшее время мы с вами свяжемся.', 'Номер отправлен' );
                 else
                     zakazError();
-                console.log( data );
             }
         });
     }

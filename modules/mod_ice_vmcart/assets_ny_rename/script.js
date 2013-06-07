@@ -167,7 +167,7 @@ function vmCartFormSend( elem )
     vmCartIsSend = true;
     jQuery.ajax({
         type: "POST",
-        url: "ajax/send_order.php",
+        url: "/ajax/send_order.php",
         processData: false,
         data: params,
         success: function( data )
