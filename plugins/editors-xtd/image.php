@@ -1,6 +1,6 @@
 <?php
 /**
- * @version		$Id: image.php 14401 2010-01-26 14:10:00Z louis $
+ * @version		$Id: image.php 21069 2011-04-03 22:58:48Z dextercowley $
  * @package		Joomla
  * @copyright	Copyright (C) 2005 - 2010 Open Source Matters. All rights reserved.
  * @license		GNU/GPL, see LICENSE.php
@@ -81,7 +81,7 @@ class plgButtonImage extends JPlugin
 		$doc 		=& JFactory::getDocument();
 		$template 	= $mainframe->getTemplate();
 
-		$link = 'index.php?option=com_media&amp;view=images&amp;tmpl=component&amp;e_name='.$name;
+		$link = 'index.php?option=com_media&amp;view=images&amp;layout=default&amp;tmpl=component&amp;e_name='.$name;
 
 		JHTML::_('behavior.modal');
 

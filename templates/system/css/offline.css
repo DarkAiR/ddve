@@ -10,8 +10,6 @@
  */
 
 body {
-    background: url('../images/off.jpg') repeat-x;
-	background-position: center top;
 	margin: 0; padding: 0;
 	font-family: Arial, Helvetica, Sans Serif; font-size: 78%;
 	color: #333333;
@@ -23,8 +21,8 @@ img  { border: 0 none; }
 /* -- id styles ------------------------------------- */
 
 #frame {
-	margin: 250px auto;
-	width: 200px;
+	margin: 20px auto;
+	width: 400px;
 	padding: 20px;
 }
 
