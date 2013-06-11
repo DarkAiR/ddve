@@ -2,10 +2,10 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id: CHANGELOG.php 3520 2011-06-19 10:23:55Z zanardi $
+* @version $Id: CHANGELOG.php 2861 2011-03-19 12:14:39Z zanardi $
 * @package VirtueMart
 * @subpackage core
-* @copyright Copyright (C) 2004-2011 VirtueMart Development Team - All rights reserved.
+* @copyright Copyright (C) 2004-2010 VirtueMart Development Team - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -33,43 +33,6 @@ Legend:
 
 VirtueMart 1.1.x
 *************************************
-
---- VirtueMart 1.1.8 released (Rev. 3520 2011-06-19) ---
-
-18.06.2011 zanardi
-# Bug #322 Miscalculation in order e-mail receipt
-# Bug #320 Bug in ps_checkout._tax_based_on_vendor_address
-
-07.06.2011 zanardi
-# Bug #327 Error Found in mootools-release-1.1.1.js
-# Bug #321 Coupon problem - multiple currencies
-^ User-pages
-
-28.05.2011 zanardi
-# Bug #367 Use of "mysql_real_escape_string" breaks with mysqli
-# Bug #364 Disallow quotes in attributes properties
-# Bug #360 Ajax calls recorded as last page
-# Bug #310 bug in shop.browse.php empty category
-
-14.05.2011 zanardi + poy
-# Bug #366: Security issue in checkout.2Checkout_result.php
-# Bug #364 Disallow quotes in attributes properties
-# Bug #363 Membergroup to show prices to results to Undefined variable
-
-30.04.2011 zanardi
-# Bug #318 HTML error in file : product_type.tpl.php
-# Bug #315 Zone Shipping Fatal Error
-
-03.04.2011 aravot
-# Bug #326 No download email is send for free download-able product
-
-02.04.2011 zanardi + poy
-# Bug #350 Security issue in notify.php
-# Bug #346 Version is 1.1.8 stable but extension manager is reported 1.1.7
-# Bug #328 CVV still listed on PayPal order list
-# Bug #323 Customer numbers not created in administration, when customer is created by site administrator
-# Bug #312 No search results in user list when not searching from page one
-# Bug #309 PayPal valid IP list is empty
 
 --- VirtueMart 1.1.8 released (Rev. 2861 2011-03-19) ---
 

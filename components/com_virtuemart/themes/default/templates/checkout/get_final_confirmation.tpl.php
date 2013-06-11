@@ -2,7 +2,7 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' ); 
 /**
 *
-* @version $Id: get_final_confirmation.tpl.php 2934 2011-04-03 13:51:35Z zanardi $
+* @version $Id: get_final_confirmation.tpl.php 2496 2010-07-23 05:38:58Z soeren $
 * @package VirtueMart
 * @subpackage templates
 * @copyright Copyright (C) 2007 Soeren Eberhardt. All rights reserved.
@@ -22,7 +22,7 @@ echo $basket_html;
 echo '<br />';
 
 $varname = 'PHPSHOP_CHECKOUT_MSG_' . CHECK_OUT_GET_FINAL_CONFIRMATION;
-echo '<h4>'. $VM_LANG->_($varname) . '</h4>'; //h5 tag changed to h4 tag by JK
+echo '<h5>'. $VM_LANG->_($varname) . '</h5>';
 $db = new ps_DB();
 
 echo '<table>';
@@ -78,15 +78,13 @@ if(!ps_checkout::noShippingMethodNecessary()) {
 unset( $row );
 if( !isset($order_total) || $order_total > 0.00 ) {
 	$payment_method_id = vmRequest::getInt( 'payment_method_id' );
-	if ($payment_method_id) { // added by JK to disable showing of payment method when there is no payment method.
 	
-		$db->query("SELECT payment_method_id, payment_method_name FROM #__{vm}_payment_method WHERE payment_method_id='$payment_method_id'");
-		$db->next_record();
-		echo '<tr><td valign="top"><strong>'.$VM_LANG->_('PHPSHOP_ORDER_PRINT_PAYMENT_LBL') . ":</strong></td>";
-		echo '<td>';
-		echo $db->f("payment_method_name");
-		echo "</td></tr>";
-	} // closing payment method check by JK
+	$db->query("SELECT payment_method_id, payment_method_name FROM #__{vm}_payment_method WHERE payment_method_id='$payment_method_id'");
+	$db->next_record();
+	echo '<tr><td valign="top"><strong>'.$VM_LANG->_('PHPSHOP_ORDER_PRINT_PAYMENT_LBL') . ":</strong></td>";
+	echo '<td>';
+	echo $db->f("payment_method_name");
+	echo "</td></tr>";
 }
 echo '</table>';
 ?>

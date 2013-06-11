@@ -2,10 +2,10 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' ); 
 /**
 *
-* @version $Id: ps_zone.php 3105 2011-04-30 13:35:30Z zanardi $
+* @version $Id: ps_zone.php 2544 2010-09-26 17:02:23Z zanardi $
 * @package VirtueMart
 * @subpackage classes
-* @copyright Copyright (C) 2004-2011 VirtueMart Team - All rights reserved.
+* @copyright Copyright (C) 2004-2007 soeren - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -120,7 +120,6 @@ class vm_ps_zone {
    * returns:
    **************************************************************************/
   function add(&$d) {
-	global $vmLogger, $VM_LANG;
     $db = new ps_DB; 
     $ps_vendor_id = $_SESSION["ps_vendor_id"];
     $timestamp = time();
@@ -156,7 +155,6 @@ class vm_ps_zone {
    * returns:
    **************************************************************************/
   function update(&$d) {
-	global $vmLogger, $VM_LANG;
     $db = new ps_DB; 
     $ps_vendor_id = $_SESSION["ps_vendor_id"];
     $timestamp = time();

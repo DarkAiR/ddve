@@ -1,19 +1,4 @@
-<?php if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' ); 
-/**
-* @version $Id: product_type.tpl.php 2286 2011-04-30 11:25:00Z zanardi $
-* @package VirtueMart
-* @subpackage themes
-* @copyright Copyright (C) 2006-2011 VirtueMart Team - All rights reserved.
-* @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
-* VirtueMart is free software. This version may have been modified pursuant
-* to the GNU General Public License, and as distributed it includes or
-* is derivative of works licensed under the GNU General Public License or
-* other free or open source software licenses.
-* See /administrator/components/com_virtuemart/COPYRIGHT.php for copyright notices and details.
-*
-* http://virtuemart.net
-*/
-?>
+<?php if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' ); ?>
 <?php if( empty($product_types)) return; 
 /**
 	 * Available indexes:
@@ -57,7 +42,7 @@ foreach( $product_types as $product_type ) { // Loop through all recent products
 				break;
 			}
 
-			?><tr class="<?php echo $bgcolor;?>" height="18">
+			?><tr class="<?php echo $bgcolor;?> height="18">
 			<td width="30%"><?php echo $product_type_params["parameter_label"]; 
 
 			if ( !empty($product_type_params["tooltip"] ) ) { ?>

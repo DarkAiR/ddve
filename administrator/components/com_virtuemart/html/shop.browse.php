@@ -3,7 +3,7 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
 /**
 * This is the Main Product Listing File!
 *
-* @version $Id: shop.browse.php 2933 2011-04-02 11:34:25Z zanardi $
+* @version $Id: shop.browse.php 1988 2009-11-11 14:29:52Z soeren_nb $
 * @package VirtueMart
 * @subpackage html
 * @copyright Copyright (C) 2004-2009 soeren - All rights reserved.
@@ -85,7 +85,6 @@ if (defined('VM_ALLOW_EXTENDED_CLASSES') && defined('VM_THEMEPATH') && VM_ALLOW_
 	require_once( PAGEPATH. "shop_browse_queries.php" );
 }
 
-
 $db_browse->query( $count );
 
 $num_rows = $db_browse->f("num_rows");
@@ -109,13 +108,12 @@ if( $category_id ) {
 	$desc = vmCommonHTML::ParseContentByPlugins( $desc );
 	// Prepend Product Short Description Meta Tag "description" when applicable
 	$mainframe->prependMetaTag( "description", substr(strip_tags($desc ), 0, 255) );
-
 }
 // when nothing has been found we tell this here and say goodbye
 if ($num_rows == 0 && (!empty($keyword)||!empty($keyword1))) {
 	echo $VM_LANG->_('PHPSHOP_NO_SEARCH_RESULT');
 }
-elseif( $num_rows == 0 && empty($product_type_id) && empty($child_list)) {
+elseif( $num_rows == 0 && empty($product_type_id) && !empty($child_list)) {
 	echo $VM_LANG->_('EMPTY_CATEGORY');
 }
 
@@ -132,10 +130,11 @@ else {
 	// NOW START THE PRODUCT LIST
 	$tpl = vmTemplate::getInstance();
 
-	if( $category_id ) {
+    if( $category_id ) {
 		/**
 	    * CATEGORY DESCRIPTION
 	    */
+        
 		$browsepage_lbl = $category_name;
 		$tpl->set( 'browsepage_lbl', $browsepage_lbl );
 
@@ -211,6 +210,7 @@ else {
 
 	// Prepare Page Navigation
 	require_once( CLASSPATH . 'pageNavigation.class.php' );
+    
 	$pagenav = new vmPageNav( $num_rows, $limitstart, $limit );
 	$tpl->set( 'pagenav', $pagenav );
 
@@ -276,12 +276,22 @@ else {
 
 		$orderby_form = $tpl->fetch( 'browse/includes/browse_orderbyform.tpl.php' );
 		$tpl->set( 'orderby_form', $orderby_form );
+		//CHANGES FOR MANUFACTORER FILTER
+		$orderby_form = $tpl->fetch( 'browse/includes/browse_filterbymf.tpl.php' );
+		$tpl->set( 'filterby_mf', $orderby_form );		
+		//END CHANGES FOR MANUFACTORER FILTER
     }
     else {
     	$tpl->set( 'orderby_form', '' );
+		//CHANGES FOR MANUFACTORER FILTER
+		$tpl->set( 'filterby_mf', '' );
+		//END CHANGES FOR MANUFACTORER FILTER
     }
 
 	$db_browse->query( $list );
+//echo '<div id="fffffff" style="display:none">';
+//var_dump( $list );
+//echo '</div>';
 	$db_browse->next_record();
 
 	$products_per_row = (!empty($category_id)) ? $db_browse->f("products_per_row") : PRODUCTS_PER_ROW;
@@ -358,6 +368,7 @@ else {
 		else {
 			$product_price = "";
 		}
+
 		// @var array $product_price_raw The raw unformatted Product Price in Float Format
 		$product_price_raw = $ps_product->get_adjusted_attribute_price($db_browse->f('product_id'));
 
@@ -440,7 +451,16 @@ else {
 		if( empty($product_s_desc) && $product_parent_id!=0 ) {
 			$product_s_desc = $dbp->f("product_s_desc"); // Use product_s_desc from Parent Product
 		}
-		$product_details = $VM_LANG->_('PHPSHOP_FLYPAGE_LBL');
+        
+        $product_description = $db_browse->f("product_desc");
+        if( (str_replace("<br />", "" , $product_description)=='') && ($product_parent_id!=0) ) {
+            $product_description = $dbp->f("product_desc"); // Use product_desc from Parent Product
+        }
+        $product_description = vmCommonHTML::ParseContentByPlugins( $product_description );
+        
+        $product_packaging = $db_browse->f("product_packaging").' '.$db_browse->f("product_unit");
+
+        $product_details = $VM_LANG->_('PHPSHOP_FLYPAGE_LBL');
 
 		if (PSHOP_ALLOW_REVIEWS == '1' && @$_REQUEST['output'] != "pdf") {
 			// Average customer rating: xxxxx
@@ -481,6 +501,8 @@ else {
 
 		$products[$i]['product_name'] = shopMakeHtmlSafe( $product_name );
 		$products[$i]['product_s_desc'] = $product_s_desc;
+		$products[$i]['product_desc'] = $product_description;
+		$products[$i]['product_packaging'] = $product_packaging;
 		$products[$i]['product_details'] = $product_details;
 		$products[$i]['product_rating'] = $product_rating;
 		$products[$i]['product_price'] = $product_price;
@@ -516,6 +538,7 @@ else {
 	$tpl->set( 'products', $products );
 	$tpl->set( 'search_string', $search_string );
 
+    // DarkAiR
 	if ( $num_rows > 1 ) {
 		$browsepage_footer = $tpl->fetch( 'browse/includes/browse_pagenav.tpl.php' );
 		$tpl->set( 'browsepage_footer', $browsepage_footer );

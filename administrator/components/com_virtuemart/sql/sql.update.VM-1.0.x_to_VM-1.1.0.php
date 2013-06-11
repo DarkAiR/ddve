@@ -2,7 +2,7 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id:sql.update.VM-1.0.x_to_VM-1.1.0.php 431 2011-05-20 18:23:00Z zanardi $
+* @version $Id:sql.update.VM-1.0.x_to_VM-1.1.0.php 431 2006-10-17 21:55:46 +0200 (Di, 17 Okt 2006) soeren_nb $
 * @package VirtueMart
 * @subpackage core
 * @copyright Copyright (C) 2004-2008 soeren - All rights reserved.
@@ -40,7 +40,7 @@ $db->query( "CREATE TABLE IF NOT EXISTS `#__{vm}_userfield` (
   `vendor_id` int(11) default NULL,
   `params` mediumtext,
   PRIMARY KEY  (`fieldid`)
-) ENGINE=MyISAM AUTO_INCREMENT=30 COMMENT='Holds the fields for the user information';" );
+) TYPE=MyISAM AUTO_INCREMENT=30 COMMENT='Holds the fields for the user information';" );
 
 ## 
 ## Dumping data for table `#__{vm}_userfield`
@@ -93,7 +93,7 @@ $db->query( "CREATE TABLE IF NOT EXISTS `#__{vm}_userfield_values` (
   `ordering` int(11) NOT NULL default '0',
   `sys` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`fieldvalueid`)
-) ENGINE=MyISAM COMMENT='Holds the different values for dropdown and radio lists';" );
+) TYPE=MyISAM COMMENT='Holds the different values for dropdown and radio lists';" );
 
 $db->query( "INSERT INTO `#__{vm}_userfield_values` VALUES (1, 25, 'PHPSHOP_ACCOUNT_LBL_ACCOUNT_TYPE_BUSINESSCHECKING','Checking', 1, 1);" );
 $db->query( "INSERT INTO `#__{vm}_userfield_values` VALUES (2, 25, 'PHPSHOP_ACCOUNT_LBL_ACCOUNT_TYPE_CHECKING', 'Business Checking', 2, 1);" );
@@ -139,7 +139,7 @@ $db->query( "CREATE TABLE IF NOT EXISTS `#__vm_shipping_label` (
 	`have_signature` tinyint(1) NOT NULL default '0',
 	`signature_image` blob default NULL,
 	PRIMARY KEY (`order_id`)
-) ENGINE=MyISAM COMMENT='Stores information used in generating shipping labels'; ");
+) TYPE=MyISAM COMMENT='Stores information used in generating shipping labels'; ");
 
 ## Export Modules
 $db->query( "CREATE TABLE IF NOT EXISTS `#__{vm}_export` (
@@ -152,7 +152,7 @@ $db->query( "CREATE TABLE IF NOT EXISTS `#__{vm}_export` (
   `export_config` text NOT NULL,
   `iscore` tinyint(3) NOT NULL default '0',
   PRIMARY KEY  (`export_id`)
-) ENGINE=MyISAM COMMENT='Export Modules';");
+) TYPE=MyISAM COMMENT='Export Modules';");
 
 # NEW Countries
 $db->query( "INSERT INTO `#__{vm}_country` (country_name, country_3_code, country_2_code)
@@ -178,7 +178,7 @@ $db->query( "CREATE TABLE IF NOT EXISTS `#__{vm}_state` (
   UNIQUE KEY `state_3_code` (`country_id`,`state_3_code`),
   UNIQUE KEY `state_2_code` (`country_id`,`state_2_code`),
   KEY `idx_country_id` (`country_id`)
-) ENGINE=MyISAM COMMENT='States that are assigned to a country'; ");
+) TYPE=MyISAM COMMENT='States that are assigned to a country'; ");
 
 ## Dumping data for table `#__{vm}_state`
 $db->query( "INSERT INTO `#__{vm}_state` VALUES (1, 223, 'Alabama', 'ALA', 'AL'),
@@ -665,7 +665,7 @@ $db->query( "CREATE TABLE `#__{vm}_auth_group` (
 	  `group_name` varchar(128) default NULL,
 	  `group_level` int(11) default NULL,
 	  PRIMARY KEY  (`group_id`)
-	) ENGINE=MyISAM AUTO_INCREMENT=5 COMMENT='Holds all the user groups' ;");
+	) TYPE=MyISAM AUTO_INCREMENT=5 COMMENT='Holds all the user groups' ;");
 
 # these are the default user groups
 $db->query( "INSERT INTO `#__{vm}_auth_group` (`group_id`, `group_name`, `group_level`) VALUES (1, 'admin', 0),(2, 'storeadmin', 250),(3, 'shopper', 500),(4, 'demo', 750);" );
@@ -674,7 +674,7 @@ $db->query( "CREATE TABLE `#__{vm}_auth_user_group` (
 	  `user_id` int(11) NOT NULL default '0',
 	  `group_id` int(11) default NULL,
 	  PRIMARY KEY  (`user_id`)
-	) ENGINE=MyISAM COMMENT='Maps the user to user groups';");
+	) TYPE=MyISAM COMMENT='Maps the user to user groups';");
 # insert the user <=> group relationship
 $db->query( "INSERT INTO `#__{vm}_auth_user_group` 
 				SELECT user_id, 

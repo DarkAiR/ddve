@@ -2,10 +2,10 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id: ps_country.php 3105 2011-04-30 13:35:30Z zanardi $
+* @version $Id: ps_country.php 1660 2009-02-22 17:05:02Z tkahl $
 * @package VirtueMart
 * @subpackage classes
-* @copyright Copyright (C) 2004-2011 VirtueMart Team - All rights reserved.
+* @copyright Copyright (C) 2004-2008 soeren - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or

@@ -2,7 +2,7 @@
 /**
 * PayPal IPN Handler
 *
-* @version $Id: notify.php 2933 2011-04-02 11:34:25Z zanardi $
+* @version $Id: notify.php 2834 2011-03-05 12:19:54Z zanardi $
 * @package VirtueMart
 * @subpackage core
 * @copyright Copyright (C) 2004-2007 soeren - All rights reserved.
@@ -219,9 +219,7 @@ if ($_POST) {
     	// Get the list of IP addresses for www.paypal.com and notify.paypal.com
     	$paypal_iplist = array();
         $paypal_iplist = gethostbynamel('www.paypal.com');
-		$paypal_iplist2 = array();
 		$paypal_iplist2 = gethostbynamel('notify.paypal.com');
-        $paypal_iplist3 = array();
         $paypal_iplist3 = array( '216.113.188.202' , '216.113.188.203' , '216.113.188.204' , '66.211.170.66' ); 
         $paypal_iplist = array_merge( $paypal_iplist, $paypal_iplist2, $paypal_iplist3 );
 
@@ -312,20 +310,7 @@ if ($_POST) {
         $error_description";
         vmMail($mosConfig_mailfrom, $mosConfig_fromname, $debug_email_address, $mailsubject, $mailbody );
         
-    } 
-    // fix for possible SANDBOX fraud payments, thanks to Fabian for finding the bug and Thomas for proposing a fix
-    elseif ( ( ( $hostname == "www.sandbox.paypal.com" ) || JRequest::getInt('test_ipn')==1 ) && PAYPAL_DEBUG != "1" ) {
-		$res = "FAILED";
-        
-		$mailsubject = "PayPal Sandbox Transaction without Debug-Mode";
-		$mailbody = "Hello,
-		A fatal error occured while processing a paypal transaction.
-		----------------------------------
-		Hostname: $hostname
-		URI: $uri
-		A Paypal transaction was made using the sandbox without your site in Paypal-Debug-Mode";
-		vmMail($mosConfig_mailfrom, $mosConfig_fromname, $debug_email_address, $mailsubject, $mailbody );
-	}
+    }
     
     //--------------------------------------------------------
     // If connected OK, write the posted values back, then...

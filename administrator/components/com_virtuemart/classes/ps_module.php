@@ -2,7 +2,7 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id: ps_module.php 3457 2011-06-07 20:03:23Z zanardi $
+* @version $Id: ps_module.php 2744 2011-02-18 16:44:08Z zanardi $
 * @package VirtueMart
 * @subpackage classes
 * @copyright Copyright (C) 2004-2007 soeren - All rights reserved.
@@ -352,16 +352,14 @@ class vm_ps_module {
 
 			if ($perm->check( $dir_list[ 'perms' ]) ) {
 
-				// comment out by JK since page existence should not be responsibility of module permission
-				// the code will enable user pages with different name from VM core
-				//~ if ( !file_exists(PAGEPATH.$modulename.".".$pagename.".php") ) { 
-					//~ define( '_VM_PAGE_NOT_FOUND', 1 );
-					//~ $error = $VM_LANG->_('PHPSHOP_PAGE_404_1');
-					//~ $error .= ' '.$VM_LANG->_('PHPSHOP_PAGE_404_2') ;
-					//~ $error .= ' "'.$modulename.".".$pagename.'.php"';
-					//~ $vmLogger->err( $error );
-					//~ return false;
-				//~ }
+				if ( !file_exists(PAGEPATH.$modulename.".".$pagename.".php") ) {
+					define( '_VM_PAGE_NOT_FOUND', 1 );
+					$error = $VM_LANG->_('PHPSHOP_PAGE_404_1');
+					$error .= ' '.$VM_LANG->_('PHPSHOP_PAGE_404_2') ;
+					$error .= ' "'.$modulename.".".$pagename.'.php"';
+					$vmLogger->err( $error );
+					return false;
+				}
 				return true;
 			}
 			else {

@@ -43,8 +43,8 @@ switch($display_type) {
 	case "none" :
 	default:
 		$html .= '<input type="text" class="inputboxquantity" size="4" id="quantity'.$prod_id.'" name="quantity[]" value="'.$quantity.'" />
-		<input type="button" class="quantity_box_button quantity_box_button_up" onclick="var qty_el = this.parentNode.elements[\'quantity[]\']; var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" />
-		<input type="button" class="quantity_box_button quantity_box_button_down" onclick="var qty_el = this.parentNode.elements[\'quantity[]\']; var qty = qty_el.value; if( !isNaN( qty ) && qty > 0 ) qty_el.value--;return false;" />
+		<input type="button" class="quantity_box_button quantity_box_button_up" onclick="var qty_el = document.getElementById(\'quantity'.$prod_id.'\'); var qty = qty_el.value; if( !isNaN( qty )) qty_el.value++;return false;" />
+		<input type="button" class="quantity_box_button quantity_box_button_down" onclick="var qty_el = document.getElementById(\'quantity'.$prod_id.'\'); var qty = qty_el.value; if( !isNaN( qty ) &amp;&amp; qty > 0 ) qty_el.value--;return false;" />
 		';
 		break;
 }

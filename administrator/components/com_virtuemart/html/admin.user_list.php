@@ -2,10 +2,10 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' ); 
 /**
 *
-* @version $Id: admin.user_list.php 2933 2011-04-02 11:34:25Z zanardi $
+* @version $Id: admin.user_list.php 1095 2007-12-19 20:19:16Z soeren_nb $
 * @package VirtueMart
 * @subpackage html
-* @copyright Copyright (C) 2004-2011 Virtuemart Development Team - All rights reserved.
+* @copyright Copyright (C) 2004-2007 soeren - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -39,6 +39,7 @@ if ( !empty($keyword) ) {
 $q .= "(ui.address_type='BT' OR ui.address_type IS NULL) ";
 $q .= "AND gid <= ".$my->gid;
 $q .= " ORDER BY username ";
+$list .= $q . " LIMIT $limitstart, " . $limit;
 $count .= $q;   
 
 $db->query($count);
@@ -47,7 +48,6 @@ $num_rows = $db->f("num_rows");
 
 // Create the Page Navigation
 $pageNav = new vmPageNav( $num_rows, $limitstart, $limit );
-$limitstart = $pageNav->limitstart;
 
 // Create the List Object with page navigation
 $listObj = new listFactory( $pageNav );
@@ -69,7 +69,6 @@ $columns = Array(  "#" => 'width="20"',
 				);
 $listObj->writeTableHeader( $columns );
 
-$list .= $q . " LIMIT $limitstart, " . $limit;
 $db->query($list);
 $dbs = new ps_DB;
 $i = 0;

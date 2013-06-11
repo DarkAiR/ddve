@@ -2,10 +2,10 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id: version.php 3520 2011-06-19 10:23:55Z zanardi $
+* @version $Id: version.php 2861 2011-03-19 12:14:39Z zanardi $
 * @package VirtueMart
 * @subpackage core
-* @copyright Copyright (C) 2004-2011 VirtueMart Development Team - All rights reserved.
+* @copyright Copyright (C) 2004-2009 soeren - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -30,19 +30,19 @@ class vmVersion {
 	/** @var string Product */
 	var $PRODUCT = 'VirtueMart';
 	/** @var int Release Number */
-	var $RELEASE = '1.1.9';
+	var $RELEASE = '1.1.8';
 	/** @var string Development Status */
 	var $DEV_STATUS = 'stable';
 	/** @var string Codename */
-	var $CODENAME = 'Our last album';
+	var $CODENAME = 'Little brother';
 	/** @var string Date */
-	var $RELDATE = '19/06/2011';
+	var $RELDATE = '19/03/2011';
 	/** @var string Time */
-	var $RELTIME = '10:14';
+	var $RELTIME = '12:11';
 	/** @var string Timezone */
 	var $RELTZ = 'GMT';
 	/** @var string Revision */
-	var $REVISION = '$Revision: 3520 $';
+	var $REVISION = '$Revision: 2861 $';
 	/** @var string Copyright Text */
 	var $COPYRIGHT = 'Copyright (C) 2005-2011 VirtueMart Development Team - All rights reserved.'; 
 	/** @var string URL */

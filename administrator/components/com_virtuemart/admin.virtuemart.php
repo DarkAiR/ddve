@@ -2,7 +2,7 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id: admin.virtuemart.php 3520 2011-06-19 10:23:55Z zanardi $
+* @version $Id: admin.virtuemart.php 2285 2010-02-01 10:57:18Z soeren_nb $
 * @package VirtueMart
 * @subpackage core
 * @copyright Copyright (C) 2004-2008 soeren - All rights reserved.
@@ -138,21 +138,8 @@ if( $only_page != 1 && $vmLayout == 'extended') {
 		return;
 	}
 	
-	// added mod by JK to support user pages
-	$user_path=VM_THEMEPATH.'user_pages/';
-	if(file_exists($user_path.$modulename.".".$pagename.".php")) {
-		if( $only_page ) {
-			if( @$_REQUEST['format'] == 'raw' ) while( @ob_end_clean());
-			if( $func ) echo vmCommonHTML::getSuccessIndicator( $ok, $vmDisplayLogger );
-
-			include( $user_path.$modulename.".".$pagename.".php" );
-			if( @$_REQUEST['format'] == 'raw' ) {
-				$vm_mainframe->close(true);
-			}
-		} else {
-			include( $user_path.$modulename.".".$pagename.".php" );
-		}
-	} elseif(file_exists(PAGEPATH.$modulename.".".$pagename.".php")) {
+	if(file_exists(PAGEPATH.$modulename.".".$pagename.".php")) {
+		
 		if( $only_page ) {
 			if( @$_REQUEST['format'] == 'raw' ) while( @ob_end_clean());
 			if( $func ) echo vmCommonHTML::getSuccessIndicator( $ok, $vmDisplayLogger );
