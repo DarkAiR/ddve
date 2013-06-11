@@ -2,10 +2,10 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id: ps_cart.php 2286 2010-02-01 15:28:00Z soeren_nb $
+* @version $Id: ps_cart.php 3255 2011-05-15 18:16:19Z zanardi $
 * @package VirtueMart
 * @subpackage classes
-* @copyright Copyright (C) 2004-2010 soeren - All rights reserved.
+* @copyright Copyright (C) 2004-2011 VirtueMart Development Team - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -93,14 +93,7 @@ class vm_ps_cart {
  	* @author pablo
  	* @param array $d
  	*/
-    function add(&$d) {
-        return $this->addsub( $d, false );
-    }
-    function sub(&$d) {
-        return $this->addsub( $d, true );
-    }
-
-	function addsub(&$d, $isSub) {
+	function add(&$d) {
 		global $sess, $VM_LANG, $cart, $vmLogger,$func;
 		
 		$d = $GLOBALS['vmInputFilter']->process( $d );
@@ -159,14 +152,11 @@ class vm_ps_cart {
 			}
 			
 			// Check for negative quantity
-            if( !$isSub )
-            {
-                if ($quantity < 0) {
-                    vmRequest::setVar('product_id', $product_id );
-                    $vmLogger->warning( $VM_LANG->_('PHPSHOP_CART_ERROR_NO_NEGATIVE',false) );
-                    return False;
-                }
-            }
+			if ($quantity < 0) {
+				vmRequest::setVar('product_id', $product_id );
+				$vmLogger->warning( $VM_LANG->_('PHPSHOP_CART_ERROR_NO_NEGATIVE',false) );
+				return False;
+			}
             
 			if ( !is_numeric($quantity) ) {
 				vmRequest::setVar('product_id', $product_id );
@@ -238,19 +228,16 @@ class vm_ps_cart {
 				}
 			}
 			list($min,$max) = ps_product::product_order_levels($product_id);
-            if( !$isSub )
-            {
-                if ($min!= 0 && $quantity !=0 && $quantity < $min) {
-                    eval( "\$msg = \"".$VM_LANG->_('VM_CART_MIN_ORDER',false)."\";" );
-                    $vmLogger->warning( $msg );
-                    continue;
-                }
-            }
-            if ($max !=0 && $quantity !=0 && $quantity>$max) {
-                eval( "\$msg = \"".$VM_LANG->_('VM_CART_MAX_ORDER',false)."\";" );
-                $vmLogger->warning( $msg );
-                continue;
-            }
+			If ($min!= 0 && $quantity !=0 && $quantity < $min) {
+				eval( "\$msg = \"".$VM_LANG->_('VM_CART_MIN_ORDER',false)."\";" );
+				$vmLogger->warning( $msg );
+				continue;
+			}
+			if ($max !=0 && $quantity !=0 && $quantity>$max) {
+				eval( "\$msg = \"".$VM_LANG->_('VM_CART_MAX_ORDER',false)."\";" );
+				$vmLogger->warning( $msg );
+				continue;
+			}
             
 			// If we did not update then add the item
 			if ((!$updated) && ($quantity)){
@@ -266,7 +253,7 @@ class vm_ps_cart {
 				$total_quantity += $quantity;
 			}
 			else {
-				list($updated_prod,$deleted_prod) = $this->update( $e, $isSub );
+				list($updated_prod,$deleted_prod) = $this->update( $e );
 				$total_updated += $updated_prod;
 				$total_deleted += $deleted_prod;
 			}
@@ -295,7 +282,7 @@ class vm_ps_cart {
 		}
         else if (@$request_stock ) {
             $vmLogger->tip( $VM_LANG->_('PHPSHOP_CART_GOTO_WAITING_LIST',false) );
-		} elseif( $total_quantity == 0  &&  !$isSub ) {
+		} elseif( $total_quantity == 0 ) {
 			vmRequest::setVar('product_id', $product_id );
 			$GLOBALS['last_page'] = 'shop.product_details';
 			$vmLogger->warning( $VM_LANG->_('PHPSHOP_CART_ERROR_NO_VALID_QUANTITY',false) );
@@ -334,7 +321,7 @@ class vm_ps_cart {
 	 * @param array $d
 	 * @return boolean result of the update
 	 */
-	function update(&$d, $isSub=false) {
+	function update(&$d) {
 		global $VM_LANG, $vmLogger, $func, $page;
 		
 		include_class("product");
@@ -344,13 +331,10 @@ class vm_ps_cart {
 		$_SESSION['last_page'] = "shop.cart";
 
 		// Check for negative quantity
-        if( !$isSub )
-        {
-            if ($quantity < 0) {
-                $vmLogger->warning( $VM_LANG->_('PHPSHOP_CART_ERROR_NO_NEGATIVE',false) );
-                return False;
-            }
-        }
+		if ($quantity < 0) {
+			$vmLogger->warning( $VM_LANG->_('PHPSHOP_CART_ERROR_NO_NEGATIVE',false) );
+			return False;
+		}
 
 		if (!is_numeric($quantity)) {
 			$vmLogger->warning( $VM_LANG->_('PHPSHOP_CART_ERROR_NO_VALID_QUANTITY',false) );
@@ -372,20 +356,16 @@ class vm_ps_cart {
 				&&
 				($_SESSION['cart'][$i]["description"] == $d["description"] )
 				) {
-					if( strtolower( $func ) == 'cartadd'  ||  strtolower( $func ) == 'cartsub' ) {
+					if( strtolower( $func ) == 'cartadd' ) {
 						$quantity += $_SESSION['cart'][$i]["quantity"];
 					}
-
 					// Get min and max order levels
 					list($min,$max) = ps_product::product_order_levels($product_id);
-                    if( !$isSub )
-                    {
-                        if ($min!= 0 && $quantity < $min) {
-                            eval( "\$msg = \"".$VM_LANG->_('VM_CART_MIN_ORDER',false)."\";" );
-                            $vmLogger->warning( $msg );
-                            return false;
-                        }
-                    }
+					If ($min!= 0 && $quantity < $min) {
+						eval( "\$msg = \"".$VM_LANG->_('VM_CART_MIN_ORDER',false)."\";" );
+						$vmLogger->warning( $msg );
+						return false;
+					}
 					if ($max !=0 && $quantity>$max) {
 						eval( "\$msg = \"".$VM_LANG->_('VM_CART_MAX_ORDER',false)."\";" );
 						$vmLogger->warning( $msg );
@@ -617,7 +597,6 @@ class vm_ps_cart {
 		global $db;
 		if( $GLOBALS['auth']['user_id'] > 0 ) {
 			$cart_contents = serialize( $_SESSION['cart'] );
-			//$cart_contents = mysql_real_escape_string( $cart_contents );
 			$q = "REPLACE INTO `#__{vm}_cart` (`user_id`, `cart_content` ) VALUES ( ".$GLOBALS['auth']['user_id'].", '$cart_contents' )";
 			$db->query( $q );
 		}

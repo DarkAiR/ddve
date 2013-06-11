@@ -1,7 +1,7 @@
 #############################################
 # SQL update script for upgrading 
 # from VirtueMart 1.0.x to VirtueMart 1.1.0
-# $Id: UPDATE-SCRIPT_VM_1.0.x_to_1.1.0.sql 1596 2008-12-24 16:18:47Z thepisu $
+# $Id: UPDATE-SCRIPT_VM_1.0.x_to_1.1.0.sql 3451 2011-06-07 14:55:24Z zanardi $
 #############################################
  
 
@@ -29,7 +29,7 @@ CREATE TABLE `jos_vm_userfield` (
   `vendor_id` int(11) default NULL,
   `params` mediumtext,
   PRIMARY KEY  (`fieldid`)
-) TYPE=MyISAM AUTO_INCREMENT=30 COMMENT='Holds the fields for the user information';
+) ENGINE=MyISAM AUTO_INCREMENT=30 COMMENT='Holds the fields for the user information';
 
 ## 
 ## Dumping data for table `jos_vm_userfield`
@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_userfield_values` (
   `ordering` int(11) NOT NULL default '0',
   `sys` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`fieldvalueid`)
-) TYPE=MyISAM COMMENT='Holds the different values for dropdown and radio lists';
+) ENGINE=MyISAM COMMENT='Holds the different values for dropdown and radio lists';
 
 INSERT INTO `jos_vm_userfield_values` VALUES (1, 25, 'PHPSHOP_ACCOUNT_LBL_ACCOUNT_TYPE_BUSINESSCHECKING', 'Checking', 1, 1);
 INSERT INTO `jos_vm_userfield_values` VALUES (2, 25, 'PHPSHOP_ACCOUNT_LBL_ACCOUNT_TYPE_CHECKING', 'Business Checking', 2, 1);
@@ -121,7 +121,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_shipping_label` (
 	`have_signature` tinyint(1) NOT NULL default '0',
 	`signature_image` blob default NULL,
 	PRIMARY KEY (`order_id`)
-) TYPE=MyISAM COMMENT='Stores information used in generating shipping labels';
+) ENGINE=MyISAM COMMENT='Stores information used in generating shipping labels';
 
 
 
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_export` (
   `export_config` text NOT NULL,
   `iscore` tinyint(3) NOT NULL default '0',
   PRIMARY KEY  (`export_id`)
-) TYPE=MyISAM COMMENT='Export Modules';
+) ENGINE=MyISAM COMMENT='Export Modules';
 
 
 # NEW Countries
@@ -163,7 +163,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_state` (
   UNIQUE KEY `state_3_code` (`country_id`,`state_3_code`),
   UNIQUE KEY `state_2_code` (`country_id`,`state_2_code`),
   KEY `idx_country_id` (`country_id`)
-) TYPE=MyISAM COMMENT='States that are assigned to a country';
+) ENGINE=MyISAM COMMENT='States that are assigned to a country';
 
 ## Dumping data for table `jos_vm_state`
 INSERT INTO `jos_vm_state` VALUES (1, 223, 'Alabama', 'ALA', 'AL'),
@@ -662,7 +662,7 @@ CREATE TABLE `jos_vm_auth_group` (
 	  `group_name` varchar(128) default NULL,
 	  `group_level` int(11) default NULL,
 	  PRIMARY KEY  (`group_id`)
-	) TYPE=MyISAM AUTO_INCREMENT=5 COMMENT='Holds all the user groups' ;
+	) ENGINE=MyISAM AUTO_INCREMENT=5 COMMENT='Holds all the user groups' ;
 
 # these are the default user groups
 INSERT INTO `jos_vm_auth_group` (`group_id`, `group_name`, `group_level`) VALUES (1, 'admin', 0),(2, 'storeadmin', 250),(3, 'shopper', 500),(4, 'demo', 750);
@@ -671,7 +671,7 @@ CREATE TABLE `jos_vm_auth_user_group` (
 	  `user_id` int(11) NOT NULL default '0',
 	  `group_id` int(11) default NULL,
 	  PRIMARY KEY  (`user_id`)
-	) TYPE=MyISAM COMMENT='Maps the user to user groups';
+	) ENGINE=MyISAM COMMENT='Maps the user to user groups';
 	
 INSERT INTO `jos_vm_auth_user_group` 
 				SELECT user_id, 

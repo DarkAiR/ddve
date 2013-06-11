@@ -5,7 +5,7 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
 * @version $Id: ps_checkout.php 1830 2009-06-26 20:52:15Z Aravot $
 * @package VirtueMart
 * @subpackage classes
-* @copyright Copyright (C) 2004-2009 soeren - All rights reserved.
+* @copyright Copyright (C) 2004-2011 VirtueMart Team - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -824,7 +824,8 @@ class vm_ps_checkout {
 			$first_payment_method_id = $db_cc->f("payment_method_id");
 			$count += $db_cc->num_rows();
 		    $cc_payments=true;
-		} else {
+		}
+		else {
 		    $cc_payments=false;
 		}
 		
@@ -843,7 +844,8 @@ class vm_ps_checkout {
 		    $first_payment_method_id = $db_nocc->f("payment_method_id");
 		    $count += $db_nocc->num_rows();
 		    $db_nocc->reset();
-		} else {
+		}
+		else {
 		    $nocc_payments=false;
 		}
 		
@@ -866,12 +868,13 @@ class vm_ps_checkout {
 		
         // Redirect to the last step when there's only one payment method
 		if( $VM_CHECKOUT_MODULES['CHECK_OUT_GET_PAYMENT_METHOD']['order'] != $VM_CHECKOUT_MODULES['CHECK_OUT_GET_FINAL_CONFIRMATION']['order'] ) {
-			if ($count <= 1 && $cc_payments==false && $pp_payment==false) {
-				vmRedirect($sess->url(SECUREURL.basename($_SERVER['PHP_SELF'])."?page=checkout.index&payment_method_id=$first_payment_method_id&ship_to_info_id=$ship_to_info_id&shipping_rate_id=".urlencode($shipping_rate_id)."&checkout_stage=".$VM_CHECKOUT_MODULES['CHECK_OUT_GET_FINAL_CONFIRMATION']['order'], false, false ),"");
-			}
-			elseif( isset($order_total) && $order_total <= 0.00 ) {
+			// order of the following two redirections swapped by JK to ensure there is no payment method where there is no order_total 
+			if( isset($order_total) && $order_total <= 0.00 ) {
 				// In case the order total is less than or equal zero, we don't need a payment method
 				vmRedirect($sess->url(SECUREURL.basename($_SERVER['PHP_SELF'])."?page=checkout.index&ship_to_info_id=$ship_to_info_id&shipping_rate_id=".urlencode($shipping_rate_id)."&checkout_stage=".$VM_CHECKOUT_MODULES['CHECK_OUT_GET_FINAL_CONFIRMATION']['order'], false, false),"");
+			}
+			elseif ($count <= 1 && $cc_payments==false) {
+				vmRedirect($sess->url(SECUREURL.basename($_SERVER['PHP_SELF'])."?page=checkout.index&payment_method_id=$first_payment_method_id&ship_to_info_id=$ship_to_info_id&shipping_rate_id=".urlencode($shipping_rate_id)."&checkout_stage=".$VM_CHECKOUT_MODULES['CHECK_OUT_GET_FINAL_CONFIRMATION']['order'], false, false ),"");
 			}
 		}
 		$theme = new $GLOBALS['VM_THEMECLASS']();
@@ -1209,8 +1212,12 @@ Order Total: '.$order_total.'
 		// Payment Processors return false on any error
 		// Only completed payments return true!
 		$update_order = false;
-		if (isset($_PAYMENT)) {
-		    if( $enable_processor == "Y" || stristr($_PAYMENT->payment_code, '_API' ) !== false ) {
+		if( $order_total == 0.00 ) { // code moved out of $_PAYMENT check as no payment will be needed when $order_total=0.0
+					// If the Order Total is zero, we can confirm the order to automatically enable the download
+					$d['order_status'] = ENABLE_DOWNLOAD_STATUS;
+					$update_order = true;
+		} elseif (isset($_PAYMENT)) {
+		  if( $enable_processor == "Y" || stristr($_PAYMENT->payment_code, '_API' ) !== false ) {
 				if( $d['new_order_status'] != 'P' ) {
 					$d['order_status'] = $d['new_order_status'];
 					$update_order = true;
@@ -1218,10 +1225,6 @@ Order Total: '.$order_total.'
 					$d['order_status'] = constant($_PAYMENT->payment_code.'_VERIFIED_STATUS');
 					$update_order = true;
 				}
-			} elseif( $order_total == 0.00 ) {
-				// If the Order Total is zero, we can confirm the order to automatically enable the download
-				$d['order_status'] = ENABLE_DOWNLOAD_STATUS;
-				$update_order = true;
 			}
 		}
 		if ( $update_order ) {
@@ -2027,7 +2030,7 @@ Order Total: '.$order_total.'
 				$sub_total += ($dboi->f("product_quantity") * $dboi->f("product_final_price"));
 				$shopper_message .= $CURRENCY_DISPLAY->getFullValue($dboi->f("product_final_price"), '', $db->f('order_currency'));
 			} else {
-				$sub_total += ($dboi->f("product_quantity") * $dboi->f("product_final_price"));
+				$sub_total += ($dboi->f("product_quantity") * $dboi->f("product_item_price"));
 				$shopper_message .= $CURRENCY_DISPLAY->getFullValue($dboi->f("product_item_price"), '', $db->f('order_currency'));
 			}
 		}
@@ -2388,7 +2391,7 @@ Order Total: '.$order_total.'
 			$db->next_record();
 			$ship_country = $db->f("country");
 
-			if (! array_key_exists ('country', $auth) || empty( $ship_country ) ) {
+			if ( !array_key_exists ('country', $auth) && empty( $ship_country ) ) {
 				$vmLogger->debug ('shopper\'s country is not known; defaulting to vendor-based tax');
 				return true;
 			}

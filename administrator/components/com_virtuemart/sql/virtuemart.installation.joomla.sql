@@ -1,6 +1,4 @@
-# $Id:virtuemart.installation.joomla.sql 431 2006-10-17 21:55:46 +0200 (Di, 17 Okt 2006) soeren_nb $
-#
-# To undo the changes done by this script, run uninstall.phpshop.sql
+# $Id:virtuemart.installation.joomla.sql 431 2011-05-20 18:21:00Z zanardi $
 #
 ############################################################
 # DATABASE STRUCTURE AND CORE DATA FOR VirtueMart
@@ -14,7 +12,7 @@ CREATE TABLE `jos_vm_auth_group` (
 	  `group_name` varchar(128) default NULL,
 	  `group_level` int(11) default NULL,
 	  PRIMARY KEY  (`group_id`)
-	) TYPE=MyISAM AUTO_INCREMENT=5 COMMENT='Holds all the user groups' ;
+	) ENGINE=MyISAM AUTO_INCREMENT=5 COMMENT='Holds all the user groups' ;
 
 # these are the default user groups
 INSERT INTO `jos_vm_auth_group` (`group_id`, `group_name`, `group_level`) VALUES (1, 'admin', 0),(2, 'storeadmin', 250),(3, 'shopper', 500),(4, 'demo', 750);
@@ -23,7 +21,7 @@ CREATE TABLE `jos_vm_auth_user_group` (
 	  `user_id` int(11) NOT NULL default '0',
 	  `group_id` int(11) default NULL,
 	  PRIMARY KEY  (`user_id`)
-	) TYPE=MyISAM COMMENT='Maps the user to user groups';
+	) ENGINE=MyISAM COMMENT='Maps the user to user groups';
 
 ## 
 ## Table structure for table `jos_vm_auth_user_vendor`
@@ -34,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_auth_user_vendor` (
   `vendor_id` int(11) default NULL,
   KEY `idx_auth_user_vendor_user_id` (`user_id`),
   KEY `idx_auth_user_vendor_vendor_id` (`vendor_id`)
-) TYPE=MyISAM COMMENT='Maps a user to a vendor';
+) ENGINE=MyISAM COMMENT='Maps a user to a vendor';
 
 ## 
 ## Dumping data for table `jos_vm_auth_user_vendor`
@@ -70,7 +68,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_category` (
   PRIMARY KEY  (`category_id`),
   KEY `idx_category_vendor_id` (`vendor_id`),
   KEY `idx_category_name` (`category_name`)
-) TYPE=MyISAM COMMENT='Product Categories are stored here';
+) ENGINE=MyISAM COMMENT='Product Categories are stored here';
 
 ## 
 ## Dumping data for table `jos_vm_category`
@@ -90,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_category_xref` (
   PRIMARY KEY (`category_child_id`),
   KEY `category_xref_category_parent_id` (`category_parent_id`),
   KEY `idx_category_xref_category_list` (`category_list`)
-) TYPE=MyISAM COMMENT='Category child-parent relation list';
+) ENGINE=MyISAM COMMENT='Category child-parent relation list';
 
 ## 
 ## Dumping data for table `jos_vm_category_xref`
@@ -111,7 +109,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_country` (
   `country_2_code` char(2) default NULL,
   PRIMARY KEY  (`country_id`),
   KEY `idx_country_name` (`country_name`)
-) TYPE=MyISAM COMMENT='Country records';
+) ENGINE=MyISAM COMMENT='Country records';
 
 ## 
 ## Dumping data for table `jos_vm_country`
@@ -376,7 +374,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_coupons` (
   `coupon_type` enum('gift','permanent') NOT NULL default 'gift',
   `coupon_value` decimal(12,2) NOT NULL default '0.00',
   PRIMARY KEY  (`coupon_id`)
-) TYPE=MyISAM COMMENT='Used to store coupon codes';
+) ENGINE=MyISAM COMMENT='Used to store coupon codes';
 
 ## 
 ## Dumping data for table `jos_vm_coupons`
@@ -395,7 +393,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_creditcard` (
   `creditcard_name` varchar(70) NOT NULL default '',
   `creditcard_code` varchar(30) NOT NULL default '',
   PRIMARY KEY  (`creditcard_id`)
-) TYPE=MyISAM COMMENT='Used to store credit card types';
+) ENGINE=MyISAM COMMENT='Used to store credit card types';
 
 ## 
 ## Dumping data for table `jos_vm_creditcard`
@@ -422,7 +420,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_csv` (
   `field_ordering` int(3) NOT NULL default '0',
   `field_required` char(1) default 'N',
   PRIMARY KEY  (`field_id`)
-) TYPE=MyISAM COMMENT='Holds all fields which are used on CVS Ex-/Import';
+) ENGINE=MyISAM COMMENT='Holds all fields which are used on CVS Ex-/Import';
 
 ## 
 ## Dumping data for table `jos_vm_csv`
@@ -466,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_currency` (
   `currency_code` char(3) default NULL,
   PRIMARY KEY  (`currency_id`),
   KEY `idx_currency_name` (`currency_name`)
-) TYPE=MyISAM COMMENT='Used to store currencies';
+) ENGINE=MyISAM COMMENT='Used to store currencies';
 
 ## 
 ## Dumping data for table `jos_vm_currency`
@@ -632,7 +630,7 @@ CREATE TABLE `jos_vm_export` (
   `export_config` text NOT NULL,
   `iscore` tinyint(3) NOT NULL default '0',
   PRIMARY KEY  (`export_id`)
-) TYPE=MyISAM COMMENT='Export Modules';
+) ENGINE=MyISAM COMMENT='Export Modules';
 
 ## --------------------------------------------------------
 
@@ -652,7 +650,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_function` (
   PRIMARY KEY  (`function_id`),
   KEY `idx_function_module_id` (`module_id`),
   KEY `idx_function_name` (`function_name`)
-) TYPE=MyISAM COMMENT='Used to map a function alias to a ''real'' class::function';
+) ENGINE=MyISAM COMMENT='Used to map a function alias to a ''real'' class::function';
 
 ## 
 ## Dumping data for table `jos_vm_function`
@@ -815,7 +813,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_manufacturer` (
   `mf_category_id` int(11) default NULL,
   `mf_url` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`manufacturer_id`)
-) TYPE=MyISAM COMMENT='Manufacturers are those who create products';
+) ENGINE=MyISAM COMMENT='Manufacturers are those who create products';
 
 ## 
 ## Dumping data for table `jos_vm_manufacturer`
@@ -834,7 +832,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_manufacturer_category` (
   `mf_category_desc` text,
   PRIMARY KEY  (`mf_category_id`),
   KEY `idx_manufacturer_category_category_name` (`mf_category_name`)
-) TYPE=MyISAM COMMENT='Manufacturers are assigned to these categories';
+) ENGINE=MyISAM COMMENT='Manufacturers are assigned to these categories';
 
 ## 
 ## Dumping data for table `jos_vm_manufacturer_category`
@@ -857,7 +855,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_module` (
   PRIMARY KEY  (`module_id`),
   KEY `idx_module_name` (`module_name`),
   KEY `idx_module_list_order` (`list_order`)
-) TYPE=MyISAM COMMENT='VirtueMart Core Modules, not: Joomla modules';
+) ENGINE=MyISAM COMMENT='VirtueMart Core Modules, not: Joomla modules';
 
 ## 
 ## Dumping data for table `jos_vm_module`
@@ -895,7 +893,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_order_history` (
   `customer_notified` int(1) default '0',
   `comments` text,
   PRIMARY KEY  (`order_status_history_id`)
-) TYPE=MyISAM COMMENT='Stores all actions and changes that occur to an order';
+) ENGINE=MyISAM COMMENT='Stores all actions and changes that occur to an order';
 
 ## 
 ## Dumping data for table `jos_vm_order_history`
@@ -928,7 +926,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_order_item` (
   KEY `idx_order_item_order_id` (`order_id`),
   KEY `idx_order_item_user_info_id` (`user_info_id`),
   KEY `idx_order_item_vendor_id` (`vendor_id`)
-) TYPE=MyISAM COMMENT='Stores all items (products) which are part of an order';
+) ENGINE=MyISAM COMMENT='Stores all items (products) which are part of an order';
 
 ## 
 ## Dumping data for table `jos_vm_order_item`
@@ -952,7 +950,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_order_payment` (
   `order_payment_trans_id` text NOT NULL,
   KEY `idx_order_payment_order_id` (`order_id`),
   KEY `idx_order_payment_method_id` (`payment_method_id`)
-) TYPE=MyISAM COMMENT='The payment method that was chosen for a specific order';
+) ENGINE=MyISAM COMMENT='The payment method that was chosen for a specific order';
 
 ## 
 ## Dumping data for table `jos_vm_order_payment`
@@ -975,7 +973,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_order_status` (
   PRIMARY KEY  (`order_status_id`),
   KEY `idx_order_status_list_order` (`list_order`),
   KEY `idx_order_status_vendor_id` (`vendor_id`)
-) TYPE=MyISAM COMMENT='All available order statuses';
+) ENGINE=MyISAM COMMENT='All available order statuses';
 
 ## 
 ## Dumping data for table `jos_vm_order_status`
@@ -1027,7 +1025,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_order_user_info` (
   `bank_account_type` enum('Checking','Business Checking','Savings') NOT NULL default 'Checking',
   PRIMARY KEY  (`order_info_id`),
   KEY `idx_order_info_order_id` (`order_id`)
-) TYPE=MyISAM COMMENT='Stores the BillTo and ShipTo Information at order time';
+) ENGINE=MyISAM COMMENT='Stores the BillTo and ShipTo Information at order time';
 
 ## 
 ## Dumping data for table `jos_vm_order_user_info`
@@ -1068,7 +1066,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_orders` (
   KEY `idx_orders_order_number` (`order_number`),
   KEY `idx_orders_user_info_id` (`user_info_id`),
   KEY `idx_orders_ship_method_id` (`ship_method_id`)
-) TYPE=MyISAM COMMENT='Used to store all orders';
+) ENGINE=MyISAM COMMENT='Used to store all orders';
 
 ## 
 ## Dumping data for table `jos_vm_orders`
@@ -1104,7 +1102,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_payment_method` (
   KEY `idx_payment_method_name` (`payment_method_name`),
   KEY `idx_payment_method_list_order` (`list_order`),
   KEY `idx_payment_method_shopper_group_id` (`shopper_group_id`)
-) TYPE=MyISAM COMMENT='The payment methods of your store';
+) ENGINE=MyISAM COMMENT='The payment methods of your store';
 
 ## 
 ## Dumping data for table `jos_vm_payment_method`
@@ -1179,7 +1177,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product` (
   KEY `idx_product_sku` (`product_sku`),
   KEY `idx_product_ship_code_id` (`ship_code_id`),
   KEY `idx_product_name` (`product_name`)
-) TYPE=MyISAM COMMENT='All products are stored here.';
+) ENGINE=MyISAM COMMENT='All products are stored here.';
 
 ## 
 ## Dumping data for table `jos_vm_product`
@@ -1200,7 +1198,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_attribute` (
   PRIMARY KEY  (`attribute_id`),
   KEY `idx_product_attribute_product_id` (`product_id`),
   KEY `idx_product_attribute_name` (`attribute_name`)
-) TYPE=MyISAM COMMENT='Stores attributes + their specific values for Child Products';
+) ENGINE=MyISAM COMMENT='Stores attributes + their specific values for Child Products';
 
 ## 
 ## Dumping data for table `jos_vm_product_attribute`
@@ -1220,7 +1218,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_attribute_sku` (
   KEY `idx_product_attribute_sku_product_id` (`product_id`),
   KEY `idx_product_attribute_sku_attribute_name` (`attribute_name`),
   KEY `idx_product_attribute_list` (`attribute_list`)
-) TYPE=MyISAM COMMENT='Attributes for a Parent Product used by its Child Products';
+) ENGINE=MyISAM COMMENT='Attributes for a Parent Product used by its Child Products';
 
 ## 
 ## Dumping data for table `jos_vm_product_attribute_sku`
@@ -1240,7 +1238,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_category_xref` (
   KEY `idx_product_category_xref_category_id` (`category_id`),
   KEY `idx_product_category_xref_product_id` (`product_id`),
   KEY `idx_product_category_xref_product_list` (`product_list`)
-) TYPE=MyISAM COMMENT='Maps Products to Categories';
+) ENGINE=MyISAM COMMENT='Maps Products to Categories';
 
 ## 
 ## Dumping data for table `jos_vm_product_category_xref`
@@ -1260,7 +1258,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_discount` (
   `start_date` int(11) NOT NULL default '0',
   `end_date` int(11) NOT NULL default '0',
   PRIMARY KEY  (`discount_id`)
-) TYPE=MyISAM COMMENT='Discounts that can be assigned to products';
+) ENGINE=MyISAM COMMENT='Discounts that can be assigned to products';
 
 ## 
 ## Dumping data for table `jos_vm_product_discount`
@@ -1282,7 +1280,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_download` (
   `download_id` varchar(32) NOT NULL default '',
   `file_name` varchar(255) NOT NULL default '',
   PRIMARY KEY  (`download_id`)
-) TYPE=MyISAM COMMENT='Active downloads for selling downloadable goods';
+) ENGINE=MyISAM COMMENT='Active downloads for selling downloadable goods';
 
 ## 
 ## Dumping data for table `jos_vm_product_download`
@@ -1311,7 +1309,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_files` (
   `file_image_thumb_height` int(11) NOT NULL default '50',
   `file_image_thumb_width` int(11) NOT NULL default '0',
   PRIMARY KEY  (`file_id`)
-) TYPE=MyISAM COMMENT='Additional Images and Files which are assigned to products';
+) ENGINE=MyISAM COMMENT='Additional Images and Files which are assigned to products';
 
 ## 
 ## Dumping data for table `jos_vm_product_files`
@@ -1329,7 +1327,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_mf_xref` (
   `manufacturer_id` int(11) default NULL,
   KEY `idx_product_mf_xref_product_id` (`product_id`),
   KEY `idx_product_mf_xref_manufacturer_id` (`manufacturer_id`)
-) TYPE=MyISAM COMMENT='Maps a product to a manufacturer';
+) ENGINE=MyISAM COMMENT='Maps a product to a manufacturer';
 
 ## 
 ## Dumping data for table `jos_vm_product_mf_xref`
@@ -1357,7 +1355,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_price` (
   PRIMARY KEY  (`product_price_id`),
   KEY `idx_product_price_product_id` (`product_id`),
   KEY `idx_product_price_shopper_group_id` (`shopper_group_id`)
-) TYPE=MyISAM COMMENT='Holds price records for a product';
+) ENGINE=MyISAM COMMENT='Holds price records for a product';
 
 ## 
 ## Dumping data for table `jos_vm_product_price`
@@ -1375,7 +1373,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_product_type_xref` (
   `product_type_id` int(11) NOT NULL default '0',
   KEY `idx_product_product_type_xref_product_id` (`product_id`),
   KEY `idx_product_product_type_xref_product_type_id` (`product_type_id`)
-) TYPE=MyISAM COMMENT='Maps products to a product type';
+) ENGINE=MyISAM COMMENT='Maps products to a product type';
 
 ## 
 ## Dumping data for table `jos_vm_product_product_type_xref`
@@ -1392,7 +1390,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_relations` (
   `product_id` int(11) NOT NULL default '0',
   `related_products` text,
   PRIMARY KEY  (`product_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## 
 ## Dumping data for table `jos_vm_product_relations`
@@ -1417,7 +1415,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_reviews` (
   `published` char(1) NOT NULL default 'Y',
   PRIMARY KEY  (`review_id`),
   UNIQUE KEY `product_id` (`product_id`,`userid`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## 
 ## Dumping data for table `jos_vm_product_reviews`
@@ -1439,7 +1437,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_type` (
   `product_type_flypage` varchar(255) default NULL,
   `product_type_list_order` int(11) default NULL,
   PRIMARY KEY  (`product_type_id`)
-) TYPE=MyISAM;
+) ENGINE=MyISAM;
 
 ## 
 ## Dumping data for table `jos_vm_product_type`
@@ -1466,7 +1464,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_type_parameter` (
   PRIMARY KEY  (`product_type_id`,`parameter_name`),
   KEY `idx_product_type_parameter_product_type_id` (`product_type_id`),
   KEY `idx_product_type_parameter_parameter_order` (`parameter_list_order`)
-) TYPE=MyISAM COMMENT='Parameters which are part of a product type';
+) ENGINE=MyISAM COMMENT='Parameters which are part of a product type';
 
 ## 
 ## Dumping data for table `jos_vm_product_type_parameter`
@@ -1486,7 +1484,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_product_votes` (
   `rating` tinyint(1) NOT NULL default '0',
   `lastip` varchar(50) NOT NULL default '0',
   PRIMARY KEY ( `product_id` )
-) TYPE=MyISAM COMMENT='Stores all votes for a product';
+) ENGINE=MyISAM COMMENT='Stores all votes for a product';
 
 ## 
 ## Dumping data for table `jos_vm_product_votes`
@@ -1504,7 +1502,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_shipping_carrier` (
   `shipping_carrier_name` char(80) NOT NULL default '',
   `shipping_carrier_list_order` int(11) NOT NULL default '0',
   PRIMARY KEY  (`shipping_carrier_id`)
-) TYPE=MyISAM COMMENT='Shipping Carriers as used by the Standard Shipping Module';
+) ENGINE=MyISAM COMMENT='Shipping Carriers as used by the Standard Shipping Module';
 
 ## 
 ## Dumping data for table `jos_vm_shipping_carrier`
@@ -1530,7 +1528,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_shipping_label` (
 	`have_signature` tinyint(1) NOT NULL default '0',
 	`signature_image` blob default NULL,
 	PRIMARY KEY (`order_id`)
-) TYPE=MyISAM COMMENT='Stores information used in generating shipping labels';
+) ENGINE=MyISAM COMMENT='Stores information used in generating shipping labels';
 
 ## --------------------------------------------------------
 
@@ -1553,7 +1551,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_shipping_rate` (
   `shipping_rate_vat_id` int(11) NOT NULL default '0',
   `shipping_rate_list_order` int(11) NOT NULL default '0',
   PRIMARY KEY  (`shipping_rate_id`)
-) TYPE=MyISAM COMMENT='Shipping Rates, used by the Standard Shipping Module';
+) ENGINE=MyISAM COMMENT='Shipping Rates, used by the Standard Shipping Module';
 
 ## 
 ## Dumping data for table `jos_vm_shipping_rate`
@@ -1577,7 +1575,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_shopper_group` (
   PRIMARY KEY  (`shopper_group_id`),
   KEY `idx_shopper_group_vendor_id` (`vendor_id`),
   KEY `idx_shopper_group_name` (`shopper_group_name`)
-) TYPE=MyISAM COMMENT='Shopper Groups that users can be assigned to';
+) ENGINE=MyISAM COMMENT='Shopper Groups that users can be assigned to';
 
 ## 
 ## Dumping data for table `jos_vm_shopper_group`
@@ -1601,7 +1599,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_shopper_vendor_xref` (
   KEY `idx_shopper_vendor_xref_user_id` (`user_id`),
   KEY `idx_shopper_vendor_xref_vendor_id` (`vendor_id`),
   KEY `idx_shopper_vendor_xref_shopper_group_id` (`shopper_group_id`)
-) TYPE=MyISAM COMMENT='Maps a user to a Shopper Group of a Vendor';
+) ENGINE=MyISAM COMMENT='Maps a user to a Shopper Group of a Vendor';
 
 ## 
 ## Dumping data for table `jos_vm_shopper_vendor_xref`
@@ -1624,7 +1622,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_state` (
   UNIQUE KEY `state_3_code` (`country_id`,`state_3_code`),
   UNIQUE KEY `state_2_code` (`country_id`,`state_2_code`),
   KEY `idx_country_id` (`country_id`)
-) TYPE=MyISAM COMMENT='States that are assigned to a country';
+) ENGINE=MyISAM COMMENT='States that are assigned to a country';
 
 ## 
 ## Dumping data for table `jos_vm_state`
@@ -2097,7 +2095,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_tax_rate` (
   `tax_rate` decimal(10,5) default NULL,
   PRIMARY KEY  (`tax_rate_id`),
   KEY `idx_tax_rate_vendor_id` (`vendor_id`)
-) TYPE=MyISAM COMMENT='The tax rates for your store';
+) ENGINE=MyISAM COMMENT='The tax rates for your store';
 
 ## 
 ## Dumping data for table `jos_vm_tax_rate`
@@ -2147,7 +2145,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_user_info` (
   `bank_account_type` enum('Checking','Business Checking','Savings') NOT NULL default 'Checking',
   PRIMARY KEY  (`user_info_id`),
   KEY `idx_user_info_user_id` (`user_id`)
-) TYPE=MyISAM COMMENT='Customer Information, BT = BillTo and ST = ShipTo';
+) ENGINE=MyISAM COMMENT='Customer Information, BT = BillTo and ST = ShipTo';
 
 CREATE TABLE `jos_vm_userfield` (
   `fieldid` int(11) NOT NULL auto_increment,
@@ -2173,7 +2171,7 @@ CREATE TABLE `jos_vm_userfield` (
   `vendor_id` int(11) default NULL,
   `params` mediumtext,
   PRIMARY KEY  (`fieldid`)
-) TYPE=MyISAM AUTO_INCREMENT=30 COMMENT='Holds the fields for the user information';
+) ENGINE=MyISAM AUTO_INCREMENT=30 COMMENT='Holds the fields for the user information';
 
 ## 
 ## Dumping data for table `jos_vm_userfield`
@@ -2226,7 +2224,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_userfield_values` (
   `ordering` int(11) NOT NULL default '0',
   `sys` tinyint(4) NOT NULL default '0',
   PRIMARY KEY  (`fieldvalueid`)
-) TYPE=MyISAM COMMENT='Holds the different values for dropdown and radio lists';
+) ENGINE=MyISAM COMMENT='Holds the different values for dropdown and radio lists';
 
 INSERT INTO `jos_vm_userfield_values` VALUES (1, 25, 'PHPSHOP_ACCOUNT_LBL_ACCOUNT_TYPE_BUSINESSCHECKING', 'Checking', 1, 1);
 INSERT INTO `jos_vm_userfield_values` VALUES (2, 25, 'PHPSHOP_ACCOUNT_LBL_ACCOUNT_TYPE_CHECKING', 'Business Checking', 2, 1);
@@ -2277,7 +2275,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_vendor` (
   PRIMARY KEY  (`vendor_id`),
   KEY `idx_vendor_name` (`vendor_name`),
   KEY `idx_vendor_category_id` (`vendor_category_id`)
-) TYPE=MyISAM COMMENT='Vendors manage their products in your store';
+) ENGINE=MyISAM COMMENT='Vendors manage their products in your store';
 
 ## 
 ## Dumping data for table `jos_vm_vendor`
@@ -2297,7 +2295,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_vendor_category` (
   `vendor_category_desc` text,
   PRIMARY KEY  (`vendor_category_id`),
   KEY `idx_vendor_category_category_name` (`vendor_category_name`)
-) TYPE=MyISAM COMMENT='The categories that vendors are assigned to';
+) ENGINE=MyISAM COMMENT='The categories that vendors are assigned to';
 
 ## 
 ## Dumping data for table `jos_vm_vendor_category`
@@ -2321,7 +2319,7 @@ CREATE TABLE IF NOT EXISTS `jos_vm_waiting_list` (
   PRIMARY KEY  (`waiting_list_id`),
   KEY `product_id` (`product_id`),
   KEY `notify_email` (`notify_email`)
-) TYPE=MyISAM COMMENT='Stores notifications, users waiting f. products out of stock';
+) ENGINE=MyISAM COMMENT='Stores notifications, users waiting f. products out of stock';
 
 ## 
 ## Dumping data for table `jos_vm_waiting_list`
@@ -2342,6 +2340,6 @@ CREATE TABLE IF NOT EXISTS `jos_vm_zone_shipping` (
   `zone_description` text NOT NULL,
   `zone_tax_rate` int(11) NOT NULL default '0',
   PRIMARY KEY  (`zone_id`)
-) TYPE=MyISAM COMMENT='The Zones managed by the Zone Shipping Module';
+) ENGINE=MyISAM COMMENT='The Zones managed by the Zone Shipping Module';
 
 INSERT INTO `jos_components` (name, parent, params ) VALUES ( 'virtuemart_version', 9999, 'RELEASE=1.1.4\nDEV_STATUS=stable');

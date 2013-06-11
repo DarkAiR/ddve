@@ -4,7 +4,7 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
 * This file prepares the VirtueMart framework
 * It should be included whenever a VirtueMart function is needed
 *
-* @version $Id: virtuemart_parser.php 1439 2008-06-25 19:08:23Z soeren_nb $
+* @version $Id: virtuemart_parser.php 3105 2011-04-30 13:35:30Z zanardi $
 * @package VirtueMart
 * @subpackage core
 * @copyright Copyright (C) 2004-2008 soeren - All rights reserved.
@@ -286,7 +286,7 @@ if( !defined( '_VM_PARSER_LOADED' )) {
 			$vm_mainframe->close(true);//die
 		}
 		
-		if ($ok == true && empty($error) && !defined('_DONT_VIEW_PAGE') && !strstr($page, 'ajax')) {
+		if ($ok == true && empty($error) && !defined('_DONT_VIEW_PAGE') && !strstr($page, 'ajax') && !$ajax_request && !@$_REQUEST['only_page']) {
 			$_SESSION['last_page'] = $page;
 		}
 	}

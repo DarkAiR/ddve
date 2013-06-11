@@ -5,10 +5,10 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
 * It displays all products and all totals. Product quantities can't be
 * changed on this page.
 * 
-* @version $Id: ro_basket.php 2744 2011-02-18 16:44:08Z zanardi $
+* @version $Id: ro_basket.php 3105 2011-04-30 13:35:30Z zanardi $
 * @package VirtueMart
 * @subpackage html
-* @copyright Copyright (C) 2004-2009 soeren - All rights reserved.
+* @copyright Copyright (C) 2004-2011 VirtueMart Team - All rights reserved.
 * @license http://www.gnu.org/copyleft/gpl.html GNU/GPL, see LICENSE.php
 * VirtueMart is free software. This version may have been modified pursuant
 * to the GNU General Public License, and as distributed it includes or
@@ -147,16 +147,9 @@ else {
 
 	if ($_REQUEST["page"] == "checkout.index" && !empty($_POST["do_coupon"])) {
 		/* process the coupon */
-
-		/* make sure they arent trying to run it twice */
-		if (@$_SESSION['coupon_redeemed'] == true) {
-			$vmLogger->warning( $VM_LANG->_('PHPSHOP_COUPON_ALREADY_REDEEMED',false) );
-		}
-		else {
-			require_once( CLASSPATH . "ps_coupon.php" );
-			$vars["total"] = $total;
-			ps_coupon::process_coupon_code( $vars );
-		}
+		require_once( CLASSPATH . "ps_coupon.php" );
+		$vars["total"] = $total;
+		ps_coupon::process_coupon_code( $vars );
 	}
 
 	// DISCOUNT

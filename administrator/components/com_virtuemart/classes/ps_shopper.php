@@ -2,7 +2,7 @@
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
 /**
 *
-* @version $Id: ps_shopper.php 2744 2011-02-18 16:44:08Z zanardi $
+* @version $Id: ps_shopper.php 3105 2011-04-30 13:35:30Z zanardi $
 * @package VirtueMart
 * @subpackage classes
 * @copyright Copyright (C) 2004-2009 soeren - All rights reserved.
@@ -106,10 +106,10 @@ class vm_ps_shopper {
 			}
 		}
 
+		global $default;
+		$default = $_POST;
 		if (!$provided_required) {
 			$_REQUEST['missing'] = $missing;
-			global $default;
-			$default = $_POST;
 			return false;
 		}
 		
