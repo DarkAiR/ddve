@@ -1,5 +1,5 @@
 #.gitignore
-.htaccess
+#.htaccess
 #components/com_virtuemart/shop_image/*
 #administrator/components/com_virtuemart/virtuemart.cfg.php
 administrator/cache/*
