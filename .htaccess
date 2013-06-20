@@ -92,7 +92,7 @@ RewriteRule ^index\.php$ http://ddve.ru [R=301,L]
 
 ########## Begin - Joomla! core SEF Section
 #
-#RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 #
 
 # If the requested path and file is not /index.php and the request
