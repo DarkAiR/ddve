@@ -97,17 +97,33 @@ if( $category_id ) {
 	/**
     * CATEGORY DESCRIPTION
     */
-	$db->query( "SELECT category_id, category_name FROM #__{vm}_category WHERE category_id='$category_id'");
+
+	//--> DarkAiR Category desc
+	//$db->query( "SELECT category_id, category_name FROM #__{vm}_category WHERE category_id='$category_id'");
+	$db->query( "SELECT category_id, category_name, meta_desc, meta_keys, page_title FROM #__{vm}_category LEFT JOIN #__{vm}_category_meta ON #__{vm}_category_meta.cat_id = #__{vm}_category.category_id WHERE category_id='$category_id'");
+	// DarkAiR <--
+
 	$db->next_record();
 	$category_name = shopMakeHtmlSafe( $db->f('category_name') );
 
+	//--> DarkAiR Category desc
 	// Set Dynamic Page Title
-	$vm_mainframe->setPageTitle( $db->f("category_name") );
+	//$vm_mainframe->setPageTitle( $db->f("category_name") );
+	if ($db->f("page_title"))
+		$vm_mainframe->setPageTitle( $db->f("page_title") );
+	else
+		$vm_mainframe->setPageTitle( $db->f('category_name') );
+	// DarkAiR <--
 
 	$desc =  $ps_product_category->get_description($category_id);
 	$desc = vmCommonHTML::ParseContentByPlugins( $desc );
+
+	//--> DarkAiR Category desc
 	// Prepend Product Short Description Meta Tag "description" when applicable
-	$mainframe->prependMetaTag( "description", substr(strip_tags($desc ), 0, 255) );
+	//$mainframe->prependMetaTag( "description", substr(strip_tags($desc ), 0, 255) );
+	$mainframe->prependMetaTag( "description", $db->f("meta_desc") );
+	$mainframe->prependMetaTag( "keywords", $db->f("meta_keys") );
+	// DarkAiR <--
 }
 // when nothing has been found we tell this here and say goodbye
 if ($num_rows == 0 && (!empty($keyword)||!empty($keyword1))) {

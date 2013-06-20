@@ -48,7 +48,15 @@ $langvars = array (
 	'PHPSHOP_PRODUCT_FORM_DELETE_ITEM_MSG' => 'Are you sure you want to delete this Item?',
 	'PHPSHOP_PRODUCT_FORM_MANUFACTURER' => 'Manufacturer',
 	'PHPSHOP_PRODUCT_FORM_SKU' => 'SKU',
-	'PHPSHOP_PRODUCT_FORM_NAME' => 'Name',
+	//--> DarkAiR
+	'PHPSHOP_PRODUCT_FORM_TITLE_TAG' => 'Title',
+    'PHPSHOP_PRODUCT_FORM_DESCRIPTION_TAG' => 'Description',
+    'PHPSHOP_PRODUCT_FORM_KEY_TAG' => 'Keywords',
+    'PHPSHOP_CATEGORY_FORM_TITLE_TAG' => 'Title',
+    'PHPSHOP_CATEGORY_FORM_DESC_TAG' => 'Decription',
+    'PHPSHOP_CATEGORY_FORM_KEY_TAG' => 'Keywords',
+    // DarkAiR <--
+    'PHPSHOP_PRODUCT_FORM_NAME' => 'Name',
 	'PHPSHOP_PRODUCT_FORM_CATEGORY' => 'Category',
 	'PHPSHOP_PRODUCT_FORM_AVAILABLE_DATE' => 'Availability Date',
 	'PHPSHOP_PRODUCT_FORM_SPECIAL' => 'On Special',

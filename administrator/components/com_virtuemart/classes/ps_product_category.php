@@ -269,7 +269,17 @@ class vm_ps_product_category extends vmAbstractObject {
 
 			$category_id = $_REQUEST['category_id'] = $db->last_insert_id();
 
-			 
+			//--> DarkAiR Category desc
+			$fields_meta = array(
+				'cat_id' => $category_id,
+				'meta_desc' => vmGet( $d, 'vm_cat_metadesc' ),
+				'meta_keys' => vmGet( $d, 'vm_cat_metakeys' ),
+				'page_title' => vmGet( $d, 'vm_cat_title' )
+			);
+			$db->buildQuery('INSERT', '#__{vm}_category_meta', $fields_meta );
+			$db->query();
+			// DarkAiR <--
+
 			$fields = array('category_parent_id' => (int)$d["parent_category_id"],
 										'category_child_id' => $category_id
 									);
@@ -327,6 +337,27 @@ class vm_ps_product_category extends vmAbstractObject {
 									);
 			$db->buildQuery('UPDATE', '#__{vm}_category', $fields, 'WHERE category_id=' .(int)$d["category_id"].' AND vendor_id='.$ps_vendor_id );		
 			$db->query();
+
+			//--> DarkAiR Category desc
+			$fields_meta = array(
+				'meta_desc' => vmGet( $d, 'vm_cat_metadesc' ),
+				'meta_keys' => vmGet( $d, 'vm_cat_metakeys' ),
+				'page_title' => vmGet( $d, 'vm_cat_title' )
+			);
+			$db->buildQuery('UPDATE', '#__{vm}_category_meta', $fields_meta, 'WHERE cat_id=' .(int)$d["category_id"] );
+			$db->query();
+			if (!$db->getAffectedRows())
+			{
+				$fields_meta = array(
+					'cat_id' => vmGet( $d, 'category_id' ),
+					'meta_desc' => vmGet( $d, 'vm_cat_metadesc' ),
+					'meta_keys' => vmGet( $d, 'vm_cat_metakeys' ),
+					'page_title' => vmGet( $d, 'vm_cat_title' )
+				);
+				$db->buildQuery('INSERT', '#__{vm}_category_meta', $fields_meta );
+				$db->query();
+			}
+			// DarkAiR <--
 
 			/*
 			** update #__{vm}_category x-reference table with parent-child relationship

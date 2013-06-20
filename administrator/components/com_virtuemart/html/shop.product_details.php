@@ -232,23 +232,31 @@ if ($ps_product_category->has_childs($category_id) ) {
 	$navigation_childlist = $tpl->fetch( 'common/categoryChildlist.tpl.php');
 }
 
+//--> DarkAiR
 // Set Dynamic Page Title
 if( function_exists('mb_substr')) {
-	$page_title = mb_substr($product_name, 0, 64, vmGetCharset() );
+	$page_title = mb_substr($db_product->f("product_title_tag"), 0, 64, vmGetCharset() );
 } else {
-	$page_title = substr($product_name, 0, 64 );
-	
+	$page_title = substr($db_product->f("product_title_tag"), 0, 64 );
 }
 $vm_mainframe->setPageTitle( @html_entity_decode( $page_title, ENT_QUOTES, vmGetCharset() ));
-
+ 
 // Prepend Product Short Description Meta Tag "description"
 if( vmIsJoomla('1.5')) {
 	$document = JFactory::getDocument();
-	$document->setDescription(strip_tags( $db_product->f("product_s_desc")));
+	$document->setDescription(strip_tags( $db_product->f("product_desc_tag")));
+	$rsKeywords = $mosConfig_MetaKeys.", ";
+	$rsKeywords .= implode(', ',explode(' ', $product_name));
+	foreach( $pathway as $item ) {
+		$rsKeywords .= ', ' . $item->name;
+	}
+	$document->setMetaData( 'keywords', $db_product->f("product_key_tag") );
+	$document->setMetaData( 'title', $db_product->f("product_title_tag") );
+	// INSERT END
 } else {
-	$mainframe->prependMetaTag( "description", strip_tags( $db_product->f("product_s_desc")) );
+	$mainframe->prependMetaTag( "description", strip_tags( $db_product->f("product_desc_tag")) );
 }
-
+// DarkAiR <--
 
 // Show an "Edit PRODUCT"-Link
 if ($perm->check("admin,storeadmin")) {
