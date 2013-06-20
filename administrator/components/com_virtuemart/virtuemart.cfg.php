@@ -31,8 +31,8 @@ else {
 $app = '/';
 }
 // these path and url definitions here are based on the Joomla! Configuration
-define( 'URL', 'http://www.ddve.ru/' );
-define( 'SECUREURL', 'http://www.ddve.ru/' );
+define( 'URL', 'http://www.dd.ru/' );
+define( 'SECUREURL', 'http://www.dd.ru/' );
 
 if ( (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == '443' ) {
 define( 'IMAGEURL', SECUREURL .'components/com_virtuemart/shop_image/' );
@@ -84,7 +84,7 @@ define('DOWNLOAD_MAX', '3');
 define('DOWNLOAD_EXPIRE', '432000');
 define('ENABLE_DOWNLOAD_STATUS', 'C');
 define('DISABLE_DOWNLOAD_STATUS', 'X');
-define('DOWNLOADROOT', '/home/u17424/ddve.ru/www');
+define('DOWNLOADROOT', '/home/ddve/');
 define('VM_DOWNLOADABLE_PRODUCTS_KEEP_STOCKLEVEL', '');
 define('_SHOW_PRICES', '1');
 define('ORDER_MAIL_HTML', '1');
