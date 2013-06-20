@@ -553,3 +553,8 @@ ul li
     font-size: 12px;
     margin-top: 10px;
 }
+.moduletable_seo_main p a
+{
+    color: #1a1116;
+    text-decoration: none;
+}
