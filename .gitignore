@@ -1,0 +1,16 @@
+.gitignore
+.htaccess
+administrator/cache/*
+administrator/manifests/*
+cache/*
+installation/*
+logs/*
+templates/atomic/*
+templates/beez_20/*
+templates/beez5/*
+tmp/*
+administrator/components/com_virtuemart/virtuemart.cfg.php
+configuration.php
+joomla.xml
+*.txt
+robots.txt
