@@ -29,12 +29,6 @@ if( !empty($_POST) )
     $keystring     = isset($_POST['keystring'])? $_POST['keystring'] : false;
     $sessKeystring = isset($_SESSION['captcha_keystring'])? $_SESSION['captcha_keystring'] : false;
 
-    var_dump($keystring !== false);
-    var_dump($sessKeystring !== $keystring);
-    var_dump($sessKeystring != $keystring);
-    var_dump($keystring);
-    var_dump($sessKeystring);
-
     unset($_SESSION['captcha_keystring']);
 
     $subject     = "Ddve.ru - Feedback";
