@@ -27,7 +27,7 @@ if( @VM_ENCRYPT_FUNCTION == 'AES_ENCRYPT') {
 }
 if( !defined('VM_COMPONENT_NAME')) {
 	echo '<div class="shop_warning">You seem to have upgraded to a new VirtueMart Version recently.<br />
-			Your Configuration File must be updated. so please proceed to the <a href="'.$_SERVER['PHP_SELF'].'?page=admin.show_cfg&amp;option=com_virtuemart">Configuration Form</a> and save the Configuration once you are done with the settings.</div>';
+			Your Configuration File must be updated. so please proceed to the <a href="'.$_SERVER['SCRIPT_NAME'].'?page=admin.show_cfg&amp;option=com_virtuemart">Configuration Form</a> and save the Configuration once you are done with the settings.</div>';
 	define('VM_COMPONENT_NAME', 'com_virtuemart');
 	define('VM_CURRENCY_CONVERTER_MODULE', 'convertECB');
 	defined('VM_THEMEPATH ') or define('VM_THEMEPATH', $mosConfig_absolute_path. '/components/com_virtuemart/themes/default/');

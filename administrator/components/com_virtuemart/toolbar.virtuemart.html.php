@@ -155,7 +155,7 @@ class MENU_virtuemart {
         }
     };
     
-   	var cObj = YAHOO.util.Connect.asyncRequest('POST', '{$_SERVER['PHP_SELF']}', callback);
+   	var cObj = YAHOO.util.Connect.asyncRequest('POST', '{$_SERVER['SCRIPT_NAME']}', callback);
 	
 			\n";
 
@@ -174,31 +174,31 @@ class MENU_virtuemart {
 		if ($page == "product.product_form" && !empty($product_id) && $clone_product!=1) {
 			if( empty($product_parent_id) ) { 
 				// add new attribute
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_attribute_form&product_id=". $product_id ."&limitstart=". $limitstart."&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_attribute_form&product_id=". $product_id ."&limitstart=". $limitstart."&no_menu=$no_menu";
 				$alt = "&nbsp;". $VM_LANG->_('PHPSHOP_ATTRIBUTE_FORM_MNU');
 				vmMenuBar::customHref( $href, $vmIcons['new_icon'], $vmIcons['new_icon2'], $alt );
 				vmMenuBar::spacer();
 			}
 			else {
                 // back to parent product
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_form&product_id=$product_parent_id&limitstart=".$limitstart."&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_form&product_id=$product_parent_id&limitstart=".$limitstart."&no_menu=$no_menu";
 				$alt = "&nbsp;". $VM_LANG->_('PHPSHOP_PRODUCT_FORM_RETURN_LBL');
 				vmMenuBar::customHref( $href, $vmIcons['back_icon'], $vmIcons['back_icon2'], $alt );
 				vmMenuBar::spacer();
 				// new child product
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_parent_id&limitstart=". $limitstart."&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_parent_id&limitstart=". $limitstart."&no_menu=$no_menu";
 				$alt = "&nbsp;". $VM_LANG->_('PHPSHOP_PRODUCT_FORM_ADD_ANOTHER_ITEM_MNU');
 				vmMenuBar::customHref( $href, $vmIcons['new_icon'], $vmIcons['new_icon2'], $alt );
 				vmMenuBar::spacer();
 			} 
 			// Go to Price list
-			$href = $_SERVER['PHP_SELF']."?page=product.product_price_list&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&return_args=&option=com_virtuemart&no_menu=$no_menu";
+			$href = $_SERVER['SCRIPT_NAME']."?page=product.product_price_list&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&return_args=&option=com_virtuemart&no_menu=$no_menu";
 			$alt = "&nbsp;". $VM_LANG->_('PHPSHOP_PRICE_LIST_MNU');
 			vmMenuBar::customHref( $href, $vmIcons['new_icon'], $vmIcons['new_icon2'], $alt );
 			vmMenuBar::spacer();
 	
 			// add product type
-			$href= $_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_product_type_form&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&no_menu=$no_menu";
+			$href= $_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_product_type_form&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&no_menu=$no_menu";
 			$alt = "&nbsp;". $VM_LANG->_('PHPSHOP_PRODUCT_PRODUCT_TYPE_FORM_MNU');
 			vmMenuBar::customHref( $href, $vmIcons['new_icon'], $vmIcons['new_icon2'], $alt );
 			vmMenuBar::spacer();
@@ -206,7 +206,7 @@ class MENU_virtuemart {
 			/*** Adding an item is only pssible, if the product has attributes ***/
 			if (ps_product::product_has_attributes( $product_id ) ) { 
 				// Add Item
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_id&limitstart=$limitstart&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_id&limitstart=$limitstart&no_menu=$no_menu";
 				$alt = "&nbsp;". $VM_LANG->_('PHPSHOP_PRODUCT_FORM_NEW_ITEM_LBL');
 				vmMenuBar::customHref( $href, $vmIcons['new_icon'], $vmIcons['new_icon2'], $alt );
 				vmMenuBar::spacer();
@@ -215,12 +215,12 @@ class MENU_virtuemart {
 		}
 		elseif( $page == "admin.country_form" ) {
             if( !empty( $_REQUEST['country_id'] )) {
-				$href= $_SERVER['PHP_SELF'] ."?option=com_virtuemart&page=admin.country_state_form&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
+				$href= $_SERVER['SCRIPT_NAME'] ."?option=com_virtuemart&page=admin.country_state_form&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
 				$alt = "&nbsp;".$VM_LANG->_('PHPSHOP_ADD_STATE');
 				vmMenuBar::customHref( $href, $vmIcons['new_icon'], $vmIcons['new_icon2'], $alt );
 				vmMenuBar::spacer();
 				
-				$href = $_SERVER['PHP_SELF'] ."?option=com_virtuemart&page=admin.country_state_list&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
+				$href = $_SERVER['SCRIPT_NAME'] ."?option=com_virtuemart&page=admin.country_state_list&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
 				$alt = "&nbsp;".$VM_LANG->_('PHPSHOP_LIST_STATES');
 				vmMenuBar::customHref( $href, $vmIcons['new_icon'], $vmIcons['new_icon2'], $alt );
 				vmMenuBar::spacer();
@@ -236,7 +236,7 @@ class MENU_virtuemart {
 			
 			vmMenuBar::apply( 'apply', $VM_LANG->_('E_APPLY') );
 		}
-		if( (strstr( @$_SERVER['HTTP_REFERER'], $page ) || strstr( @$_SERVER['HTTP_REFERER'], $_SERVER['PHP_SELF'] )) && $no_menu && !$is_iframe ) {
+		if( (strstr( @$_SERVER['HTTP_REFERER'], $page ) || strstr( @$_SERVER['HTTP_REFERER'], $_SERVER['SCRIPT_NAME'] )) && $no_menu && !$is_iframe ) {
 			// offer a back button
 			vmMenuBar::spacer();
 			vmMenuBar::back();
@@ -261,7 +261,7 @@ class MENU_virtuemart {
         if ($page == 'admin.country_state_list') {
 			// Back to the country
 			vmMenuBar::divider();
-			$href = $_SERVER['PHP_SELF']. '?option=com_virtuemart&page=admin.country_list';
+			$href = $_SERVER['SCRIPT_NAME']. '?option=com_virtuemart&page=admin.country_list';
 			vmMenuBar::customHref( $href, $vmIcons['back_icon'], $vmIcons['back_icon2'], '&nbsp;'.$VM_LANG->_('PHPSHOP_BACK_TO_COUNTRY') );
         }
         elseif ($page == 'product.file_list') {
