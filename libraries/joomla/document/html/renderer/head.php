@@ -157,6 +157,29 @@ class JDocumentRendererHead extends JDocumentRenderer
 			$strHtml .= $tab.$custom.$lnEnd;
 		}
 
+		// Generate canonical link
+		$query = parse_url($_SERVER['REQUEST_URI'],PHP_URL_QUERY);
+		if (!empty($query))
+		{
+			$queryParts = explode('&', $query); 
+	
+			$prms = array(); 
+			foreach ($queryParts as $prm)
+			{ 
+				$item = explode('=', $prm);
+				$prms[$item[0]] = $item[1]; 
+			}
+			$removeParams = array('cal_offset', 'limit', 'limitstart', 'page');
+			foreach ($removeParams as $removeParam)
+			{
+				if (isset($prms[$removeParam]))
+					unset($prms[$removeParam]);
+			}
+			$canonicalLink = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) . (count($prms) == 0 ? '' : '?' . http_build_query($prms));
+			echo '<link rel="canonical" href="'.JURI::base().ltrim($canonicalLink, '/').'"/>';
+		}
+
+
 		return $strHtml;
 	}
 }

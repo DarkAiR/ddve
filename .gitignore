@@ -10,6 +10,7 @@ templates/beez_20/*
 templates/beez5/*
 tmp/*
 administrator/components/com_virtuemart/virtuemart.cfg.php
+components/com_virtuemart/shop_image/*
 configuration.php
 joomla.xml
 *.txt

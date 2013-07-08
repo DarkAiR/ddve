@@ -63,29 +63,37 @@ $current_offset = 0;
 if( $links )
 {
     $uri = $_SERVER['REQUEST_URI'];
-    $pos = strpos( $uri, '&cal_offset' );    // we need the uri minus our parameter
-    if( $pos )
+
+    $prms = array(); 
+    $link = $uri;
+    $command = '';
+    $current_offset = 0;
+
+    $query = parse_url($uri,PHP_URL_QUERY);
+    if (!empty($query))
     {
-        $cal_offset = JRequest::getVar( 'cal_offset' );
-        $len = strlen( $cal_offset );
-        $more = substr( $uri, $pos + strlen( '&cal_offset=' ) + $len ); // could be more params after ours
-        $link = substr( $uri, 0, $pos ) . $more;
-        $command = $cal_offset{$len - 1};     // get the p or the n
-        $current_offset = substr( $cal_offset, 0, $len - 1 ); // strip off the p or the n
-        if( $command == 'p' )
-            $current_offset -= 1;      // request the previous month
-        if( $command == 'n' )
-            $current_offset += 1;      // request the next month
+        $queryParts = explode('&', $query); 
+    
+        foreach ($queryParts as $prm)
+        { 
+            $item = explode('=', $prm);
+            $prms[$item[0]] = $item[1]; 
+        }
+        if (isset($prms['cal_offset']))
+        {
+            $cal_offset = $prms['cal_offset'];
+            unset($prms['cal_offset']);
+            $len = strlen( $cal_offset );
+            $command = $cal_offset{$len - 1};     // get the p or the n
+            $current_offset = substr( $cal_offset, 0, $len - 1 ); // strip off the p or the n
+            if( $command == 'p' )
+                $current_offset -= 1;      // request the previous month
+            if( $command == 'n' )
+                $current_offset += 1;      // request the next month
+        }
     }
-    else
-    {
-        $link = $uri;
-        $command = '';
-        $current_offset = 0;
-    }
-    if( !strstr( $uri, '&' ) )
-        $link = $uri . '?';
-    $link .= '&cal_offset=' . $current_offset;  // make the link
+    $prms['cal_offset'] = $current_offset;
+    $link = parse_url($uri, PHP_URL_PATH) . (count($prms) == 0 ? '' : '?' . http_build_query($prms));
     $link = htmlspecialchars( $link );
 }
 
