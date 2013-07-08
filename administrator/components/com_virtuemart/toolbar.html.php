@@ -130,7 +130,7 @@ var submitbutton = function(pressbutton){
 	}
 	
    	Ext.Ajax.request( { method: 'POST',
-   						url: '{$_SERVER['PHP_SELF']}',
+   						url: '{$_SERVER['SCRIPT_NAME']}',
    						success: onSuccess,
    						failure: onFailure,
    						callback: onCallback,
@@ -153,31 +153,31 @@ var submitbutton = function(pressbutton){
 		if ($page == "product.product_form" && !empty($product_id)) {
 			if( empty($product_parent_id) ) { 
 				// add new attribute
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_attribute_form&product_id=". $product_id ."&limitstart=". $limitstart."&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_attribute_form&product_id=". $product_id ."&limitstart=". $limitstart."&no_menu=$no_menu";
 				$alt =  $VM_LANG->_('PHPSHOP_ATTRIBUTE_FORM_MNU');
 				$bar->customHref( $href, 'new', $alt );
 				
 			}
 			else {
                 // back to parent product
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_form&product_id=$product_parent_id&limitstart=".$limitstart."&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_form&product_id=$product_parent_id&limitstart=".$limitstart."&no_menu=$no_menu";
 				$alt =  $VM_LANG->_('PHPSHOP_PRODUCT_FORM_RETURN_LBL');
 				$bar->customHref( $href, $vmIcons['back_icon'], $vmIcons['back_icon2'], $alt );
 				
 				// new child product
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_parent_id&limitstart=". $limitstart."&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_parent_id&limitstart=". $limitstart."&no_menu=$no_menu";
 				$alt =  $VM_LANG->_('PHPSHOP_PRODUCT_FORM_ADD_ANOTHER_ITEM_MNU');
 				$bar->customHref( $href, 'new', $alt );
 				
 			} 
 			// Go to Price list
-			$href = $_SERVER['PHP_SELF']."?page=product.product_price_list&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&return_args=&option=com_virtuemart&no_menu=$no_menu";
+			$href = $_SERVER['SCRIPT_NAME']."?page=product.product_price_list&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&return_args=&option=com_virtuemart&no_menu=$no_menu";
 			$alt =  $VM_LANG->_('PHPSHOP_PRICE_LIST_MNU');
 			$bar->customHref( $href, 'new', $alt );
 			
 	
 			// add product type
-			$href= $_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_product_type_form&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&no_menu=$no_menu";
+			$href= $_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_product_type_form&product_id=$product_id&product_parent_id=$product_parent_id&limitstart=$limitstart&no_menu=$no_menu";
 			$alt =  $VM_LANG->_('PHPSHOP_PRODUCT_PRODUCT_TYPE_FORM_MNU');
 			$bar->customHref( $href, 'new', $alt );
 			
@@ -185,7 +185,7 @@ var submitbutton = function(pressbutton){
 			/*** Adding an item is only pssible, if the product has attributes ***/
 			if (ps_product::product_has_attributes( $product_id ) ) { 
 				// Add Item
-				$href=$_SERVER['PHP_SELF']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_id&limitstart=$limitstart&no_menu=$no_menu";
+				$href=$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=product.product_form&product_parent_id=$product_id&limitstart=$limitstart&no_menu=$no_menu";
 				$alt =  $VM_LANG->_('PHPSHOP_PRODUCT_FORM_NEW_ITEM_LBL');
 				$bar->customHref( $href, 'new', $alt );
 				
@@ -194,12 +194,12 @@ var submitbutton = function(pressbutton){
 		}
 		elseif( $page == "admin.country_form" ) {
             if( !empty( $_REQUEST['country_id'] )) {
-				$href= $_SERVER['PHP_SELF'] ."?option=com_virtuemart&page=admin.country_state_form&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
+				$href= $_SERVER['SCRIPT_NAME'] ."?option=com_virtuemart&page=admin.country_state_form&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
 				$alt = $VM_LANG->_('PHPSHOP_ADD_STATE');
 				$bar->customHref( $href, 'new', $alt );
 				
 				
-				$href = $_SERVER['PHP_SELF'] ."?option=com_virtuemart&page=admin.country_state_list&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
+				$href = $_SERVER['SCRIPT_NAME'] ."?option=com_virtuemart&page=admin.country_state_list&country_id=". intval($_REQUEST['country_id']) ."&limitstart=$limitstart&no_menu=$no_menu";
 				$alt = $VM_LANG->_('PHPSHOP_LIST_STATES');
 				$bar->customHref( $href, 'new', $alt );			
 				
@@ -228,7 +228,7 @@ var submitbutton = function(pressbutton){
         if ($page == 'admin.country_state_list' && vmGet( $_SESSION, 'vmLayout', 'extended' ) == 'standard') {
 			// Back to the country
 			$bar->divider();
-			$href = $_SERVER['PHP_SELF']. '?option=com_virtuemart&page=admin.country_list';
+			$href = $_SERVER['SCRIPT_NAME']. '?option=com_virtuemart&page=admin.country_list';
 			$bar->customHref( $href, 'back', '&nbsp;'.$VM_LANG->_('PHPSHOP_BACK_TO_COUNTRY') );
         }
         elseif ($page == 'product.file_list') {

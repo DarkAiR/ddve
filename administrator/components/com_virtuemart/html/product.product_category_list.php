@@ -86,7 +86,7 @@ for($n = $pageNav->limitstart ; $n < $nrows ; $n++) {
 	$repeat = $depth_list[$n]+1;
 	$tmp_cell = str_repeat("&nbsp;&nbsp;&nbsp;", $repeat ) 
 				. "&#095&#095;|" . $repeat ."|&nbsp;"
-				."<a href=\"". $_SERVER['PHP_SELF'] . "?option=com_virtuemart&page=product.product_category_form&category_id=" . $categories[$row_list[$n]]["category_child_id"]. "&category_parent_id=" . $categories[$row_list[$n]]["category_parent_id"]."\">"
+				."<a href=\"". $_SERVER['SCRIPT_NAME'] . "?option=com_virtuemart&page=product.product_category_form&category_id=" . $categories[$row_list[$n]]["category_child_id"]. "&category_parent_id=" . $categories[$row_list[$n]]["category_parent_id"]."\">"
 				. $catname
 				. "</a>";
 	$listObj->addCell( $tmp_cell );
@@ -95,11 +95,11 @@ for($n = $pageNav->limitstart ; $n < $nrows ; $n++) {
 	$listObj->addCell( "&nbsp;&nbsp;". $desc );
 	
 	$listObj->addCell( ps_product_category::product_count( $categories[$row_list[$n]]["category_child_id"] )
-						."&nbsp;<a href=\"". $_SERVER['PHP_SELF'] . "?page=product.product_list&category_id=" . $categories[$row_list[$n]]["category_child_id"]."&option=com_virtuemart"
+						."&nbsp;<a href=\"". $_SERVER['SCRIPT_NAME'] . "?page=product.product_list&category_id=" . $categories[$row_list[$n]]["category_child_id"]."&option=com_virtuemart"
 						. "\">[ ".$VM_LANG->_('PHPSHOP_SHOW')." ]</a>"
 					);
 	// Publish / Unpublish
-	$tmp_cell = "<a href=\"". $sess->url( $_SERVER['PHP_SELF']."?page=product.product_category_list&category_id=".$categories[$row_list[$n]]["category_child_id"]."&func=changePublishState" );
+	$tmp_cell = "<a href=\"". $sess->url( $_SERVER['SCRIPT_NAME']."?page=product.product_category_list&category_id=".$categories[$row_list[$n]]["category_child_id"]."&func=changePublishState" );
 	if ($categories[$row_list[$n]]["category_publish"]=='N') {
 		$tmp_cell .= "&task=publish\">";
 	} 

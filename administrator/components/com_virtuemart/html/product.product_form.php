@@ -238,6 +238,39 @@ $tabs->startTab( $info_label, "info-page");
         				<input type="text" class="inputbox"  name="product_url" value="<?php $db->sp("product_url"); ?>" size="32" maxlength="255" />
       				</td>
     			</tr>
+
+
+<!-- DarkAiR -->
+                <!-- product title -->
+                <!--tr class="row0">
+                      <td width="21%"><div style="text-align:right;font-weight:bold;">
+                        <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_TITLE_TAG') ?>:</div>
+                      </td>
+                      <td width="79%">
+                        <input type="text" class="inputbox"  name="product_title_tag" value="<?php $db->sp("product_title_tag"); ?>" size="32" maxlength="255" />
+                      </td>
+                </tr-->                
+                <!-- product description -->
+                <!--tr class="row1">
+                      <td width="29%" valign="top"><div style="text-align:right;font-weight:bold;">
+                          <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_DESCRIPTION_TAG') ?>:</div>
+                      </td>
+                      <td width="71%"  valign="top">
+                          <textarea class="inputbox" name="product_desc_tag" id="short_desc" cols="35" rows="6" ><?php echo $db->sf("product_desc_tag"); ?></textarea>
+                      </td>
+                </tr-->                
+                <!-- product keywords -->
+                <!--tr class="row0">
+                      <td width="29%" valign="top"><div style="text-align:right;font-weight:bold;">
+                          <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_KEY_TAG') ?>:</div>
+                      </td>
+                      <td width="71%"  valign="top">
+                          <textarea class="inputbox" name="product_key_tag" id="short_desc" cols="35" rows="6" ><?php echo $db->sf("product_key_tag"); ?></textarea>
+                      </td>
+                </tr-->
+<!-- DarkAiR -->
+
+
     			<tr class="row0"> 
       				<td width="21%"><div style="text-align:right;font-weight:bold;">
         			<?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_VENDOR') ?>:</div>

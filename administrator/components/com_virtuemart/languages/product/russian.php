@@ -48,6 +48,14 @@ $langvars = array (
 	'PHPSHOP_PRODUCT_FORM_DELETE_ITEM_MSG' => 'Вы уверены, что хотите удалить эту позицию?',
 	'PHPSHOP_PRODUCT_FORM_MANUFACTURER' => 'Производитель',
 	'PHPSHOP_PRODUCT_FORM_SKU' => 'Артикул',
+	//--> DarkAiR
+	'PHPSHOP_PRODUCT_FORM_TITLE_TAG' => 'Заголовок',
+    'PHPSHOP_PRODUCT_FORM_DESCRIPTION_TAG' => 'Описание',
+    'PHPSHOP_PRODUCT_FORM_KEY_TAG' => 'Ключевые слова',
+    'PHPSHOP_CATEGORY_FORM_TITLE_TAG' => 'Заголовок',
+    'PHPSHOP_CATEGORY_FORM_DESC_TAG' => 'Описание',
+    'PHPSHOP_CATEGORY_FORM_KEY_TAG' => 'Ключевые слова',
+    // DarkAiR <--
 	'PHPSHOP_PRODUCT_FORM_NAME' => 'Наименование',
 	'PHPSHOP_PRODUCT_FORM_CATEGORY' => 'Категория',
 	'PHPSHOP_PRODUCT_FORM_AVAILABLE_DATE' => 'Доступно с',

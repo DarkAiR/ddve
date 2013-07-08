@@ -120,6 +120,32 @@ $tabs->startTab( "<img src='". IMAGEURL ."ps_image/edit.png' align='absmiddle' w
       </td>
     </tr>
 </table>
+
+
+<!-- DarkAiR Category desc -->
+<?php
+// здесь мы не можем использовать объект $db, т.к. он содержит данные об изображении категории,
+// которые используются после этой вставки, поэтому создаем другой экземпляр класса ps_DB
+$dbm = new ps_DB;
+if ($category_id)
+{
+  $q = "SELECT * FROM #__{vm}_category_meta ";
+  $q .= "WHERE #__{vm}_category_meta.cat_id='$category_id'";
+  $dbm->query($q);
+  $dbm->next_record();
+}
+?>
+<div><?php echo $VM_LANG->_('PHPSHOP_CATEGORY_FORM_TITLE_TAG') ?>:</div>
+<input style="width: 500px;" name="vm_cat_title" type="text" value="<?php echo $dbm->f('page_title'); ?>" />
+<div><?php echo $VM_LANG->_('PHPSHOP_CATEGORY_FORM_DESC_TAG') ?>:</div>
+<textarea style="width: 500px; height: 200px;" name="vm_cat_metadesc">
+  <?php echo $dbm->f('meta_desc'); ?>
+</textarea>
+<div><?php echo $VM_LANG->_('PHPSHOP_CATEGORY_FORM_KEY_TAG') ?>:</div>
+<input style="width: 500px;" name="vm_cat_metakeys" type="text" value="<?php echo $dbm->f('meta_keys'); ?>" /> 
+<!-- DarkAiR -->
+
+
 <?php
 $tabs->endTab();
 $tabs->startTab( "<img src='". IMAGEURL ."ps_image/image.png' width='16' height='16' align='absmiddle' border='0' /> ".$VM_LANG->_('E_IMAGES'), "status-page");

@@ -41,7 +41,7 @@ class vm_ps_order_change_html {
 	?><tr> 
     <td width="35%" align="right"><?php echo $VM_LANG->_('PHPSHOP_ORDER_CHANGE_UPD_BILL') ?>:</td>
     <td width="65%" align="left">
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+    <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
   	<select name="bill_to">
   		<?php
   		$dbs = new ps_DB;
@@ -83,7 +83,7 @@ class vm_ps_order_change_html {
 		<tr>
   		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_ORDER_CHANGE_UPD_SHIP') ?>:</strong></td>
   		<td align="left">
-    		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+    		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
       		<select name="ship_to">
         		<?php
         		$dbs = new ps_DB;
@@ -125,7 +125,7 @@ class vm_ps_order_change_html {
 		$db->query($q);
 		$db->next_record();
 	?>
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
   		<textarea name="customer_note" cols="80" rows="5"><?php $db->p("customer_note") ?></textarea>
   		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>"	src="<?php echo VM_THEMEURL ?>images/edit_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" />
   		<input type="hidden" value="1" name="change_customer_note" />
@@ -159,7 +159,7 @@ class vm_ps_order_change_html {
     		?>
       		<tr>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<select name="shipping">
               		<?php
               		$dbs = new ps_DB;
@@ -200,7 +200,7 @@ class vm_ps_order_change_html {
         	</tr>
         	<tr>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<input type="text" value="<?php $db->p("order_shipping") ?>" size="5" name="order_shipping" />
             		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>"
             		src="<?php echo VM_THEMEURL ?>images/edit_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" />
@@ -218,7 +218,7 @@ class vm_ps_order_change_html {
       		</tr>
       		<tr>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<input type="text" value="<?php $db->p("order_shipping_tax") ?>" name="order_shipping_tax" size="5" />
             		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>"
             		src="<?php echo VM_THEMEURL ?>images/edit_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" />
@@ -250,7 +250,7 @@ class vm_ps_order_change_html {
 		$db->next_record();
 
 		?>
-  		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+  		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
   		<?php echo $VM_LANG->_('PHPSHOP_PAYMENT_METHOD_LIST_DISCOUNT') ?>:
     		<input type="text" value="<?php $db->p("order_discount") ?>" size="5" name="order_discount" />
     		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>"
@@ -279,7 +279,7 @@ class vm_ps_order_change_html {
 		$db->query($q);
 		$db->next_record();
     ?>
-  		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+  		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
   		  <?php echo $VM_LANG->_('PHPSHOP_COUPON_DISCOUNT') ?>:
     		<input type="text" value="<?php $db->p("coupon_discount") ?>" size="5" name="coupon_discount" />
     		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>"
@@ -309,7 +309,7 @@ class vm_ps_order_change_html {
 		$db->next_record();
     ?>
     <td width="5%">
-  		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>" >		
+  		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>" >		
     		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_DELETE') ?>"  
     		src="<?php echo IMAGEURL ?>ps_image/delete_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_DELETE') ?>" />
         <input type="hidden" value="1" name="change_delete_item" />
@@ -335,7 +335,7 @@ class vm_ps_order_change_html {
     global $VM_LANG;
     ?>
 		<td>
-      <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+      <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
     	  <input type="text" value="<?php echo $product_quantity ?>" name="product_quantity" size="5" />
     		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" 
     		src="<?php echo VM_THEMEURL ?>images/edit_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" />
@@ -373,7 +373,7 @@ class vm_ps_order_change_html {
 		}
     
     // Output to generate a "return to parant"-button
-		$html_return_parent = '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">
+		$html_return_parent = '<form method="post" action="' . $_SERVER['SCRIPT_NAME'] . '">
 		<input type="submit" value="' . $VM_LANG->_('PHPSHOP_ORDER_EDIT_RETURN_PARENTS') . '" />
 		<input type="hidden" name="product_id" value="-1" />
 		<input type="hidden" name="add_product_validate" value="0" />
@@ -389,7 +389,7 @@ class vm_ps_order_change_html {
     if ($product_id < 0 || $product_id == "") { 
     	// Generate product list
       ?>
-  		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+  		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
   		  <br /><br />
         <table class="adminlist">
           <tr>
@@ -421,7 +421,7 @@ class vm_ps_order_change_html {
   		if ( $db->num_rows()) {
          // Yes! Drop down list to select the child
          ?>
-    		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+    		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
     		  <br /><br />
           <table class="adminlist">
             <tr>
@@ -451,7 +451,7 @@ class vm_ps_order_change_html {
   		else {
          // No Childs or selected child product! Form to add a product that has no childs
          ?>
-    		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+    		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
     		  <br /><br />
           <table class="adminlist">
             <tr>
@@ -656,7 +656,7 @@ class vm_ps_order_change_html {
 	function html_change_product_item_price($order_item_id, $product_item_price) {
     global $VM_LANG;
     ?>
-      <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+      <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
     	  <input type="text" value="<?php echo $product_item_price ?>" name="product_item_price" size="5" />
     		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" 
     		src="<?php echo VM_THEMEURL ?>images/edit_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" />
@@ -680,7 +680,7 @@ class vm_ps_order_change_html {
 	function html_change_product_final_price($order_item_id, $product_final_price) {
     global $VM_LANG;
     ?>
-      <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+      <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
     	  <input type="text" value="<?php echo $product_final_price ?>" name="product_final_price" size="5" />
     		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" 
     		src="<?php echo VM_THEMEURL ?>images/edit_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_UPDATE') ?>" />
@@ -704,7 +704,7 @@ class vm_ps_order_change_html {
 	function html_change_payment($payment_id) {
     global $VM_LANG, $CURRENCY_DISPLAY;
 	?>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+    <form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
   	<select name="new_payment_id">
   		<?php
   		$dbs = new ps_DB;

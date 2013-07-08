@@ -440,6 +440,11 @@ class vm_ps_DB {
 	function getErrorNum() {
 		return $this->_database->getErrorNum();
 	}
+	//--> DarkAiR Category desc
+	function getAffectedRows() {
+		return $this->_database->getAffectedRows();
+	}
+	// DarkAiR <--
 	function stderr() {
 		return $this->_database->stderr();
 	}

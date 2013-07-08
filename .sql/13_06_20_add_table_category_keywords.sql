@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS `jos_vm_category_meta` ( `cat_id` int(11) NOT NULL, `meta_desc` text NOT NULL, `meta_keys` text NOT NULL, `page_title` text NOT NULL ) ENGINE=MyISAM DEFAULT CHARSET=utf8;

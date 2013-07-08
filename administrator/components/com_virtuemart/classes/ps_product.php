@@ -299,6 +299,11 @@ class vm_ps_product extends vmAbstractObject {
 						'product_parent_id' => vmRequest::getInt('product_parent_id'),
 						'product_sku' => vmGet($d,'product_sku'),
 						'product_name' => vmGet($d,'product_name'),
+						//--> DarkAiR
+						'product_title_tag' => vmGet($d,'product_title_tag'),
+                        'product_desc_tag' => vmGet($d,'product_desc_tag'),
+                        'product_key_tag' => vmGet($d,'product_key_tag'),
+						// DarkAiR <--
 						'product_desc' => vmRequest::getVar('product_desc', '', 'default', '', VMREQUEST_ALLOWHTML),
 						'product_s_desc' => vmRequest::getVar('product_s_desc', '', 'default', '', VMREQUEST_ALLOWHTML),
 						'product_thumb_image' => vmGet($d,'product_thumb_image'),
@@ -500,6 +505,11 @@ class vm_ps_product extends vmAbstractObject {
 		$fields = array ( 'vendor_id' => $vendor_id,
 						'product_sku' => vmGet($d,'product_sku'),
 						'product_name' => vmGet($d,'product_name'),
+						//--> DarkAiR
+						'product_title_tag' => vmGet($d,'product_title_tag'),
+                        'product_desc_tag' => vmGet($d,'product_desc_tag'),
+                        'product_key_tag' => vmGet($d,'product_key_tag'),
+						// DarkAiR <--
 						'product_desc' => vmRequest::getVar('product_desc', '', 'default', '', VMREQUEST_ALLOWHTML),
 						'product_s_desc' => vmRequest::getVar('product_s_desc', '', 'default', '', VMREQUEST_ALLOWHTML),
 						'product_thumb_image' => vmGet($d,'product_thumb_image'),
