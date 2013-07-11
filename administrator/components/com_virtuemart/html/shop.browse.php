@@ -357,7 +357,19 @@ else {
 		// If it is item get parent:
 		$product_parent_id = $db_browse->f("product_parent_id");
 		if ($product_parent_id != 0) {
-			$dbp->query("SELECT product_full_image,product_thumb_image,product_name,product_s_desc,product_desc,product_packaging,product_special,product_action FROM #__{vm}_product WHERE product_id='$product_parent_id'" );
+			$dbp->query("
+			SELECT
+				product_full_image,
+				product_thumb_image,
+				product_name,
+				product_s_desc,
+				product_desc,
+				product_packaging,
+				product_special,
+				product_action,
+				product_new_menu,
+			FROM #__{vm}_product
+			WHERE product_id='$product_parent_id'" );
 			$dbp->next_record();
 		}
 
@@ -533,6 +545,7 @@ else {
 		$products[$i]['product_in_stock'] = $db_browse->f("product_in_stock");
 		$products[$i]['product_special'] = $db_browse->f("product_special");
 		$products[$i]['product_action'] = $db_browse->f("product_action");
+		$products[$i]['product_new_menu'] = $db_browse->f("product_new_menu");
 		$products[$i]['product_available_date'] = $VM_LANG->convert( vmFormatDate($db_browse->f("product_available_date"), $VM_LANG->_('DATE_FORMAT_LC') ));
 		$products[$i]['product_availability'] = $db_browse->f("product_availability");
 		$products[$i]['cdate'] = $VM_LANG->convert( vmFormatDate($db_browse->f("cdate"), $VM_LANG->_('DATE_FORMAT_LC') ));
