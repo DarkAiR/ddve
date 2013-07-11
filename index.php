@@ -64,26 +64,6 @@ $mainframe->triggerEvent('onAfterRoute');
  *
  * NOTE :
  */
-
-
-ini_set('display_errors','Off');
-error_reporting(0);
-function exception_handler($exception) {
-	echo '<meta http-equiv="content-type" content="text/html; charset=utf-8">';
-	echo "Неперехватываемое исключение: " , $exception->getMessage(), "\n";
-	die;
-}
-function error_handler( $errno, $errstr, $f, $l, $c )
-{
-	echo '<meta http-equiv="content-type" content="text/html; charset=utf-8">';
-	echo '<pre>';
-	echo 'ОШИБКА: '.$errono.' '.$f.':'.$l.' : '.$errstr.PHP_EOL;
-//	debug_print_backtrace();
-//	die;
-}
-set_exception_handler('exception_handler');
-set_error_handler('error_handler');
-
 $option = JRequest::getCmd('option');
 $mainframe->dispatch($option);
 

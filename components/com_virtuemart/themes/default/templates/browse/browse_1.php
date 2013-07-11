@@ -27,7 +27,8 @@ mm_showMyFileName(__FILE__);
         if( $product_action=='Y' )
             echo '<div class="browseItemAction"></div>';
         else if( $product_new_menu=='Y' )
-            echo '<div class="browsrItemNewMenu"></div>';
+            echo '<div class="browseItemNewMenu"></div>';
+        ?>
     </div>
     <div class="browsePriceContainer <?php if( $product_special=='Y' ) echo 'browseItemPriceSpecial'; ?>" id="browseItemPrice">
         <?php echo $product_price ?>
