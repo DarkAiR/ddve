@@ -1,0 +1,1 @@
+alter table `jos_vm_product` add column `product_new_menu` char(1) DEFAULT NULL AFTER `product_action`;

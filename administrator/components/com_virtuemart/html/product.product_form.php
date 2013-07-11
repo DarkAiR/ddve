@@ -669,18 +669,44 @@ $tabs->startTab( $status_label, "status-page");
     
     <?php
       // DarkAiR
+      // Action
     ?>
     <tr class="row0"> 
       <td width="21%" ><div style="text-align:right;font-weight:bold;">
-      <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_ACTION') ?>:</div>
+        <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_ACTION') ?>:</div>
       </td>
-      <td width="79%" ><?php if ($db->sf("product_action")=="Y") { ?>
-        <input type="checkbox" name="product_action" value="Y" checked="checked" />
-    <?php    } 
-       else { ?>
-        <input type="checkbox" name="product_action" value="Y" />
-    <?php }
-    ?> </td>
+      <td width="79%" >
+      <?php
+        if ($db->sf("product_action")=="Y")
+        {
+          ?><input type="checkbox" name="product_action" value="Y" checked="checked" /><?php
+        } 
+        else
+        {
+          ?><input type="checkbox" name="product_action" value="Y" /><?php
+        }
+        ?>
+      </td>
+    </tr>
+    <?php
+      // New Menu
+    ?>
+    <tr class="row0"> 
+      <td width="21%" ><div style="text-align:right;font-weight:bold;">
+        <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_NEW_MENU') ?>:</div>
+      </td>
+      <td width="79%" >
+      <?php
+        if ($db->sf("product_new_menu")=="Y")
+        {
+          ?><input type="checkbox" name="product_new_menu" value="Y" checked="checked" /><?php
+        } 
+        else
+        {
+          ?><input type="checkbox" name="product_new_menu" value="Y" /><?php
+        }
+        ?>
+      </td>
     </tr>
     <?php
       // DarkAiR

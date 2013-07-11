@@ -194,6 +194,7 @@ class vm_ps_product extends vmAbstractObject {
 		$d["product_publish"] = empty($d["product_publish"]) ? "N" : "Y";
 		$d["product_special"] = empty($d["product_special"]) ? "N" : "Y";
 		$d["product_action"] = empty($d["product_action"]) ? "N" : "Y";
+		$d["product_new_menu"] = empty($d["product_new_menu"]) ? "N" : "Y";
         //parse quantity and child options
         $d['display_headers'] = vmGet($d,'display_headers', 'Y') =='Y' ? 'Y' : 'N';
         $d['product_list_child'] = vmGet($d,'product_list_child', 'Y') =='Y' ? 'Y' : 'N';
@@ -325,6 +326,7 @@ class vm_ps_product extends vmAbstractObject {
 						'product_availability' => vmGet($d,'product_availability'),
 						'product_special' => $d['product_special'],
 						'product_action' => $d['product_action'],
+						'product_new_menu' => $d['product_new_menu'],
 						'child_options' => $d['child_options'],
 						'quantity_options' => $d['quantity_options'],
 						'product_discount_id' => vmRequest::getInt('product_discount_id'),
@@ -531,6 +533,7 @@ class vm_ps_product extends vmAbstractObject {
 						'product_availability' => vmGet($d,'product_availability'),
 						'product_special' => $d['product_special'],
 						'product_action' => $d['product_action'],
+						'product_new_menu' => $d['product_new_menu'],
 						'child_options' => $d['child_options'],
 						'quantity_options' => $d['quantity_options'],
 						'product_discount_id' => vmRequest::getInt('product_discount_id'),
