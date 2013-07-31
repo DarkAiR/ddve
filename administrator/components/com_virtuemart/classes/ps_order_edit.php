@@ -80,7 +80,7 @@ class vm_ps_order_edit {
 			 
 
 		?>
-		<form method="post" name="editForm" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+		<form method="post" name="editForm" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
   		<table class="adminlist">
         <tr>
           <th><?php echo($VM_LANG->_('VM_ORDER_EDIT_EDIT_ORDER')); ?></th>
@@ -120,7 +120,7 @@ class vm_ps_order_edit {
         		<td><?php $dbt->p("order_item_sku") ?>&nbsp;</td>
         		<td><?php $dbt->p("order_item_name") ?></td>
         		<td>
-        		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+        		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             	  <input type="text" value="<?php $dbt->p("product_quantity") ?>" name="product_quantity" size="5" />
         		</td>
             	<td align="left">
@@ -136,7 +136,7 @@ class vm_ps_order_edit {
           		 </form>
   		      </td>
             <td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<input type="image" title="<?php echo $VM_LANG->_('PHPSHOP_DELETE') ?>" src="<?php echo IMAGEURL ?>ps_image/delete_f2.gif" border="0"  alt="<?php echo $VM_LANG->_('PHPSHOP_DELETE') ?>" />
             		<input type="hidden" value="1" name="delete_product" />
             		<input type="hidden" name="order_edit_page" value="1" />
@@ -166,7 +166,7 @@ class vm_ps_order_edit {
       		<tr>
         		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_ORDER_PRINT_SHIPPING') ?>: &nbsp;</strong></td>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		
               		<?php
               		$dbs = new ps_DB;
@@ -206,7 +206,7 @@ class vm_ps_order_edit {
       		<tr>
         		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_ORDER_PRINT_SHIPPING') ?>: </strong></td>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<input type="text" value="<?php $db->p("order_shipping") ?>" size="5" name="order_shipping" />
         		</td>
             <td>
@@ -224,7 +224,7 @@ class vm_ps_order_edit {
       		<tr>
         		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_ORDER_PRINT_SHIPPING_TAX') ?>: </strong></td>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<input type="text" value="<?php $db->p("order_shipping_tax") ?>" name="order_shipping_tax" size="5" />
         		</td>
             <td>
@@ -245,7 +245,7 @@ class vm_ps_order_edit {
       		<tr>
         		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_COUPON_DISCOUNT') ?>: </strong></td>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<input type="text" value="<?php $db->p("coupon_discount") ?>" size="5" name="coupon_discount" />
         		</td>
             <td>
@@ -264,7 +264,7 @@ class vm_ps_order_edit {
       		<tr>
         		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_PAYMENT_METHOD_LIST_DISCOUNT') ?>: </strong></td>
         		<td>
-          		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+          		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             		<input type="text" value="<?php $db->p("order_discount") ?>" size="5" name="order_discount" />
         		</td>
             <td>
@@ -290,7 +290,7 @@ class vm_ps_order_edit {
     		<tr>
       		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_ORDER_PRINT_BILL_TO_LBL') ?>: </strong></td>
       		<td align="right">
-        		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+        		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
           		<select name="bill_to">
             		<?php
             		$dbs = new ps_DB;
@@ -326,7 +326,7 @@ class vm_ps_order_edit {
     		<tr>
       		<td align="right"><strong><?php echo $VM_LANG->_('PHPSHOP_ORDER_PRINT_SHIP_TO_LBL') ?>: </strong></td>
       		<td align="right">
-        		<form method="post" action="<?php echo $_SERVER['PHP_SELF'] ?>">
+        		<form method="post" action="<?php echo $_SERVER['SCRIPT_NAME'] ?>">
           		<select name="ship_to">
             		<?php
             		$dbs = new ps_DB;
@@ -911,7 +911,7 @@ class vm_ps_order_edit {
 		$order_item_id = vmGet( $_REQUEST, 'order_item_id' );	
 
 		// Affichage de l'en-t�te
-		$html_entete = '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">';
+		$html_entete = '<form method="post" action="' . $_SERVER['SCRIPT_NAME'] . '">';
 		$html_entete .= '<br /><br /><table class="adminlist"><tr><th>' . $VM_LANG->_('VM_ORDER_EDIT_ADD_PRODUCT') . '</th></tr></table>';
 		$html_entete .= '<table class="adminlist"><tr>';
 		$html_entete .= '<th>' . $VM_LANG->_('PHPSHOP_ORDER_PRINT_NAME') . '</th>';
@@ -923,7 +923,7 @@ class vm_ps_order_edit {
 		<input type="hidden" name="func" value="" />
 		<input type="hidden" name="order_id" value="' . $this->order_id . '" /></form>';
 		
-		$html_return_parent = '<form method="post" action="' . $_SERVER['PHP_SELF'] . '">
+		$html_return_parent = '<form method="post" action="' . $_SERVER['SCRIPT_NAME'] . '">
 		<input type="submit" value="' . $VM_LANG->_('VM_ORDER_EDIT_RETURN_PARENTS') . '" />
 		<input type="hidden" name="product_id" value="-1" />
 		<input type="hidden" name="add_product_validate" value="0" />

@@ -31,7 +31,7 @@ vmCommonHTML::loadTigraTree();
 $menu_htmlcode = "<br /><div style=\"text-align:left;margin-left:200px;\">
 <script type=\"text/javascript\"><!--
 var TREE_ITEMS = [
-['{" . $VM_LANG->_('PHPSHOP_STORE_MOD') . "}', '{$_SERVER['PHP_SELF']}',
+['{" . $VM_LANG->_('PHPSHOP_STORE_MOD') . "}', '{$_SERVER['SCRIPT_NAME']}',
 ";
 $vmFoldersMenu->traverse_tree_down($menu_htmlcode);
   
@@ -71,7 +71,7 @@ class vmFoldersMenu {
             if( $level > 1 && $i == 1 ) { $mymenu_content.= ","; }
             $mymenu_content.= "['".addslashes($category->cname);
             $mymenu_content.= ps_product_category::products_in_category( $category->cid );
-            $mymenu_content.= "','".$_SERVER['PHP_SELF'].'?option=com_virtuemart&page=product.product_category_form&category_id='.$category->cid."'\n ";
+            $mymenu_content.= "','".$_SERVER['SCRIPT_NAME'].'?option=com_virtuemart&page=product.product_category_form&category_id='.$category->cid."'\n ";
             
             $q = "SELECT #__{vm}_product.product_name,#__{vm}_product.product_id FROM #__{vm}_product, #__{vm}_product_category_xref ";
             $q .= "WHERE #__{vm}_product.product_id=#__{vm}_product_category_xref.product_id ";
@@ -86,7 +86,7 @@ class vmFoldersMenu {
             foreach( $products as $product ) {
               // get name and link (just to save space in the code later on)
               $mymenu_content.= str_repeat("\t", $level)."['".addslashes( $product->product_name );
-              $url = $_SERVER['PHP_SELF'].'?option=com_virtuemart&page=product.product_form&product_id='.$product->product_id;
+              $url = $_SERVER['SCRIPT_NAME'].'?option=com_virtuemart&page=product.product_form&product_id='.$product->product_id;
               $mymenu_content .= "','".$url."']";
               if( $xx++ < sizeof( $products ))
                 $mymenu_content .= ",\n";

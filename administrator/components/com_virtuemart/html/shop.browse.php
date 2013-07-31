@@ -52,6 +52,7 @@ if (!defined('VM_ALLOW_EXTENDED_CLASSES') && file_exists(dirname(__FILE__).'/../
 
 // DarkAiR
 // Находим первую непустую категорию
+$original_category_id = $category_id;
 if( $category_id )
 {
     if( $ps_product_category->product_count( $category_id ) == 0 )
@@ -93,32 +94,26 @@ if( $limitstart > 0 && $limit >= $num_rows) {
 
 	$list = str_replace( 'LIMIT '.$limitstart, 'LIMIT 0', $list );
 }
-if( $category_id ) {
+if( $original_category_id ) {
 	/**
     * CATEGORY DESCRIPTION
     */
 
 	//--> DarkAiR Category desc
-	//$db->query( "SELECT category_id, category_name FROM #__{vm}_category WHERE category_id='$category_id'");
-	$db->query( "SELECT category_id, category_name, meta_desc, meta_keys, page_title FROM #__{vm}_category LEFT JOIN #__{vm}_category_meta ON #__{vm}_category_meta.cat_id = #__{vm}_category.category_id WHERE category_id='$category_id'");
-	// DarkAiR <--
+	$db->query( "SELECT category_id, category_name, meta_desc, meta_keys, page_title FROM #__{vm}_category LEFT JOIN #__{vm}_category_meta ON #__{vm}_category_meta.cat_id = #__{vm}_category.category_id WHERE category_id='$original_category_id'");
 
 	$db->next_record();
 	$category_name = shopMakeHtmlSafe( $db->f('category_name') );
 
-	//--> DarkAiR Category desc
 	// Set Dynamic Page Title
-	//$vm_mainframe->setPageTitle( $db->f("category_name") );
 	if ($db->f("page_title"))
 		$vm_mainframe->setPageTitle( $db->f("page_title") );
 	else
 		$vm_mainframe->setPageTitle( $db->f('category_name') );
-	// DarkAiR <--
 
-	$desc =  $ps_product_category->get_description($category_id);
+	$desc =  $ps_product_category->get_description($original_category_id);
 	$desc = vmCommonHTML::ParseContentByPlugins( $desc );
 
-	//--> DarkAiR Category desc
 	// Prepend Product Short Description Meta Tag "description" when applicable
 	//$mainframe->prependMetaTag( "description", substr(strip_tags($desc ), 0, 255) );
 	$mainframe->prependMetaTag( "description", $db->f("meta_desc") );
@@ -233,7 +228,7 @@ else {
 	$search_string = '';
 	if ( $num_rows > 1 && @$_REQUEST['output'] != "pdf") {
 		if ( $num_rows > 5 ) { // simplified logic
-			$search_string = $mm_action_url."index.php?option=com_virtuemart&amp;category_id=$category_id&amp;page=$modulename.browse";
+			$search_string = $mm_action_url."index.php?option=com_virtuemart&amp;category_id=$category_id&amp;pcat_id=$pcat_id&amp;page=$modulename.browse";
 			$search_string .= empty($manufacturer_id) ? '' : "&amp;manufacturer_id=$manufacturer_id";
 			$search_string .= empty($keyword) ? '' : '&amp;keyword='.urlencode( $keyword );
 			if (!empty($keyword1)) {
@@ -261,7 +256,7 @@ else {
 				}
 			}
 
-		}
+		};
 		$search_string=$sess->url($search_string);
 		
 		$tpl->set( 'VM_BROWSE_ORDERBY_FIELDS', $VM_BROWSE_ORDERBY_FIELDS);
@@ -280,6 +275,7 @@ else {
 		$tpl->set( 'selected', $selected );
 		$tpl->set( 'asc_desc', $asc_desc );
 		$tpl->set( 'category_id', $category_id );
+		$tpl->set( 'pcat_id', $pcat_id );
 		$tpl->set( 'manufacturer_id', $manufacturer_id );
 		$tpl->set( 'keyword', urlencode( $keyword ) );
 		$tpl->set( 'keyword1', urlencode( $keyword1 ) );

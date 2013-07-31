@@ -49,7 +49,7 @@ if( $show_top_navigation ) {
     <!-- PAGE NAVIGATION AT THE TOP -->
     <br/>
     <div style="text-align:center;"><?php 
-    	$pagenav->writePagesLinks( $search_string.'&pcat_id='.$pcat_id );
+    	$pagenav->writePagesLinks( $search_string );
     	echo '<br />';
         //DarkAiR
     	echo '<br />';

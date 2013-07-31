@@ -216,7 +216,7 @@ class listFactory {
 		$show = vmGet( $_REQUEST, "show", "" );
 		
 		$header = '<a name="listheader"></a>';
-		$header .= '<form name="adminForm" action="'.$_SERVER['PHP_SELF'].'" method="post">
+		$header .= '<form name="adminForm" action="'.$_SERVER['SCRIPT_NAME'].'" method="post">
 					
 					<input type="hidden" name="option" value="'.VM_COMPONENT_NAME.'" />
 					<input type="hidden" name="page" value="'. $modulename . '.' . $pagename . '" />
@@ -323,7 +323,7 @@ class formFactory {
 	* Writes the form start tag
 	*/
 	function startForm( $formname = 'adminForm', $extra = "" ) {
-		$action = (!defined('_VM_IS_BACKEND' ) && !empty($_REQUEST['next_page'])) ? 'index.php' : $_SERVER['PHP_SELF'];
+		$action = (!defined('_VM_IS_BACKEND' ) && !empty($_REQUEST['next_page'])) ? 'index.php' : $_SERVER['SCRIPT_NAME'];
 		echo '<form method="post" action="'. $action .'" name="'.$formname.'" '.$extra.' target="_self">';
 	}
 	

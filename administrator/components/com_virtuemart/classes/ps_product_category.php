@@ -809,12 +809,12 @@ class vm_ps_product_category extends vmAbstractObject {
 			}
 			echo "&#095;&#095;|$level|&nbsp;";
 			echo "<a href=\"" ;
-			echo $_SERVER['PHP_SELF'] . "?option=com_virtuemart&page=product.product_category_form&category_id=" . $db->f("category_child_id"). "&category_parent_id=" . $db->f("category_parent_id");
+			echo $_SERVER['SCRIPT_NAME'] . "?option=com_virtuemart&page=product.product_category_form&category_id=" . $db->f("category_child_id"). "&category_parent_id=" . $db->f("category_parent_id");
 			echo "\">";
 			echo $db->f("category_name") . "</a></td>\n";
 			echo "<td>&nbsp;&nbsp;" . $db->f("category_description");
 			echo "</td>\n<td>".$product_count ." ". $VM_LANG->_('PHPSHOP_PRODUCTS_LBL')."&nbsp;<a href=\"";
-			echo $_SERVER['PHP_SELF'] . "?page=product.product_list&category_id=" . $db->f("category_child_id")."&option=com_virtuemart";
+			echo $_SERVER['SCRIPT_NAME'] . "?page=product.product_list&category_id=" . $db->f("category_child_id")."&option=com_virtuemart";
 			echo "\">[ ".$VM_LANG->_('PHPSHOP_SHOW')." ]</a>\n</td>\n";
 			//echo "<td>". $db->f("list_order")."</td>";
 			echo "<td>";
@@ -828,7 +828,7 @@ class vm_ps_product_category extends vmAbstractObject {
 			echo mShop_orderUpIcon( $db->row, $db->num_rows(), $ibg ) . "\n&nbsp;" . mShop_orderDownIcon( $db->row, $db->num_rows(), $ibg );
 			echo "</div></td>\n";
 			echo "<td width=\"5%\">";
-			echo "<a class=\"toolbar\" href=\"".$_SERVER['PHP_SELF']."?option=com_virtuemart&page=".$page ."&func= productCategoryDelete&category_id=". $db->f("category_id") ."\"";
+			echo "<a class=\"toolbar\" href=\"".$_SERVER['SCRIPT_NAME']."?option=com_virtuemart&page=".$page ."&func= productCategoryDelete&category_id=". $db->f("category_id") ."\"";
 			echo " onclick=\"return confirm('". addslashes($VM_LANG->_('PHPSHOP_DELETE_MSG')) ."');\" onmouseout=\"MM_swapImgRestore();\"  onmouseover=\"MM_swapImage('Delete$ibg','','". IMAGEURL ."ps_image/delete_f2.gif',1);\">";
 			echo "<img src=\"". IMAGEURL ."ps_image/delete.gif\" alt=\"".$VM_LANG->_('VM_DELETE_RECORD')."\" name=\"delete$ibg\" align=\"middle\" border=\"0\" /></a></td>\n";
 			$this->traverse_tree_down($class, $db->f("category_child_id"), $level);
@@ -1283,7 +1283,7 @@ class vm_ps_product_category extends vmAbstractObject {
 		foreach( $category_list as $category ) {
 			$item = new stdClass();
 			$item->name = vmHtmlEntityDecode( $category['category_name'] );
-			$item->link = $sess->url( $_SERVER['PHP_SELF'] . "?page=shop.browse&category_id=$category[category_id]", false, false );
+			$item->link = $sess->url( $_SERVER['SCRIPT_NAME'] . "?page=shop.browse&category_id=$category[category_id]", false, false );
 			$pathway_items[] = $item;
 		}
 		
