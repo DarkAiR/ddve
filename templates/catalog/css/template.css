@@ -348,6 +348,37 @@ ul li
 }
 
 
+/**
+ * add to seo editor styles
+ */
+.moduletable_seo_text_main {
+    font-size: 15px;
+    color: #7b635e;
+    width: 770px;
+    margin-left: 255px;
+    text-align: justify;
+    padding-bottom: 100px;
+}
+.moduletable_seo_text_main p {
+    text-indent: 40px;
+    line-height: 1.3em;
+    margin: 0px;
+    padding-top: 1em;
+}
+.moduletable_seo_text_main li {
+    list-style: disc;
+    margin-left: 58px;
+}
+.seo-h1-title {
+    text-indent: 0px !important;
+}
+.seo-h2 {
+}
+.seo-h3-signature {
+    text-indent: 0px !important;
+}
+
+
 /* левое меню index.php?option=com_virtuemart */
 
 /* отключаем подчеркивание на ссылках */

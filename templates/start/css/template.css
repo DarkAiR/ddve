@@ -332,9 +332,7 @@ ul li
 #div4_content
 {
     position: absolute;
-    width: 770px;
-    text-align: justify;
-    left: 315px;
+    left: 0px;
     top: 40px;
 }
 
@@ -344,17 +342,32 @@ ul li
 .moduletable_seo_text_main {
     font-size: 15px;
     color: #9da3ac;
+    width: 770px;
+    margin-left: 315px;
+    text-align: justify;
+}
+.moduletable_seo_text_main p {
+    text-indent: 40px;
+    line-height: 1.3em;
+    margin: 0px;
+    padding-top: 1em;
+}
+.moduletable_seo_text_main li {
+    list-style: disc;
+    margin-left: 58px;
 }
 .seo-h1-title {
     color: #b8bdc4;
+    text-indent: 0px !important;
 }
 .seo-h2 {
     color: #bfc4cc;
+    margin-top: 1em !important;
 }
 .seo-h3-signature {
     color: #d3d7bb;
+    text-indent: 0px !important;
 }
-
 
 
 #page #footer
