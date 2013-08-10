@@ -137,6 +137,8 @@ $db->next_record();
 			<div class="formField" > <?php $db->p("product_special"); ?></div>
 			<div class="formLabel"> <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_ACTION') ?>:</div>
 			<div class="formField" > <?php $db->p("product_action"); ?></div>
+			<div class="formLabel"> <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_NEW_MENU') ?>:</div>
+			<div class="formField" > <?php $db->p("product_new_menu"); ?></div>
 		  
 		  
 			<div class="formLabel"> <?php echo $VM_LANG->_('PHPSHOP_PRODUCT_FORM_DISCOUNT_TYPE') ?>:</div>

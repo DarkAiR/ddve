@@ -79,6 +79,7 @@ else
         $packaging          = ($ps_product->get_field( $cartProdId, 'product_packaging' ) * $cartProdQuantity) . ' ' . $ps_product->get_field( $cartProdId, 'product_unit' );
         $product_special    =  $ps_product->get_field( $cartProdId, 'product_special' );
         $product_action     =  $ps_product->get_field( $cartProdId, 'product_action' );
+        $product_new_menu   =  $ps_product->get_field( $cartProdId, 'product_new_menu' );
         $product_sku        =  $ps_product->get_field( $cartProdId, 'product_sku' );
         $description        =  $ps_product->get_field( $cartProdId, 'product_desc' );
 
@@ -125,6 +126,7 @@ else
         $minicart[$ci]['packaging']         = $packaging;
         $minicart[$ci]['product_special']   = $product_special;
         $minicart[$ci]['product_action']    = $product_action;
+        $minicart[$ci]['product_new_menu']  = $product_new_menu;
         $minicart[$ci]['product_sku']       = $product_sku;
         $minicart[$ci]['desc']              = $description;
         

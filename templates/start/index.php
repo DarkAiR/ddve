@@ -8,6 +8,7 @@
 <jdoc:include type="head" />
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/editor.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
 <script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
 <link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
@@ -161,50 +162,12 @@
         imgArr[index] = tmp;
     }
 </script>
-<script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-25714532-1']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
 </head>
 
 <body>
 
-<!-- Yandex.Metrika counter -->
-<script type="text/javascript">
-(function (d, w, c) {
-    (w[c] = w[c] || []).push(function() {
-        try {
-            w.yaCounter21519046 = new Ya.Metrika({id:21519046,
-                    webvisor:true,
-                    clickmap:true,
-                    trackLinks:true,
-                    accurateTrackBounce:true});
-        } catch(e) { }
-    });
-
-    var n = d.getElementsByTagName("script")[0],
-        s = d.createElement("script"),
-        f = function () { n.parentNode.insertBefore(s, n); };
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-    if (w.opera == "[object Opera]") {
-        d.addEventListener("DOMContentLoaded", f, false);
-    } else { f(); }
-})(document, window, "yandex_metrika_callbacks");
-</script>
-<noscript><div><img src="//mc.yandex.ru/watch/21519046" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+<?php include_once("analyticstracking.php"); ?>
+<?php include_once("yandexmetrika.php"); ?>
 
 <div id="page">
 
@@ -259,7 +222,18 @@
         <div id="div3_3"></div>
     </div>
     <div id="div4">
-        <jdoc:include type="modules" name="seo_footer" style="xhtml" />
+        <div id="div4_1">
+            <jdoc:include type="modules" name="seo_footer_tags" style="xhtml" />
+        </div>
+        <div id='div4_container'>
+            <div id="div4_2">
+            </div>
+            <div id="div4_3">
+            </div>
+            <div id='div4_content'>
+                <jdoc:include type="modules" name="seo_footer_text" style="xhtml" />
+            </div>
+        </div>
     </div>
 
 </div>

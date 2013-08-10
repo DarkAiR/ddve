@@ -6,7 +6,7 @@ mm_showMyFileName(__FILE__);
 
     <div class="browseProductImageContainer">
         <?php
-		/*<script type="text/javascript">
+        /*<script type="text/javascript">
             //document.write('<a href="javascript:void window.open(\'<?php echo $product_full_image ?>\', \'win2\', \'status=no,toolbar=no,scrollbars=yes,titlebar=no,menubar=no,resizable=yes,width=<?php echo $full_image_width ?>,height=<?php echo $full_image_height ?>,directories=no,location=no\');">');
             <?php
                 $imgTag = ps_product::image_tag( urldecode($product_thumb_image), 'class="browseProductImage" border="0" title="'.$product_name.'" alt="'.$product_name .'"' );
@@ -14,16 +14,21 @@ mm_showMyFileName(__FILE__);
             ?>
             //document.write( '<?php echo $hrefTag ?>' );
         </script>*/
-		?>
-		<?php
-			$imgTag = ps_product::image_tag( urldecode($product_thumb_image), 'class="browseProductImage" border="0" title="'.$product_name.'" alt="'.$product_name .'"' );
-			$hrefTag = vmCommonHTML::getLightboxImageLink( $product_full_image, $imgTag, $product_name, 'product' );
-			echo $hrefTag;
-		?>
+        ?>
+        <?php
+            $imgTag = ps_product::image_tag( urldecode($product_thumb_image), 'class="browseProductImage" border="0" title="'.$product_name.'" alt="'.$product_name .'"' );
+            $hrefTag = vmCommonHTML::getLightboxImageLink( $product_full_image, $imgTag, $product_name, 'product' );
+            echo $hrefTag;
+        ?>
     </div>
 
     <div class="browseActionContainer" id="browseItemAction">
-            <div class="<?php if( $product_action=='Y' ) echo 'browseItemAction'; ?>"></div>
+        <?php
+        if( $product_action=='Y' )
+            echo '<div class="browseItemAction"></div>';
+        else if( $product_new_menu=='Y' )
+            echo '<div class="browseItemNewMenu"></div>';
+        ?>
     </div>
     <div class="browsePriceContainer <?php if( $product_special=='Y' ) echo 'browseItemPriceSpecial'; ?>" id="browseItemPrice">
         <?php echo $product_price ?>

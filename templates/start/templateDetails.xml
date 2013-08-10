@@ -35,6 +35,7 @@
         <position>bottom</position>
         <position>bottommenu</position>
         <position>footer</position>
-        <position>seo_footer</position>
+        <position>seo_footer_tags</position>
+        <position>seo_footer_text</position>
       </positions>
 </install>

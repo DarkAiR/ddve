@@ -247,61 +247,115 @@ ul li
     background: url(../images/img_01.jpg) left top no-repeat;
 }
 
+#page #div2,
+#page #div2_1,
+#page #div2_2,
+#page #div2_3
+{
+    height: 659px;
+}
 #page #div2_1
 {
     width: 319px;
-    height: 659px;
     background: url(../images/img_02.jpg) left top no-repeat;
     float: left;
 }
-
 #page #div2_2
 {
     width: 788px;
-    height: 659px;
     background: url(../images/img_03.jpg) left top no-repeat;
     float: left;
 }
-
 #page #div2_3
 {
     width: 293px;
-    height: 659px;
     float: left;
     background: url(../images/img_04.jpg) left top no-repeat;
 }
 
+
+#page #div3,
+#page #div3_1,
+#page #div3_2,
+#page #div3_3
+{
+    height: 208px;
+}
 #page #div3_1
 {
     width: 319px;
-    height: 208px;
     background: url(../images/img_05.jpg) left top no-repeat;
     float: left;
 }
-
 #page #div3_2
 {
     width: 788px;
-    height: 208px;
     background: url(../images/img_06.jpg) left top no-repeat;
     float: left;
 }
-
 #page #div3_3
 {
     width: 293px;
-    height: 208px;
     float: left;
     background: url(../images/img_07.jpg) left top no-repeat;
 }
 
+
 #page #div4
 {
     width: 1400px;
-    height: 110px;
+}
+#page #div4_1
+{
+    width: 1400px;
+    height: 106px;
     background: url(../images/img_08.jpg) left top no-repeat;
+}
+#page #div4_2
+{
+    width: 1400px;
+    height: 268px;
+    background: url(../images/img_09.jpg) left top no-repeat;
     float: left;
 }
+#page #div4_3
+{
+    width: 1400px;
+    height: 549px;
+    background: url(../images/img_10.png) left top repeat-x;
+    float: left;
+}
+#div4_container
+{
+    position: relative;
+}
+#div4_content
+{
+    position: absolute;
+    width: 770px;
+    text-align: justify;
+    left: 315px;
+    top: 40px;
+}
+
+/**
+ * add to seo editor styles
+ */
+.moduletable_seo_text_main {
+    font-size: 15px;
+    color: #9da3ac;
+}
+.seo-h1-title {
+    color: #b8bdc4;
+}
+.seo-h2 {
+    color: #bfc4cc;
+}
+.seo-h3-signature {
+    color: #d3d7bb;
+}
+
+
 
 #page #footer
 {
@@ -521,7 +575,7 @@ ul li
     height: 60px;
     position: relative;
     left: 131px;
-    top: 40px;
+    top: 32px;
     text-align: center;
 }
 .moduletable_seo_main div
@@ -537,21 +591,6 @@ ul li
     text-transform: lowercase;
     float: left;
     line-height: 1.2em;
-}
-.moduletable_seo_main p.sz20
-{
-    font-size: 20px;
-    margin-top: 0px;
-}
-.moduletable_seo_main p.sz17
-{
-    font-size: 17px;
-    margin-top: 4px;
-}
-.moduletable_seo_main p.sz12
-{
-    font-size: 12px;
-    margin-top: 10px;
 }
 .moduletable_seo_main p a
 {
