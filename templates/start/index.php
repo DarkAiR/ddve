@@ -8,6 +8,7 @@
 <jdoc:include type="head" />
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/editor.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
 <script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
 <link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
@@ -221,7 +222,18 @@
         <div id="div3_3"></div>
     </div>
     <div id="div4">
-        <jdoc:include type="modules" name="seo_footer" style="xhtml" />
+        <div id="div4_1">
+            <jdoc:include type="modules" name="seo_footer_tags" style="xhtml" />
+        </div>
+        <div id='div4_container'>
+            <div id="div4_2">
+            </div>
+            <div id="div4_3">
+            </div>
+            <div id='div4_content'>
+                <jdoc:include type="modules" name="seo_footer_text" style="xhtml" />
+            </div>
+        </div>
     </div>
 
 </div>
