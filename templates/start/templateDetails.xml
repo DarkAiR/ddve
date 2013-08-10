@@ -37,5 +37,8 @@
         <position>footer</position>
         <position>seo_footer_tags</position>
         <position>seo_footer_text</position>
+        <position>seo_footer_text_footer_pizza</position>
+        <position>seo_footer_text_footer_rolly</position>
+        <position>seo_footer_text_footer_suchi</position>
       </positions>
 </install>
