@@ -20,6 +20,7 @@ var startUpdataMiniCarts = false;
 jQuery(document).ready( function()
 {
     vmCartTopButton = parseInt( jQuery('#vm_cart_button').css('top') ) + pageHeaderHeight;
+    pageHeaderHeight = jQuery('#header').height();
 });
 
 // Отслеживаем изменение размеров окна, чтобы позиционировать корзину
@@ -41,14 +42,21 @@ jQuery(window).scroll( function()
     var deltaTopOffset = topOffset - vmCartScrollTop;
     vmCartScrollTop = topOffset;
 
-    console.log( vmCartScrollTop + " : " + (topOffset + maxTop - pageHeaderHeight) );
+    var basket = jQuery('#vm_cart_button');
+    var basketTopPosition = topOffset + maxTop - pageHeaderHeight;      // Реальный предполагаемый отступ от верха для кнопки с корзиной
+    var contentHeight = jQuery('#js-content').height();                 // Высота контентного блока
+    contentHeight += pageHeaderHeight;                                  // Добавляем высоту заголовка
+    contentHeight -= basket.height() + maxTop;                          // Вычитаем высоту корзины и ее отступ
 
-    var elem = jQuery('#vm_cart_button');
+    // Если корзина вылазит за контент, то не даем ей это сделать
+    if (vmCartScrollTop > contentHeight)
+        basketTopPosition -= vmCartScrollTop - contentHeight;
+
     vmCartTopButton -= deltaTopOffset;
     if( vmCartTopButton < maxTop )
-        elem.css( 'top', topOffset + maxTop - pageHeaderHeight );
+        basket.css( 'top', basketTopPosition );
     else
-        elem.css( 'top', maxTop );
+        basket.css( 'top', maxTop );
     vmCartPositionWindowByButton();
 });
 
@@ -142,7 +150,6 @@ function vmCartFormSend( elem )
     params += 'persons=' + jQuery('#total_block #person_amount #person_quantity').attr("value");
 
     // Проверяем корректность
-    console.log( params );
     err = false;
     if( name.trim().length == 0 )
     {
@@ -184,7 +191,6 @@ function vmCartFormSend( elem )
                 jAlert( 'Ваш заказ отправлен.', 'Заказ отправлен' );
             else
                 jAlert( 'Извините, произошел сбой при отправке Вашего заказа.\nПожалуйста повторите попытку.', 'Заказ не отправлен' );
-            console.log( data );
         }
     });
 }
@@ -201,7 +207,6 @@ function vmCartMinus( elem, itemId )
 {
     var productId = parseInt( jQuery(elem).attr('productId') );
     var quantity  = parseInt( jQuery(elem).attr('quantity') );
-    console.log( 'minus '+productId+' = '+quantity );
 
     if( quantity <= 0 )
         return;
@@ -213,7 +218,6 @@ function vmCartMinus( elem, itemId )
 function vmCartPlus( elem, itemId )
 {
     var productId = parseInt( jQuery(elem).attr('productId') );
-    console.log( 'plus '+productId );
 
     itemsToAdd = 1;
     vmCartChangeAmount( productId, itemId, 'cartAdd' );
@@ -221,17 +225,13 @@ function vmCartPlus( elem, itemId )
 
 function vmCartChangeAmount( productId, itemId, cartFunc )
 {
-    console.log( "vmCartChangeAmount" );
     if( startCartChangeAmount == true  ||  startUpdataMiniCarts == true )
         return;
-    console.log( 'start!' );
     startCartChangeAmount = true;
 
     var callback = function(responseText)
     {
-        console.log( 'vmCartChangeAmount end!!!' );
         startCartChangeAmount = false;
-        console.log( responseText );
         updateMiniCarts();
     }
     var option =
@@ -251,7 +251,6 @@ function vmCartChangeAmount( productId, itemId, cartFunc )
             "master_product[]": ""
         }
     };
-    //console.log( option );
     new Ajax( live_site + '/index2.php', option ).request();
 }
 
@@ -259,13 +258,11 @@ function vmCartDelete( elem, itemId )
 {
     var productId = parseInt( jQuery(elem).attr('productId') );
     var quantity  = parseInt( jQuery(elem).attr('quantity') );
-    console.log( 'delete '+productId+' = '+quantity );
 
     itemsToAdd = -quantity;
 
     var callback = function(responseText)
     {
-        console.log( responseText );
         updateMiniCarts();
     }
     var option =
@@ -329,17 +326,13 @@ $(window).addEvent('domready', function()
     */
     updateMiniCarts = function()
     {
-        console.log( 'updateMiniCarts' );
         if( startUpdataMiniCarts == true )
             return;
         startUpdataMiniCarts = true;
-        console.log( 'updateMiniCarts start!!!' );
 
         var callbackCart = function( responseText )
         {
             startUpdataMiniCarts = false;
-            console.log( 'updateMiniCarts end!!!' );
-            //console.log( responseText );
 
             var basketAmount = $('vm_cart_button').getElement('span');
             var newAmount = parseInt( basketAmount.innerHTML ) + parseInt( itemsToAdd );
@@ -359,70 +352,3 @@ $(window).addEvent('domready', function()
         new Ajax( live_site + '/index2.php', option).request();
     }
 });
-
-/*
-// Override the VirtueMart function;
-$(window).addEvent('domready', function()
-{
-        // Override the handleAddToCart function;
-    handleAddToCart = function(formId, parameters)
-    {
-        formCartAdd = $(formId);
-        itemsToAdd = 1;
-        //var vmCart = new Fx.Slide("cart-panel");
-        var myElement = document.getElementById('cart-panel');
-        var mySlwa = 2;
-        new Ajax(formCartAdd.action, {
-            method: 'post',
-            postBody: $(formId).toQueryString(),
-            evalScripts: true,
-            onComplete: function(responseText) {
-                if(mySlwa == 2){
-                    mySlwa = 1;
-                }
-                setTimeout( function(){
-                    if( $defined($('cart_overlay')) ) {
-                        $('cart_overlay').setStyles({
-                            "visibility": 'hidden'
-                        });
-                    }
-                },1500);
-                updateMiniCarts();
-                $('vm_cart').className = 'vm_cart-full';
-            }
-        }).request();
-    }
-
-/*
-        // Override the handleAddToCart function;
-    updateMiniCarts = function() {
-        var cartPanel = $('cart-panel');
-        var mika = $('cart-button').getElement('strong');
-        ex1 = parseInt(mika.innerHTML);
-        ex2 = parseInt(itemsToAdd);
-        ex3 = ex1+ex2;
-
-        new Ajax(live_site + '/index2.php', {
-            method: 'post',
-            postBody: Object.toQueryString({
-                "only_page": "1",
-                "page": "shop.basket_short",
-                "option": "com_virtuemart"
-            }),
-            onComplete: function(responseText) {
-                carts = $('ice_cart').getElement('.ice-content');
-                if( carts ) {
-                    try {
-                        carts.innerHTML = responseText;
-                        mika.innerHTML = ex3;
-                    } catch(e) {
-                    // ...
-                    }
-                    $('cart-panel').addClass('ice-hide');
-                    IceSliderCart(true);
-                }
-            }
-        }).request();
-    }
-});*/
-

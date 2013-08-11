@@ -296,20 +296,20 @@ ul li
     text-align:left;
 }
 
-#page #content
+#page .content
 {
     width: 960px;
     background-color: #fff;
     margin: 0px auto;
 }
 
-#page #content .contentpaneopen
+#page .content .contentpaneopen
 {
     padding-top: 25px;
 }
 
-#page #content .contentpaneopen .contentheading,
-#page #content .componentheading
+#page .content .contentpaneopen .contentheading,
+#page .content .componentheading
 {
     font-size: 22px;
     color: #866076;
@@ -317,12 +317,12 @@ ul li
     padding-bottom: 0px;
 }
 
-#page #content .componentheading
+#page .content .componentheading
 {
     padding-top: 30px;
 }
 
-#page table#content #left
+#page table.content #left
 {
     padding: 0px;
     margin: 0px;
@@ -332,7 +332,7 @@ ul li
     padding-top: 40px;
 }
 
-#page table#content #main
+#page table.content #main
 {
     width: auto;
     height: 500px;
