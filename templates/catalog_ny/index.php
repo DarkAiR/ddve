@@ -185,9 +185,9 @@
     </div>
 
     <!--блок контента-->
-        <div id="content">
+        <div class="content">
 
-        <table id="content" widht="100%" height="100%" cellpadding="0" cellspacing="0">
+        <table class="content" id='js-content' width="100%" height="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <!--левое меню-->
                 <td id="left">

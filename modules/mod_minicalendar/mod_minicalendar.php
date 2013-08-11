@@ -20,7 +20,7 @@ if( $params->get('type') == 0 )
 else
     JHTML::stylesheet( 'styles_mini.css', 'modules/mod_minicalendar/' );
 
-JHTML::script( 'jquery.balloon.min.js', 'modules/mod_minicalendar/' );
+JHTML::script( 'jquery.balloon.min.js' );
 
 // Get module parameters
 
