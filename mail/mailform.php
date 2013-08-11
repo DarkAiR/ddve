@@ -86,7 +86,7 @@ if( !empty($_POST) )
 <form action="/mail/mailform.php" method="POST" ENCTYPE="multipart/form-data">
 <span style='display:block; width:100%; text-align:left'>Для нас очень важно знать Ваше мнение!<br/>Ведь только так мы сможем сделать наш ресторан ещё лучше!</span>
 <br/>
-<div class="content">
+<div>
 <table width="100%" cellpadding=0 cellspacing=2 border=0>
     <tr>
         <td valign="top">Ваше имя:</td>

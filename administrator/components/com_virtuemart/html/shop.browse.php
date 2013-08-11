@@ -564,7 +564,7 @@ else {
 	$tpl->set( 'search_string', $search_string );
 
     // DarkAiR
-	if ( $num_rows > 1 ) {
+	if ( $num_rows > $limit ) {
 		$browsepage_footer = $tpl->fetch( 'browse/includes/browse_pagenav.tpl.php' );
 		$tpl->set( 'browsepage_footer', $browsepage_footer );
 	} else {

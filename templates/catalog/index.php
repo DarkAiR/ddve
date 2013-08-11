@@ -187,9 +187,9 @@
     </div>
 
     <!--блок контента-->
-        <div id="content">
+        <div class="content">
 
-        <table id="content" widht="100%" height="100%" cellpadding="0" cellspacing="0">
+        <table class="content" id='js-content' width="100%" height="100%" cellpadding="0" cellspacing="0">
             <tr>
                 <!--левое меню-->
                 <td id="left">
@@ -225,6 +225,7 @@
                     ?><jdoc:include type="modules" name="seo_footer_text_footer_pizza" style="xhtml" /><?php
                     break;
                 // Роллы
+                case 19:
                 case 20:
                     ?><jdoc:include type="modules" name="seo_footer_text_footer_rolly" style="xhtml" /><?php
                     break;
