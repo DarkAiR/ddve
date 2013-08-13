@@ -203,6 +203,8 @@
                 </td>
                 <!--основной текст-->
                 <td id="main">
+                    <br/>
+                    <jdoc:include type="modules" name="breadcrumb" style="xhtml" />
                     <jdoc:include type="component" style="xhtml" />
                 </td>
             </tr>
