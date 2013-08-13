@@ -12,58 +12,60 @@
 <link rel="stylesheet" href="templates/system/css/custom_editor.css" type="text/css" />
 <script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
 <link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+
 <script type="text/javascript">
     var console = console || { log:function(){} };
 
-    jQuery(document).ready(
-        function()
-        {
-            // Грязный хак
-            // Скрываем пункт меню по умолчанию
-            jQuery('.item1').css( 'display', 'none' );
+    jQuery(document).ready( function()
+    {
+        // Грязный хак
+        // Скрываем пункт меню по умолчанию
+        jQuery('.item1').css( 'display', 'none' );
 
-            // Кэшируем
-            img22_over = new Image();
-            img22_over.src = "templates/<?php echo $this->template ?>/images/img_03_open.jpg";
-            //img22_over.onclick = change;
-            img31_over = new Image();
-            img31_over.src = "templates/<?php echo $this->template ?>/images/img_05_open.jpg";
-            img32_over = new Image();
-            img32_over.src = "templates/<?php echo $this->template ?>/images/img_06_open.jpg";
-            img33_over = new Image();
-            img33_over.src = "templates/<?php echo $this->template ?>/images/img_07_open.jpg";
+        // Кэшируем
+        img22_over = new Image();
+        img22_over.src = "templates/<?php echo $this->template ?>/images/img_03_open.jpg";
+        //img22_over.onclick = change;
+        img31_over = new Image();
+        img31_over.src = "templates/<?php echo $this->template ?>/images/img_05_open.jpg";
+        img32_over = new Image();
+        img32_over.src = "templates/<?php echo $this->template ?>/images/img_06_open.jpg";
+        img33_over = new Image();
+        img33_over.src = "templates/<?php echo $this->template ?>/images/img_07_open.jpg";
 
-            imgArr = new Array();
-            imgArr[22] = "url(templates/<?php echo $this->template ?>/images/img_03_open.jpg)";
-            imgArr[31] = "url(templates/<?php echo $this->template ?>/images/img_05_open.jpg)";
-            imgArr[32] = "url(templates/<?php echo $this->template ?>/images/img_06_open.jpg)";
-            imgArr[33] = "url(templates/<?php echo $this->template ?>/images/img_07_open.jpg)";
+        imgArr = new Array();
+        imgArr[22] = "url(templates/<?php echo $this->template ?>/images/img_03_open.jpg)";
+        imgArr[31] = "url(templates/<?php echo $this->template ?>/images/img_05_open.jpg)";
+        imgArr[32] = "url(templates/<?php echo $this->template ?>/images/img_06_open.jpg)";
+        imgArr[33] = "url(templates/<?php echo $this->template ?>/images/img_07_open.jpg)";
 
-            jQuery('#supy').    mouseover( function(e) { jQuery(this).hide(); jQuery('#supy2').css('display','inline');    });
-            jQuery('#supy2').   mouseout ( function(e) { jQuery(this).hide(); jQuery('#supy').css('display','inline');     });
-            jQuery('#salaty').  mouseover( function(e) { jQuery(this).hide(); jQuery('#salaty2').css('display','inline');  });
-            jQuery('#salaty2'). mouseout ( function(e) { jQuery(this).hide(); jQuery('#salaty').css('display','inline');   });
-            jQuery('#rolly').   mouseover( function(e) { jQuery(this).hide(); jQuery('#rolly2').css('display','inline');   });
-            jQuery('#rolly2').  mouseout ( function(e) { jQuery(this).hide(); jQuery('#rolly').css('display','inline');    });
-            jQuery('#lapsha').  mouseover( function(e) { jQuery(this).hide(); jQuery('#lapsha2').css('display','inline');  });
-            jQuery('#lapsha2'). mouseout ( function(e) { jQuery(this).hide(); jQuery('#lapsha').css('display','inline');   });
-            jQuery('#pizza').   mouseover( function(e) { jQuery(this).hide(); jQuery('#pizza2').css('display','inline');   });
-            jQuery('#pizza2').  mouseout ( function(e) { jQuery(this).hide(); jQuery('#pizza').css('display','inline');    });
-            jQuery('#vok').     mouseover( function(e) { jQuery(this).hide(); jQuery('#vok2').css('display','inline');     });
-            jQuery('#vok2').    mouseout ( function(e) { jQuery(this).hide(); jQuery('#vok').css('display','inline');      });
-            jQuery('#deserty'). mouseover( function(e) { jQuery(this).hide(); jQuery('#deserty2').css('display','inline'); });
-            jQuery('#deserty2').mouseout ( function(e) { jQuery(this).hide(); jQuery('#deserty').css('display','inline');  });
+        jQuery('#supy').    mouseover( function(e) { jQuery(this).hide(); jQuery('#supy2').css('display','inline');    });
+        jQuery('#supy2').   mouseout ( function(e) { jQuery(this).hide(); jQuery('#supy').css('display','inline');     });
+        jQuery('#salaty').  mouseover( function(e) { jQuery(this).hide(); jQuery('#salaty2').css('display','inline');  });
+        jQuery('#salaty2'). mouseout ( function(e) { jQuery(this).hide(); jQuery('#salaty').css('display','inline');   });
+        jQuery('#rolly').   mouseover( function(e) { jQuery(this).hide(); jQuery('#rolly2').css('display','inline');   });
+        jQuery('#rolly2').  mouseout ( function(e) { jQuery(this).hide(); jQuery('#rolly').css('display','inline');    });
+        jQuery('#lapsha').  mouseover( function(e) { jQuery(this).hide(); jQuery('#lapsha2').css('display','inline');  });
+        jQuery('#lapsha2'). mouseout ( function(e) { jQuery(this).hide(); jQuery('#lapsha').css('display','inline');   });
+        jQuery('#pizza').   mouseover( function(e) { jQuery(this).hide(); jQuery('#pizza2').css('display','inline');   });
+        jQuery('#pizza2').  mouseout ( function(e) { jQuery(this).hide(); jQuery('#pizza').css('display','inline');    });
+        jQuery('#vok').     mouseover( function(e) { jQuery(this).hide(); jQuery('#vok2').css('display','inline');     });
+        jQuery('#vok2').    mouseout ( function(e) { jQuery(this).hide(); jQuery('#vok').css('display','inline');      });
+        jQuery('#deserty'). mouseover( function(e) { jQuery(this).hide(); jQuery('#deserty2').css('display','inline'); });
+        jQuery('#deserty2').mouseout ( function(e) { jQuery(this).hide(); jQuery('#deserty').css('display','inline');  });
 
-            jQuery('#div2_2_inner').css( 'display', 'none' );
+        jQuery('#div2_2_inner').css( 'display', 'none' );
 
 /*            jQuery('#info2').live('click', function(e)
-            {
-                if (window.getSelection) { window.getSelection().removeAllRanges(); }
-                else if (document.selection && document.selection.clear)
-                  document.selection.clear();
-            });*/
-            jQuery('#div2_2').css( 'cursor', 'pointer' );
-            jQuery('#div2_2').live('click', function(e)
+        {
+            if (window.getSelection) { window.getSelection().removeAllRanges(); }
+            else if (document.selection && document.selection.clear)
+              document.selection.clear();
+        });*/
+
+        jQuery('#div2_2')
+            .css( 'cursor', 'pointer' )
+            .live('click', function(e)
             {
                 //if (window.getSelection) { window.getSelection().removeAllRanges(); }
                 //else if (document.selection && document.selection.clear)
@@ -75,18 +77,46 @@
                 }
             });
 
-            // Выравниваем страницу по центру
-            var wnd = jQuery(window);
-            var offs = (1400-wnd.width())/2;
-            document.documentElement.scrollLeft = offs;
-            document.body.scrollLeft = offs;
-            var e = jQuery('html, body');
-            e.animate({'scrollLeft': offs});
 
-            // Позиционируем логотип
-            setHeaderPosition();
-        }
-    );
+        // Подцепляем балун
+        var tipSize = 10;
+        jQuery('#div2_2_close')
+            .mousemove( function(e)
+            {
+                var balloonEl = jQuery('.balloonTip');
+                var offsLeft = parseInt( balloonEl.css('paddingLeft') );
+                var offsTop = parseInt( balloonEl.css('paddingTop') );
+                balloonEl.css({'left':e.pageX - balloonEl.width()/2 - offsLeft, 'top':e.pageY - balloonEl.height() - tipSize - offsTop*2 - 5});
+            });
+        jQuery( function()
+        {
+            jQuery('#div2_2_close').balloon({
+                contents:'Нажми на холодильник',
+                minLifetime: 0,
+                classname: "balloonTip",
+                showDuration: 0,
+                hideDuration: 0,
+                showAnimation: function(d)
+                {
+                    this.show();
+                    // Вырубаем нафиг обработчик наведения курсора, чтобы быстрые дрыганья, не портили тултип
+                    this.unbind('mouseover');
+                },
+                tipSize: tipSize
+            });
+        });
+
+        // Выравниваем страницу по центру
+        var wnd = jQuery(window);
+        var offs = (1400-wnd.width())/2;
+        document.documentElement.scrollLeft = offs;
+        document.body.scrollLeft = offs;
+        var e = jQuery('html, body');
+        e.animate({'scrollLeft': offs});
+
+        // Позиционируем логотип
+        setHeaderPosition();
+    });
 
     jQuery(window).resize( function()
     {
@@ -102,6 +132,7 @@
         switchImage( "div3_2", 32 );
         switchImage( "div3_3", 33 );
         jQuery('#div2_2_inner').css( 'display', isOpen?'block':'none' );
+        jQuery('#div2_2_close').css( 'display', isOpen?'none':'block' );
 
         setHeaderPosition();
     }
@@ -113,14 +144,6 @@
         var logo = jQuery('#page #logo');
         logo.css( 'left', left + 100 );
 
-        jQuery('.supy'    ).css( 'left', left + 594 );
-        jQuery('.salaty'  ).css( 'left', left + 717 );
-        jQuery('.rolly'   ).css( 'left', left + 558 );
-        jQuery('.lapsha'  ).css( 'left', left + 669 );
-        jQuery('.pizza'   ).css( 'left', left + 719 );
-        jQuery('.vok'     ).css( 'left', left + 572 );
-        jQuery('.deserty' ).css( 'left', left + 718 );
-        jQuery('.napitki' ).css( 'left', left + 930 );
         jQuery('#page #lapsha_bg' ).css( 'left', left + 31  );
         jQuery('#page #buklety_bg').css( 'left', left + 1208 )
         if( isOpen == false )
@@ -173,21 +196,6 @@
 
     <a id="logo" href="index.php"></a>
 
-    <a id='supy'     class='supy'     title='Cупы'      href="index.php?option=com_virtuemart&page=shop.browse&category_id=12&pcat_id=12&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/soup1.png)"></a>
-    <a id='supy2'    class='supy'     title='Cупы'      href="index.php?option=com_virtuemart&page=shop.browse&category_id=12&pcat_id=12&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/soup2.png)"></a>
-    <a id='salaty'   class='salaty'   title='Салаты'    href="index.php?option=com_virtuemart&page=shop.browse&category_id=11&pcat_id=11&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/salaty1.png)"></a>
-    <a id='salaty2'  class='salaty'   title='Салаты'    href="index.php?option=com_virtuemart&page=shop.browse&category_id=11&pcat_id=11&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/salaty2.png)"></a>
-    <a id='rolly'    class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly1.png)"></a>
-    <a id='rolly2'   class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly2.png)"></a>
-    <a id='lapsha'   class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha1.png)"></a>
-    <a id='lapsha2'  class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha2.png)"></a>
-    <a id='pizza'    class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza1.png)"></a>
-    <a id='pizza2'   class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza2.png)"></a>
-    <a id='vok'      class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok1.png)"></a>
-    <a id='vok2'     class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok2.png)"></a>
-    <a id='deserty'  class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty1.png)"></a>
-    <a id='deserty2' class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty2.png)"></a>
-    <a id='napitki'  class='napitki'  title='Напитки'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=13&pcat_id=13&Itemid=64"></a>
     <div id='lapsha_bg'></div>
     <div id='buklety_bg'></div>
 
@@ -195,9 +203,28 @@
     <div id="div2">
         <div id="div2_1"></div>
         <div id="div2_2">
+            <div id='div2_2_close'></div>
             <div id='div2_2_inner'>
                 <div id='leftModules'><jdoc:include type="modules" name="leftmainmenu" style="xhtml" /></div>
-                <div id="centerModules"></div>
+                <div id="centerModules">
+                    
+                    <a id='supy'     class='supy'     title='Cупы'      href="index.php?option=com_virtuemart&page=shop.browse&category_id=12&pcat_id=12&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/soup1.png)"></a>
+                    <a id='supy2'    class='supy'     title='Cупы'      href="index.php?option=com_virtuemart&page=shop.browse&category_id=12&pcat_id=12&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/soup2.png)"></a>
+                    <a id='salaty'   class='salaty'   title='Салаты'    href="index.php?option=com_virtuemart&page=shop.browse&category_id=11&pcat_id=11&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/salaty1.png)"></a>
+                    <a id='salaty2'  class='salaty'   title='Салаты'    href="index.php?option=com_virtuemart&page=shop.browse&category_id=11&pcat_id=11&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/salaty2.png)"></a>
+                    <a id='rolly'    class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly1.png)"></a>
+                    <a id='rolly2'   class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly2.png)"></a>
+                    <a id='lapsha'   class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha1.png)"></a>
+                    <a id='lapsha2'  class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha2.png)"></a>
+                    <a id='pizza'    class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza1.png)"></a>
+                    <a id='pizza2'   class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza2.png)"></a>
+                    <a id='vok'      class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok1.png)"></a>
+                    <a id='vok2'     class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok2.png)"></a>
+                    <a id='deserty'  class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty1.png)"></a>
+                    <a id='deserty2' class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty2.png)"></a>
+                    <a id='napitki'  class='napitki'  title='Напитки'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=13&pcat_id=13&Itemid=64"></a>
+
+                </div>
                 <div id="rightModules"><jdoc:include type="modules" name="right" style="xhtml" />
                     <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
                     <!-- VK Widget -->

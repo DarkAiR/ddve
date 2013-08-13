@@ -141,8 +141,8 @@ ul li
 .supy
 {
     position: absolute;
-    left: 594px;
-    top: 324px;
+    left: 275px;
+    top: 141px;
     background:transparent;
     width: 100px;
     height: 89px;
@@ -151,8 +151,8 @@ ul li
 .salaty
 {
     position: absolute;
-    left: 717px;
-    top: 368px;
+    left: 398px;
+    top: 185px;
     background:transparent;
     width: 110px;
     height: 48px;
@@ -161,8 +161,8 @@ ul li
 .rolly
 {
     position: absolute;
-    left: 558px;
-    top: 470px;
+    left: 239px;
+    top: 287px;
     background:transparent;
     width: 106px;
     height: 34px;
@@ -171,8 +171,8 @@ ul li
 .lapsha
 {
     position: absolute;
-    left: 669px;
-    top: 426px;
+    left: 350px;
+    top: 243px;
     background:transparent;
     width: 65px;
     height: 77px;
@@ -181,8 +181,8 @@ ul li
 .pizza
 {
     position: absolute;
-    left: 719px;
-    top: 421px;
+    left: 400px;
+    top: 238px;
     background:transparent;
     width: 166px;
     height: 96px;
@@ -191,8 +191,8 @@ ul li
 .vok
 {
     position: absolute;
-    left: 572px;
-    top: 547px;
+    left: 253px;
+    top: 364px;
     background:transparent;
     width: 152px;
     height: 53px;
@@ -201,8 +201,8 @@ ul li
 .deserty
 {
     position: absolute;
-    left: 718px;
-    top: 545px;
+    left: 399px;
+    top: 362px;
     background:transparent;
     width: 136px;
     height: 54px;
@@ -211,8 +211,8 @@ ul li
 .napitki
 {
     position: absolute;
-    left: 930px;
-    top: 400px;
+    left: 611px;
+    top: 217px;
     background:transparent;
     width: 150px;
     height: 180px;
@@ -265,12 +265,26 @@ ul li
     width: 788px;
     background: url(../images/img_03.jpg) left top no-repeat;
     float: left;
+    position: relative;
 }
 #page #div2_3
 {
     width: 293px;
     float: left;
     background: url(../images/img_04.jpg) left top no-repeat;
+}
+#div2_2_inner
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#page #div2_2_close
+{
+    position: absolute;
+    left: 200px;
+    width: 385px;
+    height: 100%;
 }
 
 
@@ -432,12 +446,6 @@ ul li
     margin: 30px 30px 30px 30px;
 }
 
-#div2_2_inner
-{
-    display: block;
-    width: 100%;
-    height: 100%;
-}
 
 /* отключаем подчеркивание на ссылках */
 .moduletable_menu_vm ul li a,
