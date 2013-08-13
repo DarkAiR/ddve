@@ -13,14 +13,14 @@ p.tag-sz12
     font-size: 12px;
     margin-top: 10px;
 }
-.seo-h1-title {
-    font-size: 35px;
-    font-style: italic;
-}
 .seo-h2 {
     font-size: 18px;
 }
 .seo-h3-signature {
     font-size: 20px;
+    font-style: italic;
+}
+.moduletable_seo_text_main h1 {
+    font-size: 35px;
     font-style: italic;
 }
