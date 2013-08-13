@@ -1283,7 +1283,7 @@ class vm_ps_product_category extends vmAbstractObject {
 		foreach( $category_list as $category ) {
 			$item = new stdClass();
 			$item->name = vmHtmlEntityDecode( $category['category_name'] );
-			$item->link = $sess->url( $_SERVER['SCRIPT_NAME'] . "?page=shop.browse&category_id=$category[category_id]", false, false );
+			$item->link = $sess->url( $_SERVER['SCRIPT_NAME'] . "?page=shop.browse&category_id=".$category[category_id]."&pcat_id=".$category[category_id], false, false );
 			$pathway_items[] = $item;
 		}
 		
@@ -1305,7 +1305,8 @@ class vm_ps_product_category extends vmAbstractObject {
 		$q = "SELECT category_id, category_name,category_parent_id, category_child_id FROM #__{vm}_category, #__{vm}_category_xref WHERE ";
 		$q .= "#__{vm}_category_xref.category_child_id='$category_id' ";
 		$q .= "AND #__{vm}_category.category_id='$category_id'";
-		$db->setQuery($q);   $db->query();
+		$db->setQuery($q);
+		$db->query();
 		$db->next_record();
 		
 		$category_list[$i]['category_id'] = $db->f("category_id");

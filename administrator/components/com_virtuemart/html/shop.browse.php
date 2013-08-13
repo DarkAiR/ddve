@@ -37,9 +37,12 @@ $keyword2 = $vmInputFilter->safeSQL( urldecode(vmGet( $_REQUEST, 'keyword2', nul
 $search_op= $vmInputFilter->safeSQL( vmGet( $_REQUEST, 'search_op', null ));
 $search_limiter= $vmInputFilter->safeSQL( vmGet( $_REQUEST, 'search_limiter', null ));
 
-$pcat_id = $vmInputFilter->safeSQL( vmGet( $_REQUEST, 'pcat_id', null ) );
-
 if (empty($category_id)) $category_id = $search_category;
+
+// DarkAiR получаем подкатегорию, если она пустая, то выставляем ее в базовую
+$pcat_id = $vmInputFilter->safeSQL( vmGet( $_REQUEST, 'pcat_id', null ) );
+if (empty($pcat_id))
+	$pcat_id = $category_id;
 
 $default['category_flypage'] = FLYPAGE;
 
@@ -151,6 +154,7 @@ else {
 
 		$tpl->set( 'desc', $desc );
 
+		//--> DarkAiR Временно выставляем общую директорию, чтобы отработало получение списка детей
         $tmp_category_id = $category_id;
         $category_id = $pcat_id;
         
@@ -160,13 +164,12 @@ else {
 		$navigation_childlist = $tpl->fetch( 'common/categoryChildlist.tpl.php');
 		$tpl->set( 'navigation_childlist', $navigation_childlist );
 
+        $category_id = $tmp_category_id;
+       	// DarkAiR <--
 		// Set up the CMS pathway
-		$category_list = array_reverse( $ps_product_category->get_navigation_list($category_id) );
+		$category_list = array_reverse( $ps_product_category->get_navigation_list($original_category_id) );
 		$pathway = $ps_product_category->getPathway( $category_list );
 		$vm_mainframe->vmAppendPathway( $pathway );
-
-        $category_id = $tmp_category_id;
-
 		$tpl->set( 'category_id', $category_id );
 		$tpl->set( 'category_name', $category_name );
 
