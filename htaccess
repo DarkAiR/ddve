@@ -72,7 +72,8 @@ RewriteCond %{HTTP_HOST} ^ddve.ru
 RewriteRule (.*) http://www.ddve.ru/$1 [R=301,L]
 
 # Redirect from url/ to url
-RewriteCond %{REQUEST_URI} \.(php|html)/$ [NC]
+# RewriteCond %{REQUEST_URI} \.(php|html)/$ [NC]
+RewriteCond %{REQUEST_URI} /$ [NC]
 RewriteRule ^(.*)\/$ /$1 [R=301,L]
 
 # Redirect from /index.php to / only for GET
@@ -117,3 +118,16 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule .* index.php [L]
 #
 ########## End - Joomla! core SEF Section
+
+
+
+# Disable cache
+<filesMatch "\.(css|js)$">
+FileETag None
+<ifModule mod_headers.c>
+Header unset ETag
+Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
+Header set Pragma "no-cache"
+Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
+</ifModule>
+</filesMatch>
