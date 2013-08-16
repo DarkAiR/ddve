@@ -58,7 +58,9 @@ class JPathwaySite extends JPathway
 							$url = 'index.php?Itemid='.$link->id;
 					}
 
-					$this->addItem( $menus[$menupath]->name, $url);
+					// DarkAiR
+					if ($link->id != 64)
+						$this->addItem( $menus[$menupath]->name, $url);
 
 				} // end foreach
 			}
