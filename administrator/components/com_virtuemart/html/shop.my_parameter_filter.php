@@ -78,7 +78,7 @@ while ($db->next_record())
 			).'"
 			method="POST">';
 	echo '    <input type="hidden" name="product_type_id" value="'.$product_type_id_my.'">';
-	echo '    <input type="hidden" name="'.$item_name.'_comp" value="find_in_set_all">';
+	echo '    <input type="hidden" name="'.$item_name.'_comp" value="find_in_set_any">';
 
 	$selected_value = array();
 	$get_item_value = vmGet($_REQUEST, $item_name, array());
