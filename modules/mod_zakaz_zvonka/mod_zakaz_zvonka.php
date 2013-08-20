@@ -1,5 +1,8 @@
 <?php
 if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.basename(__FILE__).' is not allowed.' );
+
+JHTML::script( 'jquery.maskedinput.js' );
+JHTML::script( 'jquery.balloon.min.js' );
 ?>
 
 <div id="zz1">
@@ -9,51 +12,34 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
     <img id="zakaz_zvonka" src="modules/mod_zakaz_zvonka/images/zakaz_zvonka<?php if( $params->get('type')==0 ) echo '_mainmenu'; ?>.png" onclick="zakaz()" style="cursor:pointer;" />
 </div>
 
-<script>
+<script type="text/javascript">
+    jQuery(function($)
+    {
+        jQuery('input#zakaz_zvonka')
+            .mask('+7 9999-99-99-99')
+            .balloon({
+                contents:'Городской номер должен начинаться с кода города.<br/>Для Нижнего Тагила - +7 3435-ваш_номер',
+                minLifetime: 0,
+                showDuration: 0,
+                hideDuration: 0
+            });
+    });
+
+
     var isSend = false;
-
-    var emptyValue = '  8 (    )    -   -';
     var inputZZ = jQuery('input#zakaz_zvonka');
-    inputZZ.val( emptyValue );
-    inputZZ.focus( function()
-    {
-        if( inputZZ.val() == emptyValue )
-            inputZZ.val( '' );
-    } );
-    inputZZ.blur( function()
-    {
-        var val = inputZZ.val();
-        if( val == '' )
-        {
-            inputZZ.val( emptyValue );
-            return;
-        }
-    } );
-
-    function checkPhone( val )
-    {
-        var tmp = val.replace( /\D/g, '' );
-        if( tmp.length != 11 )      // Длина телефонного номера
-            return false;
-        return true;
-    }
 
     function zakaz()
     {
         if( isSend == true )
             return;
 
-        var val = inputZZ.val();
-
-        // Проверяем корректность
-        if( checkPhone( val ) == false )
-        {
-            zakazError();
-            return;
-        }
-
         // Стираем номер
-        inputZZ.val( emptyValue );
+        var val = inputZZ.val();
+        if (val === '')
+            return;
+
+        inputZZ.val('');
 
         isSend = true;
         var dataArr = 'phone='+val;
@@ -74,14 +60,9 @@ if( !defined( '_VALID_MOS' ) && !defined( '_JEXEC' ) ) die( 'Direct Access to '.
                 if( data.result == 'success' )
                     jAlert( 'Ваш номер отправлен.\nВ ближайшее время мы с вами свяжемся.', 'Номер отправлен' );
                 else
-                    zakazError();
+                    jAlert( 'Проверьте правильность введенного номера.\nГородской номер должен начинаться с кода города.\nДля Нижнего Тагила - +7 3435-ваш_номер', 'Неправильно введен номер телефона' );
             }
         });
     }
 
-    function zakazError()
-    {
-        jAlert( 'Проверьте правильность введенного номера.\nГородской номер должен начинаться с кода города.\nДля Нижнего Тагила - 8(3435)ваш_номер', 'Неправильно введен номер телефона' );
-    }
-    
 </script>
