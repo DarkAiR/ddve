@@ -73,7 +73,7 @@
 #mod_minical #mod_minical_days
 {
     clear: both;
-    padding: 0px 15px 0px 15px;
+    padding: 0px 15px 0px 18px;
 }
 
 #mod_minical #mod_minical_days #mod_minical_dayname
@@ -89,7 +89,7 @@
 #mod_minical #mod_minical_calendar
 {
     clear: both;
-    padding: 0px 18px 0px 13px;
+    padding: 0px 18px 0px 17px;
 }
 #mod_minical #mod_minical_calendar .mod_minical_table td
 {

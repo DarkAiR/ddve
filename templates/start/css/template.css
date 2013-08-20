@@ -509,11 +509,12 @@ ul li
 .moduletable_zakaz_zvonka input#zakaz_zvonka
 {
     display: block;
-    font-size: 13px;
+    font-size: 15px;
     color: #866076;
     width: 154px;
     height: 20px;
     border: #e5dadf 1px solid;
+    text-align: center;
 }
 .moduletable_zakaz_zvonka #zz1
 {
@@ -562,7 +563,7 @@ ul li
 .moduletable_calendar #time
 {
     clear: both;
-    font-size: 11px;
+    font-size: 13px;
     color: #866076;
     padding: 6px 3px 5px 6px;
 }
