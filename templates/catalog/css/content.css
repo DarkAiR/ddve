@@ -1,0 +1,22 @@
+/*
+ * Оформление контента
+ */
+.text-italic {
+    font-style: italic;
+    padding-left: 15px;
+}
+.text-italic-bold {
+    font-style: italic;
+    font-weight: bold;
+    padding-left: 15px;
+}
+.active {
+    color: #915476;
+}
+.signature {
+    padding-top: 20px;
+    font-size: 45px;
+    font-style: italic;
+    color: #efefef;
+    text-align: right;
+}

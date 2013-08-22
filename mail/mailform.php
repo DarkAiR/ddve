@@ -3,30 +3,51 @@ session_start();
 ?>
 <html>
 <head>
-<title>Обратная связь</title>
-<meta http-equiv="pragma" content="no-cache">
-<meta http-equiv="content-type" content="text/html; charset=windows-1251">
-<style type="text/css">
-<!--
-.submit  {border: 1px solid #D2D2D2; background: #F2F2F2; color: #000000;}
--->
-</style>
-<link href="/templates/catalog/css/mail.css" rel="stylesheet" type="text/css" />
+    <title>РћР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ</title>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link href="/templates/catalog/css/template.css" rel="stylesheet" type="text/css" />
+    <link href="/templates/catalog/css/content.css" rel="stylesheet" type="text/css" />
+    <link href="/templates/catalog/css/mail.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body style="cursor: default" topmargin=5>
 
 <?php
 
+// РўРёРїС‹ РѕС€РёР±РѕРє
+const ERR_TYPE_NONE = 0;
+const ERR_TYPE_NAME = 1;
+const ERR_TYPE_PHONE = 2;
+const ERR_TYPE_TEXT = 3;
+const ERR_TYPE_CODE = 4;
+const ERR_TYPE_SYSTEM = 5;
+
+/**
+ * XSS-protected get post parameter
+ * @param  [type] $name [description]
+ * @param  string $def  [description]
+ * @return [type]       [description]
+ */
+function getPost($name, $def='')
+{
+    if (!isset($_POST[$name]))
+        return $def;
+    $val = $_POST[$name];
+    $val = strip_tags($val);
+    $val = htmlentities($val, ENT_QUOTES);
+    return $val;
+}
 $replyto = '';
 $phone = '';
 $msg = '';
+
 if( !empty($_POST) )
 {
-    $replyto       = isset($_POST['replyto'])?   $_POST['replyto'] : '';
-    $phone         = isset($_POST['phone'])?     $_POST['phone'] : '';
-    $msg           = isset($_POST['msg'])?       $_POST['msg'] : '';
-    $keystring     = isset($_POST['keystring'])? $_POST['keystring'] : false;
+    $replyto       = getPost( 'replyto' );
+    $phone         = getPost( 'phone' );
+    $msg           = getPost( 'msg' );
+    $keystring     = getPost( 'keystring', false );
     $sessKeystring = isset($_SESSION['captcha_keystring'])? $_SESSION['captcha_keystring'] : false;
 
     unset($_SESSION['captcha_keystring']);
@@ -35,30 +56,39 @@ if( !empty($_POST) )
 
     $phone = preg_replace( '/\D/', '', $phone );
 
-    // Замените настройки на нужные.
-    $mail_to = 'ddve@bk.ru';     // вам потребуется указать здесь Ваш настоящий почтовый ящик, куда должно будет прийти письмо.
-    $errmsg  = "";
+    // Р—Р°РјРµРЅРёС‚Рµ РЅР°СЃС‚СЂРѕР№РєРё РЅР° РЅСѓР¶РЅС‹Рµ.
+    $mail_to = 'ddve@bk.ru';     // РІР°Рј РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ СѓРєР°Р·Р°С‚СЊ Р·РґРµСЃСЊ Р’Р°С€ РЅР°СЃС‚РѕСЏС‰РёР№ РїРѕС‡С‚РѕРІС‹Р№ СЏС‰РёРє, РєСѓРґР° РґРѕР»Р¶РЅРѕ Р±СѓРґРµС‚ РїСЂРёР№С‚Рё РїРёСЃСЊРјРѕ.
+    $errType = ERR_TYPE_NONE;
+    $errMsg = '';
 
     require('smtpmail.php');
 
     if( empty($replyto) )
-        $errmsg = "Введите ваше имя";
-
+    {
+        $errType = ERR_TYPE_NAME;
+        $errMsg = "Р’РІРµРґРёС‚Рµ РІР°С€Рµ РёРјСЏ";
+    }
     elseif( empty($phone) )
-        $errmsg = "Введите телефон";
-
+    {
+        $errType = ERR_TYPE_PHONE;
+        $errMsg = "Р’РІРµРґРёС‚Рµ С‚РµР»РµС„РѕРЅ";
+    }
     elseif( empty($msg) )
-        $errmsg = "Введите текст сообщения";
-
+    {
+        $errType = ERR_TYPE_TEXT;    
+        $errMsg = "Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ";
+    }
     elseif( $keystring === false || $sessKeystring !== $keystring)
-        $errmsg = "Неправильный код";
-
+    {
+        $errType = ERR_TYPE_CODE;
+        $errMsg = "РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РєРѕРґ";
+    }
     else
     {
         $message   = "".
-            "Имя: {$replyto}\r\n".
-            "Телефон: {$phone}\r\n".
-            "Сообщение: {$msg}\r\n".
+            "РРјСЏ: {$replyto}\r\n".
+            "РўРµР»РµС„РѕРЅ: {$phone}\r\n".
+            "РЎРѕРѕР±С‰РµРЅРёРµ: {$msg}\r\n".
             "";
 
         $config["smtp_charset"] = 'windows-1251';
@@ -68,45 +98,75 @@ if( !empty($_POST) )
         ob_end_clean();
 
         if( !$sended )
-            $errmsg = "Ошибка отправки письма.<br/>Пожалуйста свяжитесь с администратором сайта: {$mail_to}";
+        {
+            $errType = ERR_TYPE_SYSTEM;
+            $errMsg = "РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё РїРёСЃСЊРјР°.<br/>РџРѕР¶Р°Р»СѓР№СЃС‚Р° СЃРІСЏР¶РёС‚РµСЃСЊ СЃ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј СЃР°Р№С‚Р°: {$mail_to}";
+        }
         else
         {
-            echo "<br/><div class='mail_success'>Ваше письмо отправлено</div>";
+            $errType = ERR_TYPE_NONE;
+            $errMsg = "Р’Р°С€Рµ РїРёСЃСЊРјРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ";
             $replyto = '';
             $phone = '';
             $msg = '';
-//         exit;
         }
+    }
+
+    $nameErrClass = '';
+    $phoneErrClass = '';
+    $textErrClass = '';
+    $codeErrClass = '';
+    switch( $errType )
+    {
+        case ERR_TYPE_NAME:     $nameErrClass = 'error';    break;
+        case ERR_TYPE_PHONE:    $phoneErrClass = 'error';   break;
+        case ERR_TYPE_TEXT:     $textErrClass = 'error';    break;
+        case ERR_TYPE_CODE:     $codeErrClass = 'error';    break;
     }
 }
 ?>
 
 
-<?php if( !empty($errmsg) ) echo "<br/><div id='err' class='mail_error'>$errmsg</div>"; ?>
 <form action="/mail/mailform.php" method="POST" ENCTYPE="multipart/form-data">
-<span style='display:block; width:100%; text-align:left'>Для нас очень важно знать Ваше мнение!<br/>Ведь только так мы сможем сделать наш ресторан ещё лучше!</span>
-<br/>
-<div>
-<table width="100%" cellpadding=0 cellspacing=2 border=0>
-    <tr>
-        <td valign="top">Ваше имя:</td>
-        <td valign="top"><input type="text" name="replyto" value="<?=$replyto?>" size=58></td>
-    </tr><tr>
-        <td valign="top">Телефон:</td>
-        <td valign="top"><input type="text" name="phone" value="<?=$phone?>" size=58></td>
-    </tr><tr>
-        <td valign="top">Текст сообщения:</td>
-        <td valign="top"><textarea name="msg" cols=46 rows=10 style="width: 388px; height: 200px"><?=$msg?></textarea></td>
-    </tr><tr>
-        <td></td>
-        <td>
-            <img src="/mail/make.php?<?php echo session_name()?>=<?php echo session_id()?>">
-            <input type="text" name="keystring">
-            <input type="submit" value="Отправить" class="submit" style="cursor: hand">
-        </td>
-    </tr>
-</table>
-</div>
+    <div class='text-italic'>Р’Р°С€Рµ РјРЅРµРЅРёРµ РѕС‡РµРЅСЊ РІР°Р¶РЅРѕ РґР»СЏ РЅР°СЃ!</div>
+    <div class='text-italic'>Р’РµРґСЊ С‚РѕР»СЊРєРѕ С‚Р°Рє РјС‹ СЃРјРѕР¶РµРј СЃРґРµР»Р°С‚СЊ РЅР°С€ СЂРµСЃС‚РѕСЂР°РЅ РµС‰С‘ Р»СѓС‡С€Рµ!</div>
+    <div class='mail-form'>
+        <div class='text-italic-bold'>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ С„РѕСЂРјС‹</div>
+        <table cellpadding=0 cellspacing=0 border=0>
+            <tr>
+                <td class='col1'><div class='text-italic <?= $nameErrClass ?>'>Р’Р°С€Рµ РёРјСЏ</div></td>
+                <td class='col2'><input class='<?= $nameErrClass ?>' type="text" name="replyto" value="<?=$replyto?>"></td>
+            </tr><tr>
+                <td><div class='text-italic <?= $phoneErrClass ?>'>РўРµР»РµС„РѕРЅ</div></td>
+                <td><input class='<?= $phoneErrClass ?>' type="text" name="phone" value="<?=$phone?>"></td>
+            </tr><tr>
+                <td><div class='text-italic <?= $textErrClass ?>'>РЎРѕРѕР±С‰РµРЅРёРµ</div></td>
+                <td><textarea class='<?= $textErrClass ?>' name="msg" rows=10><?=$msg?></textarea></td>
+            </tr>
+            <tr height='30px'>
+                <td colspan="2"></td>
+            </tr>
+            <tr>
+                <td><div class='text-italic <?= $codeErrClass ?>'>Р’РІРµРґРёС‚Рµ РєРѕРґ, СѓРєР°Р·Р°РЅРЅС‹Р№ РЅР° РєР°СЂС‚РёРЅРєРµ</div></td>
+                <td>
+                    <img src="/mail/make.php?<?php echo session_name()?>=<?php echo session_id()?>">
+                    <div class='captcha-block'>
+                        <input class='captcha <?= $codeErrClass ?>' type="text" name="keystring">
+                        <input class="submit" type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" style="cursor: hand">
+                        <?php
+                            if (!empty($errMsg))
+                            {
+                                echo '<span class="text-italic '.($errType == ERR_TYPE_NONE ? '' : 'error').'">'.$errMsg.'</span>';
+                            }
+                        ?>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class='signature'>
+        РЎРїР°СЃРёР±Рѕ Р·Р° РѕС‚Р·С‹РІ!
+    </div>
 </form>
 
 </body>
