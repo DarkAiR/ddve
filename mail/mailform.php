@@ -16,12 +16,12 @@ session_start();
 <?php
 
 // Типы ошибок
-const ERR_TYPE_NONE = 0;
-const ERR_TYPE_NAME = 1;
-const ERR_TYPE_PHONE = 2;
-const ERR_TYPE_TEXT = 3;
-const ERR_TYPE_CODE = 4;
-const ERR_TYPE_SYSTEM = 5;
+define(ERR_TYPE_NONE, 0);
+define(ERR_TYPE_NAME, 1);
+define(ERR_TYPE_PHONE, 2);
+define(ERR_TYPE_TEXT, 3);
+define(ERR_TYPE_CODE, 4);
+define(ERR_TYPE_SYSTEM, 5);
 
 /**
  * XSS-protected get post parameter
