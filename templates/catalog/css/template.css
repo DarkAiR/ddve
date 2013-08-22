@@ -67,20 +67,20 @@ h1, h1 a, h1 a:link, h1 a:visited, h1 a:hover{
     font: bold 22px;
     font-style:italic;
     color: #30b2cf;
-    text-align:center;
+    text-align:left;
 }
 /*заголовки 2 уровня*/
 h2, h2 a, h2 a:link, h2 a:visited, h2 a:hover{
     font-size:20px;
     color: #3b98b0;
     font-style:italic;
-    text-align:center;
+    text-align:left;
 }
 /*заголовки 3 уровня*/
 h3, h3 a, h3 a:link, h3 a:visited, h3 a:hover{
     font-size: 18px;
     color: #82b5bf;
-    text-align:center;
+    text-align:left;
 }
 /*заголовки 4-6 уровня*/
 h4, h4 a, h4 a:link, h4 a:visited, h4 a:hover,
