@@ -1,5 +1,5 @@
 <?php
-header('Content-type: text/html; charset=utf-8');
+header('Content-type: text/html; charset=windows-1251');
 session_start();
 ?>
 <html>
@@ -59,6 +59,8 @@ if( !empty($_POST) )
 
     // «амените настройки на нужные.
     $mail_to = 'ddve@bk.ru';     // вам потребуетс€ указать здесь ¬аш насто€щий почтовый €щик, куда должно будет прийти письмо.
+    
+    $mail_to = 'darkair2@gmail.com';
     $errType = ERR_TYPE_NONE;
     $errMsg = '';
 
