@@ -36,7 +36,7 @@ function getPost($name, $def='')
         return $def;
     $val = $_POST[$name];
     $val = strip_tags($val);
-    $val = htmlentities($val, ENT_QUOTES);
+    // $val = htmlentities($val, ENT_QUOTES);
     return $val;
 }
 $replyto = '';
@@ -59,6 +59,7 @@ if( !empty($_POST) )
 
     // Замените настройки на нужные.
     $mail_to = 'ddve@bk.ru';     // вам потребуется указать здесь Ваш настоящий почтовый ящик, куда должно будет прийти письмо.
+    $mail_to = 'darkair2@gmail.com';
     $errType = ERR_TYPE_NONE;
     $errMsg = '';
 
@@ -92,7 +93,7 @@ if( !empty($_POST) )
             "Сообщение: {$msg}\r\n".
             "";
 
-        $config["smtp_charset"] = 'windows-1251';
+//        $config["smtp_charset"] = 'windows-1251';
 
         ob_start();
         $sended = smtpmail( $mail_to, $subject, $message );
