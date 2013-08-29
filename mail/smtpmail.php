@@ -7,7 +7,6 @@ define( 'DS', DIRECTORY_SEPARATOR );
 require_once ( JPATH_BASE.'/configuration.php' );
 $cfg = new JConfig();
 
-// Привет
 $config['smtp_username'] = $cfg->smtpuser;
 $config['smtp_password'] = $cfg->smtppass;
 $config['smtp_port']     = $cfg->smtpport;
