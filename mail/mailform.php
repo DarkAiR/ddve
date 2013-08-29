@@ -36,7 +36,7 @@ function getPost($name, $def='')
         return $def;
     $val = $_POST[$name];
     $val = strip_tags($val);
-    $val = htmlentities($val, ENT_QUOTES);
+    // $val = htmlentities($val, ENT_QUOTES);
     return $val;
 }
 $replyto = '';
