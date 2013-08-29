@@ -59,7 +59,6 @@ if( !empty($_POST) )
 
     // Замените настройки на нужные.
     $mail_to = 'ddve@bk.ru';     // вам потребуется указать здесь Ваш настоящий почтовый ящик, куда должно будет прийти письмо.
-    $mail_to = 'darkair2@gmail.com';
     $errType = ERR_TYPE_NONE;
     $errMsg = '';
 
@@ -92,8 +91,6 @@ if( !empty($_POST) )
             "Телефон: {$phone}\r\n".
             "Сообщение: {$msg}\r\n".
             "";
-
-//        $config["smtp_charset"] = 'windows-1251';
 
         ob_start();
         $sended = smtpmail( $mail_to, $subject, $message );
