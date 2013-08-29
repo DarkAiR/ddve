@@ -4,7 +4,7 @@ session_start();
 ?>
 <html>
 <head>
-    <title>РћР±СЂР°С‚РЅР°СЏ СЃРІСЏР·СЊ</title>
+    <title>Обратная связь</title>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link href="/templates/catalog/css/template.css" rel="stylesheet" type="text/css" />
@@ -16,7 +16,7 @@ session_start();
 
 <?php
 
-// РўРёРїС‹ РѕС€РёР±РѕРє
+// Типы ошибок
 define(ERR_TYPE_NONE, 0);
 define(ERR_TYPE_NAME, 1);
 define(ERR_TYPE_PHONE, 2);
@@ -57,8 +57,8 @@ if( !empty($_POST) )
 
     $phone = preg_replace( '/\D/', '', $phone );
 
-    // Р—Р°РјРµРЅРёС‚Рµ РЅР°СЃС‚СЂРѕР№РєРё РЅР° РЅСѓР¶РЅС‹Рµ.
-    $mail_to = 'ddve@bk.ru';     // РІР°Рј РїРѕС‚СЂРµР±СѓРµС‚СЃСЏ СѓРєР°Р·Р°С‚СЊ Р·РґРµСЃСЊ Р’Р°С€ РЅР°СЃС‚РѕСЏС‰РёР№ РїРѕС‡С‚РѕРІС‹Р№ СЏС‰РёРє, РєСѓРґР° РґРѕР»Р¶РЅРѕ Р±СѓРґРµС‚ РїСЂРёР№С‚Рё РїРёСЃСЊРјРѕ.
+    // Замените настройки на нужные.
+    $mail_to = 'ddve@bk.ru';     // вам потребуется указать здесь Ваш настоящий почтовый ящик, куда должно будет прийти письмо.
     $errType = ERR_TYPE_NONE;
     $errMsg = '';
 
@@ -67,29 +67,29 @@ if( !empty($_POST) )
     if( empty($replyto) )
     {
         $errType = ERR_TYPE_NAME;
-        $errMsg = "Р’РІРµРґРёС‚Рµ РІР°С€Рµ РёРјСЏ";
+        $errMsg = "Введите ваше имя";
     }
     elseif( empty($phone) )
     {
         $errType = ERR_TYPE_PHONE;
-        $errMsg = "Р’РІРµРґРёС‚Рµ С‚РµР»РµС„РѕРЅ";
+        $errMsg = "Введите телефон";
     }
     elseif( empty($msg) )
     {
         $errType = ERR_TYPE_TEXT;    
-        $errMsg = "Р’РІРµРґРёС‚Рµ С‚РµРєСЃС‚ СЃРѕРѕР±С‰РµРЅРёСЏ";
+        $errMsg = "Введите текст сообщения";
     }
     elseif( $keystring === false || $sessKeystring !== $keystring)
     {
         $errType = ERR_TYPE_CODE;
-        $errMsg = "РќРµРїСЂР°РІРёР»СЊРЅС‹Р№ РєРѕРґ";
+        $errMsg = "Неправильный код";
     }
     else
     {
         $message   = "".
-            "РРјСЏ: {$replyto}\r\n".
-            "РўРµР»РµС„РѕРЅ: {$phone}\r\n".
-            "РЎРѕРѕР±С‰РµРЅРёРµ: {$msg}\r\n".
+            "Имя: {$replyto}\r\n".
+            "Телефон: {$phone}\r\n".
+            "Сообщение: {$msg}\r\n".
             "";
 
         $config["smtp_charset"] = 'windows-1251';
@@ -101,12 +101,12 @@ if( !empty($_POST) )
         if( !$sended )
         {
             $errType = ERR_TYPE_SYSTEM;
-            $errMsg = "РћС€РёР±РєР° РѕС‚РїСЂР°РІРєРё РїРёСЃСЊРјР°.<br/>РџРѕР¶Р°Р»СѓР№СЃС‚Р° СЃРІСЏР¶РёС‚РµСЃСЊ СЃ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂРѕРј СЃР°Р№С‚Р°: {$mail_to}";
+            $errMsg = "Ошибка отправки письма.<br/>Пожалуйста свяжитесь с администратором сайта: {$mail_to}";
         }
         else
         {
             $errType = ERR_TYPE_NONE;
-            $errMsg = "Р’Р°С€Рµ РїРёСЃСЊРјРѕ РѕС‚РїСЂР°РІР»РµРЅРѕ";
+            $errMsg = "Ваше письмо отправлено";
             $replyto = '';
             $phone = '';
             $msg = '';
@@ -129,31 +129,31 @@ if( !empty($_POST) )
 
 
 <form action="/mail/mailform.php" method="POST" ENCTYPE="multipart/form-data">
-    <div class='text-italic'>Р’Р°С€Рµ РјРЅРµРЅРёРµ РѕС‡РµРЅСЊ РІР°Р¶РЅРѕ РґР»СЏ РЅР°СЃ!</div>
-    <div class='text-italic'>Р’РµРґСЊ С‚РѕР»СЊРєРѕ С‚Р°Рє РјС‹ СЃРјРѕР¶РµРј СЃРґРµР»Р°С‚СЊ РЅР°С€ СЂРµСЃС‚РѕСЂР°РЅ РµС‰С‘ Р»СѓС‡С€Рµ!</div>
+    <div class='text-italic'>Ваше мнение очень важно для нас!</div>
+    <div class='text-italic'>Ведь только так мы сможем сделать наш ресторан ещё лучше!</div>
     <div class='mail-form'>
-        <div class='text-italic-bold'>РџРѕР¶Р°Р»СѓР№СЃС‚Р°, Р·Р°РїРѕР»РЅРёС‚Рµ РІСЃРµ РїРѕР»СЏ С„РѕСЂРјС‹</div>
+        <div class='text-italic-bold'>Пожалуйста, заполните все поля формы</div>
         <table cellpadding=0 cellspacing=0 border=0>
             <tr>
-                <td class='col1'><div class='text-italic <?= $nameErrClass ?>'>Р’Р°С€Рµ РёРјСЏ</div></td>
+                <td class='col1'><div class='text-italic <?= $nameErrClass ?>'>Ваше имя</div></td>
                 <td class='col2'><input class='<?= $nameErrClass ?>' type="text" name="replyto" value="<?=$replyto?>"></td>
             </tr><tr>
-                <td><div class='text-italic <?= $phoneErrClass ?>'>РўРµР»РµС„РѕРЅ</div></td>
+                <td><div class='text-italic <?= $phoneErrClass ?>'>Телефон</div></td>
                 <td><input class='<?= $phoneErrClass ?>' type="text" name="phone" value="<?=$phone?>"></td>
             </tr><tr>
-                <td><div class='text-italic <?= $textErrClass ?>'>РЎРѕРѕР±С‰РµРЅРёРµ</div></td>
+                <td><div class='text-italic <?= $textErrClass ?>'>Сообщение</div></td>
                 <td><textarea class='<?= $textErrClass ?>' name="msg" rows=10><?=$msg?></textarea></td>
             </tr>
             <tr height='30px'>
                 <td colspan="2"></td>
             </tr>
             <tr>
-                <td><div class='text-italic <?= $codeErrClass ?>'>Р’РІРµРґРёС‚Рµ РєРѕРґ, СѓРєР°Р·Р°РЅРЅС‹Р№ РЅР° РєР°СЂС‚РёРЅРєРµ</div></td>
+                <td><div class='text-italic <?= $codeErrClass ?>'>Введите код, указанный на картинке</div></td>
                 <td>
                     <img src="/mail/make.php?<?php echo session_name()?>=<?php echo session_id()?>">
                     <div class='captcha-block'>
                         <input class='captcha <?= $codeErrClass ?>' type="text" name="keystring">
-                        <input class="submit" type="submit" value="РћС‚РїСЂР°РІРёС‚СЊ" style="cursor: hand">
+                        <input class="submit" type="submit" value="Отправить" style="cursor: hand">
                         <?php
                             if (!empty($errMsg))
                             {
@@ -166,7 +166,7 @@ if( !empty($_POST) )
         </table>
     </div>
     <div class='signature'>
-        РЎРїР°СЃРёР±Рѕ Р·Р° РѕС‚Р·С‹РІ!
+        Спасибо за отзыв!
     </div>
 </form>
 
