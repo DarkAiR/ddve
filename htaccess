@@ -80,6 +80,10 @@ RewriteCond %{REQUEST_METHOD} =GET
 RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
 RewriteRule ^index\.php$ http://ddve.ru [R=301,L]
 
+# Redirect from main-menu
+RewriteCond %{REQUEST_URI} menu-main$ [NC]
+RewriteRule (.*menu-main) /$1/pcat/category/19/19-rolli [R=301,L]
+
 # Redirect to category page
 RewriteCond %{REQUEST_URI} menu-main/pcat\/category\/\d+-
 RewriteRule (.*menu-main/pcat\/category\/)(\d+)(-.*) /$1$2/$2$3 [R=301,L]
