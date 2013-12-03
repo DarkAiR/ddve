@@ -1,4 +1,4 @@
-CREATE TABLE `u17424_ddve`.`new_table` (
+CREATE TABLE `u17424_ddve`.`jos_vacancy` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `title` VARCHAR(128) NOT NULL,
   `required` TEXT NOT NULL,

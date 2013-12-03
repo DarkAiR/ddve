@@ -22,11 +22,11 @@
                 <label for="required"><?php echo JText::_( 'Required' ); ?>:</label>
             </td>
             <td>
-                <!--textarea name="required" id="required" rows="3" cols="45" class="inputbox"><?php echo $this->vacancy->required; ?></textarea-->
+                <textarea name="required" id="required" rows="3" cols="45" class="inputbox"><?php echo $this->vacancy->required; ?></textarea>
 <?php
-    $editor = &JFactory::getEditor();
+//    $editor = &JFactory::getEditor();
     // parameters : areaname, content, width, height, cols, rows
-    echo $editor->display( 'required',  $this->vacancy->required , '100%', '550', '75', '20' ) ;
+//    echo $editor->display( 'required',  $this->vacancy->required , '100%', '550', '75', '20' ) ;
 ?>
             </td>
         </tr>
