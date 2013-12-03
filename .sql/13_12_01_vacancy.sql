@@ -4,8 +4,10 @@ CREATE TABLE `u17424_ddve`.`jos_vacancy` (
   `required` TEXT NOT NULL,
   `responsibility` TEXT NOT NULL,
   `conditions` TEXT NOT NULL,
-  `phone` VARCHAR(128) NOT NULL,
   `info` TEXT NOT NULL,
+  `skills` TEXT NOT NULL,
+  `phone` VARCHAR(128) NOT NULL,
+  `address` VARCHAR(128) NOT NULL,
   `ordering` INT NOT NULL,
   PRIMARY KEY (`id`));
 

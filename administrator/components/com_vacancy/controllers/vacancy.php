@@ -13,7 +13,7 @@ class VacancysControllerVacancy extends VacancysController
 		parent::__construct();
 
 		// Register Extra tasks
-		$this->registerTask( 'add'  , 	'edit' );
+		$this->registerTask( 'add', 'edit' );
 	}
 
 	/**
@@ -37,11 +37,9 @@ class VacancysControllerVacancy extends VacancysController
 	{
 		$model = $this->getModel('vacancy');
 
-		if ($model->store($post)) {
-			$msg = JText::_( 'Saved!' );
-		} else {
-			$msg = JText::_( 'Error Saving' );
-		}
+		$msg = $model->store($post)
+			? JText::_( 'Saved!' )
+			: JText::_( 'Error Saving' );
 
 		// Check the table in so it can be edited.... we are done with it anyway
 		$link = 'index.php?option=com_vacancy';

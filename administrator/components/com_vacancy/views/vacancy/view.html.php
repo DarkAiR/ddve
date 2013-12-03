@@ -21,7 +21,7 @@ class VacancysViewVacancy extends JView
 			JToolBarHelper::cancel( 'cancel', 'Close' );
 		}
 
-		$this->assignRef('vacancy',		$vacancy);
+		$this->assignRef('vacancy', $vacancy);
 
 		parent::display($tpl);
 	}

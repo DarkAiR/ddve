@@ -9,61 +9,51 @@ class VacancyModelVacancy extends JModel
 {
     public function getTitle()
     {
-        $db =& JFactory::getDBO();
-
-        $query = 'SELECT title FROM #__vacancy';
-        $db->setQuery( $query );
-        $res = $db->loadResult();
-        return $res;
+        return $this->getField('title');
     } 
 
     public function getRequired()
     {
-        $db =& JFactory::getDBO();
-
-        $query = 'SELECT required FROM #__vacancy';
-        $db->setQuery( $query );
-        $res = $db->loadResult();
-        return $res;
+        return $this->getField('required');
     } 
 
     public function getResponsibility()
     {
-        $db =& JFactory::getDBO();
-
-        $query = 'SELECT responsibility FROM #__vacancy';
-        $db->setQuery( $query );
-        $res = $db->loadResult();
-        return $res;
+        return $this->getField('responsibility');
     } 
 
     public function getConditions()
     {
-        $db =& JFactory::getDBO();
-
-        $query = 'SELECT conditions FROM #__vacancy';
-        $db->setQuery( $query );
-        $res = $db->loadResult();
-        return $res;
+        return $this->getField('conditions');
     } 
 
     public function getPhone()
     {
-        $db =& JFactory::getDBO();
-
-        $query = 'SELECT phone FROM #__vacancy';
-        $db->setQuery( $query );
-        $res = $db->loadResult();
-        return $res;
+        return $this->getField('phone');
     } 
 
     public function getInfo()
     {
+        return $this->getField('info');
+    }
+
+    public function getSkills()
+    {
+        return $this->getField('skills');
+    }
+
+    public function getAddress()
+    {
+        return $this->getField('address');
+    }
+
+    private function getField($name)
+    {
         $db =& JFactory::getDBO();
 
-        $query = 'SELECT info FROM #__vacancy';
+        $query = 'SELECT '.$name.' FROM #__vacancy';
         $db->setQuery( $query );
         $res = $db->loadResult();
         return $res;
-    } 
+    }
 }

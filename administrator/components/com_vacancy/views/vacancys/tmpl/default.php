@@ -7,11 +7,6 @@
 			<th width="5"><?php echo JText::_( 'ID' ); ?></th>
 			<th width="20"><input type="checkbox" name="toggle" value="" onclick="checkAll(<?php echo count( $this->items ); ?>);" /></th>			
 			<th><?php echo JText::_( 'Title' ); ?></th>
-			<th><?php echo JText::_( 'Required' ); ?></th>
-			<th><?php echo JText::_( 'Responsibility' ); ?></th>
-			<th><?php echo JText::_( 'Conditions' ); ?></th>
-			<th><?php echo JText::_( 'Phone' ); ?></th>
-			<th><?php echo JText::_( 'Info' ); ?></th>
 		</tr>
 	</thead>
 	<?php
@@ -26,11 +21,6 @@
 			<td><?php echo $row->id; ?></td>
 			<td><?php echo $checked; ?></td>
 			<td><a href="<?php echo $link; ?>"><?php echo $row->title; ?></a></td>
-			<td><?php echo $row->required; ?></td>
-			<td><?php echo $row->responsibility; ?></td>
-			<td><?php echo $row->conditions; ?></td>
-			<td><?php echo $row->phone; ?></td>
-			<td><?php echo $row->info; ?></td>
 		</tr>
 		<?php
 		$k = 1 - $k;

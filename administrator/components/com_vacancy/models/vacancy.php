@@ -43,8 +43,10 @@ class VacancysModelVacancy extends JModel
 			$this->_data->required = null;
 			$this->_data->responsibility = null;
 			$this->_data->conditions = null;
-			$this->_data->phone = null;
 			$this->_data->info = null;
+			$this->_data->skills = null;
+			$this->_data->phone = null;
+			$this->_data->address = null;
 		}
 		return $this->_data;
 	}
@@ -59,7 +61,7 @@ class VacancysModelVacancy extends JModel
 	{	
 		$row =& $this->getTable();
 
-		$data = JRequest::get( 'post' );
+		$data = JRequest::get( 'post', 2 );
 
 		// Bind the form fields to the vacancy table
 		if (!$row->bind($data)) {

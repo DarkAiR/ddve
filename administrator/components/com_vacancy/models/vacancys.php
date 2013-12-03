@@ -15,10 +15,7 @@ class VacancysModelVacancys extends JModel
 	 */
 	function _buildQuery()
 	{
-		$query = ' SELECT * '
-			. ' FROM #__vacancy '
-		;
-
+		$query = ' SELECT * FROM #__vacancy ';
 		return $query;
 	}
 

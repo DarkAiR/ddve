@@ -9,15 +9,14 @@ class VacancysViewVacancys extends JView
 {
 	function display($tpl = null)
 	{
-		JToolBarHelper::title(   JText::_( 'Vacancy Manager' ), 'generic.png' );
+		JToolBarHelper::title( JText::_( 'Vacancy Manager' ), 'generic.png' );
 		JToolBarHelper::deleteList();
 		JToolBarHelper::editListX();
 		JToolBarHelper::addNewX();
 
 		// Get data from the model
-		$items		= & $this->get( 'Data');
-
-		$this->assignRef('items',		$items);
+		$items = & $this->get('Data');
+		$this->assignRef('items', $items);
 
 		parent::display($tpl);
 	}

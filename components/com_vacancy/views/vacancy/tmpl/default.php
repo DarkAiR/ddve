@@ -7,5 +7,7 @@ var_dump($this->required);
 var_dump($this->responsibility);
 var_dump($this->conditions);
 var_dump($this->phone);
+var_dump($this->address);
 var_dump($this->info);
+var_dump($this->skills);
 echo '</pre>';
