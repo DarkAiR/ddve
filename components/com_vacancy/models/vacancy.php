@@ -7,53 +7,14 @@ jimport( 'joomla.application.component.model' );
 
 class VacancyModelVacancy extends JModel
 {
-    public function getTitle()
-    {
-        return $this->getField('title');
-    } 
-
-    public function getRequired()
-    {
-        return $this->getField('required');
-    } 
-
-    public function getResponsibility()
-    {
-        return $this->getField('responsibility');
-    } 
-
-    public function getConditions()
-    {
-        return $this->getField('conditions');
-    } 
-
-    public function getPhone()
-    {
-        return $this->getField('phone');
-    } 
-
-    public function getInfo()
-    {
-        return $this->getField('info');
-    }
-
-    public function getSkills()
-    {
-        return $this->getField('skills');
-    }
-
-    public function getAddress()
-    {
-        return $this->getField('address');
-    }
-
-    private function getField($name)
+    public function getItems($offset = 0, $limit = 100)
     {
         $db =& JFactory::getDBO();
 
-        $query = 'SELECT '.$name.' FROM #__vacancy';
+        $query = 'SELECT * FROM #__vacancy '.
+                 'LIMIT '.$offset.','.$limit;
         $db->setQuery( $query );
-        $res = $db->loadResult();
+        $res = $db->loadAssocList();
         return $res;
     }
 }
