@@ -8,7 +8,6 @@
 .text-italic-bold {
     font-style: italic;
     font-weight: bold;
-    padding-left: 15px;
 }
 .active {
     color: #915476;
@@ -17,6 +16,12 @@
     padding-top: 20px;
     font-size: 45px;
     font-style: italic;
-    color: #efefef;
+    color: #e0e0e0;
     text-align: right;
+    border-top: 1px solid #cac4c8;
+}
+.content-indent,
+.text-italic,
+.text-italic-bold {
+    padding-left: 15px;
 }

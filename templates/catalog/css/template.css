@@ -305,13 +305,15 @@ ul li
     margin: 0px auto;
 }
 
-#page .content .contentpaneopen
+#page .content .contentpaneopen,
+.componentheading_vacancy
 {
     padding-top: 25px;
 }
 
 #page .content .contentpaneopen .contentheading,
-#page .content .componentheading
+#page .content .componentheading,
+.componentheading_vacancy
 {
     font-size: 30px;
     color: #835e73;
@@ -350,6 +352,24 @@ ul li
     background-color: #e2e2e2;
     padding: 0px 10px 0px 20px;
     vertical-align: middle;
+}
+
+
+/**
+ * Vacancy
+ */
+.blog_vacancy {
+    padding-left: 15px;
+    width: 100%;
+}
+.contentpaneopen_vacancy {
+    width: 100%;
+}
+.contentheading_vacancy {
+    color: #4b4b4b;
+    font-size: 22px;
+    font-style: italic;
+    border-bottom: 1px solid #cac4c8;
 }
 
 

@@ -431,6 +431,7 @@ class ContentController extends JController
 		$form->set('created_by', $active);
 		$form->set('access', $row->access);
 		$form->set('created_by_alias', $row->created_by_alias);
+		$form->set('signature', $row->signature);
 
 		$form->set('created', JHTML::_('date', $row->created, '%Y-%m-%d %H:%M:%S'));
 		$form->set('publish_up', JHTML::_('date', $row->publish_up, '%Y-%m-%d %H:%M:%S'));
@@ -1166,6 +1167,7 @@ class ContentController extends JController
 			$row->created					= $item->created;
 			$row->created_by				= $item->created_by;
 			$row->created_by_alias			= $item->created_by_alias;
+			$row->signature					= $item->signature;
 			$row->modified					= $item->modified;
 			$row->modified_by				= $item->modified_by;
 			$row->checked_out				= $item->checked_out;

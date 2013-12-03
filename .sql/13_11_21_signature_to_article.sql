@@ -1,0 +1,1 @@
+alter table `jos_content` add column `signature` varchar(255) NOT NULL DEFAULT '';
