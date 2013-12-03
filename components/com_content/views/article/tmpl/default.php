@@ -156,9 +156,9 @@ echo '</div>';
 
 if (!empty($this->article->signature))
 {
-    echo '<div class="signature">';
+    echo '<div class="content-indent"><div class="signature">';
     echo $this->article->signature;
-    echo '</div>';
+    echo '</div></div>';
 }
 
 echo '<span class="article_separator">&nbsp;</span>';

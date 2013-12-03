@@ -366,12 +366,66 @@ ul li
     width: 100%;
 }
 .contentheading_vacancy {
-    color: #4b4b4b;
-    font-size: 22px;
+    padding-left: 5px;
+}
+.table_vacancy {
+    width: 100%;
+}
+.table_vacancy td {
+    padding-bottom: 10px;
+}
+.label_vacancy,
+.phone_label_vacancy,
+.phone_value_vacancy,
+.address_label_vacancy,
+.address_value_vacancy {
+    padding-left: 5px;
+}
+.label_vacancy {
+    width: 120px;
+    _background: rgba(255,0,0,0.2);
+}
+.value_vacancy {
+    padding-left: 5px;
     font-style: italic;
-    border-bottom: 1px solid #cac4c8;
+    line-height: 20px;
+    _background: rgba(255,255,0,0.2);
 }
 
+.phone_label_vacancy,
+.phone_value_vacancy,
+.address_label_vacancy,
+.address_value_vacancy,
+.info_vacancy {
+    padding-bottom: 5px;
+}
+
+.phone_label_vacancy {
+    display: inline-block;
+    _background: rgba(255,0,0,0.2);
+}
+.phone_value_vacancy {
+    display: inline-block;
+}
+.address_label_vacancy {
+    display: inline-block;
+    _background: rgba(255,0,0,0.2);
+}
+.address_value_vacancy {
+    display: inline-block;
+}
+.info_vacancy {
+    color: #808080;
+    font-style: italic;
+    padding-left: 5px;
+    padding-top: 2px;
+}
+.separator_vacancy {
+    height: 40px;
+}
+.inner_separator_vacancy {
+    height: 5px;
+}
 
 /**
  * add to seo editor styles

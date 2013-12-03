@@ -9,6 +9,7 @@
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
+<link rel="stylesheet" href="templates/catalog/css/content.css" type="text/css" />
 <link rel="stylesheet" href="templates/system/css/custom_editor.css" type="text/css" />
 <script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
 <link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
