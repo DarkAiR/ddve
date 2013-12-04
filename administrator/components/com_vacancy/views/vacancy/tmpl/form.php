@@ -27,6 +27,7 @@
             </td>
             <td>
                 <?php echo $this->vacancy->published; ?>
+                <input type="hidden" name="published" value="<?php echo $this->vacancy->published; ?>" />
             </td>
         </tr>
 
