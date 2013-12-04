@@ -12,6 +12,8 @@ class VacancyModelVacancy extends JModel
         $db =& JFactory::getDBO();
 
         $query = 'SELECT * FROM #__vacancy '.
+                 'WHERE published = 1 '.
+                 'ORDER BY ordering ASC '.
                  'LIMIT '.$offset.','.$limit;
         $db->setQuery( $query );
         $res = $db->loadAssocList();

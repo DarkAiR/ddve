@@ -22,6 +22,15 @@
         </tr>
 
         <tr>
+            <td class="key">
+                <?php echo JText::_( 'Published' ); ?>:
+            </td>
+            <td>
+                <?php echo $this->vacancy->published; ?>
+            </td>
+        </tr>
+
+        <tr>
             <td width="100" align="right" class="key">
                 <label for="required"><?php echo JText::_( 'Required' ); ?>:</label>
             </td>
