@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE install SYSTEM "http://dev.joomla.org/xml/1.5/plugin-install.dtd">
+<install version="1.5" type="plugin" group="content">
+<name>Delivery Condition - My Extension</name>
+<author>darkair</author>
+<authorEmail>darkair@list.ru</authorEmail>
+<authorUrl></authorUrl>
+<creationDate>04.12.13</creationDate>
+<copyright></copyright>
+<license></license>
+<version>1.0</version>
+<description>Вставка условий доставки в контент</description>
+<files>
+<filename plugin="deliverycondition">deliverycondition.php</filename>
+</files>
+<params/>
+</install>
+

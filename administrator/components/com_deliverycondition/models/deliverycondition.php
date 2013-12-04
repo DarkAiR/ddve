@@ -4,7 +4,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 
 jimport('joomla.application.component.model');
 
-class VacancysModelVacancy extends JModel
+class DeliveryConditionsModelDeliveryCondition extends JModel
 {
     /**
      * Constructor that retrieves the ID from the request
@@ -31,7 +31,7 @@ class VacancysModelVacancy extends JModel
     {
         // Load the data
         if (empty( $this->_data )) {
-            $query = ' SELECT * FROM #__vacancy '.
+            $query = ' SELECT * FROM #__delivery_condition '.
                     '  WHERE id = '.$this->_id;
             $this->_db->setQuery( $query );
             $this->_data = $this->_db->loadObject();
@@ -39,14 +39,8 @@ class VacancysModelVacancy extends JModel
         if (!$this->_data) {
             $this->_data = new stdClass();
             $this->_data->id = 0;
-            $this->_data->title = null;
-            $this->_data->required = null;
-            $this->_data->responsibility = null;
-            $this->_data->conditions = null;
-            $this->_data->info = null;
-            $this->_data->skills = null;
-            $this->_data->phone = null;
-            $this->_data->address = null;
+            $this->_data->text = null;
+            $this->_data->summ = null;
             $this->_data->ordering = null;
             $this->_data->published = 1;
         }
@@ -65,13 +59,13 @@ class VacancysModelVacancy extends JModel
 
         $data = JRequest::get( 'post', 2 );
 
-        // Bind the form fields to the vacancy table
+        // Bind the form fields to the DeliveryCondition table
         if (!$row->bind($data)) {
             $this->setError($this->_db->getErrorMsg());
             return false;
         }
 
-        // Make sure the vacancy record is valid
+        // Make sure the DeliveryCondition record is valid
         if (!$row->check()) {
             $this->setError($this->_db->getErrorMsg());
             return false;
