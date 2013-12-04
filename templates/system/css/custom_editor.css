@@ -1,3 +1,11 @@
+.mceContentBody {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-size: 13px;
+    line-height: 1.3;
+    color: #4b4b4b;
+}
 p.tag-sz20
 {
     font-size: 20px;
@@ -23,4 +31,21 @@ p.tag-sz12
 .moduletable_seo_text_main h1 {
     font-size: 35px;
     font-style: italic;
+}
+.content-h1 {
+    display: block;
+    color: #4b4b4b;
+    font-size: 22px;
+    font-style: italic;
+    border-bottom: 1px solid #cac4c8;
+    margin-bottom: 15px;
+    line-height: 25px;
+}
+.content-h2 {
+    color: #4b4b4b;
+    font-size: 15px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 20px;
+    vertical-align: top;
 }

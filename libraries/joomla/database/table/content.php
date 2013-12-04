@@ -51,6 +51,8 @@ class JTableContent extends JTable
 	var $created_by			= null;
 	/** @var string An alias for the author*/
 	var $created_by_alias		= null;
+	/** @var string Signature */
+	var $signature = null;
 	/** @var datetime */
 	var $modified			= null;
 	/** @var int User id*/
