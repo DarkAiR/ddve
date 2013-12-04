@@ -15,7 +15,7 @@ class TableVacancy extends JTable
 	var $info = null;
 	var $skills = null;
 	var $ordering = null;
- 	var $published = 1;
+ 	var $published = 0;
  	
 	/**
 	 * Constructor
