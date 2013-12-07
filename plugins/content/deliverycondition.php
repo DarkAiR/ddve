@@ -18,6 +18,6 @@ function plgContentDeliveryCondition( &$row, &$params, $page=0 )
     $items = $db->loadObjectList();
     $str = '';
     foreach ($items as $item)
-        $str .= $item['text'].' - '.$item['summ'].'<br/>';
+        $str .= $item->text.' - '.$item->summ.'<br/>';
     $row->text = preg_replace($pattern, $str, $row->text);
 }
