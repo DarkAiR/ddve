@@ -25,15 +25,20 @@
                 <filename>images/header.jpg</filename>
              </files>
       <positions>
-                <position>breadcrumbs</position>
-                <position>user1</position>
-                <position>user2</position>
-                <position>user3</position>
-                <position>leftmainmenu</position>
-                <position>left</position>
-                <position>right</position>
-                <position>bottom</position>
-                <position>bottommenu</position>
-                <position>footer</position>
+        <position>breadcrumbs</position>
+        <position>user1</position>
+        <position>user2</position>
+        <position>user3</position>
+        <position>leftmainmenu</position>
+        <position>left</position>
+        <position>right</position>
+        <position>bottom</position>
+        <position>bottommenu</position>
+        <position>footer</position>
+        <position>seo_footer_tags</position>
+        <position>seo_footer_text</position>
+        <position>seo_footer_text_footer_pizza</position>
+        <position>seo_footer_text_footer_rolly</position>
+        <position>seo_footer_text_footer_suchi</position>
       </positions>
 </install>

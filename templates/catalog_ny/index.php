@@ -10,8 +10,10 @@
     $.noConflict();
 </script>
 <jdoc:include type="head" />
-<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css?v=2" type="text/css" />
+<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
+<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/content.css" type="text/css" />
+<link rel="stylesheet" href="templates/system/css/custom_editor.css" type="text/css" />
 
 <script src="templates/<?php echo $this->template ?>/js/swfobject.js" type="text/javascript"></script>
 <script src="templates/<?php echo $this->template ?>/js/jquery.scrollTo.js" type="text/javascript"></script>
@@ -164,7 +166,8 @@
 
 <body>
 
-<?php include_once("analyticstracking.php") ?>
+<?php include_once("analyticstracking.php"); ?>
+<?php include_once("yandexmetrika.php"); ?>
 
 <div id="page">
 
@@ -201,6 +204,8 @@
                 </td>
                 <!--основной текст-->
                 <td id="main">
+                    <br/>
+                    <jdoc:include type="modules" name="breadcrumb" style="xhtml" />
                     <jdoc:include type="component" style="xhtml" />
                 </td>
             </tr>
@@ -210,6 +215,29 @@
         <div id="footer">
             <jdoc:include type="modules" name="footer" style="xhtml" />
         </div>
+    </div>
+
+    <div id='seo-block'>
+        <?php
+            // Оторажаем SEO текст в зависимости от страниц
+            $categoryId = isset($_GET['category_id']) ? $_GET['category_id'] : false;
+            switch($categoryId)
+            {
+                // Пицца
+                case 6:
+                    ?><jdoc:include type="modules" name="seo_footer_text_footer_pizza" style="xhtml" /><?php
+                    break;
+                // Роллы
+                case 19:
+                case 20:
+                    ?><jdoc:include type="modules" name="seo_footer_text_footer_rolly" style="xhtml" /><?php
+                    break;
+                // Суши
+                case 21:
+                    ?><jdoc:include type="modules" name="seo_footer_text_footer_suchi" style="xhtml" /><?php
+                    break;
+            }
+        ?>
     </div>
 
   </body>

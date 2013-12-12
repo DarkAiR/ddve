@@ -632,6 +632,7 @@ class plgEditorTinymce extends JPlugin
 
 	function onGetInsertMethod($name)
 	{
+		$name = $name;
 		$doc =& JFactory::getDocument();
 
 		$js= "
