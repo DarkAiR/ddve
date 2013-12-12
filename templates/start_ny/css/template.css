@@ -141,8 +141,8 @@ ul li
 .supy
 {
     position: absolute;
-    left: 594px;
-    top: 324px;
+    left: 275px;
+    top: 141px;
     background:transparent;
     width: 100px;
     height: 89px;
@@ -151,8 +151,8 @@ ul li
 .salaty
 {
     position: absolute;
-    left: 717px;
-    top: 368px;
+    left: 398px;
+    top: 185px;
     background:transparent;
     width: 110px;
     height: 48px;
@@ -161,8 +161,8 @@ ul li
 .rolly
 {
     position: absolute;
-    left: 558px;
-    top: 470px;
+    left: 239px;
+    top: 287px;
     background:transparent;
     width: 106px;
     height: 34px;
@@ -171,8 +171,8 @@ ul li
 .lapsha
 {
     position: absolute;
-    left: 669px;
-    top: 426px;
+    left: 350px;
+    top: 243px;
     background:transparent;
     width: 65px;
     height: 77px;
@@ -181,8 +181,8 @@ ul li
 .pizza
 {
     position: absolute;
-    left: 719px;
-    top: 421px;
+    left: 400px;
+    top: 238px;
     background:transparent;
     width: 166px;
     height: 96px;
@@ -191,8 +191,8 @@ ul li
 .vok
 {
     position: absolute;
-    left: 572px;
-    top: 547px;
+    left: 253px;
+    top: 364px;
     background:transparent;
     width: 152px;
     height: 53px;
@@ -201,8 +201,8 @@ ul li
 .deserty
 {
     position: absolute;
-    left: 718px;
-    top: 545px;
+    left: 399px;
+    top: 362px;
     background:transparent;
     width: 136px;
     height: 54px;
@@ -211,13 +211,34 @@ ul li
 .napitki
 {
     position: absolute;
-    left: 930px;
-    top: 400px;
+    left: 611px;
+    top: 217px;
     background:transparent;
     width: 150px;
     height: 180px;
     display: block;
 }
+#page #lapsha_bg
+{
+    position: absolute;
+    left: 31px;
+    top: 589px;
+    background:transparent url(../images/lapsha3.png) left top no-repeat;
+    width: 128px;
+    height: 108px;
+    display: block;
+}
+#page #buklety_bg
+{
+    position: absolute;
+    left: 1208px;
+    top: 657px;
+    background:transparent url(../images/buklety.png) left top no-repeat;
+    width: 110px;
+    height: 61px;
+    display: block;
+}
+
 #page #gifts
 {
     position: absolute;
@@ -318,60 +339,144 @@ ul li
     background: url(../images/img_01.jpg) left top no-repeat;
 }
 
+#page #div2,
+#page #div2_1,
+#page #div2_2,
+#page #div2_3
+{
+    height: 659px;
+}
 #page #div2_1
 {
     width: 319px;
-    height: 659px;
     background: url(../images/img_02.jpg) left top no-repeat;
     float: left;
 }
-
 #page #div2_2
 {
     width: 788px;
-    height: 659px;
     background: url(../images/img_03.jpg) left top no-repeat;
     float: left;
+    position: relative;
 }
-
 #page #div2_3
 {
     width: 293px;
-    height: 659px;
     float: left;
     background: url(../images/img_04.jpg) left top no-repeat;
 }
+#div2_2_inner
+{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+#page #div2_2_close
+{
+    position: absolute;
+    left: 200px;
+    width: 385px;
+    height: 100%;
+}
 
+
+#page #div3,
+#page #div3_1,
+#page #div3_2,
+#page #div3_3
+{
+    height: 208px;
+}
 #page #div3_1
 {
     width: 319px;
-    height: 208px;
     background: url(../images/img_05.jpg) left top no-repeat;
     float: left;
 }
-
 #page #div3_2
 {
     width: 788px;
-    height: 208px;
     background: url(../images/img_06.jpg) left top no-repeat;
     float: left;
 }
-
 #page #div3_3
 {
     width: 293px;
-    height: 208px;
     float: left;
     background: url(../images/img_07.jpg) left top no-repeat;
 }
 
+
 #page #div4
 {
     width: 1400px;
-    height: 110px;
+}
+#page #div4_1
+{
+    width: 1400px;
+    height: 106px;
     background: url(../images/img_08.jpg) left top no-repeat;
+}
+#page #div4_2
+{
+    width: 1400px;
+    height: 268px;
+    background: url(../images/img_09.jpg) left top no-repeat;
     float: left;
+}
+#page #div4_3
+{
+    width: 1400px;
+    height: 549px;
+    background: url(../images/img_10.png) left top repeat-x;
+    float: left;
+}
+#div4_container
+{
+    position: relative;
+}
+#div4_content
+{
+    position: absolute;
+    left: 0px;
+    top: 40px;
+}
+
+/**
+ * add to seo editor styles
+ */
+.moduletable_seo_text_main {
+    font-size: 15px;
+    color: #9da3ac;
+    width: 770px;
+    margin-left: 315px;
+    text-align: justify;
+}
+.moduletable_seo_text_main p,
+.moduletable_seo_text_main h1 {
+    text-indent: 40px;
+    line-height: 1.3em;
+    margin: 0px;
+    padding-top: 1em;
+}
+.moduletable_seo_text_main li {
+    list-style: disc;
+    margin-left: 58px;
+}
+.moduletable_seo_text_main h1 {
+    font-size: 35px;
+    font-style: italic;
+    color: #b8bdc4;
+    text-indent: 0px !important;
+    text-align: left;
+}
+.seo-h2 {
+    color: #bfc4cc;
+    margin-top: 1em !important;
+}
+.seo-h3-signature {
+    color: #d3d7bb;
+    text-indent: 0px !important;
 }
 
 #page #footer
@@ -432,12 +537,6 @@ ul li
     margin: 30px 30px 30px 30px;
 }
 
-#div2_2_inner
-{
-    display: block;
-    width: 100%;
-    height: 100%;
-}
 
 /* отключаем подчеркивание на ссылках */
 .moduletable_menu_vm ul li a,
@@ -501,11 +600,12 @@ ul li
 .moduletable_zakaz_zvonka input#zakaz_zvonka
 {
     display: block;
-    font-size: 13px;
+    font-size: 15px;
     color: #866076;
     width: 154px;
     height: 20px;
     border: #e5dadf 1px solid;
+    text-align: center;
 }
 .moduletable_zakaz_zvonka #zz1
 {
@@ -554,7 +654,7 @@ ul li
 .moduletable_calendar #time
 {
     clear: both;
-    font-size: 11px;
+    font-size: 13px;
     color: #866076;
     padding: 6px 3px 5px 6px;
 }
@@ -582,4 +682,35 @@ ul li
 #rightModules #vk_groups iframe
 {
     height:122px !important;
+}
+
+
+/* seo-модуль внизу главной */
+.moduletable_seo_main
+{
+    width: 1133px;
+    height: 60px;
+    position: relative;
+    left: 131px;
+    top: 17px;
+    text-align: center;
+}
+.moduletable_seo_main div
+{
+    display: inline-block;
+}
+.moduletable_seo_main p
+{
+    border-bottom: 1px dotted #1a1116;
+    color: #1a1116;
+    margin: 0px 14px 0px 14px;
+    padding: 0px;
+    text-transform: lowercase;
+    float: left;
+    line-height: 1.2em;
+}
+.moduletable_seo_main p a
+{
+    color: #1a1116;
+    text-decoration: none;
 }
