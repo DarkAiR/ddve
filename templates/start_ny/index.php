@@ -59,14 +59,14 @@
         jQuery('#gift2').hide();
         jQuery('#gift3').hide();
         jQuery('#gift4').hide();
-        //jQuery('#giftarea1').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift1').show(); });
-        //jQuery('#giftarea1').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift1').hide(); });
+        jQuery('#giftarea1').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift1').show(); });
+        jQuery('#giftarea1').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift1').hide(); });
         jQuery('#giftarea2').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift2').show(); });
         jQuery('#giftarea2').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift2').hide(); });
         jQuery('#giftarea3').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift3').show(); });
         jQuery('#giftarea3').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift3').hide(); });
-        //jQuery('#giftarea4').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift4').show(); });
-        //jQuery('#giftarea4').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift4').hide(); });
+        jQuery('#giftarea4').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift4').show(); });
+        jQuery('#giftarea4').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift4').hide(); });
 
         jQuery('#div2_2_inner').css( 'display', 'none' );
 
@@ -218,15 +218,15 @@
 
     <a id="logo" href="index.php"></a>
 
-	<div id='gifts'></div>
-	<div id='gift1'></div>
-	<div id='gift2'></div>
-	<div id='gift3'></div>
-	<div id='gift4'></div>
-	<div id='giftarea1'></div>
-	<div id='giftarea2'></div>
-	<div id='giftarea3'></div>
-	<div id='giftarea4'></div>
+	<div id='gifts' style='z-index:1;'></div>
+	<div id='gift1' style='z-index:1; display: none;'></div>
+	<div id='gift2' style='z-index:1; display: none;'></div>
+	<div id='gift3' style='z-index:1; display: none;'></div>
+	<div id='gift4' style='z-index:1; display: none;'></div>
+	<div id='giftarea1' style='z-index:1;'></div>
+	<div id='giftarea2' style='z-index:1;'></div>
+	<div id='giftarea3' style='z-index:1;'></div>
+	<div id='giftarea4' style='z-index:1;'></div>
 
     <div id="div1"></div>
     <div id="div2">

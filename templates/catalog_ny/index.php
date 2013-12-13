@@ -61,7 +61,7 @@
         // Загружаем банер
         // Выравниваем логотип, банер и календарь
         params = {wmode:"transparent"};
-        swfobject.embedSWF( 'images/banners/banner.swf', 'banner', '550', '400', '9.0.0', 'images/banners/banner.swf', '', params, '', setHeaderPosition );
+        swfobject.embedSWF( '/images/banners/banner.swf', 'banner', '550', '400', '9.0.0', '/images/banners/banner.swf', '', params, '', setHeaderPosition );
         //jQuery('#header #banner').append( '<div style="width:450px; height:140px; display:block; text-align:center; position:relative; top:-40px;"><img src="images/banners/banner.gif" width="357px" height="210px"/></div>' );
         setHeaderPosition();
         
