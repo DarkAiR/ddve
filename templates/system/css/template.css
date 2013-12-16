@@ -195,6 +195,10 @@ ul li
     text-align: right;
 }
 
+.moduletable_authors a {
+    color: #fff;
+}
+
 div#info1
 {
     color: #305c24;

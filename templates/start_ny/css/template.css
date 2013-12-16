@@ -510,6 +510,10 @@ ul li
     text-align: right;
 }
 
+.moduletable_authors a {
+    color: #fff;
+}
+
 #leftModules
 {
     display: block;
