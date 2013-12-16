@@ -65,7 +65,7 @@
                 <label for="smalltext"><?php echo JText::_( 'SmallText' ); ?>:</label>
             </td>
             <td>
-                <textarea name="smalltext" id="smalltext" rows="10" cols="45" class="inputbox"><?php echo $this->action->smalltext; ?></textarea>
+                <textarea name="smalltext" id="smalltext" rows="10" cols="90" class="inputbox"><?php echo $this->action->smalltext; ?></textarea>
                 <?php
                     // parameters : areaname, content, width, height, cols, rows
                     //echo $editor->display( 'smalltext',  $this->action->smalltext , '80%', '300', '75', '20' ) ;
