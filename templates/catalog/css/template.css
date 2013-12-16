@@ -307,14 +307,16 @@ ul li
 }
 
 #page .content .contentpaneopen,
-.componentheading_vacancy
+.componentheading_vacancy,
+.componentheading_actions
 {
     padding-top: 25px;
 }
 
 #page .content .contentpaneopen .contentheading,
 #page .content .componentheading,
-.componentheading_vacancy
+.componentheading_vacancy,
+.componentheading_actions
 {
     font-size: 30px;
     color: #835e73;
@@ -349,7 +351,7 @@ ul li
 
 #page #footer
 {
-    height: 60px;
+    height: 70px;
     background-color: #e2e2e2;
     padding: 0px 10px 0px 20px;
     vertical-align: middle;
@@ -427,6 +429,44 @@ ul li
 .inner_separator_vacancy {
     height: 5px;
 }
+
+/**
+ * Actions
+ */
+.contentheading_actions {
+    padding-left: 5px;
+    position: relative;
+}
+.text_actions {
+    padding-top: 8px;
+}
+
+.text_actions,
+.text_actions *
+{
+    font-size: 17px !important;
+    color: #6e3957 !important;
+    font-style: italic !important;
+}
+.smalltext_actions {
+    padding-top: 13px;
+}
+.smalltext_actions,
+.smalltext_actions *
+{
+    font-size: 13px !important;
+    color: #808080 !important;
+    font-style: italic !important;
+}
+.separator_actions {
+    height: 40px;
+}
+.rollday_actions {
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+
 
 /**
  * add to seo editor styles
