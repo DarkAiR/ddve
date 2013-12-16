@@ -16,8 +16,23 @@ function plgContentDeliveryCondition( &$row, &$params, $page=0 )
     $query = 'SELECT * FROM #__delivery_condition WHERE published=1 ORDER BY ordering';
     $db->setQuery($query);
     $items = $db->loadObjectList();
-    $str = '';
+
+    $html = '<div class="delivery">'.
+            '<table class="list" cellpadding=0 cellspacing=0>';
     foreach ($items as $item)
-        $str .= $item->text.' - '.$item->summ.'<br/>';
-    $row->text = preg_replace($pattern, $str, $row->text);
+    {
+        $html .= 
+            '<tr>'.
+                '<td class="district">'.
+                $item->text.
+                '</td>'.
+                '<td class="price">'.
+                $item->summ.
+                '</td>'.
+            '</tr>';
+    }
+    $html .= '</table>'.
+             '</div>';
+
+    $row->text = preg_replace($pattern, $html, $row->text);
 }

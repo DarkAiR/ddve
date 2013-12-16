@@ -175,11 +175,12 @@ ul li
 {
     display: block;
     height: 100%;
-    width: 260px;
+    width: 220px;   /* 260 - 40 */
     color: #fff;
     font-size: 40px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
+    padding-left: 40px;
     padding-top: 2px;
     float: left;
 }
@@ -466,35 +467,42 @@ ul li
 /* левое меню index.php?option=com_virtuemart */
 
 /* отключаем подчеркивание на ссылках */
-.moduletable_menu ul li a
+.moduletable_menu ul li a,
+.moduletable_menu_vm ul li a
 {
     text-decoration: none;
 }
 
-.moduletable_menu ul li
+.moduletable_menu ul li,
+.moduletable_menu_vm ul li
 {
     color:#866076;
     font-size: 20px;
-    padding: 0 0 25px 39px;
+    padding: 0 0 25px 40px;
 }
 
-.moduletable_menu ul li ul li
+.moduletable_menu_vm ul ul {
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.moduletable_menu_vm ul li ul li
 {
     font-size: 16px;
     margin: 0px;
-    padding: 15px 0 0 2px;
+    padding: 12px 0 0 2px;
+    width: 102px;
 }
-.moduletable_menu .prod_name
+.moduletable_menu_vm .prod_name
 {
     /*float: left;*/
 }
-.moduletable_menu .prod_count
+.moduletable_menu_vm .prod_count
 {
     font-size: 10px;
     color: #866076;
-    
-    /* Отключаем поле */
-    display: none;
+    vertical-align: super;
+    display: inline-block;
 }
 /* Меню второго уровня */
 div.submenu
@@ -502,6 +510,10 @@ div.submenu
     padding-left:15px;
     padding-top:10px;
     font-size:0.9em;
+    width: 110px;
+}
+div.submenu * {
+    text-decoration: none;
 }
 
 
@@ -570,4 +582,38 @@ div.submenu
     background: #F2F2F2;
     color: black;
     padding: 0px 5px 0px 5px;
+}
+
+/**
+ * Условия доставки
+ */
+.delivery {
+}
+
+.delivery table.list {
+    font-size: 17px;
+    font-style: italic;
+    border: 0px;
+    width: 100%;
+    padding-top: 16px;
+}
+.delivery table.list tr {
+
+}
+.delivery table.list td {
+    vertical-align: top;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.delivery table.list td.district {
+    width: 380px;
+    padding-right: 20px;
+    color: #6e3957;    
+    line-height: 20px;
+    border-right: 1px solid #cac4c8;
+}
+.delivery table.list td.price {
+    padding-left: 20px;
+    color: #656565;
+    font-weight: bold;
 }
