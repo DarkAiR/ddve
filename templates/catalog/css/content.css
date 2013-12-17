@@ -25,3 +25,251 @@
 .text-italic-bold {
     padding-left: 15px;
 }
+
+
+
+/*Оформление страницы*/
+#page
+{
+    width: 1280px !important;
+    height: 100%;
+    margin: 0px auto;
+    text-align:left;
+}
+
+#page .content
+{
+    width: 960px;
+    background-color: #fff;
+    margin: 0px auto;
+}
+
+#page .content .contentpaneopen,
+.componentheading_vacancy,
+.componentheading_actions,
+.componentheading_news
+{
+    padding-top: 25px;
+}
+
+#page .content .contentpaneopen .contentheading,
+#page .content .componentheading,
+.componentheading_vacancy,
+.componentheading_actions,
+.componentheading_news
+{
+    font-size: 30px;
+    color: #835e73;
+    text-align:left;
+    padding-bottom: 4px;
+    margin-bottom: 30px;
+    border-bottom: 1px solid #856075;
+}
+
+#page .content .componentheading
+{
+    padding-top: 30px;
+}
+
+#page table.content #left
+{
+    padding: 0px;
+    margin: 0px;
+    vertical-align: top;
+    min-width: 170px;
+    width: 170px;
+    padding-top: 40px;
+}
+
+#page table.content #main
+{
+    width: auto;
+    height: 500px;
+    vertical-align: top;
+    padding-right: 38px;
+}
+
+#page #footer
+{
+    height: 70px;
+    background-color: #e2e2e2;
+    padding: 0px 10px 0px 20px;
+    vertical-align: middle;
+}
+
+
+/**
+ * Vacancy
+ */
+.blog_vacancy {
+    padding-left: 15px;
+    width: 100%;
+}
+.contentpaneopen_vacancy {
+    width: 100%;
+}
+.contentheading_vacancy {
+    padding-left: 5px;
+}
+.table_vacancy {
+    width: 100%;
+}
+.table_vacancy td {
+    padding-bottom: 10px;
+}
+.label_vacancy,
+.phone_label_vacancy,
+.phone_value_vacancy,
+.address_label_vacancy,
+.address_value_vacancy {
+    padding-left: 5px;
+}
+.label_vacancy {
+    width: 120px;
+}
+.value_vacancy {
+    padding-left: 5px;
+    font-style: italic;
+    line-height: 20px;
+}
+
+.phone_label_vacancy,
+.phone_value_vacancy,
+.address_label_vacancy,
+.address_value_vacancy,
+.info_vacancy {
+    padding-bottom: 5px;
+}
+
+.phone_label_vacancy {
+    display: inline-block;
+}
+.phone_value_vacancy {
+    display: inline-block;
+}
+.address_label_vacancy {
+    display: inline-block;
+}
+.address_value_vacancy {
+    display: inline-block;
+}
+.info_vacancy {
+    color: #808080;
+    font-style: italic;
+    padding-left: 5px;
+    padding-top: 2px;
+}
+.separator_vacancy {
+    height: 40px;
+}
+.inner_separator_vacancy {
+    height: 5px;
+}
+
+/**
+ * Actions
+ */
+.contentheading_actions {
+    padding-left: 5px;
+    position: relative;
+}
+.text_actions {
+    padding-top: 8px;
+}
+
+.text_actions,
+.text_actions *
+{
+    font-size: 17px !important;
+    color: #6e3957 !important;
+    font-style: italic !important;
+}
+.smalltext_actions {
+    padding-top: 13px;
+}
+.smalltext_actions,
+.smalltext_actions *
+{
+    font-size: 13px !important;
+    color: #808080 !important;
+    font-style: italic !important;
+}
+.separator_actions {
+    height: 40px;
+}
+.rollday_actions {
+    position: relative;
+    left: 20px;
+    top: 20px;
+}
+
+
+/**
+ * Условия доставки
+ */
+.delivery {
+}
+
+.delivery table.list {
+    font-size: 17px;
+    font-style: italic;
+    border: 0px;
+    width: 100%;
+    padding-top: 16px;
+}
+.delivery table.list tr {
+
+}
+.delivery table.list td {
+    vertical-align: top;
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+.delivery table.list td.district {
+    width: 380px;
+    padding-right: 20px;
+    color: #6e3957;    
+    line-height: 20px;
+    border-right: 1px solid #cac4c8;
+}
+.delivery table.list td.price {
+    padding-left: 20px;
+    color: #656565;
+    font-weight: bold;
+}
+
+
+/**
+ * News
+ */
+.table_news {
+}
+.image_news {
+    width: 200px;
+    max-width: 200px;
+    overflow: hidden;
+    vertical-align: top;
+}
+.image_news img {
+    box-shadow: 0px 0px 5px -1px #6e3957; 
+    margin: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+.content_news {
+    vertical-align: top;
+}
+.date_news {
+
+}
+.title_news {
+
+}
+.text_news {
+    overflow: hidden;
+}
+.separator_news {
+    border-top: 1px solid #cac4c8;
+    width: 100%;
+}

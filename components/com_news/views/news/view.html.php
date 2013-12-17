@@ -3,7 +3,7 @@ defined( '_JEXEC' ) or die( 'Restricted access' );
 jimport( 'joomla.application.component.view');
 jimport( 'joomla.application.component.model' );
  
-class ActionsViewActions extends JView
+class NewsViewNews extends JView
 {
     function display($tpl = null)
     {

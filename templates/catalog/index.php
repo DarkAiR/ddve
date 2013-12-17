@@ -10,7 +10,7 @@
     $.noConflict();
 </script>
 <jdoc:include type="head" />
-<link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
+<link rel="stylesheet" href="templates/catalog/css/template.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
 <link rel="stylesheet" href="templates/catalog/css/content.css" type="text/css" />
 <link rel="stylesheet" href="templates/system/css/custom_editor.css" type="text/css" />

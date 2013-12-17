@@ -49,6 +49,25 @@
 
         <tr>
             <td width="100" align="right" class="key">
+                <label for="mainimage"><?php echo JText::_( 'MainImage' ); ?>:</label>
+            </td>
+            <td>
+                <input id="mainimage" type="file" name="mainimage">
+                <?php
+                    if (!empty($this->news->mainimage))
+                    {?>
+                        <div style='padding-top:5px'>
+                        <a target="_blank" href="<?= $this->news->mainimage ?>">
+                            <img style="max-width:120px; max-height:120px" src="<?= $this->news->mainimage ?>" alt="">
+                        </a>
+                        </div>
+                    <?}
+                ?>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="100" align="right" class="key">
                 <label for="introtext"><?php echo JText::_( 'IntroText' ); ?>:</label>
             </td>
             <td>
@@ -70,27 +89,6 @@
                 ?>
             </td>
         </tr>
-
-        <tr>
-            <td width="100" align="right" class="key">
-                <label for="mainimage"><?php echo JText::_( 'MainImage' ); ?>:</label>
-            </td>
-            <td>
-                <input id="mainimage" type="file" name="mainimage">
-                <?php
-                    if (!empty($this->news->mainimage))
-                    {?>
-                        <div style='padding-top:5px'>
-                        <a target="_blank" href="<?= $this->news->mainimage ?>">
-                            <img style="max-width:120px; max-height:120px" src="<?= $this->news->mainimage ?>" alt="">
-                        </a>
-                        </div>
-                    <?}
-                ?>
-            </td>
-        </tr>
-
-<? //   `mainimage` VARCHAR(100) NOT NULL DEFAULT '', ?>
 
     </table>
     </fieldset>

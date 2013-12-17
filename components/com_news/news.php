@@ -16,7 +16,7 @@ if ($controller = JRequest::getWord('controller')) {
 }
 
 // Создание класса нашего компонента
-$classname    = 'ActionsController'.$controller;
+$classname    = 'NewsController'.$controller;
 $controller   = new $classname();
 
  // Выполняем задачу
