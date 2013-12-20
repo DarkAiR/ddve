@@ -218,12 +218,18 @@
     _background: rgba(0,255,0,0.1);
 }
 .image_news {
-    width: 160px;
-    max-width: 160px;
+    width: 165px;
+    max-width: 165px;
     overflow: hidden;
     vertical-align: top;
 }
-.image_news img {
+.image_blank_news {
+    background: url(../images/news-blank.jpg) left top no-repeat;
+    width: 150px;
+    height: 114px;
+}
+.image_news img,
+.image_blank_news {
     box-shadow: 0px 0px 5px 0px #bb98ad; 
     margin: 0px 0px 0px 3px;
     -webkit-border-radius: 3px;

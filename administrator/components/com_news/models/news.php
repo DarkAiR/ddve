@@ -6,7 +6,7 @@ jimport('joomla.application.component.model');
 
 class NewsListModelNews extends JModel
 {
-    const MAIN_IMAGE_WIDTH = 145;
+    const MAIN_IMAGE_WIDTH = 150;
 
     /**
      * Constructor that retrieves the ID from the request
@@ -93,7 +93,7 @@ class NewsListModelNews extends JModel
             }
             $data['mainimage'] = $this->getStorePath().$fileName;
         }
-        
+
         // Bind the form fields to the news table
         if (!$row->bind($data))
         {

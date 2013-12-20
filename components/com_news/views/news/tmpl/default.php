@@ -75,7 +75,12 @@ else
         <tr>
         
             <td class="image<?= $pageSuff ?>">
-                <img src="<?= $item['mainimage'] ?>" alt="<?= $this->escape($item['title']) ?>">
+            <?php
+                if ($item['mainimage'])
+                    echo '<img src="'.$item['mainimage'].'" alt="'.$this->escape($item['title']).'">';
+                else
+                    echo '<div class="image_blank'.$pageSuff.'"></div>';
+            ?>
             </td>
 
             <td class="content<?= $pageSuff ?>">
