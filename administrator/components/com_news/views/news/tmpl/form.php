@@ -68,18 +68,6 @@
 
         <tr>
             <td width="100" align="right" class="key">
-                <label for="introtext"><?php echo JText::_( 'IntroText' ); ?>:</label>
-            </td>
-            <td>
-                <?php
-                    // parameters : areaname, content, width, height, cols, rows
-                    echo $editor->display( 'introtext',  $this->news->introtext , '80%', '300', '75', '20' ) ;
-                ?>
-            </td>
-        </tr>
-
-        <tr>
-            <td width="100" align="right" class="key">
                 <label for="fulltext"><?php echo JText::_( 'FullText' ); ?>:</label>
             </td>
             <td>
