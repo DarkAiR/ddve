@@ -13,7 +13,7 @@ class NewsModelNews extends JModel
 
         $query = 'SELECT * FROM #__news '.
                  'WHERE published = 1 '.
-                 'ORDER BY ordering ASC '.
+                 'ORDER BY date DESC '.
                  'LIMIT '.$offset.','.$limit;
         $db->setQuery( $query );
         $res = $db->loadAssocList();

@@ -217,6 +217,9 @@
     padding-bottom: 20px;
     _background: rgba(0,255,0,0.1);
 }
+.table_news.first {
+    padding-top: 5px;
+}
 .image_news {
     width: 165px;
     max-width: 165px;

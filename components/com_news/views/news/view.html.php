@@ -5,39 +5,45 @@ jimport( 'joomla.application.component.model' );
  
 class NewsViewNews extends JView
 {
+    private static $month = array(
+        1 => array('Январь', 'января'),
+        2 => array('Февраль', 'февраля'),
+        3 => array('Март', 'марта'),
+        4 => array('Апрель', 'апреля'),
+        5 => array('Май', 'мая'),
+        6 => array('Июнь', 'июня'),
+        7 => array('Июль', 'июля'),
+        8 => array('Август', 'августа'),
+        9 => array('Сентябрь', 'сентября'),
+        10 => array('Октябрь', 'октября'),
+        11 => array('Ноябрь', 'ноября'),
+        12 => array('Декабрь', 'декабря')
+    );
+
     function display($tpl = null)
     {
         $model =& $this->getModel();
         $items = $model->getItems();
 
         // Готовим дату под нужный формат
+        // Разбиваем новости по месяцам
+        $newsArr = array();
         foreach ($items as &$item)
         {
-            $item['date'] = $this->convertDate($item['date']);
+            $date = strtotime($item['date']);
+            $month = date('n',$date);
+            $dateStr = date('j',$date).' '.self::$month[$month][1].' '.date('Y',$date);
+            $item['date'] = $dateStr;
+
+            $newsArr[$month][] = $item;
         }
 
-        $this->assignRef( 'items', $items );
+        $this->assignRef( 'news', $newsArr );
         parent::display($tpl);
     }
 
-    private function convertDate($date)
+    public function monthTitle($month)
     {
-        static $month = array(
-            1 => 'января',
-            2 => 'февраля',
-            3 => 'марта',
-            4 => 'апреля',
-            5 => 'мая',
-            6 => 'июня',
-            7 => 'июля',
-            8 => 'августа',
-            9 => 'сентября',
-            10 => 'октября',
-            11 => 'ноября',
-            12 => 'декабря'
-        );
-        $date = strtotime($date);
-        $str = date('j',$date).' '.$month[date('n',$date)].' '.date('Y',$date);
-        return $str;
+        return self::$month[$month][0];
     }
 }

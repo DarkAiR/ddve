@@ -60,53 +60,66 @@ echo $this->escape($active->name);
 echo '</div>';
 
 echo '<div class="content-indent">';
-if (empty($this->items))
+if (empty($this->news))
 {
     echo 'На сегодня новых новостей нет.';
 }
 else
 {
-    foreach ($this->items as $item)
+    foreach ($this->news as $month => $items)
     {
-        ?>
-        <div class="separator<?= $pageSuff ?>"></div>
-
-        <table class="table<?= $pageSuff ?>">
-        <tr>
-        
-            <td class="image<?= $pageSuff ?>">
-            <?php
-                if ($item['mainimage'])
-                    echo '<img src="'.$item['mainimage'].'" alt="'.$this->escape($item['title']).'">';
-                else
-                    echo '<div class="image_blank'.$pageSuff.'"></div>';
+        echo '<div class="content-h1  contentheading'.$pageSuff.'">';
+        echo $this->monthTitle($month);
+        echo '</div>';
+        $i = 0;
+        foreach ($items as $item)
+        {
+            if ($i++ == 0)
+            {
+                echo '<table class="table'.$pageSuff.' first">';
+            }
+            else
+            {
+                echo '<div class="separator'.$pageSuff.'"></div>';
+                echo '<table class="table'.$pageSuff.'">';
+            }
             ?>
-            </td>
+            <tr>
+            
+                <td class="image<?= $pageSuff ?>">
+                <?php
+                    if ($item['mainimage'])
+                        echo '<img src="'.$item['mainimage'].'" alt="'.$this->escape($item['title']).'">';
+                    else
+                        echo '<div class="image_blank'.$pageSuff.'"></div>';
+                ?>
+                </td>
 
-            <td class="content<?= $pageSuff ?>">
-                <div class="date<?= $pageSuff ?>">
-                    <?= $item['date'] ?>
-                </div>
-                <div class="title<?= $pageSuff ?>">
-                    <?= $this->escape($item['title']) ?>
-                </div>
-                <div class="text<?= $pageSuff ?>" style="max-height:<?= $innerHeight ?>px">
-                    <div class="text_inner<?= $pageSuff ?>">
-                        <?= $item['fulltext'] ?>
+                <td class="content<?= $pageSuff ?>">
+                    <div class="date<?= $pageSuff ?>">
+                        <?= $item['date'] ?>
                     </div>
-                    <img class="text_bg<?= $pageSuff ?>" width="100%" height="50px" src="templates/catalog/images/news_grad.png">
-                </div>
-                <div class="showmore<?= $pageSuff ?>">
-                    Подробнее
-                </div>
-                <div class="hidemore<?= $pageSuff ?>">
-                    Свернуть
-                </div>
-            </td>
+                    <div class="title<?= $pageSuff ?>">
+                        <?= $this->escape($item['title']) ?>
+                    </div>
+                    <div class="text<?= $pageSuff ?>" style="max-height:<?= $innerHeight ?>px">
+                        <div class="text_inner<?= $pageSuff ?>">
+                            <?= $item['fulltext'] ?>
+                        </div>
+                        <img class="text_bg<?= $pageSuff ?>" width="100%" height="50px" src="templates/catalog/images/news_grad.png">
+                    </div>
+                    <div class="showmore<?= $pageSuff ?>">
+                        Подробнее
+                    </div>
+                    <div class="hidemore<?= $pageSuff ?>">
+                        Свернуть
+                    </div>
+                </td>
 
-        </tr>
-        </table>
-        <?php
+            </tr>
+            </table>
+            <?php
+        }
     }
 }
 echo '</div>';
