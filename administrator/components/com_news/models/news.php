@@ -42,7 +42,6 @@ class NewsListModelNews extends JModel
             $this->_data = new stdClass();
             $this->_data->id = 0;
             $this->_data->title = null;
-            $this->_data->introtext = null;
             $this->_data->fulltext = null;
             $this->_data->mainimage = 0;
             $this->_data->date = null;

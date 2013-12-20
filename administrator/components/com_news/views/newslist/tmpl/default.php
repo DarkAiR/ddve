@@ -13,10 +13,12 @@
             <th width="5%" class="title" nowrap="nowrap">
                 <?php echo JHTML::_('grid.sort',   'Published', 'cd.published', 'ASC', 'ordering' ); ?>
             </th>
-            <th nowrap="nowrap" width="8%">
+            <?php
+            /*<th nowrap="nowrap" width="8%">
                 <?php echo JHTML::_('grid.sort',   'Order by', 'cd.ordering', 'ASC', 'ordering' ); ?>
                 <?php echo JHTML::_('grid.order',  $this->items ); ?>
-            </th>
+            </th>*/
+            ?>
         </tr>
     </thead>
     <?php
@@ -32,13 +34,15 @@
             <td><?php echo $this->pageNav->getRowOffset( $i ); ?></td>
             <td><?php echo $checked; ?></td>
             <td><a href="<?php echo $link; ?>"><?php echo $row->title; ?></a></td>
-            <td align="center"><?php echo $row->date;?></td>
+            <td align="center"><?php echo date('d M Y', strtotime($row->date)); ?></td>
             <td align="center"><?php echo $published;?></td>
-            <td class="order">
+            <?php
+            /*<td class="order">
                 <span><?php echo $this->pageNav->orderUpIcon( $i ); ?></span>
                 <span><?php echo $this->pageNav->orderDownIcon( $i, $n ); ?></span>
                 <input type="text" name="order[]" size="5" value="<?php echo $row->ordering;?>" class="text_area" style="text-align: center" />
-            </td>
+            </td>*/
+            ?>
         </tr>
         <?php
         $k = 1 - $k;

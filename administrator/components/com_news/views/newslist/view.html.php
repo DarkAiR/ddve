@@ -20,13 +20,13 @@ class NewsListViewNewsList extends JView
         $db                 =& JFactory::getDBO();
         $limit              = $mainframe->getUserStateFromRequest('global.list.limit', 'limit', $mainframe->getCfg('list_limit'), 'int');
         $limitstart         = $mainframe->getUserStateFromRequest( $option.'.limitstart', 'limitstart', 0, 'int' );
-        $filter_order       = 'cd.ordering';    //$mainframe->getUserStateFromRequest( $option.'filter_order', 'filter_order', 'cd.ordering', 'cmd' );
-        $filter_order_Dir   = 'ASC';            //$mainframe->getUserStateFromRequest( $option.'filter_order_Dir', 'filter_order_Dir', '', 'word' );
+        $filter_order       = 'cd.date';    //$mainframe->getUserStateFromRequest( $option.'filter_order', 'filter_order', 'cd.ordering', 'cmd' );
+        $filter_order_Dir   = 'DESC';            //$mainframe->getUserStateFromRequest( $option.'filter_order_Dir', 'filter_order_Dir', '', 'word' );
         $where              = '';
 
         $orderby = ($filter_order == 'cd.ordering')
             ? ' ORDER BY cd.ordering'
-            : ' ORDER BY '. $filter_order .' '. $filter_order_Dir .', cd.ordering';
+            : ' ORDER BY '. $filter_order .' '. $filter_order_Dir;  // .', cd.ordering';
 
         // get the total number of records
         jimport('joomla.html.pagination');
