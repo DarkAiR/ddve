@@ -21,6 +21,10 @@ $innerHeight = 50;
             {
                 showmore.css({'display':'inline-block'});
             }
+            else
+            {
+                textBg.hide();
+            }
 
             showmore.click( function()
             {
