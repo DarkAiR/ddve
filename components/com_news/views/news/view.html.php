@@ -23,7 +23,8 @@ class NewsViewNews extends JView
     function display($tpl = null)
     {
         $model =& $this->getModel();
-        $items = $model->getItems();
+        $items = $model->getData();
+        $pagination =& $this->get('Pagination');
 
         // Готовим дату под нужный формат
         // Разбиваем новости по месяцам
@@ -39,6 +40,7 @@ class NewsViewNews extends JView
         }
 
         $this->assignRef( 'news', $newsArr );
+        $this->assignRef( 'pagination', $pagination );
         parent::display($tpl);
     }
 

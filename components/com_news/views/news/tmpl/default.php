@@ -1,9 +1,14 @@
-<?php  
-defined('_JEXEC') or die('Restricted access');
+<?php
+// No direct access to this file
+defined('_JEXEC') or die('Restricted Access');
+// load tooltip behavior
+JHtml::_('behavior.tooltip');
 
 $pageSuff = '_news';//$this->escape($this->params->get('pageclass_sfx'));
 $innerHeight = 50;
 ?>
+
+<form action="<?php echo JRoute::_('index.php?option=com_news'); ?>" method="post" name="adminForm">
 
 <script type="text/javascript">
     jQuery(document).ready( function()
@@ -18,13 +23,9 @@ $innerHeight = 50;
             var textBg = self.find('.text_bg<?= $pageSuff ?>');
 
             if (textInner.height() > <?= $innerHeight ?>)
-            {
                 showmore.css({'display':'inline-block'});
-            }
             else
-            {
                 textBg.hide();
-            }
 
             showmore.click( function()
             {
@@ -127,3 +128,6 @@ else
     }
 }
 echo '</div>';
+
+echo $this->pagination->getListFooter();
+echo '</form>';
