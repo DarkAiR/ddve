@@ -21,7 +21,7 @@ if (!defined('JPATH_ROOT')) {
  */
 class JImageUpload
 {
-    const MAX_FILE_SIZE = 1000000;
+    const MAX_FILE_SIZE = 5000000;
 
     private static $lastError = 0;
 
