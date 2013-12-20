@@ -8,34 +8,45 @@ $innerHeight = 50;
 <script type="text/javascript">
     jQuery(document).ready( function()
     {
-        var texts = jQuery('.text<?= $pageSuff ?>');
-        texts.click( function()
+        jQuery('.content<?= $pageSuff ?>').each( function(index, el)
         {
             var self = jQuery(this);
-            var isOpen = self.attr('data-open');
+            var showmore = self.find('.showmore<?= $pageSuff ?>');
+            var hidemore = self.find('.hidemore<?= $pageSuff ?>');
+            var text = self.find('.text<?= $pageSuff ?>');
+            var textInner = self.find('.text_inner<?= $pageSuff ?>');
+            var textBg = self.find('.text_bg<?= $pageSuff ?>');
 
-            if (isOpen == 0)
+            if (textInner.height() > <?= $innerHeight ?>)
             {
-                self.attr('data-open', 1);
-                var h = self.find('.text_inner<?= $pageSuff ?>').height();
+                showmore.css({'display':'inline-block'});
+            }
+
+            showmore.click( function()
+            {
+                showmore.css({'display':'none'});
+                hidemore.css({'display':'inline-block'});
+                textBg.hide();
+
+                var h = textInner.height();
                 if (h < <?= $innerHeight ?>)
                     h = <?= $innerHeight ?>;
-                self.stop().animate({'height':h}, 100, 'linear', function()
+                text.stop().animate({'max-height':h}, 200, 'linear', function()
                 {
-                    self.css({'overflow':'initial'});
                 });
-            }
-            else
+            });
+            hidemore.click( function()
             {
-                self.attr('data-open', 0);
-                var h = self.find('.text_inner<?= $pageSuff ?>').height();
-                self.stop().animate({'height':<?= $innerHeight ?>}, 100, 'linear', function()
+                showmore.css({'display':'inline-block'});
+                hidemore.css({'display':'none'});
+
+                var h = textInner.height();
+                text.stop().animate({'max-height':<?= $innerHeight ?>}, 200, 'linear', function()
                 {
-                    self.css({'overflow':'hidden'});
+                    textBg.show();
                 });
-            }
+            });
         });
-        console.log(texts);
     });
 </script>
 
@@ -55,36 +66,42 @@ if (empty($this->items))
 }
 else
 {
-    $i = 0;
     foreach ($this->items as $item)
     {
-        if ($i++ > 0)
-        {
-            echo '<div class="separator'.$pageSuff.'"></div>';
-        }
-        echo '<table class="table'.$pageSuff.'">';
-        echo '<tr>';
+        ?>
+        <div class="separator<?= $pageSuff ?>"></div>
+
+        <table class="table<?= $pageSuff ?>">
+        <tr>
         
-            echo '<td class="image'.$pageSuff.'">';
-                echo '<img src="'.$item['mainimage'].'" alt="'.$this->escape($item['title']).'">';
-            echo '</td>';
+            <td class="image<?= $pageSuff ?>">
+                <img src="<?= $item['mainimage'] ?>" alt="<?= $this->escape($item['title']) ?>">
+            </td>
 
-            echo '<td class="content'.$pageSuff.'">';
-                echo '<div class="date'.$pageSuff.'">';
-                    echo $item['date'];
-                echo '</div>';
-                echo '<div class="title'.$pageSuff.'">';
-                    echo $this->escape($item['title']);
-                echo '</div>';
-                echo '<div class="text'.$pageSuff.'" data-open="0" style="height:'.$innerHeight.'px">';
-                    echo '<div class="text_inner'.$pageSuff.'">';
-                        echo $item['fulltext'];
-                    echo '</div>';
-                echo '</div>';
-            echo '</td>';
+            <td class="content<?= $pageSuff ?>">
+                <div class="date<?= $pageSuff ?>">
+                    <?= $item['date'] ?>
+                </div>
+                <div class="title<?= $pageSuff ?>">
+                    <?= $this->escape($item['title']) ?>
+                </div>
+                <div class="text<?= $pageSuff ?>" style="max-height:<?= $innerHeight ?>px">
+                    <div class="text_inner<?= $pageSuff ?>">
+                        <?= $item['fulltext'] ?>
+                    </div>
+                    <img class="text_bg<?= $pageSuff ?>" width="100%" height="50px" src="templates/catalog/images/news_grad.png">
+                </div>
+                <div class="showmore<?= $pageSuff ?>">
+                    Подробнее
+                </div>
+                <div class="hidemore<?= $pageSuff ?>">
+                    Свернуть
+                </div>
+            </td>
 
-        echo '</tr>';
-        echo '</table>';
+        </tr>
+        </table>
+        <?php
     }
 }
 echo '</div>';

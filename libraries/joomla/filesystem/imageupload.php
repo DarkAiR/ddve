@@ -21,7 +21,7 @@ if (!defined('JPATH_ROOT')) {
  */
 class JImageUpload
 {
-    const MAX_FILE_SIZE = 100000;
+    const MAX_FILE_SIZE = 1000000;
 
     private static $lastError = 0;
 
@@ -49,6 +49,19 @@ class JImageUpload
         $res = self::$lastError;
         self::$lastError = 0;
         return $res;
+    }
+
+    static public function needUpload($files, $name)
+    {
+        $isCorrect = is_array($files) && isset($files[$name]) && !empty($files[$name]);
+        if (!$isCorrect)
+            return false;
+
+        // Файл вообще не пришел
+        if (isset($files[$name]['error']) && $files[$name]['error'] == UPLOAD_ERR_NO_FILE)
+            return false;
+
+        return true;
     }
 
     static public function upload($files, $name, $directory, $resizeWidth)
@@ -117,8 +130,12 @@ class JImageUpload
         return $fileName;
     }
 
-    static public function deleteOldFile(&$model, $field)
+    static public function deleteOldFile($files, $name, &$model, $field)
     {
+        $isCorrect = is_array($files) && isset($files[$name]) && !empty($files[$name]);
+        if (!$isCorrect)
+            return false;
+
         if (!empty($model) && !empty($model->$field))
         {
             $path = JPath::clean();
@@ -128,5 +145,6 @@ class JImageUpload
                 $model->$field = '';
             }
         }
+        return true;
     }
 }

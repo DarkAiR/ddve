@@ -70,6 +70,7 @@ class NewsListModelNews extends JModel
 
         $data = JRequest::get( 'post', 2 );
         $files = JRequest::get( 'files', 2 );
+        $needUpload = JImageUpload::needUpload($files, 'mainimage');
 
         if (isset($data['id']) && $data['id'] > 0)
         {
@@ -78,31 +79,38 @@ class NewsListModelNews extends JModel
             $this->_db->setQuery( $query );
             $newsData = $this->_db->loadObject();
 
-            JImageUpload::deleteOldFile($newsData, 'mainimage');
+            if ($needUpload)
+                JImageUpload::deleteOldFile($files, 'mainimage', $newsData, 'mainimage');
         }
 
-        $fileName = JImageUpload::upload($files, 'mainimage', $this->getStorePath(), self::MAIN_IMAGE_WIDTH );
-        if ($fileName === false)
+        if ($needUpload)
         {
-            $this->setError('Image upload have broken, code = '.JImageUpload::getLastError());
-            return false;
+            $fileName = JImageUpload::upload($files, 'mainimage', $this->getStorePath(), self::MAIN_IMAGE_WIDTH );
+            if ($fileName === false)
+            {
+                $this->setError('Image upload have broken, code = '.JImageUpload::getLastError());
+                return false;
+            }
+            $data['mainimage'] = $this->getStorePath().$fileName;
         }
-        $data['mainimage'] = $this->getStorePath().$fileName;
-
+        
         // Bind the form fields to the news table
-        if (!$row->bind($data)) {
+        if (!$row->bind($data))
+        {
             $this->setError($this->_db->getErrorMsg());
             return false;
         }
 
         // Make sure the news record is valid
-        if (!$row->check()) {
+        if (!$row->check())
+        {
             $this->setError($this->_db->getErrorMsg());
             return false;
         }
 
         // Store the web link table to the database
-        if (!$row->store()) {
+        if (!$row->store())
+        {
             $this->setError( $row->getErrorMsg() );
             return false;
         }
