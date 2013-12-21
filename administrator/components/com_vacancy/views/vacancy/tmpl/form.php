@@ -33,6 +33,19 @@
 
         <tr>
             <td width="100" align="right" class="key">
+                <label for="info"><?php echo JText::_( 'Info' ); ?>:</label>
+            </td>
+            <td>
+                <!--textarea name="info" id="info" rows="3" cols="45" class="inputbox"><?php echo $this->vacancy->info; ?></textarea-->
+                <?php
+                    // parameters : areaname, content, width, height, cols, rows
+                    echo $editor->display( 'info',  $this->vacancy->info , '80%', '300', '75', '20' ) ;
+                ?>
+            </td>
+        </tr>
+
+        <tr>
+            <td width="100" align="right" class="key">
                 <label for="required"><?php echo JText::_( 'Required' ); ?>:</label>
             </td>
             <td>
@@ -79,19 +92,6 @@
                 <?php
                     // parameters : areaname, content, width, height, cols, rows
                     echo $editor->display( 'conditions',  $this->vacancy->conditions , '80%', '300', '75', '20' ) ;
-                ?>
-            </td>
-        </tr>
-
-        <tr>
-            <td width="100" align="right" class="key">
-                <label for="info"><?php echo JText::_( 'Info' ); ?>:</label>
-            </td>
-            <td>
-                <!--textarea name="info" id="info" rows="3" cols="45" class="inputbox"><?php echo $this->vacancy->info; ?></textarea-->
-                <?php
-                    // parameters : areaname, content, width, height, cols, rows
-                    echo $editor->display( 'info',  $this->vacancy->info , '80%', '300', '75', '20' ) ;
                 ?>
             </td>
         </tr>
