@@ -129,5 +129,7 @@ else
 }
 echo '</div>';
 
-echo $this->pagination->getListFooter();
+echo '<div style="width:100%; text-align:center;">';
+echo $this->pagination->getPagesLinks();
+echo '</div>';
 echo '</form>';

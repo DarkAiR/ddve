@@ -7,7 +7,7 @@ jimport( 'joomla.application.component.model' );
 
 class NewsModelNews extends JModel
 {
-    const NEWS_LIMIT = 2;
+    const NEWS_LIMIT = 10;
 
     var $_data;
     var $_total = null;         // Items total
