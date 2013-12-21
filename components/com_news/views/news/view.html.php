@@ -24,6 +24,7 @@ class NewsViewNews extends JView
     {
         $model =& $this->getModel();
         $items = $model->getData();
+        $years = $model->getYears();
         $pagination =& $this->get('Pagination');
 
         // Готовим дату под нужный формат
@@ -33,13 +34,15 @@ class NewsViewNews extends JView
         {
             $date = strtotime($item['date']);
             $month = date('n',$date);
-            $dateStr = date('j',$date).' '.self::$month[$month][1].' '.date('Y',$date);
+            $year = date('Y',$date);
+            $dateStr = date('j',$date).' '.self::$month[$month][1].' '.$year;
             $item['date'] = $dateStr;
 
             $newsArr[$month][] = $item;
         }
 
         $this->assignRef( 'news', $newsArr );
+        $this->assignRef( 'years', $years );
         $this->assignRef( 'pagination', $pagination );
         parent::display($tpl);
     }

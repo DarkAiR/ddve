@@ -61,8 +61,16 @@ $menu = & JSite::getMenu();
 $active = $menu->getActive();
 
 echo '<div class="componentheading'.$pageSuff.'">';
-echo $this->escape($active->name);
+    echo $this->escape($active->name).'&nbsp;';
+
+    foreach ($this->years as $year)
+    {
+        echo '<div class="year'.$pageSuff.'">';
+            echo '<a href="'.JRoute::_('index.php?option=com_news&year='.$year).'">'.$year.'</a>';
+        echo '</div>';
+    }
 echo '</div>';
+
 
 echo '<div class="content-indent">';
 if (empty($this->news))

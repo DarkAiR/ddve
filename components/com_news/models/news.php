@@ -8,6 +8,7 @@ jimport( 'joomla.application.component.model' );
 class NewsModelNews extends JModel
 {
     const NEWS_LIMIT = 10;
+    const EMPTY_YEAR = 0;
 
     var $_data;
     var $_total = null;         // Items total
@@ -27,6 +28,10 @@ class NewsModelNews extends JModel
 
         $this->setState('limit', $limit);
         $this->setState('limitstart', $limitstart);
+
+        // Current year
+        $year = JRequest::getVar('year', self::EMPTY_YEAR, '', 'int');
+        $this->setState('year', $year);
     }
 
     /**
@@ -41,6 +46,16 @@ class NewsModelNews extends JModel
             $this->_data = $this->_getList( $query, $this->getState('limitstart'), $this->getState('limit') );
         }
         return $this->_data;
+    }
+
+    function getYears()
+    {
+        $query = 'SELECT YEAR(date) as y FROM #__news '.
+                 'GROUP BY y '.
+                 'ORDER BY y DESC';
+        $this->_db->setQuery( $query );
+        $result = $this->_db->loadResultArray();
+        return $result;
     }
 
     function getTotal()
@@ -76,8 +91,10 @@ class NewsModelNews extends JModel
      */
     function _buildQuery()
     {
+        $year = $this->getState('year');
+        $yearCond = ($year == self::EMPTY_YEAR) ? '' : ' AND YEAR(date) = '.$year.' ';
         $query = 'SELECT * FROM #__news '.
-                 'WHERE published = 1 '.
+                 'WHERE published = 1 '.$yearCond.
                  'ORDER BY date DESC ';
         return $query;
     }
