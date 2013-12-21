@@ -28,6 +28,11 @@ else
             echo '<tr>';
             echo '<td valign="top">';
 
+                if (!empty($item['info']))
+                {
+                    echo '<div class="info'.$pageSuff.'">'.$item['info'].'</div>';
+                }
+
                 echo '<table class="table'.$pageSuff.'" border=0 cellpadding=0 cellspacing=0>';
                     if (!empty($item['required']))
                     {
@@ -74,10 +79,6 @@ else
                             <span class="content-h2 phone_value'.$pageSuff.'">'.$item['phone'].'</span>
                         </div>';
                 }          
-                if (!empty($item['info']))
-                {
-                    echo '<div class="info'.$pageSuff.'">'.$item['info'].'</div>';
-                }
 
             echo '</td>';
             echo '</tr>';
