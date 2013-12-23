@@ -82,6 +82,8 @@ class ActionsListModelActions extends JModel
             return false;
         }
 
+        $row->reorder();
+
         return true;
     }
 

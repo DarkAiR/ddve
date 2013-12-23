@@ -77,6 +77,8 @@ class DeliveryConditionsModelDeliveryCondition extends JModel
             return false;
         }
 
+        $row->reorder();
+
         return true;
     }
 
