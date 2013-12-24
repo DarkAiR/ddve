@@ -86,17 +86,13 @@ class NewsListControllerNews extends NewsListController
         JArrayHelper::toInteger($order, array(0));
 
         // Set the table directory
-        JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_news'.DS.'tables');
+        JTable::addIncludePath(JPATH_ADMINISTRATOR.'/components/com_news/tables');
         $row =& JTable::getInstance('news', 'Table');
-        $groupings = array();
 
         // update ordering values
         for( $i=0; $i < $total; $i++ )
         {
             $row->load( (int)$cid[$i] );
-            // track categories
-            $groupings[] = $row->catid;
-
             if ($row->ordering != $order[$i])
             {
                 $row->ordering = $order[$i];

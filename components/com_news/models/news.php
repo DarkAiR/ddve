@@ -48,6 +48,11 @@ class NewsModelNews extends JModel
         return $this->_data;
     }
 
+    public function getCurrentYear()
+    {
+        return $this->getState('year');
+    }
+
     function getYears()
     {
         $query = 'SELECT YEAR(date) as y FROM #__news '.

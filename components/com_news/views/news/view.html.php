@@ -25,6 +25,7 @@ class NewsViewNews extends JView
         $model =& $this->getModel();
         $items = $model->getData();
         $years = $model->getYears();
+        $currYear = $model->getCurrentYear();
         $pagination =& $this->get('Pagination');
 
         // Готовим дату под нужный формат
@@ -43,6 +44,7 @@ class NewsViewNews extends JView
 
         $this->assignRef( 'news', $newsArr );
         $this->assignRef( 'years', $years );
+        $this->assignRef( 'currYear', $currYear );
         $this->assignRef( 'pagination', $pagination );
         parent::display($tpl);
     }

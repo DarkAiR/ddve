@@ -86,17 +86,13 @@ class DeliveryConditionsControllerDeliveryCondition extends DeliveryConditionsCo
         JArrayHelper::toInteger($order, array(0));
 
         // Set the table directory
-        JTable::addIncludePath(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_deliverycondition'.DS.'tables');
+        JTable::addIncludePath(JPATH_ADMINISTRATOR.'/components/com_deliverycondition/tables');
         $row =& JTable::getInstance('deliverycondition', 'Table');
-        $groupings = array();
 
         // update ordering values
         for( $i=0; $i < $total; $i++ )
         {
             $row->load( (int)$cid[$i] );
-            // track categories
-            $groupings[] = $row->catid;
-
             if ($row->ordering != $order[$i])
             {
                 $row->ordering = $order[$i];

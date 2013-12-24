@@ -114,6 +114,8 @@ class NewsListModelNews extends JModel
             return false;
         }
 
+        $row->reorder();
+
         return true;
     }
 
