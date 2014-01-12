@@ -2,7 +2,27 @@
 defined('_JEXEC') or die('Restricted access');
 
 $pageSuff = '_vacancy';//$this->escape($this->params->get('pageclass_sfx'));
+?>
 
+<script type="text/javascript">
+
+(function($) {
+    $(document).ready( function()
+    {
+        $('.vacancy-resume-btn').click( function()
+        {
+            var self = $(this);
+            var id = self.attr('data-id');
+            var title = self.attr('data-title');
+            $('#myModal').modal();
+            console.log(id, title);
+        });
+    });
+})(jQuery);
+
+</script>
+
+<?php
 $menu = & JSite::getMenu();
 $active = $menu->getActive();
 
@@ -19,8 +39,10 @@ else
 {
     foreach ($this->items as $item)
     {
+        $title = $this->escape($item['title']);
+
         echo '<div class="content-h1  contentheading'.$pageSuff.'">';
-        echo $this->escape($item['title']);
+        echo $title;
         echo '</div>';
 
         echo '<table class="contentpaneopen'.$pageSuff.'" border=0 cellpadding=0 cellspacing=0>';
@@ -84,7 +106,36 @@ else
             echo '</tr>';
 
         echo '</table>';
+
+/*        echo '<button class="btn btn-primary btn-lg vacancy-resume-btn"
+                data-id="'.$item['id'].'"
+                _data-toggle="modal"
+                data-target="#myModal"
+                data-title="'.$title.'">Отправить резюме</button>';
+*/
         echo '<div class="separator'.$pageSuff.'">&nbsp;</div>';
     }
 }
 echo '</div>';
+
+
+?>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
