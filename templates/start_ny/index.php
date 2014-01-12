@@ -4,15 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 <head>
-<script src="templates/<?php echo $this->template ?>/js/jquery-1.6.2.js" type="text/javascript"></script>
+<script src="templates/system/js/jquery-1.10.2.js" type="text/javascript"></script>
 <jdoc:include type="head" />
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
 <link rel="stylesheet" href="templates/catalog/css/common.css" type="text/css" />
 <link rel="stylesheet" href="templates/system/css/custom_editor.css" type="text/css" />
-<script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
-<link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="templates/system/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
+<link href="templates/system/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script type="text/javascript">
     var console = console || { log:function(){} };
@@ -59,18 +59,18 @@
         jQuery('#gift2').hide();
         jQuery('#gift3').hide();
         jQuery('#gift4').hide();
-        jQuery('#giftarea1').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift1').show(); });
-        jQuery('#giftarea1').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift1').hide(); });
-        jQuery('#giftarea2').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift2').show(); });
-        jQuery('#giftarea2').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift2').hide(); });
-        jQuery('#giftarea3').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift3').show(); });
-        jQuery('#giftarea3').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift3').hide(); });
-        jQuery('#giftarea4').live('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift4').show(); });
-        jQuery('#giftarea4').live('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift4').hide(); });
+        //jQuery('#giftarea1').on('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift1').show(); });
+        //jQuery('#giftarea1').on('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift1').hide(); });
+        jQuery('#giftarea2').on('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift2').show(); });
+        jQuery('#giftarea2').on('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift2').hide(); });
+        jQuery('#giftarea3').on('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift3').show(); });
+        jQuery('#giftarea3').on('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift3').hide(); });
+        //jQuery('#giftarea4').on('mouseover', function(e) { jQuery('#gifts').hide(); jQuery('#gift4').show(); });
+        //jQuery('#giftarea4').on('mouseout',  function(e) { jQuery('#gifts').show(); jQuery('#gift4').hide(); });
 
         jQuery('#div2_2_inner').css( 'display', 'none' );
 
-/*            jQuery('#info2').live('click', function(e)
+/*            jQuery('#info2').on('click', function(e)
         {
             if (window.getSelection) { window.getSelection().removeAllRanges(); }
             else if (document.selection && document.selection.clear)
@@ -79,7 +79,7 @@
 
         jQuery('#div2_2')
             .css( 'cursor', 'pointer' )
-            .live('click', function(e)
+            .on('click', function(e)
             {
                 //if (window.getSelection) { window.getSelection().removeAllRanges(); }
                 //else if (document.selection && document.selection.clear)
