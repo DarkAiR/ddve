@@ -37,7 +37,29 @@ function handleAddToCart( formId, parameters ) {
 			clearTimeout(timeoutID);
 		}
 
-		document.boxB = new MooPrompt(notice_lbl, responseText, {
+var html = '' +
+'<div class="modal fade" id="bootstrap-modal-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+  '<div class="modal-dialog">'+
+    '<div class="modal-content">'+
+      '<div class="modal-header">'+
+        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
+        '<h4 class="modal-title" id="myModalLabel">Modal title</h4>'+
+      '</div>'+
+      '<div class="modal-body">'+
+        responseText+
+      '</div>'+
+      '<div class="modal-footer">'+
+        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+        '<button type="button" class="btn btn-primary">Save changes</button>'+
+      '</div>'+
+    '</div><!-- /.modal-content -->'+
+  '</div><!-- /.modal-dialog -->'+
+'</div><!-- /.modal -->'+
+'';
+            jQuery('body').append(html);
+            jQuery('#bootstrap-modal-window').modal();
+
+		/*document.boxB = new MooPrompt(notice_lbl, responseText, {
 				buttons: 2,
 				width:400,
 				height:150,
@@ -46,8 +68,8 @@ function handleAddToCart( formId, parameters ) {
 				button2: cart_title,
 				onButton2: 	handleGoToCart
 			});
-			
-		setTimeout( 'document.boxB.close()', 3000 );
+
+		setTimeout( 'document.boxB.close()', 3000 );*/
 	}
 	
 	var opt = {

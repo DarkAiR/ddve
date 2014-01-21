@@ -12,7 +12,17 @@ if( CHECK_STOCK == '1' && ( $product_in_stock < 1 ) ) {
 }
 ?>
 
-<form action="<?php echo $mm_action_url ?>index.php" method="post" name="addtocart" id="addtocart<?php echo str_replace('.','_',$i) ?>" class="addtocart_form" <?php if( $this->get_cfg( 'useAjaxCartActions', 1 ) && !$notify ) { echo 'onsubmit="handleAddToCart( this.id );return false;"'; } ?>>
+<form   action="<?php echo $mm_action_url ?>index.php"
+        method="post"
+        name="addtocart"
+        id="addtocart<?php echo str_replace('.','_',$i) ?>"
+        class="addtocart_form"
+        <?php if( $this->get_cfg( 'useAjaxCartActions', 1 ) && !$notify )
+        {
+            echo 'onsubmit="handleAddToCart( this.id ); return false;"';
+        }
+        ?>
+>
     <?php echo $ps_product_attribute->show_quantity_box($product_id,$product_id); ?><br />
     <div class="browseProductOrder">
         <div class="browseProductOrderLink"><a href="javascript:void(0)" onclick="jQuery('#addtocart<?php echo str_replace('.','_',$i) ?>').submit(); return false;"><?php echo $button_lbl ?></a></div>
