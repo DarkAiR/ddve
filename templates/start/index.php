@@ -4,15 +4,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 <head>
-<script src="templates/<?php echo $this->template ?>/js/jquery-1.6.2.js" type="text/javascript"></script>
+<script src="templates/system/js/jquery-1.10.2.js" type="text/javascript"></script>
 <jdoc:include type="head" />
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
 <link rel="stylesheet" href="templates/catalog/css/common.css" type="text/css" />
 <link rel="stylesheet" href="templates/system/css/custom_editor.css" type="text/css" />
-<script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
-<link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="templates/system/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
+<link href="templates/system/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script type="text/javascript">
     var console = console || { log:function(){} };

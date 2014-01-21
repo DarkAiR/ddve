@@ -66,6 +66,9 @@ echo '<div class="componentheading'.$pageSuff.'">';
     foreach ($this->years as $year)
     {
         echo '<div class="year'.$pageSuff.'">';
+        if ($year == $this->currYear)
+            echo '<b>'.$year.'</b>';
+        else
             echo '<a href="'.JRoute::_('index.php?option=com_news&year='.$year).'">'.$year.'</a>';
         echo '</div>';
     }

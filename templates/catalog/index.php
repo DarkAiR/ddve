@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 <head>
-<script src="templates/<?php echo $this->template ?>/js/jquery-1.6.2.js" type="text/javascript"></script>
+<script src="templates/system/js/jquery-1.10.2.js" type="text/javascript"></script>
 <script src="templates/<?php echo $this->template ?>/js/jquery.cookie.js" type="text/javascript"></script>
 <script type="text/javascript">
     $.noConflict();
@@ -18,8 +18,8 @@
 
 <script src="templates/<?php echo $this->template ?>/js/swfobject.js" type="text/javascript"></script>
 <script src="templates/<?php echo $this->template ?>/js/jquery.scrollTo.js" type="text/javascript"></script>
-<script src="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
-<link href="templates/<?php echo $this->template ?>/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="templates/system/js/jconfirm/jquery.alerts.js" type="text/javascript"></script>
+<link href="templates/system/js/jconfirm/jquery.alerts.css" rel="stylesheet" type="text/css" media="screen" />
 
 <script type="text/javascript">
     var console = console || { log:function(){} };

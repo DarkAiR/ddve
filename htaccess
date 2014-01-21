@@ -72,7 +72,8 @@ RewriteCond %{HTTP_HOST} ^ddve.ru
 RewriteRule (.*) http://www.ddve.ru/$1 [R=301,L]
 
 # Redirect from url/ to url
-RewriteCond %{REQUEST_URI} \.(php|html)/$ [NC]
+# RewriteCond %{REQUEST_URI} \.(php|html)/$ [NC]
+RewriteCond %{REQUEST_URI} /$ [NC]
 RewriteRule ^(.*)\/$ /$1 [R=301,L]
 
 # Redirect from /index.php to / only for GET
