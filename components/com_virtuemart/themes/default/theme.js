@@ -5,21 +5,21 @@
  
  // AJAX FUNCTIONS 
 function loadNewPage( el, url ) {
-	
-	var theEl = $(el);
-	var callback = {
-		success : function(responseText) {
-			theEl.innerHTML = responseText;
-			if( Slimbox ) Slimbox.scanPage();
-		}
-	}
-	var opt = {
-	    // Use POST
-	    method: 'get',
-	    // Handle successful response
-	    onComplete: callback.success
+    
+    var theEl = $(el);
+    var callback = {
+        success : function(responseText) {
+            theEl.innerHTML = responseText;
+            if( Slimbox ) Slimbox.scanPage();
+        }
     }
-	new Ajax( url + '&only_page=1', opt ).request();
+    var opt = {
+        // Use POST
+        method: 'get',
+        // Handle successful response
+        onComplete: callback.success
+    }
+    new Ajax( url + '&only_page=1', opt ).request();
 }
 
 function handleGoToCart() { document.location = live_site + '/index.php?option=com_virtuemart&page=shop.cart&product_id=' + formCartAdd.product_id.value + '&Itemid=' +formCartAdd.Itemid.value; }
@@ -27,105 +27,114 @@ function handleGoToCart() { document.location = live_site + '/index.php?option=c
 var timeoutID = 0;
 
 function handleAddToCart( formId, parameters ) {
-	formCartAdd = document.getElementById( formId );
+    formCartAdd = document.getElementById( formId );
 
-	var callback = function(responseText) {
-		updateMiniCarts();
-		// close an existing mooPrompt box first, before attempting to create a new one (thanks wellsie!)
-		if (document.boxB) {
-			document.boxB.close();
-			clearTimeout(timeoutID);
-		}
+    var callback = function(responseText) {
+        updateMiniCarts();
+        // close an existing mooPrompt box first, before attempting to create a new one (thanks wellsie!)
+        /*if (document.boxB) {
+            document.boxB.close();
+            clearTimeout(timeoutID);
+        }*/
 
-var html = '' +
-'<div class="modal fade" id="bootstrap-modal-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
-  '<div class="modal-dialog">'+
-    '<div class="modal-content">'+
-      '<div class="modal-header">'+
-        '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>'+
-        '<h4 class="modal-title" id="myModalLabel">Modal title</h4>'+
-      '</div>'+
-      '<div class="modal-body">'+
-        responseText+
-      '</div>'+
-      '<div class="modal-footer">'+
-        '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
-        '<button type="button" class="btn btn-primary">Save changes</button>'+
-      '</div>'+
-    '</div><!-- /.modal-content -->'+
-  '</div><!-- /.modal-dialog -->'+
-'</div><!-- /.modal -->'+
-'';
+        if( jQuery('#bootstrap-modal-window').length == 0 )
+        {
+            var html = '' +
+            '<div class="modal fade" id="bootstrap-modal-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
+              '<div class="modal-dialog">'+
+                '<div class="modal-content">'+
+                  '<div class="modal-header">'+
+//                    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Закрыть &times;</button>'+
+                    '<a class="close" data-dismiss="modal" aria-hidden="true">Закрыть &times;</a>'+
+                    '<h4 class="modal-title" id="myModalLabel"></h4>'+
+                  '</div>'+
+                  '<div class="modal-body">'+
+                    responseText+
+                  '</div>'+
+//                  '<div class="modal-footer">'+
+//                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
+//                    '<button type="button" class="btn btn-primary">Save changes</button>'+
+//                  '</div>'+
+                '</div>'+
+              '</div>'+
+            '</div>'+
+            '';
             jQuery('body').append(html);
-            jQuery('#bootstrap-modal-window').modal();
+        }
+        //timeoutId = setTimeout("jQuery('#bootstrap-modal-window').modal('hide')", 3000);
+        jQuery('#bootstrap-modal-window')
+            .modal('show')
+            .on('hide.bs.modal', function (e) {
+                //clearTimeout(timeoutId);
+            });
 
-		/*document.boxB = new MooPrompt(notice_lbl, responseText, {
-				buttons: 2,
-				width:400,
-				height:150,
-				overlay: false,
-				button1: ok_lbl,
-				button2: cart_title,
-				onButton2: 	handleGoToCart
-			});
+        /*document.boxB = new MooPrompt(notice_lbl, responseText, {
+                buttons: 2,
+                width:400,
+                height:150,
+                overlay: false,
+                button1: ok_lbl,
+                button2: cart_title,
+                onButton2:  handleGoToCart
+            });
 
-		setTimeout( 'document.boxB.close()', 3000 );*/
-	}
-	
-	var opt = {
-	    // Use POST
-	    method: 'post',
-	    // Send this lovely data
-	    data: $(formId),
-	    // Handle successful response
-	    onComplete: callback,
-	    
-	    evalScripts: true
-	}
+        setTimeout( 'document.boxB.close()', 3000 );*/
+    }
+    
+    var opt = {
+        // Use POST
+        method: 'post',
+        // Send this lovely data
+        data: $(formId),
+        // Handle successful response
+        onComplete: callback,
+        
+        evalScripts: true
+    }
 
-	new Ajax(formCartAdd.action, opt).request();
+    new Ajax(formCartAdd.action, opt).request();
 }
 /**
 * This function searches for all elements with the class name "vmCartModule" and
 * updates them with the contents of the page "shop.basket_short" after a cart modification event
 */
 function updateMiniCarts() {
-	var callbackCart = function(responseText) {
-		carts = $$( '.vmCartModule' );
-		if( carts ) {
-			try {
-				for (var i=0; i<carts.length; i++){
-					carts[i].innerHTML = responseText;
-		
-					try {
-						color = carts[i].getStyle( 'color' );
-						bgcolor = carts[i].getStyle( 'background-color' );
-						if( bgcolor == 'transparent' ) {
-							// If the current element has no background color, it is transparent.
-							// We can't make a highlight without knowing about the real background color,
-							// so let's loop up to the next parent that has a BG Color
-							parent = carts[i].getParent();
-							while( parent && bgcolor == 'transparent' ) {
-								bgcolor = parent.getStyle( 'background-color' );
-								parent = parent.getParent();
-							}
-						}
-						var fxc = new Fx.Style(carts[i], 'color', {duration: 1000});
-						var fxbgc = new Fx.Style(carts[i], 'background-color', {duration: 1000});
+    var callbackCart = function(responseText) {
+        carts = $$( '.vmCartModule' );
+        if( carts ) {
+            try {
+                for (var i=0; i<carts.length; i++){
+                    carts[i].innerHTML = responseText;
+        
+                    try {
+                        color = carts[i].getStyle( 'color' );
+                        bgcolor = carts[i].getStyle( 'background-color' );
+                        if( bgcolor == 'transparent' ) {
+                            // If the current element has no background color, it is transparent.
+                            // We can't make a highlight without knowing about the real background color,
+                            // so let's loop up to the next parent that has a BG Color
+                            parent = carts[i].getParent();
+                            while( parent && bgcolor == 'transparent' ) {
+                                bgcolor = parent.getStyle( 'background-color' );
+                                parent = parent.getParent();
+                            }
+                        }
+                        var fxc = new Fx.Style(carts[i], 'color', {duration: 1000});
+                        var fxbgc = new Fx.Style(carts[i], 'background-color', {duration: 1000});
 
-						fxc.start( '#222', color );				
-						fxbgc.start( '#fff68f', bgcolor );
-						if( parent ) {
-							setTimeout( "carts[" + i + "].setStyle( 'background-color', 'transparent' )", 1000 );
-						}
-					} catch(e) {}
-				}
-			} catch(e) {}
-		}
-	}
-	var option = { method: 'post', onComplete: callbackCart, data: { only_page:1,page: "shop.basket_short", option: "com_virtuemart" } }
-	new Ajax( live_site + '/index2.php', option).request();
-	
+                        fxc.start( '#222', color );             
+                        fxbgc.start( '#fff68f', bgcolor );
+                        if( parent ) {
+                            setTimeout( "carts[" + i + "].setStyle( 'background-color', 'transparent' )", 1000 );
+                        }
+                    } catch(e) {}
+                }
+            } catch(e) {}
+        }
+    }
+    var option = { method: 'post', onComplete: callbackCart, data: { only_page:1,page: "shop.basket_short", option: "com_virtuemart" } }
+    new Ajax( live_site + '/index2.php', option).request();
+    
 
 } 
 /**
@@ -135,19 +144,19 @@ function updateMiniCarts() {
 * before
 */
 function fancyPop( url, parameters ) {
-	
-	parameters = parameters || {};
-	popTitle = parameters.title || '';
-	popWidth = parameters.width || 700;
-	popHeight = parameters.height || 600;
-	popModal = parameters.modal || false;
-	
-	window_id = new Window('window_id', {className: "mac_os_x", 
-										title: popTitle,
-										showEffect: Element.show,
-										hideEffect: Element.hide,
-										width: popWidth, height: popHeight}); 
-	window_id.setAjaxContent( url, {evalScripts:true}, true, popModal );
-	window_id.setCookie('window_size');
-	window_id.setDestroyOnClose();
+    
+    parameters = parameters || {};
+    popTitle = parameters.title || '';
+    popWidth = parameters.width || 700;
+    popHeight = parameters.height || 600;
+    popModal = parameters.modal || false;
+    
+    window_id = new Window('window_id', {className: "mac_os_x", 
+                                        title: popTitle,
+                                        showEffect: Element.show,
+                                        hideEffect: Element.hide,
+                                        width: popWidth, height: popHeight}); 
+    window_id.setAjaxContent( url, {evalScripts:true}, true, popModal );
+    window_id.setCookie('window_size');
+    window_id.setDestroyOnClose();
 }
