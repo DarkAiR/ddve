@@ -31,44 +31,20 @@ function handleAddToCart( formId, parameters ) {
 
     var callback = function(responseText) {
         updateMiniCarts();
+
+        if( parameters.onload )
+        {
+            parameters.onload();
+            return;
+        }
+
         // close an existing mooPrompt box first, before attempting to create a new one (thanks wellsie!)
-        /*if (document.boxB) {
+        if (document.boxB) {
             document.boxB.close();
             clearTimeout(timeoutID);
-        }*/
-
-        if( jQuery('#bootstrap-modal-window').length == 0 )
-        {
-            var html = '' +
-            '<div class="modal fade" id="bootstrap-modal-window" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">'+
-              '<div class="modal-dialog">'+
-                '<div class="modal-content">'+
-                  '<div class="modal-header">'+
-//                    '<button type="button" class="close" data-dismiss="modal" aria-hidden="true">Закрыть &times;</button>'+
-                    '<a class="close" data-dismiss="modal" aria-hidden="true">Закрыть &times;</a>'+
-                    '<h4 class="modal-title" id="myModalLabel"></h4>'+
-                  '</div>'+
-                  '<div class="modal-body">'+
-                    responseText+
-                  '</div>'+
-//                  '<div class="modal-footer">'+
-//                    '<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>'+
-//                    '<button type="button" class="btn btn-primary">Save changes</button>'+
-//                  '</div>'+
-                '</div>'+
-              '</div>'+
-            '</div>'+
-            '';
-            jQuery('body').append(html);
         }
-        //timeoutId = setTimeout("jQuery('#bootstrap-modal-window').modal('hide')", 3000);
-        jQuery('#bootstrap-modal-window')
-            .modal('show')
-            .on('hide.bs.modal', function (e) {
-                //clearTimeout(timeoutId);
-            });
 
-        /*document.boxB = new MooPrompt(notice_lbl, responseText, {
+        document.boxB = new MooPrompt(notice_lbl, responseText, {
                 buttons: 2,
                 width:400,
                 height:150,
@@ -78,7 +54,7 @@ function handleAddToCart( formId, parameters ) {
                 onButton2:  handleGoToCart
             });
 
-        setTimeout( 'document.boxB.close()', 3000 );*/
+        setTimeout( 'document.boxB.close()', 3000 );
     }
     
     var opt = {
