@@ -57,7 +57,7 @@
 
         jQuery('#div2_2_inner').css( 'display', 'none' );
 
-/*            jQuery('#info2').live('click', function(e)
+/*            jQuery('#info2').on('click', function(e)
         {
             if (window.getSelection) { window.getSelection().removeAllRanges(); }
             else if (document.selection && document.selection.clear)
@@ -66,7 +66,7 @@
 
         jQuery('#div2_2')
             .css( 'cursor', 'pointer' )
-            .live('click', function(e)
+            .on('click', function(e)
             {
                 //if (window.getSelection) { window.getSelection().removeAllRanges(); }
                 //else if (document.selection && document.selection.clear)

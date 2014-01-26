@@ -418,6 +418,10 @@ ul li
     text-align: right;
 }
 
+.moduletable_authors a {
+    color: #fff;
+}
+
 #leftModules
 {
     display: block;
@@ -461,7 +465,7 @@ ul li
     padding: 4px 0 0 10px;
     margin: 0;
     width: 156px;
-    height: 29px;
+    height: 24px;
     background: url(../images/menu_lvl1.png) left top no-repeat;
 }
 .moduletable_menu_vm>ul>li>span
