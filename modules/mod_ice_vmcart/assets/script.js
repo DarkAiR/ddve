@@ -188,9 +188,9 @@ function vmCartFormSend( elem )
             data = eval('(' + data + ')');
 
             if( data.result == 'success' )
-                jAlert( 'Ваш заказ отправлен.', 'Заказ отправлен' );
+                jInfo( 'В течение 15 минут с вами свяжется наш оператор', 'Ваш заказ отправлен на кухню' );
             else
-                jAlert( 'Извините, произошел сбой при отправке Вашего заказа.\nПожалуйста повторите попытку.', 'Заказ не отправлен' );
+                jInfo( 'Извините, произошел сбой при отправке Вашего заказа.\nПожалуйста повторите попытку.', 'Заказ не отправлен' );
         }
     });
 }
@@ -291,12 +291,19 @@ $(window).addEvent('domready', function()
 
         var callback = function(responseText) {
             updateMiniCarts();
+
+            if( parameters.onload )
+            {
+                parameters.onload();
+                return;
+            }
+
             // close an existing mooPrompt box first, before attempting to create a new one (thanks wellsie!)
             if (document.boxB) {
                 document.boxB.close();
                 clearTimeout(timeoutID);
             }
-
+                
             document.boxB = new MooPrompt(notice_lbl, responseText, {
                     buttons: 1,
                     width:400,
