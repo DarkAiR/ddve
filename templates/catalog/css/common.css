@@ -25,3 +25,60 @@
 .text-italic-bold {
     padding-left: 15px;
 }
+
+/**
+ * Всплывающие окна
+ */
+
+.addtocart_popover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1010;
+  display: none;
+  padding: 1px;
+  text-align: left;
+  white-space: normal;
+  background-color: #ffffff;
+  background-clip: padding-box;
+  width: 402px;
+  height: 159px;
+  background: url(../images/to_basket_bg.png) left top no-repeat;
+  margin-left: 70px;
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear;
+          transition: opacity 0.15s linear;
+}
+.addtocart_header {
+}
+a.addtocart_header_close {
+    position: relative;
+    font-size: 15px;
+    font-weight: normal;
+    color: #797979;
+    display: none;
+    text-align: right;
+    top: 30px;
+    right: 35px;
+}
+.addtocart_body {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    _background: rgba(255,0,0,0.2);
+}
+.addtocart_body_inner {
+    position: absolute;
+    left: 50%;
+    width: 100%;            /* Рассчитываемое значение */
+    margin-left: -50%;      /* Рассчитываемое значение */
+    overflow: hidden;
+    _background: rgba(0,0,255,0.4);
+    text-align: center;
+    vertical-align: middle;
+    top: 50%;
+    margin-top: -10px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #eb4e12;
+}
