@@ -47,11 +47,21 @@ $thisId = str_replace('.','_',$i);
         {
             var popoverShow = false;
 
+            var template = '' +
+                '<div class="addtocart_popover">' +
+                    '<div class="addtocart_header">' +
+                        '<a class="addtocart_header_close" data-dismiss="modal" aria-hidden="true">Закрыть &times;</a>' +
+                    '</div>' +
+                    '<div class="addtocart_body">' +
+                        '<div class="addtocart_body_inner">Блюдо добавлено в корзину</div>' +
+                    '</div>' +
+                '</div>';
             jQuery('#addtocart_order_<?php echo $thisId; ?>')
                 .popover({
                     'placement':'bottom',
                     'trigger':'manual',
-                    'content':'asdasd'
+                    'content':'_',
+                    'template':template
                 })
                 .click(function(ev)
                 {
@@ -59,6 +69,11 @@ $thisId = str_replace('.','_',$i);
                     if( popoverShow )
                         return false;
                     popoverShow = true;
+
+                    var prevId = jQuery.data(document.body,'addToCartPopover');
+                    if( prevId )
+                        jQuery('#'+prevId).popover('hide');
+                    jQuery.data(document.body, 'addToCartPopover', 'addtocart_order_<?php echo $thisId; ?>');
 
                     jQuery('#addtocart<?php echo $thisId; ?>').submit();
                     return false;
@@ -78,7 +93,8 @@ $thisId = str_replace('.','_',$i);
                                     {
                                         self.popover('hide');
                                         popoverShow = false;
-                                    }, 3000)
+                                        jQuery.removeData(document.body, 'addToCartPopover');
+                                    }, 2000)
                                 }
                             });
                             return false;
