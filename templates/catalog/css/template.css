@@ -159,6 +159,12 @@ ul li
     display: block;
 }
 
+#header #banner
+{
+    top: 0px;
+    background: url(../images/ddve_fish.png) left top no-repeat;
+}
+
 #header #calendar
 {
     position: absolute;
