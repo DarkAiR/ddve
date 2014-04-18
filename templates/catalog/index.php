@@ -1,10 +1,32 @@
 <?php
+require_once 'auth/httpRequest.php';
+
 // no direct access
  defined( '_JEXEC' ) or die( 'Restricted access' ); ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->language; ?>" lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>" >
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="text/javascript">
+        <?php
+            $returnUrl = urlencode('http://dd.ru/'.HttpRequest::getRequestUri());
+
+            $gets = '';
+            $gets .= '?providers_set=vk';
+            $gets .= '&redirectUrl='.urlencode('http://dd.ru/auth/login.php');
+            $gets .= '&returnUrl='.$returnUrl;
+            $gets .= '&rand='.rand(1, 1000000);
+        ?>
+        var url = "http://auth.dd.ru/auth/checkIsAuth/<?= $gets ?>";
+        url = url.replace("<?= $returnUrl ?>", encodeURIComponent(window.location));
+        document.write('<scri' + 'pt type="text/javascript" src="' + url + '"></scri' + 'pt>');
+    </script>
+    <script type="text/javascript">
+        GporAuth.run( function(token) {
+            window.location.href = 'http://dd.ru/auth/login.php?auth_token=' + token + '&returnUrl=' + encodeURIComponent(window.location);
+        });
+    </script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -180,9 +202,24 @@
 </head>
 
 <body>
-
 <?php include_once("analyticstracking.php"); ?>
 <?php include_once("yandexmetrika.php"); ?>
+
+
+
+<div style='position:absolute; width:300px; height: 200px; left:0; top:0; background:rgba(0,0,0,0.6);'>
+<?php
+    $gets = '';
+    $gets .= '?providers_set=vk';
+    $gets .= '&redirectUrl='.urlencode('http://dd.ru/auth/loginEnter.php');
+    $gets .= '&returnUrl='.urlencode('http://dd.ru/'.HttpRequest::getRequestUri());
+    $gets .= '&rand='.rand(1, 1000000);
+?>
+    <a href="http://auth.dd.ru<?= $gets ?>" class="gpor_auth" onclick="return false;">
+        Войти
+    </a>
+</div>
+
 
 <div id="page">
 
