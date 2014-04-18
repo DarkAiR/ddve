@@ -136,7 +136,7 @@
             logo.css( 'left', left + 190 );
 
             var banner = jQuery('#header #banner');
-            banner.css( 'left', left + 307 - 30 );
+            banner.css( 'left', left + 420 - 30 );
 
             var calendar = jQuery('#header #calendar');
             calendar.css( 'left', left + 940 );
