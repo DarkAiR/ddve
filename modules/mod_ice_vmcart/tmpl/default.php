@@ -26,7 +26,7 @@ else
 // else $hideCart = "style=\"display:none\"";
 ?>
 
-<div id="vm_cart_button" <?php echo $cart; ?> onclick="vmCartButtonClick(this)">
+<div id="vm_cart_button" <?php echo $cart; ?> onclick="vmCartButtonClick(this); yaCounter21519046.reachGoal('BASKET'); return true;">
     <span><?php echo $totalString; ?></span>
 </div>
 

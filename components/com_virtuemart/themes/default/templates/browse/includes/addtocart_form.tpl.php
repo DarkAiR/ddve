@@ -29,6 +29,7 @@ $thisId = str_replace('.','_',$i);
                 data-container="body"
                 data-toggle="popover"
                 data-original-title="" title=""
+                onclick="yaCounter21519046.reachGoal('ORDER'); return true;"
             ><?php echo $button_lbl ?></a></div>
     </div>
 	<!--input type="submit" class="<?php echo $button_cls ?>" value="<?php echo $button_lbl	?>" title="<?php echo $button_lbl ?>" /-->
