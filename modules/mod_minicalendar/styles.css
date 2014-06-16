@@ -13,9 +13,11 @@
 
 #mod_minical
 {
+    display:none;
+
     width:190px;
     height:181px;
-    display:block;
+    _display:block;
     background: url('images/bg.png') left top no-repeat;
 }
 

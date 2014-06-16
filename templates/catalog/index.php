@@ -136,7 +136,7 @@
             logo.css( 'left', left + 190 );
 
             var banner = jQuery('#header #banner');
-            banner.css( 'left', left + 420 - 30 );
+            banner.css( 'left', left + 412 );
 
             var calendar = jQuery('#header #calendar');
             calendar.css( 'left', left + 940 );
@@ -189,7 +189,7 @@
     <!--блок шапки сайта header -->
     <div id="header">
         <a id="logo" href="index.php"></a>
-        <div id="banner"></div>
+        <div id="banner"><jdoc:include type="modules" name="banner" style="xhtml" /></div>
         <div id="calendar"><jdoc:include type="modules" name="user2" style="xhtml" /></div>
         <div id="top_line">
             <jdoc:include type="modules" name="top" style="xhtml" />
