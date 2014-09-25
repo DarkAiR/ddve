@@ -83,10 +83,13 @@ $subject    = 'Заказ';
 
 ob_start();
 $sended = smtpmail( $mail_to, $subject, $message );
+$errorStr = ob_get_contents();
 ob_end_clean();
 
 if( $sended )
     $res['result'] = 'success';
+else
+    $res['errormsg'] = $errorStr;
 
 echo json_encode( $res );
 
