@@ -15,11 +15,11 @@ $config['smtp_debug']    = true;
 $config['smtp_charset']  = 'utf8';
 $config['smtp_from']     = $cfg->mailfrom;
 
-define ("ERROR_DONT_SEND_MAIL",     "Failed to send mail. <br/> Please contact the site administrator at:");
-define ("ERROR_DONT_SEND_HELO",     "<p> I can not send HELO! </ p>");
-define ("ERROR_AUTH_LOGIN",         "<p> I can not find an answer to an authorization request. </ p>");
-define ("ERROR_LOGIN_INCORRECT",    "<p> Login authorization has not been accepted by the server! </ p>");
-define ("ERROR_PASSWORD_INCORRECT", "<p> password was not accepted as a true server! Authorization Error! </ p>");
+define ("ERROR_DONT_SEND_MAIL",     "Failed to send mail.\nPlease contact the site administrator at:");
+define ("ERROR_DONT_SEND_HELO",     "Can't send HELO!");
+define ("ERROR_AUTH_LOGIN",         "Can't find an answer to an authorization request.");
+define ("ERROR_LOGIN_INCORRECT",    "Login authorization has not been accepted by the server!");
+define ("ERROR_PASSWORD_INCORRECT", "Password was not accepted as a true server! Authorization Error!");
 define ("ERROR_MAIL_FROM",          "<p> I can not send command MAIL FROM: </ p>");
 define ("ERROR_RCPT_TO",            "<p> I can not send command RCPT TO: </ p>");
 define ("ERROR_DATA",               "<p> I can not send command DATA </ p>");
@@ -46,19 +46,23 @@ function smtpmail($mail_to, $subject, $message, $headers='')
         $SEND .= "X-Priority: 3\r\n\r\n";
     }
     $SEND .=  $message."\r\n";
-    if( !$socket = fsockopen($config['smtp_host'], $config['smtp_port'], $errno, $errstr, 30) )
+
+    $socket = fsockopen($config['smtp_host'], $config['smtp_port'], $errno, $errstr, 30);
+    if( !$socket )
     {
-        if ($config['smtp_debug']) echo $errno."&lt;br&gt;".$errstr;
+        if ($config['smtp_debug'])
+            echo $errno." - ".$errstr;
         return false;
     }
 
     if (!server_parse($socket, "220", __LINE__))
         return false;
 
-    fputs($socket, "HELO " . $config['smtp_host'] . "\r\n");
+    fputs($socket, "HELO DDve\r\n");
     if (!server_parse($socket, "250", __LINE__))
     {
-        if ($config['smtp_debug']) echo ERROR_DONT_SEND_HELO;
+        if ($config['smtp_debug'])
+            echo ERROR_DONT_SEND_HELO;
         fclose($socket);
         return false;
     }
@@ -66,7 +70,8 @@ function smtpmail($mail_to, $subject, $message, $headers='')
     fputs($socket, "AUTH LOGIN\r\n");
     if (!server_parse($socket, "334", __LINE__))
     {
-        if ($config['smtp_debug']) echo ERROR_AUTH_LOGIN;
+        if ($config['smtp_debug'])
+            echo ERROR_AUTH_LOGIN;
         fclose($socket);
         return false;
     }
@@ -74,7 +79,8 @@ function smtpmail($mail_to, $subject, $message, $headers='')
     fputs($socket, base64_encode($config['smtp_username']) . "\r\n");
     if (!server_parse($socket, "334", __LINE__))
     {
-        if ($config['smtp_debug']) echo ERROR_LOGIN_INCORRECT;
+        if ($config['smtp_debug'])
+            echo ERROR_LOGIN_INCORRECT.' '.$config['smtp_username'].' '.base64_encode($config['smtp_username']);
         fclose($socket);
         return false;
     }
@@ -82,7 +88,8 @@ function smtpmail($mail_to, $subject, $message, $headers='')
     fputs($socket, base64_encode($config['smtp_password']) . "\r\n");
     if (!server_parse($socket, "235", __LINE__))
     {
-        if ($config['smtp_debug']) echo ERROR_PASSWORD_INCORRECT;
+        if ($config['smtp_debug'])
+            echo ERROR_PASSWORD_INCORRECT.' '.$config['smtp_username'].' '.$config['smtp_password'].' '.base64_encode($config['smtp_password']);
         fclose($socket);
         return false;
     }
@@ -126,18 +133,21 @@ function smtpmail($mail_to, $subject, $message, $headers='')
 function server_parse($socket, $response, $line = __LINE__)
 {
     global $config;
-    $server_response = '';
-    while (substr($server_response, 3, 1) != ' ')
+    $serverResponse = '';
+    while (substr($serverResponse, 3, 1) != ' ')
     {
-        if (!($server_response = fgets($socket, 256)))
+        $serverResponse = fgets($socket, 256);
+        if (!$serverResponse)
         {
-            if ($config['smtp_debug']) echo "<p>".ERROR_TROUBLE."</p>$response<br>$line<br>";
+            if ($config['smtp_debug'])
+                echo ERROR_TROUBLE."\n$response\n$line\n$serverResponse\n";
             return false;
         }
     }
-    if (!(substr($server_response, 0, 3) == $response))
+    if (!(substr($serverResponse, 0, 3) == $response))
     {
-        if ($config['smtp_debug']) echo "<p>".ERROR_TROUBLE."</p>$response<br>$line<br>";
+        if ($config['smtp_debug'])
+            echo ERROR_TROUBLE."\n$response\n$line\n$serverResponse\n";
         return false;
     }
     return true;
