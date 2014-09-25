@@ -550,7 +550,7 @@ ul li
 .moduletable_calendar #days .day
 {
     float: left;
-    padding: 5px 3px 5px 6px;
+    padding: 5px 3px 5px 4px;
 }
 .moduletable_calendar #days .day,
 .moduletable_calendar #days .day a
