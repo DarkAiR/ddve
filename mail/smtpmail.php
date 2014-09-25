@@ -80,7 +80,7 @@ function smtpmail($mail_to, $subject, $message, $headers='')
     if (!server_parse($socket, "334", __LINE__))
     {
         if ($config['smtp_debug'])
-            echo ERROR_LOGIN_INCORRECT.' '.$config['smtp_username'].' '.base64_encode($config['smtp_username']);
+            echo ERROR_LOGIN_INCORRECT;
         fclose($socket);
         return false;
     }
@@ -89,7 +89,7 @@ function smtpmail($mail_to, $subject, $message, $headers='')
     if (!server_parse($socket, "235", __LINE__))
     {
         if ($config['smtp_debug'])
-            echo ERROR_PASSWORD_INCORRECT.' '.$config['smtp_username'].' '.$config['smtp_password'].' '.base64_encode($config['smtp_password']);
+            echo ERROR_PASSWORD_INCORRECT;
         fclose($socket);
         return false;
     }
