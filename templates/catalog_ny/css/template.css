@@ -322,7 +322,9 @@ ul li
 .seo-h3-signature {
     text-indent: 0px !important;
 }
-
+.seo-highlight-red {
+    color: red;
+}
 
 /* левое меню index.php?option=com_virtuemart */
 

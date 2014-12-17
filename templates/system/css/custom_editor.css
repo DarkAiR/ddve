@@ -28,6 +28,9 @@ p.tag-sz12
     font-size: 20px;
     font-style: italic;
 }
+.seo-highlight-red {
+    color: red;
+}
 .moduletable_seo_text_main h1 {
     font-size: 35px;
     font-style: italic;

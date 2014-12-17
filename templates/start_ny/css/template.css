@@ -478,6 +478,9 @@ ul li
     color: #d3d7bb;
     text-indent: 0px !important;
 }
+.seo-highlight-red {
+    color: red;
+}
 
 #page #footer
 {
