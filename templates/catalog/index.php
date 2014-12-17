@@ -242,6 +242,10 @@
                 case 6:
                     ?><jdoc:include type="modules" name="seo_footer_text_footer_pizza" style="xhtml" /><?php
                     break;
+                // Лапша
+                case 18:
+                    ?><jdoc:include type="modules" name="seo_footer_text_footer_lapsha" style="xhtml" /><?php
+                    break;
                 // Роллы
                 case 19:
                 case 20:
