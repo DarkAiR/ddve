@@ -11,7 +11,7 @@ $config['smtp_username'] = $cfg->smtpuser;
 $config['smtp_password'] = $cfg->smtppass;
 $config['smtp_port']     = $cfg->smtpport;
 $config['smtp_host']     = $cfg->smtphost;
-$config['smtp_debug']    = true;
+$config['smtp_debug']    = false;
 $config['smtp_charset']  = 'utf8';
 $config['smtp_from']     = $cfg->mailfrom;
 
