@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <install version="1.5" type="template">
       <name>Start page</name>
-          <version>1.0</version>
+      <version>1.0</version>
       <creationDate>10/08/2011</creationDate>
       <author>DarkAiR</author>
-          <authorEmail>E-Mail</authorEmail>
-          <authorUrl>vkedah.ru</authorUrl>
+      <authorEmail>E-Mail</authorEmail>
+      <authorUrl>vkedah.ru</authorUrl>
       <copyright>GNU/GPL</copyright>
       <description>Not_flexibale</description>
       <files>
         <filename>index.php</filename>
         <filename>templateDetails.xml</filename>
         <filename>params.ini</filename>
-                <filename>favicon.ico</filename>
-                <filename>template_thumbnail.png</filename>
-                <filename>css/template.css</filename>
-                <filename>css/menu.css</filename>
-                <filename>images/blok.png</filename>
-                <filename>images/search.png</filename>
-                <filename>images/img_red.gif</filename>
+        <filename>favicon.ico</filename>
+        <filename>template_thumbnail.png</filename>
+        <filename>css/template.css</filename>
+        <filename>css/menu.css</filename>
+        <filename>images/blok.png</filename>
+        <filename>images/search.png</filename>
+        <filename>images/img_red.gif</filename>
         <filename>images/img_red1.gif</filename>
-            <filename>images/img_green.gif</filename>
-                <filename>images/img_green1.gif</filename>
-                <filename>images/header.jpg</filename>
-             </files>
+        <filename>images/img_green.gif</filename>
+        <filename>images/img_green1.gif</filename>
+        <filename>images/header.jpg</filename>
+      </files>
       <positions>
         <position>breadcrumbs</position>
         <position>user1</position>
@@ -40,5 +40,6 @@
         <position>seo_footer_text_footer_pizza</position>
         <position>seo_footer_text_footer_rolly</position>
         <position>seo_footer_text_footer_suchi</position>
+        <position>seo_footer_text_footer_lapsha</position>
       </positions>
 </install>
