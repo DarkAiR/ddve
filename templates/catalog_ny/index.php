@@ -76,7 +76,7 @@
             // Загружаем банер
             // Выравниваем логотип, банер и календарь
             params = {wmode:"transparent"};
-            swfobject.embedSWF( '/images/banners/banner.swf', 'banner', '550', '400', '9.0.0', '/images/banners/banner.swf', '', params, '', setHeaderPosition );
+            //swfobject.embedSWF( '/images/banners/banner.swf', 'banner', '550', '400', '9.0.0', '/images/banners/banner.swf', '', params, '', setHeaderPosition );
             //jQuery('#header #banner').append( '<div style="width:450px; height:140px; display:block; text-align:center; position:relative; top:-40px;"><img src="images/banners/banner.gif" width="357px" height="210px"/></div>' );
             setHeaderPosition();
             
@@ -136,7 +136,7 @@
             logo.css( 'left', left + 190 );
 
             var banner = jQuery('#header #banner');
-            banner.css( 'left', left + 420 - 30 );
+            banner.css( 'left', left + 412 );
 
             var calendar = jQuery('#header #calendar');
             calendar.css( 'left', left + 940 );
@@ -189,7 +189,7 @@
     <!--блок шапки сайта header -->
     <div id="header">
         <a id="logo" href="index.php"></a>
-        <div id="banner"></div>
+        <div id="banner"><jdoc:include type="modules" name="banner" style="xhtml" /></div>
         <div id="calendar"><jdoc:include type="modules" name="user2" style="xhtml" /></div>
         <div id="top_line">
             <jdoc:include type="modules" name="top" style="xhtml" />
@@ -241,6 +241,10 @@
                 // Пицца
                 case 6:
                     ?><jdoc:include type="modules" name="seo_footer_text_footer_pizza" style="xhtml" /><?php
+                    break;
+                // Лапша
+                case 18:
+                    ?><jdoc:include type="modules" name="seo_footer_text_footer_lapsha" style="xhtml" /><?php
                     break;
                 // Роллы
                 case 19:
