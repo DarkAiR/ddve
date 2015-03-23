@@ -255,6 +255,10 @@
                 case 21:
                     ?><jdoc:include type="modules" name="seo_footer_text_footer_suchi" style="xhtml" /><?php
                     break;
+                // Горячие блюда
+                case 25:
+                    ?><jdoc:include type="modules" name="seo_footer_text_footer_hot_dishes" style="xhtml" /><?php
+                    break;
             }
         ?>
     </div>
