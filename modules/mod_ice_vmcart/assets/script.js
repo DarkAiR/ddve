@@ -1,291 +1,285 @@
-/*----------------------------------------------------------------
-  Copyright:
-  (C) 2008 - 2010 IceTheme
+vmcart = {
+    isVisible: false,
+    scrollTop: 0,                   // Расстояния скролла
+    topButton: 0,                   // Расстояние от кнопки до верха страницы
+    isFormSend: false,              // Форма отправлена
+    startCartChangeAmount: false,
+    startUpdataMiniCarts: false,
 
-  License:
-  GNU/GPL http://www.gnu.org/copyleft/gpl.html
+    init: function() {
+        vmcart.topButton = jQuery('#js-vm_cart_button').offset().top;
+        vmcart.scrollTop = jQuery(window).scrollTop();
 
-  Author:
-  IceTheme - http://wwww.icetheme.com
----------------------------------------------------------------- */
+        jQuery(window).resize(vmcart.resize);
+        jQuery(window).scroll(vmcart.onScroll);
+    },
 
-var isVmCartVisible = false;
-var vmCartScrollTop = jQuery(window).scrollTop();
-var vmCartTopButton = 0;
-var pageHeaderHeight = 285;
+    // Отслеживаем изменение размеров окна, чтобы позиционировать корзину
+    resize: function() {
+        if( vmcart.isVisible )
+            vmcart.positionWindowByButton();
+    },
 
-var startCartChangeAmount = false;
-var startUpdataMiniCarts = false;
+    onScroll: function() {
+        vmcart.scroll(false);
+    },
 
-jQuery(document).ready( function()
-{
-    vmCartTopButton = parseInt( jQuery('#vm_cart_button').css('top') ) + pageHeaderHeight;
-    pageHeaderHeight = jQuery('#header').height();
-});
+    scroll: function(isAnimate) {
+        if( vmcart.isVisible )
+            return;
 
-// Отслеживаем изменение размеров окна, чтобы позиционировать корзину
-jQuery(window).resize( function()
-{
-    if( isVmCartVisible )
-        vmCartPositionWindowByButton();
-});
+        var $cartButton = jQuery('#js-vm_cart_button');
+        var $content = jQuery('#js-content');
 
-jQuery(window).scroll( function()
-{
-    if( isVmCartVisible )
-        return;
+        var maxTop = 120;   // Сколько расстояние до верха
+        var scrollTop = jQuery(window).scrollTop();
+        var buttonTop = null;
 
-    // Сколько расстояние до верха
-    var maxTop = 120;
+        // Верх
+        if (scrollTop > vmcart.topButton - maxTop) {
+            buttonTop = scrollTop + maxTop;
+        }
 
-    var topOffset = jQuery(window).scrollTop();
-    var deltaTopOffset = topOffset - vmCartScrollTop;
-    vmCartScrollTop = topOffset;
+        // Низ. Если корзина вылазит за контент, то не даем ей это сделать
+        var contentBottom = $content.height() + $content.offset().top;
+        if (contentBottom - scrollTop < $cartButton.height() + maxTop) {
+            buttonTop = contentBottom - $cartButton.height();
+        }
 
-    var basket = jQuery('#vm_cart_button');
-    var basketTopPosition = topOffset + maxTop - pageHeaderHeight;      // Реальный предполагаемый отступ от верха для кнопки с корзиной
-    var contentHeight = jQuery('#js-content').height();                 // Высота контентного блока
-    contentHeight += pageHeaderHeight;                                  // Добавляем высоту заголовка
-    contentHeight -= basket.height() + maxTop;                          // Вычитаем высоту корзины и ее отступ
+        if (buttonTop != null) {
+            if (isAnimate)
+                $cartButton.animate({'top':buttonTop - $cartButton.parent().offset().top}, 100);
+            else
+                $cartButton.offset({'top':buttonTop});
+        }
 
-    // Если корзина вылазит за контент, то не даем ей это сделать
-    if (vmCartScrollTop > contentHeight)
-        basketTopPosition -= vmCartScrollTop - contentHeight;
+        vmcart.positionWindowByButton();
+    },
 
-    vmCartTopButton -= deltaTopOffset;
-    if( vmCartTopButton < maxTop )
-        basket.css( 'top', basketTopPosition );
-    else
-        basket.css( 'top', maxTop );
-    vmCartPositionWindowByButton();
-});
-
-function vmCartPositionWindowByButton()
-{
-    var posElem = jQuery('#vm_cart_button').position();
-    posElem.left -= 10;
-    posElem.top -= 10;
-    jQuery('#vm_cart_window').css( 'left', posElem.left );
-    jQuery('#vm_cart_window').css( 'top',  posElem.top );
-}
-
-function vmCartButtonClick( elem )
-{
-    if( isVmCartVisible )
-    {
-        jQuery('#vm_cart_window').hide( 'fast' );
-        jQuery('#vm_cart_bg').empty();
-    }
-    else
-    {
-        var posElem = jQuery(elem).position();
+    positionWindowByButton: function() {
+        var posElem = jQuery('#js-vm_cart_button').position();
         posElem.left -= 10;
         posElem.top -= 10;
-        jQuery('#vm_cart_window').css( 'left', posElem.left );
-        jQuery('#vm_cart_window').css( 'top',  posElem.top );
-        jQuery('#vm_cart_window').show( 'fast' );
-        jQuery('#vm_cart_bg').append('<div id="TB_overlay"></div>');
+        jQuery('#js-vm_cart_window').css({
+            'left': posElem.left,
+            'top':  posElem.top
+        });
+    },
 
-        // Выставляем равный размер
-        h1 = jQuery('#vm_cart_list').height();
-        h2 = jQuery('#vm_cart_form').height();
-        h = 0;
-        if( h1 < h2 )
+    toggleButton: function() {
+        var $cartButton = jQuery('#js-vm_cart_button');
+
+        if( vmcart.isVisible ) {
+            jQuery('#js-vm_cart_window').hide('fast', function() {
+                vmcart.scroll(true);
+            });
+            jQuery('#js-vm_cart_bg').empty();
+        } else {
+            var posElem = $cartButton.position();
+            posElem.left -= 10;
+            posElem.top -= 10;
+            jQuery('#js-vm_cart_window')
+                .css({'left': posElem.left, 'top':posElem.top})
+                .show('fast');
+            jQuery('#js-vm_cart_bg').append('<div id="TB_overlay"></div>');
+
+            // Выставляем равный размер
+            h1 = jQuery('#js-vm_cart_list').height();
+            h2 = jQuery('#js-vm_cart_form').height();
+            h = 0;
+            if( h1 < h2 ) {
+                jQuery('#js-vm_cart_list').height( h2 );
+                h = h2;
+            } else {
+                jQuery('#js-vm_cart_form').height( h1 );
+                h = h1;
+            }
+
+            // Задник
+            jQuery('#js-vm_cart_window_bg')
+                .css({'top':516, 'left':0})
+                .height( h - 516 + 83 );
+        }
+        vmcart.isVisible = !vmcart.isVisible;
+    },
+
+    formSend: function( elem )
+    {
+        if( vmcart.isFormSend == true )
+            return;
+
+        var checkPhone = function( val )
         {
-            jQuery('#vm_cart_list').height( h2 );
-            h = h2;
-        }
-        else
+            var tmp = val.replace( /\D/g, '' );
+            if( tmp.length != 11 )      // Длина телефонного номера
+                return false;
+            return true;
+        };
+
+        var cartFormError = function( elem )
         {
-            jQuery('#vm_cart_form').height( h1 );
-            h = h1;
+            elem.addClass( 'formerror' );
+
+            var str = 'Пожалуйста убедитесь в правильности ввода данных!';
+            jQuery('#js-vm_cart_form #result').empty().append( str );
         }
 
-        // Задник
-        jQuery('#vm_cart_window_bg').css( 'top', 516 ).css( 'left', 0 ).height( h-516+83 );
-    }
+        jQuery('#js-vm_cart_form #result').empty();
 
-    isVmCartVisible = !isVmCartVisible;
-}
+        // Подменяем список продуктов
+        jQuery('#mmprodList').val( jQuery('#mprodList').text() );
 
+        var arrName = new Array( 'name', 'phone', 'email', 'street', 'house', 'corpus', 'kvartira', 'podezd', 'amperson', 'comment', 'prodList' );
+        var params = '';
+        for( var i = 0;  i < arrName.length;  i++ ) {
+            v = arrName[i];
+            eval( 'var '+ v +'_elem = jQuery("#js-vm_cart_form [name=\''+ v +'\']");' );
+            eval( 'var '+ v +' = '+ v +'_elem.val();' );
+            eval( v +'_elem.removeClass( "formerror" );' );
+            params += v + '=' + encodeURIComponent( eval( v ) ) + '&';
+        }
+        params += 'persons=' + jQuery('#total_block #person_amount #person_quantity').attr("value");
 
-var vmCartIsSend = false;
+        // Проверяем корректность
+        err = false;
+        if( name.trim().length == 0 ) {
+            cartFormError( name_elem );
+            err = true;
+        }
+        if( checkPhone( phone ) == false ) {
+            cartFormError( phone_elem );
+            err = true;
+        }
+        if( err )
+            return;
 
-function vmCartFormSend( elem )
-{
-    if( vmCartIsSend == true )
-        return;
+        // Очищаем все пункты
+        for( i = 0;  i < arrName.length;  i++ ) {
+            v = arrName[i];
+            jQuery("#js-vm_cart_form [name='"+ v +"']").val('');
+        }
 
-    var checkPhone = function( val )
+        vmcart.isFormSend = true;
+        jQuery.ajax({
+            type: "POST",
+            url: "/ajax/send_order.php",
+            processData: false,
+            data: params,
+            success: function( data ) {
+                vmcart.isFormSend = false;
+
+                // Грязный хак - обрезаем идентификатор UNICODE
+                if( data.charAt(0) != '{' )
+                    data = data.substr( 3 );
+
+                data = eval('(' + data + ')');
+
+                if( data.result == 'success' )
+                    jInfo( 'В течение 15 минут с вами свяжется наш оператор', 'Ваш заказ отправлен на кухню' );
+                else
+                    jInfo( 'Извините, произошел сбой при отправке Вашего заказа.\nПожалуйста повторите попытку.', 'Заказ не отправлен' );
+            }
+        });
+    },
+
+    // Убрать красный фон поля input при возврате фокуса
+    formFocus: function( elem )
     {
-        var tmp = val.replace( /\D/g, '' );
-        if( tmp.length != 11 )      // Длина телефонного номера
-            return false;
-        return true;
-    };
+        jQuery(elem).removeClass("formerror");
+    },
 
-    var cartFormError = function( elem )
+    // Убирание товара из корзины
+    minus: function( elem, itemId )
     {
-        elem.addClass( 'formerror' );
+        var productId = parseInt( jQuery(elem).attr('productId') );
+        var quantity  = parseInt( jQuery(elem).attr('quantity') );
+        if( quantity <= 0 )
+            return;
 
-        var str = 'Пожалуйста убедитесь в правильности ввода данных!';
-        jQuery('#vm_cart_form #result').empty().append( str );
-    }
+        itemsToAdd = -1;
+        vmcart.changeAmount(productId, itemId, 'cartSub');
+    },
 
-    jQuery('#vm_cart_form #result').empty();
-
-    // Подменяем список продуктов
-    jQuery('#mmprodList').val( jQuery('#mprodList').text() );
-
-    var arrName = new Array( 'name', 'phone', 'email', 'street', 'house', 'corpus', 'kvartira', 'podezd', 'amperson', 'comment', 'prodList' );
-    var params = '';
-    for( var i = 0;  i < arrName.length;  i++ )
+    // Увеличение количества товара в корзине
+    plus: function( elem, itemId )
     {
-        v = arrName[i];
-        eval( 'var '+ v +'_elem = jQuery("#vm_cart_form [name=\''+ v +'\']");' );
-        eval( 'var '+ v +' = '+ v +'_elem.val();' );
-        eval( v +'_elem.removeClass( "formerror" );' );
-        params += v + '=' + encodeURIComponent( eval( v ) ) + '&';
-    }
-    params += 'persons=' + jQuery('#total_block #person_amount #person_quantity').attr("value");
+        var productId = parseInt( jQuery(elem).attr('productId') );
 
-    // Проверяем корректность
-    err = false;
-    if( name.trim().length == 0 )
-    {
-        cartFormError( name_elem );
-        err = true;
-    }
-    if( checkPhone( phone ) == false )
-    {
-        cartFormError( phone_elem );
-        err = true;
-    }
-    if( err )
-        return;
+        itemsToAdd = 1;
+        vmcart.changeAmount(productId, itemId, 'cartAdd');
+    },
 
-    // Очищаем все пункты
-    for( i = 0;  i < arrName.length;  i++ )
+    changeAmount: function( productId, itemId, cartFunc )
     {
-        v = arrName[i];
-        jQuery("#vm_cart_form [name='"+ v +"']").val('');
-    }
+        if( vmcart.startCartChangeAmount == true  ||  vmcart.startUpdataMiniCarts == true )
+            return;
+        vmcart.startCartChangeAmount = true;
 
-    vmCartIsSend = true;
-    jQuery.ajax({
-        type: "POST",
-        url: "/ajax/send_order.php",
-        processData: false,
-        data: params,
-        success: function( data )
+        var callback = function(responseText)
         {
-            vmCartIsSend = false;
-
-            // Грязный хак - обрезаем идентификатор UNICODE
-            if( data.charAt(0) != '{' )
-                data = data.substr( 3 );
-
-            data = eval('(' + data + ')');
-
-            if( data.result == 'success' )
-                jInfo( 'В течение 15 минут с вами свяжется наш оператор', 'Ваш заказ отправлен на кухню' );
-            else
-                jInfo( 'Извините, произошел сбой при отправке Вашего заказа.\nПожалуйста повторите попытку.', 'Заказ не отправлен' );
+            vmcart.startCartChangeAmount = false;
+            updateMiniCarts();
         }
-    });
-}
+        var option =
+        {
+            method: 'post',
+            onComplete: callback,
+            data: {
+                "option": "com_virtuemart",
+                "page": "shop.browse",
+                "Itemid": itemId,
+                "func": cartFunc,
+                "prod_id": productId,
+                "product_id": productId,
+                "quantity": itemsToAdd,
+                "set_price[]": "",
+                "adjust_price[]": "",
+                "master_product[]": ""
+            }
+        };
+        new Ajax( live_site + '/index2.php', option ).request();
+    },
 
-// Убрать красный фон поля input при возврате фокуса
-function vmCartFormFocus( elem )
-{
-    jQuery(elem).removeClass( "formerror" );
-}
-
-
-// Обработка кнопок
-function vmCartMinus( elem, itemId )
-{
-    var productId = parseInt( jQuery(elem).attr('productId') );
-    var quantity  = parseInt( jQuery(elem).attr('quantity') );
-
-    if( quantity <= 0 )
-        return;
-
-    itemsToAdd = -1;
-    vmCartChangeAmount( productId, itemId, 'cartSub' );
-}
-
-function vmCartPlus( elem, itemId )
-{
-    var productId = parseInt( jQuery(elem).attr('productId') );
-
-    itemsToAdd = 1;
-    vmCartChangeAmount( productId, itemId, 'cartAdd' );
-}
-
-function vmCartChangeAmount( productId, itemId, cartFunc )
-{
-    if( startCartChangeAmount == true  ||  startUpdataMiniCarts == true )
-        return;
-    startCartChangeAmount = true;
-
-    var callback = function(responseText)
+    delete: function( elem, itemId )
     {
-        startCartChangeAmount = false;
-        updateMiniCarts();
+        var productId = parseInt( jQuery(elem).attr('productId') );
+        var quantity  = parseInt( jQuery(elem).attr('quantity') );
+
+        itemsToAdd = -quantity;
+
+        var callback = function(responseText)
+        {
+            updateMiniCarts();
+        }
+        var option =
+        {
+            method: 'post',
+            onComplete: callback,
+            data: {
+                "option": "com_virtuemart",
+                "page": "shop.browse",
+                "Itemid": itemId,
+                "func": "cartDelete",
+                "product_id": productId,
+                "description": '',
+                "delete": "delete"
+            }
+        };
+        new Ajax( live_site + '/index2.php', option ).request();
     }
-    var option =
-    {
-        method: 'post',
-        onComplete: callback,
-        data: {
-            "option": "com_virtuemart",
-            "page": "shop.browse",
-            "Itemid": itemId,
-            "func": cartFunc,
-            "prod_id": productId,
-            "product_id": productId,
-            "quantity": itemsToAdd,
-            "set_price[]": "",
-            "adjust_price[]": "",
-            "master_product[]": ""
-        }
-    };
-    new Ajax( live_site + '/index2.php', option ).request();
-}
+};
 
-function vmCartDelete( elem, itemId )
-{
-    var productId = parseInt( jQuery(elem).attr('productId') );
-    var quantity  = parseInt( jQuery(elem).attr('quantity') );
 
-    itemsToAdd = -quantity;
+jQuery(document).ready( function() {
+    vmcart.init();
+});
 
-    var callback = function(responseText)
-    {
-        updateMiniCarts();
-    }
-    var option =
-    {
-        method: 'post',
-        onComplete: callback,
-        data: {
-            "option": "com_virtuemart",
-            "page": "shop.browse",
-            "Itemid": itemId,
-            "func": "cartDelete",
-            "product_id": productId,
-            "description": '',
-            "delete": "delete"
-        }
-    };
-    new Ajax( live_site + '/index2.php', option ).request();
-}
 
 // Добавление товара
 $(window).addEvent('domready', function()
 {
-    handleAddToCart = function( formId, parameters ) {
+    handleAddToCart = function( formId, parameters )
+    {
         formCartAdd = document.getElementById( formId );
         itemsToAdd = 1;
 
@@ -333,26 +327,21 @@ $(window).addEvent('domready', function()
     */
     updateMiniCarts = function()
     {
-        if( startUpdataMiniCarts == true )
+        if( vmcart.startUpdataMiniCarts == true )
             return;
-        startUpdataMiniCarts = true;
+        vmcart.startUpdataMiniCarts = true;
 
         var callbackCart = function( responseText )
         {
-            startUpdataMiniCarts = false;
+            vmcart.startUpdataMiniCarts = false;
 
-            var basketAmount = $('vm_cart_button').getElement('span');
-            var newAmount = parseInt( basketAmount.innerHTML ) + parseInt( itemsToAdd );
+            var basketAmount = jQuery('#js-vm_cart_button span');
+            var newAmount = parseInt( basketAmount.html() ) + parseInt( itemsToAdd );
 
-            var carts = document.getElementById('vm_cart_list');
-            if( carts )
-            {
-                try
-                {
-                    carts.innerHTML = responseText;
-                    basketAmount.innerHTML = newAmount;
-                }
-                catch(e) {}
+            var carts = jQuery('#js-vm_cart_list');
+            if( carts ) {
+                carts.html(responseText);
+                basketAmount.html(newAmount);
             }
         }
         var option = {method: 'post', onComplete: callbackCart, data: {only_page:1,page: "shop.basket_list", option: "com_virtuemart"}}

@@ -26,13 +26,13 @@ else
         ?>
 
         <div class="ice-basket-row">
-            <div id="minus" onclick="vmCartMinus(this, '<?php echo $shopItemId ?>')" <?php echo $attr ?>></div>
+            <div id="minus" onclick="vmcart.minus(this, '<?php echo $shopItemId ?>')" <?php echo $attr ?>></div>
             <div id="quantity"><input readonly type="text" name="quantity" value="<?php echo $cart['quantity'] ?>"/></div>
-            <div id="plus"  onclick="vmCartPlus(this, '<?php echo $shopItemId ?>')"  <?php echo $attr ?>></div>
+            <div id="plus"  onclick="vmcart.plus(this, '<?php echo $shopItemId ?>')"  <?php echo $attr ?>></div>
             <div id="title" ><?php echo $cart['product_name'] ?></div>
             <div id="weight"><?php echo $cart['weight'].'/'.$cart['packaging'] ?></div>
             <div id="price" ><?php echo $cart['price'] ?></div>
-            <div id="delete" onclick="vmCartDelete(this, '<?php echo $shopItemId ?>' )" <?php echo $attr ?>>x</div>
+            <div id="delete" onclick="vmcart.delete(this, '<?php echo $shopItemId ?>' )" <?php echo $attr ?>>x</div>
         </div>
 
         <?php

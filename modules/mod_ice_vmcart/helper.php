@@ -58,10 +58,10 @@ abstract class modIceVMCartHelp {
 			if( file_exists($tPath) ){
 				JHTML::stylesheet( $module->module.'_'.$theme.'.css','templates/'.$template.'/css/');
 			} else {
-				JHTML::stylesheet('style.css',JURI::base().'modules/'.$module->module.'/themes/'.$theme.'/assets/');	
+				JHTML::stylesheet('style.css',JURI::base().'modules/'.$module->module.'/themes/'.$theme.'/assets/css/');	
 			}
 		} else {
-           JHTML::stylesheet( 'style.css', JURI::base().'modules/'.$module->module.'/assets/' );
+           JHTML::stylesheet( 'style.css', JURI::base().'modules/'.$module->module.'/assets/css/' );
 		}
 					
 		JHTML::script( 'script.js',JURI::base().'modules/'.$module->module.'/assets/' );

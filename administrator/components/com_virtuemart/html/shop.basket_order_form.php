@@ -24,9 +24,9 @@ $cartStr .= "Общая стоимость: $totalPrice\r\n";
 
 ?>
 <form method="POST" action="">
-    <h1>Контактные данные:</h1>
-    <label for="field1" >Имя: <ss>*</ss></label>        <input id="field1"  type="text"     name="name"     value="" size="40" onfocus="vmCartFormFocus(this)"/><br/>
-    <label for="field2" >Телефон: <ss>*</ss></label>    <input id="field2"  type="text"     name="phone"    value="" size="40" onfocus="vmCartFormFocus(this)"/><br/>
+    <div class='title'>Контактные данные:</div>
+    <label for="field1" >Имя: <ss>*</ss></label>        <input id="field1"  type="text"     name="name"     value="" size="40" onfocus="vmcart.formFocus(this)"/><br/>
+    <label for="field2" >Телефон: <ss>*</ss></label>    <input id="field2"  type="text"     name="phone"    value="" size="40" onfocus="vmcart.formFocus(this)"/><br/>
     <label for="field3" >Email:</label>                 <input id="field3"  type="text"     name="email"    value="" size="40"/><br/>
     <label for="field4" >Улица:</label>                 <input id="field4"  type="text"     name="street"   value="" size="40"/><br/>
     <label for="field5" >Дом:</label>                   <input id="field5"  type="text"     name="house"    value="" size="40"/><br/>
@@ -43,7 +43,7 @@ $cartStr .= "Общая стоимость: $totalPrice\r\n";
         <input type="button" value=""
                onmouseover="jQuery(this).addClass('activeBtn')"
                onmouseout ="jQuery(this).removeClass('activeBtn')"
-               onclick="vmCartFormSend(this)"
+               onclick="vmcart.formSend(this)"
         />
     </div>
 </form>
