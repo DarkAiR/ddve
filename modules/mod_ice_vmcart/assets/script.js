@@ -6,7 +6,8 @@ vmcart = {
     startCartChangeAmount: false,
     startUpdataMiniCarts: false,
 
-    init: function() {
+    init: function()
+    {
         vmcart.topButton = jQuery('#js-vm_cart_button').offset().top;
         vmcart.scrollTop = jQuery(window).scrollTop();
 
@@ -15,16 +16,19 @@ vmcart = {
     },
 
     // Отслеживаем изменение размеров окна, чтобы позиционировать корзину
-    resize: function() {
+    resize: function()
+    {
         if( vmcart.isVisible )
             vmcart.positionWindowByButton();
     },
 
-    onScroll: function() {
+    onScroll: function()
+    {
         vmcart.scroll(false);
     },
 
-    scroll: function(isAnimate) {
+    scroll: function(isAnimate)
+    {
         if( vmcart.isVisible )
             return;
 
@@ -56,7 +60,8 @@ vmcart = {
         vmcart.positionWindowByButton();
     },
 
-    positionWindowByButton: function() {
+    positionWindowByButton: function()
+    {
         var posElem = jQuery('#js-vm_cart_button').position();
         posElem.left -= 10;
         posElem.top -= 10;
@@ -66,7 +71,24 @@ vmcart = {
         });
     },
 
-    toggleButton: function() {
+    calcNewSize: function()
+    {
+        // Выставляем равный размер
+        h1 = jQuery('#js-vm_cart_list-inner').height() + jQuery('#js-vm_cart_window_action').height();
+        h2 = jQuery('#js-vm_cart_form-inner').height();
+
+        h = ( h1 <= h2 ) ? h2 : h1;
+        jQuery('#js-vm_cart_list').height(h);
+        jQuery('#js-vm_cart_form').height(h);
+
+        // Задник
+        jQuery('#js-vm_cart_window_bg')
+            .css({'top':516, 'left':0})
+            .height( h - 516 + 81 );   // Какая-то магическая хуйня
+    },
+
+    toggleButton: function()
+    {
         var $cartButton = jQuery('#js-vm_cart_button');
 
         if( vmcart.isVisible ) {
@@ -83,22 +105,7 @@ vmcart = {
                 .show('fast');
             jQuery('#js-vm_cart_bg').append('<div id="TB_overlay"></div>');
 
-            // Выставляем равный размер
-            h1 = jQuery('#js-vm_cart_list').height();
-            h2 = jQuery('#js-vm_cart_form').height();
-            h = 0;
-            if( h1 < h2 ) {
-                jQuery('#js-vm_cart_list').height( h2 );
-                h = h2;
-            } else {
-                jQuery('#js-vm_cart_form').height( h1 );
-                h = h1;
-            }
-
-            // Задник
-            jQuery('#js-vm_cart_window_bg')
-                .css({'top':516, 'left':0})
-                .height( h - 516 + 83 );
+            vmcart.calcNewSize();
         }
         vmcart.isVisible = !vmcart.isVisible;
     },
@@ -327,7 +334,7 @@ $(window).addEvent('domready', function()
     */
     updateMiniCarts = function()
     {
-        if( vmcart.startUpdataMiniCarts == true )
+        if (vmcart.startUpdataMiniCarts == true)
             return;
         vmcart.startUpdataMiniCarts = true;
 
@@ -338,11 +345,14 @@ $(window).addEvent('domready', function()
             var basketAmount = jQuery('#js-vm_cart_button span');
             var newAmount = parseInt( basketAmount.html() ) + parseInt( itemsToAdd );
 
-            var carts = jQuery('#js-vm_cart_list');
+            var carts = jQuery('#js-vm_cart_list-inner');
             if( carts ) {
                 carts.html(responseText);
                 basketAmount.html(newAmount);
             }
+
+            if (vmcart.isVisible)
+                vmcart.calcNewSize();
         }
         var option = {method: 'post', onComplete: callbackCart, data: {only_page:1,page: "shop.basket_list", option: "com_virtuemart"}}
         new Ajax( live_site + '/index2.php', option).request();

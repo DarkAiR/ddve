@@ -51,7 +51,7 @@
             </td>
             <td>
                 <?php
-                    //<textarea name="text" id="text" rows="10" cols="45" class="inputbox"><?php echo $this->action->text; ?></textarea>
+                    /*<textarea name="text" id="text" rows="10" cols="45" class="inputbox"><?php echo $this->action->text; ?></textarea>*/
                 ?>
                 <?php
                     // parameters : areaname, content, width, height, cols, rows

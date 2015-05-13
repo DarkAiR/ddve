@@ -198,7 +198,74 @@
     }
 
     .vm_cart_window_action {
+        @innerPaddingTop: 4px;
+        @innerPaddingLeft: 7px;
+        @textColor1: #855f75;
+        @textColor2: #fc5f1a;
 
+        position: absolute;
+        bottom: 0;
+
+        .action-main-title {
+            font-size: 20px;
+            color: @textColor1;
+            padding-top: 20px;      // padding, чтобы правильно считалась высота
+            margin-left: 7px;
+        }
+
+        .action-inner-window {
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+            border: 0px solid #000000;
+
+            background-color: #fde6d2;
+            margin-top: 10px;
+            padding: @innerPaddingTop @innerPaddingLeft;
+
+            .upper-inner-window {
+                margin-bottom: 18px;
+
+                .icon {
+                    width: 56px;
+                    height: 58px;
+                    background: url(../1day-icon.png) left top no-repeat;
+                    float: left;
+                    padding-right: 9px;
+                }
+            }
+
+            .separator-inner-window {
+                width: 94%;
+                height: 1px;
+                margin-left: 3%;
+                background-color: #dda26f;
+            }
+
+
+            .bottom-inner-window {
+                margin-top: 18px;
+            }
+
+            .text1, .text2, .text3 {
+                font-weight: bold;
+                font-size: 15px;
+                line-height: 19px;
+                margin-left: 22px - @innerPaddingLeft;
+                margin-right: 22px - @innerPaddingLeft;
+            }
+            .text1 {
+                color: @textColor1;
+                padding-top: 18px - @innerPaddingTop;
+            }
+            .text2 {
+                color: @textColor2;
+            }
+            .text3 {
+                color: @textColor1;
+                padding-bottom: 18px - @innerPaddingTop;
+            }
+        }
     }
 
     .vm_cart_form {
