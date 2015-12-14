@@ -681,10 +681,17 @@ ul li
     display: block;
 }
 
+#rightModules .SocialButtons
+{
+    padding: 291px 0px 0px 10px;
+}
+
 #rightModules #vk_groups
 {
-    padding: 345px 0px 0px 3px;
+    padding: 27px 0px 0px 3px;
 }
+
+
 
 #rightModules #vk_groups iframe
 {
