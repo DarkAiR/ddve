@@ -239,6 +239,98 @@ ul li
     display: block;
 }
 
+#page #gifts
+{
+    position: absolute;
+    left: 97px;
+    top: 856px;
+    background:transparent;
+    width: 343px;
+    height: 167px;
+    display: block;
+    background: url(../images/gifts.png) left top no-repeat;
+}
+#page #gift1
+{
+    position: absolute;
+    left: 65px;
+    top: 757px;
+    background:transparent;
+    width: 375px;
+    height: 266px;
+    display: block;
+    background: url(../images/gift1.png) left top no-repeat;
+}
+#page #gift2
+{
+    position: absolute;
+    left: 97px;
+    top: 683px;
+    background:transparent;
+    width: 343px;
+    height: 340px;
+    display: block;
+    background: url(../images/gift2.png) left top no-repeat;
+}
+#page #gift3
+{
+    position: absolute;
+    left: 97px;
+    top: 707px;
+    background:transparent;
+    width: 363px;
+    height: 316px;
+    display: block;
+    background: url(../images/gift3.png) left top no-repeat;
+}
+#page #gift4
+{
+    position: absolute;
+    left: 97px;
+    top: 744px;
+    background:transparent;
+    width: 451px;
+    height: 279px;
+    display: block;
+    background: url(../images/gift4.png) left top no-repeat;
+}
+#page #giftarea1
+{
+    position: absolute;
+    left: 96px;
+    top: 928px;
+    width: 100px;
+    height: 94px;
+    cursor: pointer;
+}
+#page #giftarea2
+{
+    position: absolute;
+    left: 182px;
+    top: 860px;
+    width: 90px;
+    height: 115px;
+    cursor: pointer;
+}
+#page #giftarea3
+{
+    position: absolute;
+    left: 265px;
+    top: 875px;
+    width: 100px;
+    height: 115px;
+    cursor: pointer;
+}
+#page #giftarea4
+{
+    position: absolute;
+    left: 365px;
+    top: 925px;
+    width: 77px;
+    height: 80px;
+    cursor: pointer;
+}
+
 
 #page #div1
 {
