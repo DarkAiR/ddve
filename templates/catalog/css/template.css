@@ -72,7 +72,8 @@ h1, h1 a, h1 a:link, h1 a:visited, h1 a:hover{
 /*заголовки 2 уровня*/
 h2, h2 a, h2 a:link, h2 a:visited, h2 a:hover{
     font-size:20px;
-    color: #3b98b0;
+    color: #7b635e;
+    /*color: #3b98b0;*/
     font-style:italic;
     text-align:left;
 }
@@ -450,4 +451,16 @@ div.submenu * {
     background: #F2F2F2;
     color: black;
     padding: 0px 5px 0px 5px;
+}
+
+#vmMainPage {
+    padding-top: 20px;
+}
+
+.PageH1 {
+    font-style: italic;
+    color: #866177;
+    text-align: left;
+    margin-top: -10px;
+    font-size:  30px;
 }

@@ -152,8 +152,35 @@ else {
         $vm_mainframe->addScript( "$mosConfig_live_site/components/$option/js/sleight.js" );
 
 		echo '<div id="vmMainPage">'."\n";
-		
-		// Load requested PAGE
+
+            // Отображаем заголовок h1 в зависимости от страниц
+            $categoryId = isset($_GET['category_id']) ? $_GET['category_id'] : false;
+            switch($categoryId)
+            {
+                // Пицца
+                case 6:
+                    echo '<h1 class="PageH1">Доставка пиццы</h1>';
+                    break;
+                // Лапша
+                case 18:
+                    echo '<h1 class="PageH1">Доставка лапши</h1>';
+                    break;
+                // Роллы
+                case 19:
+                case 20:
+                    echo '<h1 class="PageH1">Доставка роллов</h1>';
+                    break;
+                // Суши
+                case 21:
+                    echo '<h1 class="PageH1">Доставка суши</h1>';
+                    break;
+                // Горячие блюда
+                case 25:
+                    echo '<h1 class="PageH1">Доставка горячих блюд</h1>';
+                    break;
+            }
+
+// Load requested PAGE
 		if( file_exists( PAGEPATH.$modulename.".".$pagename.".php" )) {
 			if( $only_page) {
 				require_once( CLASSPATH . 'connectionTools.class.php' );

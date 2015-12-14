@@ -5,13 +5,14 @@
     height: 100%;
     margin: 0px auto;
     text-align:left;
-}
+    }
 
 #page .content
 {
     width: 960px;
     background-color: #fff;
     margin: 0px auto;
+    position: relative;
 }
 
 #page .content .contentpaneopen,
@@ -298,4 +299,16 @@
     padding-left: 10px;
     font-size: 15px;
     _vertical-align: middle;
+}
+
+.SocialBlock {
+    text-align: right;
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+}
+.SocialButtons {
+    display: inline-block;
+    margin-top: 35px;
+    margin-right: 47px;
 }
