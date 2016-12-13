@@ -72,8 +72,7 @@ h1, h1 a, h1 a:link, h1 a:visited, h1 a:hover{
 /*заголовки 2 уровня*/
 h2, h2 a, h2 a:link, h2 a:visited, h2 a:hover{
     font-size:20px;
-    color: #7b635e;
-    /*color: #3b98b0;*/
+    color: #3b98b0;
     font-style:italic;
     text-align:left;
 }
@@ -123,7 +122,7 @@ ul li
 #header
 {
     width: 1280px;
-    height: 326px;
+    height: 285px;
     background: url(../images/bg_top.jpg) no-repeat;
 }
 
@@ -132,7 +131,7 @@ ul li
     width: 960px;
     height: 55px;
     left: 160px;
-    top: 274px;
+    top: 230px;
     position: relative;
     margin: 0px;
     padding: 0px;
@@ -162,7 +161,7 @@ ul li
 
 #header #banner
 {
-    top: 0px;
+    top: -27px;
 }
 
 #header #calendar
@@ -451,16 +450,4 @@ div.submenu * {
     background: #F2F2F2;
     color: black;
     padding: 0px 5px 0px 5px;
-}
-
-#vmMainPage {
-    padding-top: 20px;
-}
-
-.PageH1 {
-    font-style: italic;
-    color: #866177;
-    text-align: left;
-    margin-top: -10px;
-    font-size:  30px;
 }
