@@ -244,21 +244,18 @@
                     <a id='salaty2'  class='salaty'   title='Салаты'    href="index.php?option=com_virtuemart&page=shop.browse&category_id=11&pcat_id=11&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/salaty2.png)"></a>
                     <a id='rolly'    class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly1.png)"></a>
                     <a id='rolly2'   class='rolly'    title='Роллы'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=19&pcat_id=19&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/rolly2.png)"></a>
-                <!--<a id='lapsha'   class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha1.png)"></a>
-                    <a id='lapsha2'  class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=18&pcat_id=18&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha2.png)"></a>-->
                     <a id='pizza'    class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza1.png)"></a>
                     <a id='pizza2'   class='pizza'    title='Пицца'     href="index.php?option=com_virtuemart&page=shop.browse&category_id=6&pcat_id=6&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/pizza2.png)"></a>
-                <!--<a id='vok'      class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok1.png)"></a>
-                    <a id='vok2'     class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=8&pcat_id=8&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok2.png)"></a>-->
+
+                    <?php // Новые пункты, было 8 для вока и 18 для лапши ?>
+                    <a id='lapsha'   class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha1.png)"></a>
+                    <a id='lapsha2'  class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha2.png)"></a>
+                    <a id='vok'      class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok1.png)"></a>
+                    <a id='vok2'     class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok2.png)"></a>
+
                     <a id='deserty'  class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty1.png)"></a>
                     <a id='deserty2' class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty2.png)"></a>
-                    
-					<a id='lapsha'   class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha1.png)"></a>
-                    <a id='lapsha2'  class='lapsha'   title='Китайская лапша'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/lapsha2.png)"></a>
-					<a id='vok'      class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok1.png)"></a>
-                    <a id='vok2'     class='vok'      title='Вок-меню'  href="index.php?option=com_virtuemart&page=shop.browse&category_id=25&pcat_id=25&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/vok2.png)"></a>
-					
-					<a id='napitki'  class='napitki'  title='Напитки'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=13&pcat_id=13&Itemid=64"></a>
+                    <a id='napitki'  class='napitki'  title='Напитки'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=13&pcat_id=13&Itemid=64"></a>
 
                 </div>
                 <div id="rightModules"><jdoc:include type="modules" name="right" style="xhtml" />

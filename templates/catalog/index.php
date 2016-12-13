@@ -204,9 +204,23 @@
 
     <!--блок контента-->
         <div class="content">
-
-        <table class="content" id='js-content' width="100%" height="100%" cellpadding="0" cellspacing="0">
-            <tr>
+            <div class="SocialBlock">
+                <div class="SocialButtons">
+                    <script type="text/javascript">(function(w,doc) {
+                            if (!w.__utlWdgt ) {
+                                w.__utlWdgt = true;
+                                var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+                                s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                                s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
+                                var h=d[g]('body')[0];
+                                h.appendChild(s);
+                            }})(window,document);
+                    </script>
+                    <div data-mobile-view="false" data-share-size="20" data-like-text-enable="false" data-background-alpha="0.0" data-pid="1369482" data-mode="share" data-background-color="#ffffff" data-share-shape="round-rectangle" data-share-counter-size="12" data-icon-color="#ffffff" data-mobile-sn-ids="fb.vk.tw.wh.ok.gp." data-text-color="#000000" data-buttons-color="#ffffff" data-counter-background-color="#ffffff" data-share-counter-type="disable" data-orientation="horizontal" data-following-enable="false" data-sn-ids="fb.vk.tw.ok.gp." data-preview-mobile="false" data-selection-enable="false" data-exclude-show-more="false" data-share-style="11" data-counter-background-alpha="0.49" data-top-button="false" class="uptolike-buttons" ></div>
+                </div>
+            </div>
+            <table class="content" id='js-content' width="100%" height="100%" cellpadding="0" cellspacing="0">
+                <tr>
                 <!--левое меню-->
                 <td id="left">
                     <jdoc:include type="modules" name="left" style="xhtml" />
@@ -221,6 +235,7 @@
                 <td id="main">
                     <br/>
                     <jdoc:include type="modules" name="breadcrumb" style="xhtml" />
+<!--                    <jdoc:include type="modules" name="social_links" style="xhtml" />-->
                     <jdoc:include type="component" style="xhtml" />
                 </td>
             </tr>

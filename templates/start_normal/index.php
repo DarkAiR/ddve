@@ -7,6 +7,7 @@
 <script src="templates/system/js/jquery-1.10.2.js" type="text/javascript"></script>
 <jdoc:include type="head" />
 <meta http-equiv="Cache-Control" content="no-cache"/>
+<meta name="cmsmagazine" content="c97f330936475c779be4aebd47c330e2" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/template.css" type="text/css" />
 <link rel="stylesheet" href="templates/<?php echo $this->template ?>/css/menu.css" type="text/css" />
 <link rel="stylesheet" href="templates/catalog/css/common.css" type="text/css" />
@@ -228,12 +229,23 @@
                     <a id='deserty2' class='deserty'  title='Десерты'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=14&pcat_id=14&Itemid=64" style="background:url(templates/<?php echo $this->template ?>/images/deserty2.png)"></a>
                     <a id='napitki'  class='napitki'  title='Напитки'   href="index.php?option=com_virtuemart&page=shop.browse&category_id=13&pcat_id=13&Itemid=64"></a>
 
-
-
-
                 </div>
                 <div id="rightModules"><jdoc:include type="modules" name="right" style="xhtml" />
                     <script type="text/javascript" src="http://userapi.com/js/api/openapi.js?49"></script>
+                    <!-- Social Buttons -->
+                    <div class="SocialButtons">
+                        <script type="text/javascript">(function(w,doc) {
+                                if (!w.__utlWdgt ) {
+                                    w.__utlWdgt = true;
+                                    var d = doc, s = d.createElement('script'), g = 'getElementsByTagName';
+                                    s.type = 'text/javascript'; s.charset='UTF-8'; s.async = true;
+                                    s.src = ('https:' == w.location.protocol ? 'https' : 'http')  + '://w.uptolike.com/widgets/v1/uptolike.js';
+                                    var h=d[g]('body')[0];
+                                    h.appendChild(s);
+                                }})(window,document);
+                        </script>
+                        <div data-mobile-view="false" data-share-size="20" data-like-text-enable="false" data-background-alpha="0.0" data-pid="1369482" data-mode="share" data-background-color="#ffffff" data-share-shape="round-rectangle" data-share-counter-size="12" data-icon-color="#ffffff" data-mobile-sn-ids="fb.vk.tw.wh.ok.gp." data-text-color="#000000" data-buttons-color="#ffffff" data-counter-background-color="#ffffff" data-share-counter-type="disable" data-orientation="horizontal" data-following-enable="false" data-sn-ids="fb.vk.tw.ok.gp." data-preview-mobile="false" data-selection-enable="false" data-exclude-show-more="false" data-share-style="11" data-counter-background-alpha="0.49" data-top-button="false" class="uptolike-buttons" ></div>
+                    </div>
                     <!-- VK Widget -->
                     <div id="vk_groups"></div>
                     <script type="text/javascript">
