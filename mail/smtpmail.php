@@ -11,7 +11,7 @@ $config['smtp_username'] = $cfg->smtpuser;
 $config['smtp_password'] = $cfg->smtppass;
 $config['smtp_port']     = $cfg->smtpport;
 $config['smtp_host']     = $cfg->smtphost;
-$config['smtp_debug']    = false;
+$config['smtp_debug']    = true;
 $config['smtp_charset']  = 'utf8';
 $config['smtp_from']     = $cfg->mailfrom;
 
@@ -29,6 +29,42 @@ define ("ERROR_TROUBLE",            "Problems sending mail");
 function smtpmail($mail_to, $subject, $message, $headers='')
 {
     global $config;
+
+    mail($mail_to, $subject, $message, $headers);
+    return true;
+
+// phpmailer
+/*
+require 'PHPMailer/PHPMailerAutoload.php';
+$mail = new PHPMailer;
+
+        $mail->SMTPDebug = 3;
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'migratika.noreply@gmail.com';
+        $mail->Password = 'mbdyGF2U87';
+        $mail->SMTPSecure = 'ssl';
+        $mail->Port = 465;
+
+$mail->setFrom('darkair2@gmail.com', 'Mailer');
+$mail->addAddress('darkair2@gmail.com');     // $mail_to
+
+$mail->Subject = $subject;
+$mail->Body    = $message;
+
+if(!$mail->send()) {
+    echo 'Message could not be sent.';
+    echo 'Mailer Error: ' . $mail->ErrorInfo;
+    return false;
+} else {
+    echo 'Message has been sent';
+    return true;
+}
+die;
+*/
+// end phpmailer
+
     $SEND =   "Date: ".date("D, d M Y H:i:s") . " UT\r\n";
     $SEND .=   'Subject: =?'.$config['smtp_charset'].'?B?'.base64_encode($subject)."=?=\r\n";
     if( $headers != '' )
@@ -47,7 +83,7 @@ function smtpmail($mail_to, $subject, $message, $headers='')
     }
     $SEND .=  $message."\r\n";
 
-    $socket = fsockopen($config['smtp_host'], $config['smtp_port'], $errno, $errstr, 30);
+    $socket = fsockopen($config['smtp_host'], $config['smtp_port'], $errno, $errstr, 5);
     if( !$socket )
     {
         if ($config['smtp_debug'])
