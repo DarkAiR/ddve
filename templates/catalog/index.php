@@ -177,6 +177,7 @@
                 (isset( $_GET['category_id'] )? $_GET['categiry_id'] : 0); ?>;      
         }
     </script>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 
 <body>

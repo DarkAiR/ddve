@@ -41,6 +41,34 @@ try
     $amperson   = getParam('amperson');
     $comment    = getParam('comment');
     $prodList   = getParam('prodList');
+
+    $recaptcha = isset($_POST['g-recaptcha-response']) ? $_POST['g-recaptcha-response'] : null;
+    if (empty($recaptcha)) {
+        echo json_encode(array('errormsg'=>'Not valid'));
+        exit();
+    }
+
+    $curl = curl_init();
+    if (!$curl) {
+        throw new Exception('Curl error');
+    }
+    curl_setopt($curl, CURLOPT_URL, 'https://www.google.com/recaptcha/api/siteverify');
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, "secret=6Lcr1EkUAAAAAJ8av1RwTAnRKYA8dqYErhZRFQWe&response=".$recaptcha);
+    $out = curl_exec($curl);
+    if (!$out) {
+        throw new Exception(curl_error($curl));
+    }
+    $res = json_decode($out);
+    echo $out;
+    curl_close($curl);
+    die;
+    
+    // $hash       = getParam('courier');
+    // if (md5($phone.$salt.$name) !== $hash) {
+    //     throw new Exception('Not valid parameters');
+    // }
     //$persons    = getParam('persons');
 }
 catch( Exception $e )
@@ -62,7 +90,8 @@ VALUES ('0', '{$name}', '{$phone}', '{$email}', '{$street}', '{$house}', '{$corp
 mysql_query( $query, $db );
 mysql_close( $db );
 
-$mail_to    = 'ddve1@bk.ru';     // вам потребуется указать здесь Ваш настоящий почтовый ящик, куда должно будет прийти письмо.
+$mail_to    = 'ddve1@yandex.ru';
+//$mail_to    = 'ddve1@bk.ru';     // вам потребуется указать здесь Ваш настоящий почтовый ящик, куда должно будет прийти письмо.
 //$mail_to = 'darkair@list.ru';
 $message    = ''.
             "Имя: $name\r\n".
@@ -96,7 +125,7 @@ echo json_encode( $res );
 function getParam( $name )
 {
     if( !isset($_POST[$name]) )
-        throw new Exception( "param $name not found" );
+        throw new Exception( "param not found" );
     return htmlspecialchars( $_POST[$name], ENT_QUOTES );
 }
 ?>

@@ -1,8 +1,12 @@
 <?php
 
 define( '_JEXEC', 1 );
-define('JPATH_BASE', dirname(__FILE__).'/..' );
-define( 'DS', DIRECTORY_SEPARATOR );
+if (!defined('JPATH_BASE')) {
+    define('JPATH_BASE', dirname(__FILE__).'/..' );
+}
+if (!defined('DS')) {
+    define( 'DS', DIRECTORY_SEPARATOR );
+}
 
 require_once ( JPATH_BASE.'/configuration.php' );
 $cfg = new JConfig();

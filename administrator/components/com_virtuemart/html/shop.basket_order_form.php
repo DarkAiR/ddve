@@ -23,7 +23,25 @@ $cartStr .= "Общая стоимость: $totalPrice\r\n";
 
 
 ?>
-<form method="POST" action="">
+<script type="text/javascript">
+    function onSubmit(token) {
+        console.log('onSubmit');
+        vmCartFormSend(document.getElementById("js-order-form"));
+    }
+
+    function validate(event) {
+        console.log('validate');
+        event.preventDefault();
+        grecaptcha.execute();
+    }
+
+    function onload() {
+        var element = document.getElementById('js-order-form-submit');
+        console.log('onload', element);
+        element.onclick = validate;
+    }
+</script>
+<form id='js-order-form' method="POST" action="">
     <h1>Контактные данные:</h1>
     <label for="field1" >Имя: <ss>*</ss></label>        <input id="field1"  type="text"     name="name"     value="" size="40" onfocus="vmCartFormFocus(this)"/><br/>
     <label for="field2" >Телефон: <ss>*</ss></label>    <input id="field2"  type="text"     name="phone"    value="" size="40" onfocus="vmCartFormFocus(this)"/><br/>
@@ -40,10 +58,15 @@ $cartStr .= "Общая стоимость: $totalPrice\r\n";
         &nbsp;
     </div>
     <div id='submitBtn'>
+        <div id='recaptcha' class="g-recaptcha"
+            data-sitekey="6Lcr1EkUAAAAAIb_UPTwDGkmjrDfrBz-R3parGdo"
+            data-callback="onSubmit"
+            data-size="invisible"></div>
         <input type="button" value=""
+               id='js-order-form-submit'
                onmouseover="jQuery(this).addClass('activeBtn')"
                onmouseout ="jQuery(this).removeClass('activeBtn')"
-               onclick="vmCartFormSend(this)"
         />
     </div>
 </form>
+<script>onload();</script>
