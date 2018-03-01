@@ -111,7 +111,7 @@ function vmCartButtonClick( elem )
 
 var vmCartIsSend = false;
 
-function vmCartFormSend( elem )
+function vmCartFormSend( elem, recaptchaToken )
 {
     if( vmCartIsSend == true )
         return;
@@ -148,6 +148,8 @@ function vmCartFormSend( elem )
         params += v + '=' + encodeURIComponent( eval( v ) ) + '&';
     }
     params += 'persons=' + jQuery('#total_block #person_amount #person_quantity').attr("value");
+
+    params += '&g-recaptcha-response=' + recaptchaToken;
 
     // Проверяем корректность
     err = false;
