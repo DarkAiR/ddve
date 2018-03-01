@@ -25,20 +25,14 @@ $cartStr .= "Общая стоимость: $totalPrice\r\n";
 ?>
 <script type="text/javascript">
     function onSubmit(token) {
-        console.log('onSubmit');
-        vmCartFormSend(document.getElementById("js-order-form"));
-    }
-
-    function validate(event) {
-        console.log('validate');
         event.preventDefault();
-        grecaptcha.execute();
+        console.log('token', token);
+        vmCartFormSend(document.getElementById("js-order-form"));
     }
 
     function onload() {
         var element = document.getElementById('js-order-form-submit');
-        console.log('onload', element);
-        element.onclick = validate;
+        element.onclick = onSubmit;
     }
 </script>
 <form id='js-order-form' method="POST" action="">
@@ -58,14 +52,14 @@ $cartStr .= "Общая стоимость: $totalPrice\r\n";
         &nbsp;
     </div>
     <div id='submitBtn'>
-        <div id='recaptcha' class="g-recaptcha"
-            data-sitekey="6Lcr1EkUAAAAAIb_UPTwDGkmjrDfrBz-R3parGdo"
-            data-callback="onSubmit"
-            data-size="invisible"></div>
         <input type="button" value=""
-               id='js-order-form-submit'
-               onmouseover="jQuery(this).addClass('activeBtn')"
-               onmouseout ="jQuery(this).removeClass('activeBtn')"
+                id='js-order-form-submit'
+                class="g-recaptcha"
+                data-sitekey="6Lcr1EkUAAAAAIb_UPTwDGkmjrDfrBz-R3parGdo"
+                data-callback="onSubmit"
+                data-size="invisible"
+                onmouseover="jQuery(this).addClass('activeBtn')"
+                onmouseout ="jQuery(this).removeClass('activeBtn')"
         />
     </div>
 </form>
