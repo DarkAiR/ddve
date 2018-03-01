@@ -308,7 +308,9 @@
 {
     background: url(send_active.png) left top no-repeat !important;
 }
-
+.grecaptcha-badge {
+    visibility: hidden;
+}
 
 
 
