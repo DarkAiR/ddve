@@ -61,7 +61,11 @@ try
         throw new Exception(curl_error($curl));
     }
     $res = json_decode($out);
+
+    var_export($res);
+    var_export($out);
     curl_close($curl);
+    die;
     if (!$res['success']) {
         throw new Exception('Captcha error');
     }
