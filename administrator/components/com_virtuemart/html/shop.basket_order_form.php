@@ -25,19 +25,16 @@ $cartStr .= "Общая стоимость: $totalPrice\r\n";
 ?>
 <script type="text/javascript">
     function onSubmit(token) {
-        console.log('onSubmit');
         vmCartFormSend(document.getElementById("js-order-form"), token);
     }
 
     function validate(event) {
-        console.log('validate');
         event.preventDefault();
         grecaptcha.execute();
     }
 
     function onload() {
         var element = document.getElementById('js-order-form-submit');
-        console.log('onload', element);
         element.onclick = validate;
     }
 </script>
