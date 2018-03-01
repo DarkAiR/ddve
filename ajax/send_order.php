@@ -61,14 +61,11 @@ try
         throw new Exception(curl_error($curl));
     }
     $res = json_decode($out);
-    echo $out;
     curl_close($curl);
-    die;
+    if (!$res['success']) {
+        throw new Exception('Captcha error');
+    }
     
-    // $hash       = getParam('courier');
-    // if (md5($phone.$salt.$name) !== $hash) {
-    //     throw new Exception('Not valid parameters');
-    // }
     //$persons    = getParam('persons');
 }
 catch( Exception $e )
