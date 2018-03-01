@@ -60,9 +60,9 @@ try
     if (!$out) {
         throw new Exception(curl_error($curl));
     }
-    $res = json_decode($out);
+    $out = json_decode($out, true);
     curl_close($curl);
-    if (!$res->success) {
+    if (!$out['success']) {
         throw new Exception('Captcha error');
     }
     
