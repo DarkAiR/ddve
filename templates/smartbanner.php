@@ -19,5 +19,5 @@
 
 <meta name="smartbanner:enabled-platforms" content="android,ios">
 <link rel="stylesheet" href="./dve_files/smartbanner.min.css">
-<script src="./dve_files/smartbanner.min.js"></script></head><body></body></html>
+<script src="./dve_files/smartbanner.min.js"></script>
 <!-- smartbanner -->
