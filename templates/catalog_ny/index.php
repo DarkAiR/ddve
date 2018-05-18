@@ -6,7 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <?php require __DIR__.'/../smartbanner.php'; ?>
+    <?php require dirname(__FILE__).'/../smartbanner.php'; ?>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 

@@ -6,7 +6,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<?php require __DIR__.'/../smartbanner.php'; ?>
+<?php require dirname(__FILE__).'/../smartbanner.php'; ?>
 
 <script src="templates/system/js/jquery-1.10.2.js" type="text/javascript"></script>
 <jdoc:include type="head" />
